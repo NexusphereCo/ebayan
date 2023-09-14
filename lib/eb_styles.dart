@@ -21,6 +21,7 @@ class Typography {
     );
   }
 
+  // Typography headings and default text with default color dark
   static Widget h1(str, {Color color = Colors.dark}) => _textStyle(str, 32.0, color);
   static Widget h2(str, {Color color = Colors.dark}) => _textStyle(str, 24.0, color);
   static Widget h3(str, {Color color = Colors.dark}) => _textStyle(str, 20.0, color);
@@ -31,39 +32,48 @@ class Typography {
 }
 
 class Button {
-  static ElevatedButton primary(String label, void Function() onPressed) {
-    const double paddingTB = 15.0;
-    const double paddingRB = 32.0;
+  static double paddingTB = 15.0;
+  static double paddingRB = 32.0;
+  static double borderRadius = 50.0;
 
+  static Widget _defBtnStyle(String label, Color color, void Function() onPressed) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(50.0), // Adjust the radius to control the button's roundness
+          borderRadius: BorderRadius.circular(borderRadius),
         ),
-        padding: const EdgeInsets.fromLTRB(paddingRB, paddingTB, paddingRB, paddingTB), // Adjust the horizontal padding
+        padding: EdgeInsets.fromLTRB(paddingRB, paddingTB, paddingRB, paddingTB),
         elevation: 0,
-        backgroundColor: Colors.primary,
+        backgroundColor: color,
       ),
       onPressed: onPressed,
       child: Typography.b(label, color: Colors.light),
     );
   }
 
-  static ElevatedButton primaryOutlined(String label, void Function() onPressed) {
+  static Widget _outlinedBtnStyle(String label, Color color, void Function() onPressed) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(50.0), // Adjust the radius to control the button's roundness
-          side: const BorderSide(
-            color: Colors.primary, // Set the border (stroke) color to the primary color
-          ),
+          borderRadius: BorderRadius.circular(borderRadius),
+          side: BorderSide(color: color),
         ),
         backgroundColor: Colors.light,
-        padding: const EdgeInsets.fromLTRB(32.0, 15.0, 32.0, 15.0), // Adjust the horizontal padding
+        padding: EdgeInsets.fromLTRB(paddingRB, paddingTB, paddingRB, paddingTB),
         elevation: 0,
       ),
       onPressed: onPressed,
-      child: Typography.b(label, color: Colors.primary),
+      child: Typography.b(label, color: color),
     );
   }
+
+  // Normal buttons
+  static Widget primary(String label, void Function() onPressed) => _defBtnStyle(label, Colors.primary, onPressed);
+  static Widget warning(String label, void Function() onPressed) => _defBtnStyle(label, Colors.warning, onPressed);
+  static Widget danger(String label, void Function() onPressed) => _defBtnStyle(label, Colors.danger, onPressed);
+  static Widget dark(String label, void Function() onPressed) => _defBtnStyle(label, Colors.dark, onPressed);
+
+  // Outlined buttons
+  static Widget primaryOutlined(String label, void Function() onPressed) => _outlinedBtnStyle(label, Colors.primary, onPressed);
+  static Widget darkOutlined(String label, void Function() onPressed) => _outlinedBtnStyle(label, Colors.dark, onPressed);
 }
