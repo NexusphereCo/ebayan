@@ -37,6 +37,7 @@ dependencies:
 
   flutter_native_splash: ^2.3.2
   feather_icons: ^1.2.0
+  google_fonts: ^6.1.0
     
 flutter_native_splash:
     color: '#3336AB'
