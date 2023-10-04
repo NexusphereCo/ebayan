@@ -1,8 +1,8 @@
-import 'package:ebayan/widgets/bottom_appbar.dart';
-import 'package:ebayan/widgets/top_appbar.dart';
+import 'package:ebayan/constants/colors.dart';
+import 'package:ebayan/screens/login.dart';
+import 'package:ebayan/screens/test.dart';
 import 'package:flutter/material.dart';
-import 'package:ebayan/widgets/buttons.dart';
-import 'package:ebayan/constants/typography.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   runApp(const InitApp());
@@ -13,36 +13,15 @@ class InitApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       title: 'My Flutter App',
-      home: MyHomePage(),
-      debugShowCheckedModeBanner: false, // remove the effing debug banner on the top right
-    );
-  }
-}
-
-class MyHomePage extends StatelessWidget {
-  const MyHomePage({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: const EBTopAppBar(),
-      drawer: const EBDrawer(),
-      body: Container(
-        padding: EdgeInsets.all(20.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            EBTypography.h1(text: 'Hello World'),
-            EBTypography.p(text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus recusandae eaque ex at praesentium fuga minima eligendi expedita. Velit veritatis quasi earum perferendis iusto hic rem, est in laborum sit rerum modi maiores, atque animi illo voluptas ipsa! In veritatis inventore quos dolorem, veniam tempora neque accusamus molestias quia tempore quam ipsa nemo cupiditate dignissimos odio adipisci, officiis voluptatem, blanditiis perspiciatis ipsam tenetur. Sit necessitatibus quasi modi suscipit? Omnis temporibus autem quae natus eveniet atque? Facere perferendis similique obcaecati dolorem quia possimus quisquam illum amet maiores voluptatibus totam provident aliquam, fugit earum ipsum distinctio? Nihil quibusdam aperiam accusamus voluptatibus tempore.'),
-            EBButton(text: 'Primary Button', theme: 'primary', onPressed: () {}),
-            EBButton(text: 'Outline Button', theme: 'primary-outline', onPressed: () {}),
-            EBButton(text: 'Dark Button', theme: 'dark-outline', onPressed: () {}),
-          ],
+      theme: ThemeData(
+        textTheme: GoogleFonts.outfitTextTheme().apply(
+          bodyColor: EBColor.dark,
         ),
       ),
-      bottomNavigationBar: const EBBottomAppBar(),
+      home: const LoginScreen(),
+      debugShowCheckedModeBanner: false, // remove the effing debug banner on the top right
     );
   }
 }

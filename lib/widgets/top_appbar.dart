@@ -18,6 +18,7 @@ class EBTopAppBar extends StatelessWidget implements PreferredSizeWidget {
         ),
       ],
       backgroundColor: EBColor.dark,
+      elevation: 0,
     );
   }
 
