@@ -1,6 +1,9 @@
 import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/constants/typography.dart';
+import 'package:ebayan/screens/register.dart';
+import 'package:ebayan/utils/dimens.dart';
 import 'package:ebayan/widgets/buttons.dart';
+import 'package:ebayan/widgets/footer.dart';
 import 'package:flutter/material.dart';
 import 'package:ebayan/widgets/form.dart';
 import 'package:feather_icons/feather_icons.dart';
@@ -11,7 +14,6 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       body: Padding(
         padding: const EdgeInsets.all(30.0),
         child: Column(
@@ -20,10 +22,10 @@ class LoginScreen extends StatelessWidget {
             Column(
               children: [
                 EBTypography.h1(text: 'Welcome Back!', color: EBColor.primary),
-                EBTypography.p(text: 'Sign in to continue.'),
+                EBTypography.p(text: 'Sign in to continue.', muted: true),
               ],
             ),
-            const SizedBox(height: 20.0),
+            const SizedBox(height: Spacing.formMd),
             Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
@@ -33,22 +35,48 @@ class LoginScreen extends StatelessWidget {
                   placeholder: 'Enter your username',
                   type: 'text',
                 ),
-                const SizedBox(height: 20.0),
+                const SizedBox(height: Spacing.formMd),
                 const EBTextBox(
                   label: 'Password',
                   icon: FeatherIcons.lock,
                   placeholder: 'Enter your password',
                   type: 'password',
                 ),
-                const SizedBox(height: 20.0),
-                EBTypography.p(text: 'Forgot Password?'),
-                const SizedBox(height: 20.0),
-                EBButton(onPressed: () {}, text: 'Login', theme: 'primary'),
+                const SizedBox(height: Spacing.formSm),
+                TextButton(
+                  onPressed: () {},
+                  child: EBTypography.b(
+                    text: 'Forgot Password?',
+                    color: EBColor.primary,
+                  ),
+                ),
+                const SizedBox(height: Spacing.formMd),
+                SizedBox(
+                  width: double.infinity,
+                  child: EBButton(text: 'Login', theme: 'primary', onPressed: () {}),
+                ),
+                const SizedBox(height: Spacing.formSm),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    EBTypography.p(text: 'Don\'t have an account? '),
+                    TextButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const RegisterScreen()),
+                        );
+                      },
+                      child: EBTypography.b(text: 'create a new account.', color: EBColor.primary),
+                    ),
+                  ],
+                ),
               ],
             ),
           ],
         ),
       ),
+      bottomSheet: const EBFooter(),
     );
   }
 }
