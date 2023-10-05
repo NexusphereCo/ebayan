@@ -21,6 +21,7 @@ class RegisterScreen extends StatelessWidget {
             Row(
               children: [
                 IconButton(
+                  color: EBColor.primary,
                   onPressed: () {
                     Navigator.push(
                       context,
