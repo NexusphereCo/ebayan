@@ -11,3 +11,10 @@ $ git clone https://github.com/NexusphereCo/ebayan.git
 $ cd ebayan
 $ flutter run
 ```
+
+**How to clean flutter**
+
+```
+$ flutter clean
+$ flutter pub get
+```
