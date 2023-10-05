@@ -1,4 +1,6 @@
+import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/constants/typography.dart';
+import 'package:ebayan/utils/dimens.dart';
 import 'package:flutter/material.dart';
 
 class EBTextBox extends StatelessWidget {
@@ -19,17 +21,21 @@ class EBTextBox extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Icon(_icon),
+        Icon(
+          _icon,
+          color: EBColor.primary,
+        ),
         const SizedBox(width: 10),
         Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              EBTypography.b(text: _label),
+              EBTypography.label(text: _label, muted: true),
+              const SizedBox(height: Spacing.label),
               Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(6.0),
-                  border: Border.all(color: Colors.grey),
+                  border: Border.all(color: EBColor.dark),
                 ),
                 child: TextField(
                   obscureText: (_type == 'text') ? false : true,

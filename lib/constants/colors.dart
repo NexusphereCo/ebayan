@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class EBColor {
+  EBColor._();
+
   static const Color primary = Color.fromRGBO(46, 49, 146, 1);
   static const Color warning = Color.fromRGBO(255, 147, 20, 1);
   static const Color danger = Color.fromRGBO(246, 64, 64, 1);

@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 class EBButton extends StatelessWidget {
   final double _borderRadius = 50.0;
   final double _paddingX = 32.0;
-  final double _paddingY = 15.0;
+  final double _paddingY = 18.0;
   final String _text;
   final VoidCallback _onPressed;
   final String _theme;
