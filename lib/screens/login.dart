@@ -8,8 +8,21 @@ import 'package:flutter/material.dart';
 import 'package:ebayan/widgets/form.dart';
 import 'package:feather_icons/feather_icons.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
+
+  @override
+  State<StatefulWidget> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  bool showTxtPassword = false;
+
+  void _showPassword() {
+    setState(() {
+      showTxtPassword = !showTxtPassword;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,11 +49,13 @@ class LoginScreen extends StatelessWidget {
                   type: 'text',
                 ),
                 const SizedBox(height: Spacing.formMd),
-                const EBTextBox(
+                EBTextBox(
                   label: 'Password',
                   icon: FeatherIcons.lock,
                   placeholder: 'Enter your password',
-                  type: 'password',
+                  type: showTxtPassword ? 'password-reveal' : 'password',
+                  suffixIcon: showTxtPassword ? FeatherIcons.eye : FeatherIcons.eyeOff,
+                  suffixIconOnPressed: _showPassword,
                 ),
                 const SizedBox(height: Spacing.formSm),
                 TextButton(

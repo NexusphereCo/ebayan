@@ -15,6 +15,7 @@ class InitApp extends StatelessWidget {
     return MaterialApp(
       title: 'eBayan',
       theme: ThemeData(
+        primarySwatch: EBColor.materialPrimary,
         textTheme: GoogleFonts.outfitTextTheme().apply(
           bodyColor: EBColor.dark,
         ),
