@@ -1,7 +1,6 @@
-import 'package:ebayan/constants/colors.dart';
+import 'package:ebayan/constants/theme.dart';
 import 'package:ebayan/screens/login.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   runApp(const InitApp());
@@ -14,12 +13,7 @@ class InitApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'eBayan',
-      theme: ThemeData(
-        primarySwatch: EBColor.materialPrimary,
-        textTheme: GoogleFonts.outfitTextTheme().apply(
-          bodyColor: EBColor.dark,
-        ),
-      ),
+      theme: EBTheme.data(),
       home: const LoginScreen(),
       debugShowCheckedModeBanner: false,
     );
