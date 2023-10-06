@@ -15,7 +15,8 @@ class EBFooter extends StatelessWidget {
     const double paddingY = 15.0;
 
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: paddingX, vertical: paddingY),
+      padding:
+          const EdgeInsets.symmetric(horizontal: paddingX, vertical: paddingY),
       child: SizedBox(
         height: footerHeight,
         child: Row(
@@ -24,7 +25,8 @@ class EBFooter extends StatelessWidget {
             Column(
               children: [
                 SvgPicture.asset(_companyPath),
-                EBTypography.small(text: 'Copyright © ${DateTime.now().year}', muted: true),
+                EBTypography.small(
+                    text: 'Copyright © ${DateTime.now().year}', muted: true),
               ],
             ),
             Column(
