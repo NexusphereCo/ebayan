@@ -5,7 +5,6 @@ import 'package:ebayan/screens/auth/register_resident.dart';
 import 'package:ebayan/utils/dimens.dart';
 import 'package:ebayan/widgets/buttons.dart';
 import 'package:ebayan/widgets/footer.dart';
-import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 

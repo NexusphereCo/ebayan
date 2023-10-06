@@ -1,9 +1,8 @@
 import 'package:ebayan/constants/colors.dart';
-import 'package:ebayan/constants/typography.dart';
 import 'package:ebayan/utils/dimens.dart';
 import 'package:flutter/material.dart';
 
-class EBTextField extends StatelessWidget {
+class EBTextField extends StatefulWidget {
   final String _label;
   final String _type; // text, password, date, number, ... etc.
   final IconData? _suffixIcon;
@@ -15,12 +14,26 @@ class EBTextField extends StatelessWidget {
   final double _paddingY = 0;
   final double _borderRadius = 7.0;
 
-  const EBTextField({super.key, required String label, required String type, IconData? suffixIcon, void Function()? suffixIconOnPressed, String? placeholder})
-      : _placeholder = placeholder,
+  const EBTextField({
+    Key? key,
+    required String label,
+    required String type,
+    IconData? suffixIcon,
+    void Function()? suffixIconOnPressed,
+    String? placeholder,
+  })  : _placeholder = placeholder,
         _suffixIcon = suffixIcon,
         _suffixIconOnPressed = suffixIconOnPressed,
         _type = type,
-        _label = label;
+        _label = label,
+        super(key: key);
+
+  @override
+  _EBTextFieldState createState() => _EBTextFieldState();
+}
+
+class _EBTextFieldState extends State<EBTextField> {
+  bool _isFocused = false;
 
   @override
   Widget build(BuildContext context) {
@@ -28,25 +41,37 @@ class EBTextField extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          EBTypography.label(text: _label, muted: true),
-          const SizedBox(height: Spacing.label),
+          Text(
+            widget._label,
+            style: const TextStyle(color: Colors.grey),
+          ),
+          const SizedBox(height: 8.0),
           Container(
-            padding: EdgeInsets.symmetric(horizontal: _paddingX, vertical: _paddingY),
+            padding: EdgeInsets.symmetric(horizontal: widget._paddingX, vertical: widget._paddingY),
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(_borderRadius),
-              border: Border.all(color: EBColor.dark),
+              borderRadius: BorderRadius.circular(widget._borderRadius),
+              border: Border.all(
+                color: _isFocused ? EBColor.primary : EBColor.dark, // Change border color when focused
+              ),
             ),
-            child: TextField(
-              obscureText: (_type != 'password') ? false : true,
-              decoration: InputDecoration(
-                hintText: _placeholder,
-                border: InputBorder.none,
-                suffixIcon: (_type == 'password' || _type == 'password-reveal')
-                    ? IconButton(
-                        icon: Icon(_suffixIcon),
-                        onPressed: _suffixIconOnPressed,
-                      )
-                    : null,
+            child: Focus(
+              onFocusChange: (hasFocus) {
+                setState(() {
+                  _isFocused = hasFocus;
+                });
+              },
+              child: TextField(
+                obscureText: (widget._type != 'password') ? false : true,
+                decoration: InputDecoration(
+                  hintText: widget._placeholder,
+                  border: InputBorder.none,
+                  suffixIcon: (widget._type == 'password' || widget._type == 'password-reveal')
+                      ? IconButton(
+                          icon: Icon(widget._suffixIcon),
+                          onPressed: widget._suffixIconOnPressed,
+                        )
+                      : null,
+                ),
               ),
             ),
           ),
