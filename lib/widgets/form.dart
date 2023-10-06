@@ -76,9 +76,14 @@ class EBTextBox extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Icon(
-          _icon,
-          color: EBColor.primary,
+        Column(
+          children: [
+            const SizedBox(height: Spacing.formMd),
+            Icon(
+              _icon,
+              color: EBColor.primary,
+            ),
+          ],
         ),
         const SizedBox(width: Spacing.formMd),
         EBTextField(label: _label, type: _type, placeholder: _placeholder, suffixIcon: _suffixIcon, suffixIconOnPressed: _suffixIconOnPressed),
