@@ -19,7 +19,7 @@ class EBBottomAppBarContents extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double paddingY = 10.0;
-    double iconSize = 30.0;
+    double iconSize = 25.0;
 
     List<BottomNavigationBarItem> links = [
       BottomNavigationBarItem(

@@ -12,26 +12,29 @@ class EBTopAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      iconTheme: IconThemeData(color: EBColor.primary),
+      iconTheme: const IconThemeData(color: EBColor.primary),
       title: Row(
         children: [
-          EBTypography.h2(text: 'eBayan', color: EBColor.primary),
-          SizedBox(width: 8),
+          EBTypography.h3(text: 'eBayan', color: EBColor.primary),
+          const SizedBox(width: 8),
           SvgPicture.asset(_logoPath),
         ],
       ),
-      actions: <Widget>[
-        IconButton(
-          icon: const Icon(
-            FeatherIcons.plus,
-            color: EBColor.primary,
+      actions: [
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20.0),
+          child: IconButton(
+            icon: const Icon(
+              FeatherIcons.plus,
+              color: EBColor.primary,
+            ),
+            tooltip: 'Join to a barangay',
+            onPressed: () {},
           ),
-          tooltip: 'Join to a barangay',
-          onPressed: () {},
         ),
       ],
       backgroundColor: EBColor.light,
-      elevation: 0,
+      elevation: 1,
     );
   }
 
@@ -40,19 +43,24 @@ class EBTopAppBar extends StatelessWidget implements PreferredSizeWidget {
 }
 
 class EBDrawer extends StatelessWidget {
+  final String _logoPath = 'assets/svgs/ebayan/logo-color.svg';
+
   const EBDrawer({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Drawer(
       child: ListView(
-        padding: EdgeInsets.zero,
+        padding: const EdgeInsets.symmetric(horizontal: 10.0),
         children: [
-          const DrawerHeader(
-            decoration: BoxDecoration(
-              color: EBColor.primary,
+          DrawerHeader(
+            child: Row(
+              children: [
+                EBTypography.h3(text: 'eBayan', color: EBColor.primary),
+                const SizedBox(width: 8),
+                SvgPicture.asset(_logoPath),
+              ],
             ),
-            child: null,
           ),
           ListTile(
             title: EBTypography.p(text: 'Dashboard'),
@@ -71,8 +79,7 @@ class EBDrawer extends StatelessWidget {
             onTap: () {},
           ),
           ListTile(
-            title: EBTypography.p(
-                text: 'Logout', color: Color.fromRGBO(246, 64, 64, 100)),
+            title: EBTypography.p(text: 'Logout', color: EBColor.danger),
             onTap: () {},
           ),
         ],
