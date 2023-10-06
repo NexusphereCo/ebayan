@@ -34,8 +34,7 @@ class EBTypography {
   static Widget h2({required String text, Color? color, FontWeight? fontWeight, bool muted = false, TextAlign? textAlign}) => _textStyle(text, 24.0, color, muted, fontWeight ?? EBFontWeight.extraBold, textAlign);
   static Widget h3({required String text, Color? color, FontWeight? fontWeight, bool muted = false, TextAlign? textAlign}) => _textStyle(text, 20.0, color, muted, fontWeight ?? EBFontWeight.extraBold, textAlign);
   static Widget h4({required String text, Color? color, FontWeight? fontWeight, bool muted = false, TextAlign? textAlign}) => _textStyle(text, 18.0, color, muted, fontWeight ?? EBFontWeight.extraBold, textAlign);
-  static Widget p({required String text, Color? color, FontWeight? fontWeight, bool muted = false, TextAlign? textAlign}) => _textStyle(text, 15.0, color, muted, fontWeight ?? EBFontWeight.regular, textAlign);
-  static Widget b({required String text, Color? color, FontWeight? fontWeight, bool muted = false, TextAlign? textAlign}) => _textStyle(text, 15.0, color, muted, fontWeight ?? EBFontWeight.bold, textAlign);
+  static Widget text({required String text, Color? color, FontWeight? fontWeight, bool muted = false, TextAlign? textAlign}) => _textStyle(text, 15.0, color, muted, fontWeight ?? EBFontWeight.regular, textAlign);
   static Widget label({required String text, Color? color, FontWeight? fontWeight, bool muted = false, TextAlign? textAlign}) => _textStyle(text, 15.0, color, muted, fontWeight ?? EBFontWeight.semiBold, textAlign);
   static Widget small({required String text, Color? color, FontWeight? fontWeight, bool muted = false, TextAlign? textAlign}) => _textStyle(text, 13.0, color, muted, fontWeight ?? EBFontWeight.regular, textAlign);
 }

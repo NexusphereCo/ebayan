@@ -29,14 +29,20 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.all(30.0),
+        padding: const EdgeInsets.all(Global.paddingBody),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Column(
               children: [
-                EBTypography.h1(text: 'Welcome Back!', color: EBColor.primary),
-                EBTypography.p(text: 'Sign in to continue.', muted: true),
+                EBTypography.h1(
+                  text: 'Welcome Back!',
+                  color: EBColor.primary,
+                ),
+                EBTypography.text(
+                  text: 'Sign in to continue.',
+                  muted: true,
+                ),
               ],
             ),
             const SizedBox(height: Spacing.formMd),
@@ -61,26 +67,41 @@ class _LoginScreenState extends State<LoginScreen> {
                 const SizedBox(height: Spacing.formSm),
                 TextButton(
                   onPressed: () {},
-                  child: EBTypography.b(
+                  child: EBTypography.text(
                     text: 'Forgot Password?',
                     color: EBColor.primary,
+                    fontWeight: EBFontWeight.bold,
                   ),
                 ),
                 const SizedBox(height: Spacing.formMd),
                 SizedBox(
                   width: double.infinity,
-                  child: EBButton(text: 'Login', theme: 'primary', onPressed: () {}),
+                  child: EBButton(
+                    text: 'Login',
+                    theme: 'primary',
+                    onPressed: () {},
+                  ),
                 ),
                 const SizedBox(height: Spacing.formSm),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    EBTypography.p(text: 'Don\'t have an account? '),
+                    EBTypography.text(text: 'Don\'t have an account? '),
                     TextButton(
                       onPressed: () {
-                        Navigator.push(context, PageTransition(type: PageTransitionType.rightToLeft, child: const RegisterScreen()));
+                        Navigator.push(
+                          context,
+                          PageTransition(
+                            type: PageTransitionType.rightToLeft,
+                            child: const RegisterScreen(),
+                          ),
+                        );
                       },
-                      child: EBTypography.b(text: 'create a new account.', color: EBColor.primary),
+                      child: EBTypography.text(
+                        text: 'create a new account.',
+                        color: EBColor.primary,
+                        fontWeight: EBFontWeight.bold,
+                      ),
                     ),
                   ],
                 ),

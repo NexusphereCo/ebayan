@@ -1,3 +1,4 @@
+import 'package:ebayan/constants/assets.dart';
 import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/constants/typography.dart';
 import 'package:ebayan/screens/auth/login.dart';
@@ -8,8 +9,6 @@ import 'package:flutter_svg/svg.dart';
 import 'package:page_transition/page_transition.dart';
 
 class EBTopAppBar extends StatelessWidget implements PreferredSizeWidget {
-  final String _logoPath = 'assets/svgs/ebayan/logo-color.svg';
-
   const EBTopAppBar({Key? key}) : super(key: key);
 
   @override
@@ -18,9 +17,12 @@ class EBTopAppBar extends StatelessWidget implements PreferredSizeWidget {
       iconTheme: const IconThemeData(color: EBColor.primary),
       title: Row(
         children: [
-          EBTypography.h3(text: 'eBayan', color: EBColor.primary),
+          EBTypography.h3(
+            text: 'eBayan',
+            color: EBColor.primary,
+          ),
           const SizedBox(width: 8),
-          SvgPicture.asset(_logoPath),
+          SvgPicture.asset(Asset.logoColorPath),
         ],
       ),
       actions: [
@@ -33,7 +35,13 @@ class EBTopAppBar extends StatelessWidget implements PreferredSizeWidget {
             ),
             tooltip: 'Join to a barangay',
             onPressed: () {
-              Navigator.push(context, PageTransition(type: PageTransitionType.rightToLeft, child: const JoinBrgyScreen()));
+              Navigator.push(
+                context,
+                PageTransition(
+                  type: PageTransitionType.rightToLeft,
+                  child: const JoinBrgyScreen(),
+                ),
+              );
             },
           ),
         ),
@@ -48,8 +56,6 @@ class EBTopAppBar extends StatelessWidget implements PreferredSizeWidget {
 }
 
 class EBDrawer extends StatelessWidget {
-  final String _logoPath = 'assets/svgs/ebayan/logo-color.svg';
-
   const EBDrawer({super.key});
 
   @override
@@ -61,39 +67,34 @@ class EBDrawer extends StatelessWidget {
           DrawerHeader(
             child: Row(
               children: [
-                EBTypography.h3(text: 'eBayan', color: EBColor.primary),
+                EBTypography.h3(
+                  text: 'eBayan',
+                  color: EBColor.primary,
+                ),
                 const SizedBox(width: 8),
-                SvgPicture.asset(_logoPath),
+                SvgPicture.asset(Asset.logoColorPath),
               ],
             ),
           ),
           ListTile(
-            title: EBTypography.p(text: 'Dashboard'),
+            title: EBTypography.text(text: 'Dashboard'),
             onTap: () {},
           ),
           ListTile(
-            title: EBTypography.p(text: 'File Complaints'),
+            title: EBTypography.text(text: 'File Complaints'),
             onTap: () {},
           ),
           ListTile(
-            title: EBTypography.p(text: 'Raise Suggestions'),
+            title: EBTypography.text(text: 'Raise Suggestions'),
             onTap: () {},
           ),
           ListTile(
-            title: EBTypography.p(text: 'Account Settings'),
+            title: EBTypography.text(text: 'Account Settings'),
             onTap: () {},
           ),
           ListTile(
             title: EBTypography.p(text: 'Logout', color: EBColor.danger),
-            onTap: () {
-              Navigator.push(
-                context,
-                PageTransition(
-                  type: PageTransitionType.leftToRight,
-                  child: const LoginScreen(),
-                ),
-              );
-            },
+            onTap: () {},
           ),
         ],
       ),
