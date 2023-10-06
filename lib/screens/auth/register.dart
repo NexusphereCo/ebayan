@@ -53,7 +53,7 @@ class RegisterScreen extends StatelessWidget {
                     width: double.infinity,
                     child: EBButton(
                         onPressed: () {
-                          Navigator.push(context, PageTransition(type: PageTransitionType.rightToLeft, child: const DashboardEmptyScreen()));
+                          Navigator.push(context, PageTransition(type: PageTransitionType.rightToLeft, child: const DashboardScreen()));
                         },
                         text: 'Barangay Resident',
                         theme: 'primary'),

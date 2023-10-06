@@ -9,9 +9,9 @@ import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-class DashboardEmptyScreen extends StatelessWidget {
+class DashboardScreen extends StatelessWidget {
   final String _emptyPath = 'assets/svgs/illustration/empty-state.svg';
-  const DashboardEmptyScreen({super.key});
+  const DashboardScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
