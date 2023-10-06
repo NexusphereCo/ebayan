@@ -1,12 +1,13 @@
 import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/constants/typography.dart';
-import 'package:ebayan/screens/register.dart';
+import 'package:ebayan/screens/auth/register.dart';
 import 'package:ebayan/utils/dimens.dart';
 import 'package:ebayan/widgets/buttons.dart';
 import 'package:ebayan/widgets/footer.dart';
 import 'package:flutter/material.dart';
 import 'package:ebayan/widgets/form.dart';
 import 'package:feather_icons/feather_icons.dart';
+import 'package:page_transition/page_transition.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -77,10 +78,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     EBTypography.p(text: 'Don\'t have an account? '),
                     TextButton(
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => const RegisterScreen()),
-                        );
+                        Navigator.push(context, PageTransition(type: PageTransitionType.rightToLeft, child: const RegisterScreen()));
                       },
                       child: EBTypography.b(text: 'create a new account.', color: EBColor.primary),
                     ),
