@@ -1,0 +1,4 @@
+[] make a go-back button component
+[] remove the b() in typography
+[] fix formatting on some code
+[] prevent footer/bottomappbar from showing on top of keyboard (when keyboard is shown)
