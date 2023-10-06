@@ -7,7 +7,6 @@ import 'package:ebayan/widgets/buttons.dart';
 import 'package:ebayan/widgets/footer.dart';
 import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
-import 'package:ebayan/screens/resident/dashboard.dart';
 import 'package:page_transition/page_transition.dart';
 
 class RegisterScreen extends StatelessWidget {
@@ -16,9 +15,8 @@ class RegisterScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       body: Padding(
-        padding: const EdgeInsets.all(30.0),
+        padding: const EdgeInsets.all(Global.paddingBody),
         child: Column(
           children: [
             Row(
@@ -26,7 +24,13 @@ class RegisterScreen extends StatelessWidget {
                 IconButton(
                   color: EBColor.primary,
                   onPressed: () {
-                    Navigator.push(context, PageTransition(type: PageTransitionType.leftToRight, child: const LoginScreen()));
+                    Navigator.push(
+                      context,
+                      PageTransition(
+                        type: PageTransitionType.leftToRight,
+                        child: const LoginScreen(),
+                      ),
+                    );
                   },
                   icon: const Icon(FeatherIcons.arrowLeft),
                 ),
@@ -38,31 +42,51 @@ class RegisterScreen extends StatelessWidget {
                 children: [
                   Column(
                     children: [
-                      EBTypography.h1(text: 'Be part of a Barangay!', color: EBColor.primary),
-                      EBTypography.p(text: 'Which user are you?', muted: true),
+                      EBTypography.h1(
+                        text: 'Be part of a Barangay!',
+                        color: EBColor.primary,
+                      ),
+                      EBTypography.text(
+                        text: 'Which user are you?',
+                        muted: true,
+                      ),
                     ],
                   ),
                   const SizedBox(height: 50.0),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      EBTypography.label(text: 'I am a:', muted: true),
+                      EBTypography.label(
+                        text: 'I am a:',
+                        muted: true,
+                      ),
                     ],
                   ),
                   const SizedBox(height: Spacing.formMd),
                   SizedBox(
                     width: double.infinity,
                     child: EBButton(
-                        onPressed: () {
-                          Navigator.push(context, PageTransition(type: PageTransitionType.rightToLeft, child: const RegisterResidentScreen()));
-                        },
-                        text: 'Barangay Resident',
-                        theme: 'primary'),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          PageTransition(
+                            type: PageTransitionType.rightToLeft,
+                            child: const RegisterResidentScreen(),
+                          ),
+                        );
+                      },
+                      text: 'Barangay Resident',
+                      theme: 'primary',
+                    ),
                   ),
                   const SizedBox(height: Spacing.formMd),
                   SizedBox(
                     width: double.infinity,
-                    child: EBButton(onPressed: () {}, text: 'Barangay Official', theme: 'primary-outline'),
+                    child: EBButton(
+                      onPressed: () {},
+                      text: 'Barangay Official',
+                      theme: 'primary-outline',
+                    ),
                   ),
                 ],
               ),

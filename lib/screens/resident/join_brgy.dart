@@ -1,6 +1,5 @@
 import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/constants/typography.dart';
-import 'package:ebayan/screens/auth/register.dart';
 import 'package:ebayan/screens/resident/dashboard.dart';
 import 'package:ebayan/utils/dimens.dart';
 import 'package:ebayan/widgets/bottom_appbar.dart';
@@ -19,11 +18,10 @@ class JoinBrgyScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       appBar: const EBTopAppBar(),
       drawer: const EBDrawer(),
       body: Padding(
-        padding: const EdgeInsets.all(30.0),
+        padding: const EdgeInsets.all(Global.paddingBody),
         child: Column(
           children: [
             Row(
@@ -31,7 +29,13 @@ class JoinBrgyScreen extends StatelessWidget {
                 IconButton(
                   color: EBColor.primary,
                   onPressed: () {
-                    Navigator.push(context, PageTransition(type: PageTransitionType.leftToRight, child: const DashboardScreen()));
+                    Navigator.push(
+                      context,
+                      PageTransition(
+                        type: PageTransitionType.leftToRight,
+                        child: const DashboardScreen(),
+                      ),
+                    );
                   },
                   icon: const Icon(FeatherIcons.arrowLeft),
                 ),
@@ -44,12 +48,19 @@ class JoinBrgyScreen extends StatelessWidget {
                   SvgPicture.asset(_illustrationPath),
                   const SizedBox(height: Spacing.formLg),
                   EBTypography.h3(text: 'Enter Barangay Sphere Code'),
-                  EBTypography.p(text: 'This code is disseminated by your barangay official', muted: true),
+                  EBTypography.text(
+                    text: 'This code is disseminated by your barangay official',
+                    muted: true,
+                  ),
                   const SizedBox(height: Spacing.formLg),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      EBButton(onPressed: () {}, text: 'Join', theme: 'primary'),
+                      EBButton(
+                        onPressed: () {},
+                        text: 'Join',
+                        theme: 'primary',
+                      ),
                     ],
                   ),
                 ],

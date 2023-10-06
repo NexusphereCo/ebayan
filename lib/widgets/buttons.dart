@@ -18,7 +18,7 @@ class EBButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var fillButtonStyle = ElevatedButton.styleFrom(
+    ButtonStyle fillButtonStyle = ElevatedButton.styleFrom(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(_borderRadius),
       ),
@@ -27,20 +27,26 @@ class EBButton extends StatelessWidget {
       backgroundColor: _setColor(_theme),
     );
 
-    var outlineButtonStyle = ElevatedButton.styleFrom(
+    ButtonStyle outlineButtonStyle = ElevatedButton.styleFrom(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(_borderRadius),
         side: BorderSide(color: _setColor(_theme)),
       ),
       backgroundColor: EBColor.light,
-      padding: EdgeInsets.symmetric(horizontal: _paddingX, vertical: _paddingY),
+      padding: EdgeInsets.symmetric(
+        horizontal: _paddingX,
+        vertical: _paddingY,
+      ),
       elevation: 0,
     );
 
     return ElevatedButton(
       onPressed: _onPressed,
       style: !_theme.contains('outline') ? fillButtonStyle : outlineButtonStyle,
-      child: EBTypography.p(text: _text, color: _theme.contains('outline') ? _setColor(_theme) : EBColor.light),
+      child: EBTypography.text(
+        text: _text,
+        color: _theme.contains('outline') ? _setColor(_theme) : EBColor.light,
+      ),
     );
   }
 

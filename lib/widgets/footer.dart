@@ -1,12 +1,10 @@
+import 'package:ebayan/constants/assets.dart';
 import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/constants/typography.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class EBFooter extends StatelessWidget {
-  final String _companyPath = 'assets/svgs/ebayan/company.svg';
-  final String _logoPath = 'assets/svgs/ebayan/logo-color.svg';
-
   const EBFooter({super.key});
 
   @override
@@ -18,7 +16,10 @@ class EBFooter extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         border: Border(
-          top: BorderSide(width: 1, color: EBColor.dark.withOpacity(0.1)),
+          top: BorderSide(
+            width: 1,
+            color: EBColor.dark.withOpacity(0.1),
+          ),
         ),
       ),
       child: Padding(
@@ -30,13 +31,16 @@ class EBFooter extends StatelessWidget {
             children: [
               Column(
                 children: [
-                  SvgPicture.asset(_companyPath),
-                  EBTypography.small(text: 'Copyright © ${DateTime.now().year}', muted: true),
+                  SvgPicture.asset(Asset.companyPath),
+                  EBTypography.small(
+                    text: 'Copyright © ${DateTime.now().year}',
+                    muted: true,
+                  ),
                 ],
               ),
               Column(
                 children: [
-                  SvgPicture.asset(_logoPath),
+                  SvgPicture.asset(Asset.logoColorPath),
                 ],
               ),
             ],
