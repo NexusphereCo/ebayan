@@ -39,6 +39,7 @@ dependencies:
   feather_icons: ^1.2.0
   google_fonts: ^6.1.0
   flutter_svg: ^2.0.7
+  page_transition: ^2.1.0
     
 flutter_native_splash:
     color: '#3336AB'
