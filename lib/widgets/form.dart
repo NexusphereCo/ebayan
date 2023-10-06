@@ -37,6 +37,7 @@ class EBTextField extends StatelessWidget {
               border: Border.all(color: EBColor.dark),
             ),
             child: TextField(
+              // TODO: add keyboardType to this and refactor the password logic
               obscureText: (_type != 'password') ? false : true,
               decoration: InputDecoration(
                 hintText: _placeholder,
