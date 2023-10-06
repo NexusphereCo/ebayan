@@ -1,8 +1,10 @@
 import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/constants/typography.dart';
+import 'package:ebayan/screens/auth/login.dart';
 import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:page_transition/page_transition.dart';
 
 class EBTopAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String _logoPath = 'assets/svgs/ebayan/logo-color.svg';
@@ -80,7 +82,15 @@ class EBDrawer extends StatelessWidget {
           ),
           ListTile(
             title: EBTypography.p(text: 'Logout', color: EBColor.danger),
-            onTap: () {},
+            onTap: () {
+              Navigator.push(
+                context,
+                PageTransition(
+                  type: PageTransitionType.leftToRight,
+                  child: const LoginScreen(),
+                ),
+              );
+            },
           ),
         ],
       ),
