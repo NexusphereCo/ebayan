@@ -11,7 +11,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:page_transition/page_transition.dart';
 
 class DashboardScreen extends StatelessWidget {
-  final String _emptyPath = 'assets/svgs/illustration/empty-state.svg';
+  final String _illustrationPath = 'assets/svgs/illustration/empty-state.svg';
 
   const DashboardScreen({super.key});
 
@@ -25,17 +25,6 @@ class DashboardScreen extends StatelessWidget {
         padding: const EdgeInsets.all(30.0),
         child: Column(
           children: [
-            Row(
-              children: [
-                IconButton(
-                  color: EBColor.primary,
-                  onPressed: () {
-                    Navigator.push(context, PageTransition(type: PageTransitionType.leftToRight, child: const RegisterScreen()));
-                  },
-                  icon: const Icon(FeatherIcons.arrowLeft),
-                ),
-              ],
-            ),
             Expanded(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -50,7 +39,7 @@ class DashboardScreen extends StatelessWidget {
                   const SizedBox(height: Spacing.formLg),
                   Column(
                     children: [
-                      SvgPicture.asset(_emptyPath),
+                      SvgPicture.asset(_illustrationPath),
                       const SizedBox(height: Spacing.formLg),
                       EBTypography.p(
                         text: "You currently aren't joined to any barangay spheres. Let's change that!",

@@ -1,6 +1,7 @@
 import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/constants/typography.dart';
 import 'package:ebayan/screens/auth/login.dart';
+import 'package:ebayan/screens/resident/join_brgy.dart';
 import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -31,7 +32,9 @@ class EBTopAppBar extends StatelessWidget implements PreferredSizeWidget {
               color: EBColor.primary,
             ),
             tooltip: 'Join to a barangay',
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(context, PageTransition(type: PageTransitionType.rightToLeft, child: const JoinBrgyScreen()));
+            },
           ),
         ),
       ],
