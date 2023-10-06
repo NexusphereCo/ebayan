@@ -19,23 +19,7 @@ class RegisterScreen extends StatelessWidget {
         padding: const EdgeInsets.all(Global.paddingBody),
         child: Column(
           children: [
-            Row(
-              children: [
-                IconButton(
-                  color: EBColor.primary,
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      PageTransition(
-                        type: PageTransitionType.leftToRight,
-                        child: const LoginScreen(),
-                      ),
-                    );
-                  },
-                  icon: const Icon(FeatherIcons.arrowLeft),
-                ),
-              ],
-            ),
+            const EBBackButton(screenDestination: LoginScreen()),
             Expanded(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,

@@ -1,6 +1,35 @@
 import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/constants/typography.dart';
+import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
+
+class EBBackButton extends StatelessWidget {
+  final Widget _screenDestination;
+
+  const EBBackButton({super.key, required Widget screenDestination}) : _screenDestination = screenDestination;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        IconButton(
+          color: EBColor.primary,
+          onPressed: () {
+            Navigator.push(
+              context,
+              PageTransition(
+                type: PageTransitionType.leftToRight,
+                child: _screenDestination,
+              ),
+            );
+          },
+          icon: const Icon(FeatherIcons.arrowLeft),
+        ),
+      ],
+    );
+  }
+}
 
 class EBButton extends StatelessWidget {
   final double _borderRadius = 50.0;

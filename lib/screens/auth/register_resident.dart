@@ -24,35 +24,38 @@ class RegisterResidentScreen extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Row(
-                children: [
-                  IconButton(
-                    color: EBColor.primary,
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        PageTransition(
-                          type: PageTransitionType.leftToRight,
-                          child: const RegisterScreen(),
+              const EBBackButton(screenDestination: RegisterScreen()),
+              SizedBox(
+                width: double.infinity,
+                child: Column(
+                  children: [
+                    EBTypography.h1(
+                      text: 'Be part of a Barangay!',
+                      color: EBColor.primary,
+                    ),
+                    Wrap(
+                      alignment: WrapAlignment.center,
+                      children: [
+                        EBTypography.text(
+                          text: 'Register as a ',
+                          muted: true,
+                          textAlign: TextAlign.center,
                         ),
-                      );
-                    },
-                    icon: const Icon(FeatherIcons.arrowLeft),
-                  ),
-                ],
-              ),
-              Column(
-                children: [
-                  EBTypography.h1(
-                    text: 'Be part of a Barangay!',
-                    color: EBColor.primary,
-                  ),
-                  EBTypography.text(
-                    text: 'Register as a Barangay Resident. Fill in your information to get started.',
-                    muted: true,
-                    textAlign: TextAlign.center,
-                  ),
-                ],
+                        EBTypography.text(
+                          text: 'Barangay Resident.',
+                          muted: true,
+                          textAlign: TextAlign.center,
+                          fontWeight: EBFontWeight.bold,
+                        ),
+                        EBTypography.text(
+                          text: ' Fill in your information to get started.',
+                          muted: true,
+                          textAlign: TextAlign.center,
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
               const SizedBox(height: Spacing.formMd),
               EBTypography.label(text: 'Personal Information'),
