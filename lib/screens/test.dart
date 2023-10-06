@@ -1,3 +1,4 @@
+import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/widgets/bottom_appbar.dart';
 import 'package:ebayan/widgets/form.dart';
 import 'package:ebayan/widgets/top_appbar.dart';
@@ -23,15 +24,26 @@ class TestingScreen extends StatelessWidget {
             EBTypography.h2(text: 'Heading 2'),
             EBTypography.h3(text: 'Heading 3'),
             EBTypography.h4(text: 'Heading 4'),
-            EBTypography.p(text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. totam provident aliquam, fugit earum ipsum distinctio? Nihil quibusdam aperiam accusamus voluptatibus tempore.'),
-            EBTypography.small(text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. totam provident aliquam, fugit earum ipsum distinctio? '),
+            EBTypography.p(
+                text:
+                    'Lorem ipsum dolor sit amet consectetur adipisicing elit. totam provident aliquam, fugit earum ipsum distinctio? Nihil quibusdam aperiam accusamus voluptatibus tempore.'),
+            EBTypography.small(
+                text:
+                    'Lorem ipsum dolor sit amet consectetur adipisicing elit. totam provident aliquam, fugit earum ipsum distinctio? '),
             const SizedBox(height: 20.0),
             Wrap(
               children: [
-                EBButton(text: 'Primary Button', theme: 'primary', onPressed: () {}),
-                EBButton(text: 'Primary Outline Button', theme: 'primary-outline', onPressed: () {}),
+                EBButton(
+                    text: 'Primary Button', theme: 'primary', onPressed: () {}),
+                EBButton(
+                    text: 'Primary Outline Button',
+                    theme: 'primary-outline',
+                    onPressed: () {}),
                 EBButton(text: 'Dark Button', theme: 'dark', onPressed: () {}),
-                EBButton(text: 'Dark Outline Button', theme: 'dark-outline', onPressed: () {}),
+                EBButton(
+                    text: 'Dark Outline Button',
+                    theme: 'dark-outline',
+                    onPressed: () {}),
               ],
             ),
             const SizedBox(height: 20.0),
