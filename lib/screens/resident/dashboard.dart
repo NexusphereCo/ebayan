@@ -8,9 +8,11 @@ import 'package:ebayan/widgets/top_appbar.dart';
 import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:page_transition/page_transition.dart';
 
 class DashboardScreen extends StatelessWidget {
   final String _emptyPath = 'assets/svgs/illustration/empty-state.svg';
+
   const DashboardScreen({super.key});
 
   @override
@@ -28,25 +30,7 @@ class DashboardScreen extends StatelessWidget {
                 IconButton(
                   color: EBColor.primary,
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      PageRouteBuilder(
-                        pageBuilder: (context, animation, secondaryAnimation) => const RegisterScreen(),
-                        transitionsBuilder: (context, animation, secondaryAnimation, child) {
-                          const Offset begin = Offset(1.0, 0.0);
-                          const Offset end = Offset.zero;
-                          const Curve curve = Curves.easeInOut;
-
-                          var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
-                          var offsetAnimation = animation.drive(tween);
-
-                          return SlideTransition(
-                            position: offsetAnimation,
-                            child: child,
-                          );
-                        },
-                      ),
-                    );
+                    Navigator.push(context, PageTransition(type: PageTransitionType.leftToRight, child: const RegisterScreen()));
                   },
                   icon: const Icon(FeatherIcons.arrowLeft),
                 ),
@@ -65,12 +49,24 @@ class DashboardScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: Spacing.formLg),
                   Column(
-                    children: [SvgPicture.asset(_emptyPath), const SizedBox(height: Spacing.formLg), EBTypography.p(text: "You currently aren't joined to any barangay spheres. Let's change that!", muted: true, textAlign: TextAlign.center)],
+                    children: [
+                      SvgPicture.asset(_emptyPath),
+                      const SizedBox(height: Spacing.formLg),
+                      EBTypography.p(
+                        text: "You currently aren't joined to any barangay spheres. Let's change that!",
+                        muted: true,
+                        textAlign: TextAlign.center,
+                      ),
+                    ],
                   ),
                   const SizedBox(height: Spacing.formLg),
                   SizedBox(
                     width: double.infinity,
-                    child: EBButton(onPressed: () {}, text: 'Get Started!', theme: 'primary'),
+                    child: EBButton(
+                      onPressed: () {},
+                      text: 'Get Started!',
+                      theme: 'primary',
+                    ),
                   ),
                   const SizedBox(height: Spacing.formLg),
                   const SizedBox(height: Spacing.formLg),
@@ -80,7 +76,7 @@ class DashboardScreen extends StatelessWidget {
           ],
         ),
       ),
-      bottomSheet: const EBBottomAppBar(),
+      bottomNavigationBar: const EBBottomAppBar(),
     );
   }
 }
