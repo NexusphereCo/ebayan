@@ -25,17 +25,6 @@ class DashboardScreen extends StatelessWidget {
         padding: const EdgeInsets.all(30.0),
         child: Column(
           children: [
-            Row(
-              children: [
-                IconButton(
-                  color: EBColor.primary,
-                  onPressed: () {
-                    Navigator.push(context, PageTransition(type: PageTransitionType.leftToRight, child: const RegisterScreen()));
-                  },
-                  icon: const Icon(FeatherIcons.arrowLeft),
-                ),
-              ],
-            ),
             Expanded(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,

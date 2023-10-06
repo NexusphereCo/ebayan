@@ -1,6 +1,7 @@
 import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/constants/typography.dart';
 import 'package:ebayan/screens/auth/login.dart';
+import 'package:ebayan/screens/auth/register_resident.dart';
 import 'package:ebayan/utils/dimens.dart';
 import 'package:ebayan/widgets/buttons.dart';
 import 'package:ebayan/widgets/footer.dart';
@@ -45,7 +46,7 @@ class RegisterScreen extends StatelessWidget {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      EBTypography.p(text: 'I am a:', muted: true),
+                      EBTypography.label(text: 'I am a:', muted: true),
                     ],
                   ),
                   const SizedBox(height: Spacing.formMd),
@@ -53,7 +54,7 @@ class RegisterScreen extends StatelessWidget {
                     width: double.infinity,
                     child: EBButton(
                         onPressed: () {
-                          Navigator.push(context, PageTransition(type: PageTransitionType.rightToLeft, child: const DashboardScreen()));
+                          Navigator.push(context, PageTransition(type: PageTransitionType.rightToLeft, child: const RegisterResidentScreen()));
                         },
                         text: 'Barangay Resident',
                         theme: 'primary'),
