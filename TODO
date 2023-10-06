@@ -1,8 +1,9 @@
-[] make a go-back button component
-[] remove the b() in typography
 [] prevent footer/bottomappbar from showing on top of keyboard (when keyboard is shown)
 [] add keyboardType to EBTextField and refactor the password logic
-[] add a showpassword 
+[] add a showpassword to register_resident
 [] use the textfield type
 -------
 [X] fix formatting on some code
+[X] add a bold leading text to register_resident
+[X] remove the b() in typography
+[X] make a go-back button component
