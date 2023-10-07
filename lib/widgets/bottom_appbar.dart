@@ -19,28 +19,37 @@ class EBBottomAppBarContents extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double paddingY = 10.0;
-    double iconSize = 30.0;
+    double iconSize = 25.0;
 
     List<BottomNavigationBarItem> links = [
       BottomNavigationBarItem(
         label: 'Account',
         icon: Container(
           padding: EdgeInsets.symmetric(vertical: paddingY),
-          child: Icon(FeatherIcons.settings, size: iconSize),
+          child: Icon(
+            FeatherIcons.settings,
+            size: iconSize,
+          ),
         ),
       ),
       BottomNavigationBarItem(
         label: 'People',
         icon: Container(
           padding: EdgeInsets.symmetric(vertical: paddingY),
-          child: Icon(FeatherIcons.users, size: iconSize),
+          child: Icon(
+            FeatherIcons.users,
+            size: iconSize,
+          ),
         ),
       ),
       BottomNavigationBarItem(
         label: 'Home',
         icon: Container(
           padding: EdgeInsets.symmetric(vertical: paddingY),
-          child: Icon(FeatherIcons.home, size: iconSize),
+          child: Icon(
+            FeatherIcons.home,
+            size: iconSize,
+          ),
         ),
       ),
     ];

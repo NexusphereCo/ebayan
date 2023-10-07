@@ -1,10 +1,8 @@
 import 'package:ebayan/constants/theme.dart';
-import 'package:ebayan/screens/login.dart';
+import 'package:ebayan/screens/auth/login.dart';
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(const InitApp());
-}
+void main() => runApp(const InitApp());
 
 class InitApp extends StatelessWidget {
   const InitApp({super.key});

@@ -1,7 +1,11 @@
+import 'package:ebayan/constants/assets.dart';
 import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/constants/typography.dart';
+import 'package:ebayan/screens/resident/join_brgy.dart';
 import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:page_transition/page_transition.dart';
 
 class EBTopAppBar extends StatelessWidget implements PreferredSizeWidget {
   const EBTopAppBar({Key? key}) : super(key: key);
@@ -9,16 +13,40 @@ class EBTopAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: EBTypography.h1(text: 'eBayan'),
-      actions: <Widget>[
-        IconButton(
-          icon: const Icon(FeatherIcons.plus),
-          tooltip: 'Join to a barangay',
-          onPressed: () {},
+      iconTheme: const IconThemeData(color: EBColor.primary),
+      title: Row(
+        children: [
+          EBTypography.h3(
+            text: 'eBayan',
+            color: EBColor.primary,
+          ),
+          const SizedBox(width: 8),
+          SvgPicture.asset(Asset.logoColorPath),
+        ],
+      ),
+      actions: [
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20.0),
+          child: IconButton(
+            icon: const Icon(
+              FeatherIcons.plus,
+              color: EBColor.primary,
+            ),
+            tooltip: 'Join to a barangay',
+            onPressed: () {
+              Navigator.push(
+                context,
+                PageTransition(
+                  type: PageTransitionType.rightToLeft,
+                  child: const JoinBrgyScreen(),
+                ),
+              );
+            },
+          ),
         ),
       ],
-      backgroundColor: EBColor.dark,
-      elevation: 0,
+      backgroundColor: EBColor.light,
+      elevation: 1,
     );
   }
 
@@ -33,24 +61,41 @@ class EBDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Drawer(
       child: ListView(
-        padding: EdgeInsets.zero,
+        padding: const EdgeInsets.symmetric(horizontal: 10.0),
         children: [
-          const DrawerHeader(
-            decoration: BoxDecoration(
-              color: Colors.amber,
+          DrawerHeader(
+            child: Row(
+              children: [
+                EBTypography.h3(
+                  text: 'eBayan',
+                  color: EBColor.primary,
+                ),
+                const SizedBox(width: 8),
+                SvgPicture.asset(Asset.logoColorPath),
+              ],
             ),
-            child: Text('Drawer Header'),
           ),
           ListTile(
-            title: const Text('Home'),
+            title: EBTypography.text(text: 'Dashboard'),
             onTap: () {},
           ),
           ListTile(
-            title: const Text('Calculator'),
+            title: EBTypography.text(text: 'File Complaints'),
             onTap: () {},
           ),
           ListTile(
-            title: const Text('Account'),
+            title: EBTypography.text(text: 'Raise Suggestions'),
+            onTap: () {},
+          ),
+          ListTile(
+            title: EBTypography.text(text: 'Account Settings'),
+            onTap: () {},
+          ),
+          ListTile(
+            title: EBTypography.text(
+              text: 'Logout',
+              color: EBColor.danger,
+            ),
             onTap: () {},
           ),
         ],
