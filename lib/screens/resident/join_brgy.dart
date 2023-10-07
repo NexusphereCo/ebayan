@@ -7,6 +7,16 @@ import 'package:ebayan/widgets/top_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
+/*
+  Authored by: Johcel Gene T. Bitara
+  Company: NexusphereCo.
+  Project: eBayan
+  Feature: [EB-003] Join Barangay Screen
+  Description: a screen for brgy. residents to use. in this screen,
+    user will be prompted to enter their code (disseminated by their officials)
+    unto the textfield (consisting of numerical code).
+ */
+
 class JoinBrgyScreen extends StatelessWidget {
   final String _illustrationPath = 'assets/svgs/illustration/join-brgy.svg';
 

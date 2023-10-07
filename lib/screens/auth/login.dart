@@ -9,6 +9,15 @@ import 'package:ebayan/widgets/form.dart';
 import 'package:feather_icons/feather_icons.dart';
 import 'package:page_transition/page_transition.dart';
 
+/*
+  Authored by: Johcel Gene T. Bitara
+  Company: NexusphereCo.
+  Project: eBayan
+  Feature: [EB-001] Login Screen
+  Description: a login screen for brgy. officials/residents to use. 
+    in this screen, they are required to input their username and password.
+ */
+
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 

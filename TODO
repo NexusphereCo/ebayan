@@ -1,9 +1,19 @@
-[] prevent footer/bottomappbar from showing on top of keyboard (when keyboard is shown)
-[] add keyboardType to EBTextField and refactor the password logic
-[] add a showpassword to register_resident
-[] use the textfield type
+PRIORITY:
+    [] use the textfield type
 -------
-[X] fix formatting on some code
-[X] add a bold leading text to register_resident
-[X] remove the b() in typography
-[X] make a go-back button component
+TODO:
+    [] prevent footer/bottomappbar from showing on top of keyboard (when keyboard is shown)
+    [] add keyboardType to EBTextField and refactor the password logic
+    [] add a showpassword to register_resident
+    [] add custom icons (home & menu bar)
+    [] labels are not bold
+    [] check if linear is possible on splashscreen
+    [] try to fix if there's a way to reduce padding
+-------
+DONE:
+    [X] add documentation to 4 screens
+    [X] fix formatting on some code
+    [X] add a bold leading text to register_resident
+    [X] remove the b() in typography
+    [X] make a go-back button component
+    [X] add a focus border color for textfields
