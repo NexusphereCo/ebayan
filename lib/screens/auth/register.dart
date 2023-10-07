@@ -8,6 +8,16 @@ import 'package:ebayan/widgets/footer.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 
+/*
+  Authored by: Miguel Damien L. Garcera
+  Company: NexusphereCo.
+  Project: eBayan
+  Feature: [EB-002] Register Screen
+  Description: the initial register screen for brgy. officials/residents to 
+    use. in this screen, users will have an option for registering either as
+    brgy. officials or brgy. residents.
+ */
+
 class RegisterScreen extends StatelessWidget {
   const RegisterScreen({super.key});
 

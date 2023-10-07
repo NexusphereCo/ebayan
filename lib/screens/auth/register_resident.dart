@@ -11,6 +11,16 @@ import 'package:ebayan/widgets/form.dart';
 import 'package:feather_icons/feather_icons.dart';
 import 'package:page_transition/page_transition.dart';
 
+/*
+  Authored by: Miguel Damien L. Garcera
+  Company: NexusphereCo.
+  Project: eBayan
+  Feature: [EB-002] Register Resident Screen
+  Description: a register screen for brgy. residents to use. 
+    upon registering as x, users will be filling up a form regarding their 
+    personal information and login credentials to be used within the app.
+ */
+
 class RegisterResidentScreen extends StatelessWidget {
   const RegisterResidentScreen({super.key});
 

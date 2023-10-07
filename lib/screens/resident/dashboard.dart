@@ -7,6 +7,19 @@ import 'package:ebayan/widgets/top_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
+/*
+  Authored by: Miguel Damien L. Garcera
+  Company: NexusphereCo.
+  Project: eBayan
+  Feature: [EB-004] Dashboard (Resident) Screen
+  Description: a dashboard screen for brgy. officials/residents to use. 
+    after registering/logging in, users are redirected to this dashboard
+    screen which will contain their list of barangay spheres.
+
+    users after creating an account, will have an interactive guide/tutorial
+    for navigating the dashboard.
+ */
+
 class DashboardScreen extends StatelessWidget {
   final String _illustrationPath = 'assets/svgs/illustration/empty-state.svg';
 
