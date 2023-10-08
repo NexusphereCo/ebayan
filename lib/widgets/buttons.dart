@@ -7,7 +7,10 @@ import 'package:page_transition/page_transition.dart';
 class EBBackButton extends StatelessWidget {
   final Widget _screenDestination;
 
-  const EBBackButton({super.key, required Widget screenDestination}) : _screenDestination = screenDestination;
+  const EBBackButton({
+    super.key,
+    required Widget screenDestination,
+  }) : _screenDestination = screenDestination;
 
   @override
   Widget build(BuildContext context) {
