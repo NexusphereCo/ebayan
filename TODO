@@ -6,7 +6,6 @@ TODO:
     [] add keyboardType to EBTextField and refactor the password logic
     [] add a showpassword to register_resident
     [] check if linear is possible on splashscreen
-    [] try to fix if there's a way to reduce padding
 -------
 DONE:
     [X] add documentation to 4 screens
@@ -17,3 +16,4 @@ DONE:
     [X] add a focus border color for textfields
     [X] labels are not bold
     [X] add custom icons (home & menu bar)
+    [X] try to fix if there's a way to reduce padding on drawerheader

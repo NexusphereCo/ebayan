@@ -75,13 +75,26 @@ class EBDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const iconSize = 20.0;
+
     return Drawer(
       child: ListView(
         padding: const EdgeInsets.symmetric(horizontal: 10.0),
         children: [
-          DrawerHeader(
+          SizedBox(
+            height: 57.0,
             child: Row(
               children: [
+                Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 0),
+                  child: IconButton(
+                    onPressed: () {},
+                    icon: const Icon(
+                      EBIcons.menu,
+                      size: iconSize,
+                    ),
+                  ),
+                ),
                 EBTypography.h3(
                   text: 'eBayan',
                   color: EBColor.primary,
