@@ -1,5 +1,6 @@
 import 'package:ebayan/constants/assets.dart';
 import 'package:ebayan/constants/colors.dart';
+import 'package:ebayan/constants/icons.dart';
 import 'package:ebayan/constants/typography.dart';
 import 'package:ebayan/screens/resident/join_brgy.dart';
 import 'package:feather_icons/feather_icons.dart';
@@ -12,6 +13,8 @@ class EBTopAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
+    const iconSize = 20.0;
+
     return AppBar(
       iconTheme: const IconThemeData(color: EBColor.primary),
       title: Row(
@@ -23,6 +26,19 @@ class EBTopAppBar extends StatelessWidget implements PreferredSizeWidget {
           const SizedBox(width: 8),
           SvgPicture.asset(Asset.logoColorPath),
         ],
+      ),
+      leading: Container(
+        margin: const EdgeInsets.fromLTRB(30.0, 0, 0, 0), // moves the drawer icon to the right more
+        child: InkResponse(
+          onTap: () {
+            Scaffold.of(context).openDrawer();
+          },
+          child: const Icon(
+            EBIcons.menu,
+            size: iconSize,
+            color: EBColor.dark,
+          ),
+        ),
       ),
       actions: [
         Padding(

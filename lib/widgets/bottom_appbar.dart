@@ -1,3 +1,4 @@
+import 'package:ebayan/constants/icons.dart';
 import 'package:flutter/material.dart';
 import 'package:feather_icons/feather_icons.dart';
 
@@ -47,8 +48,8 @@ class EBBottomAppBarContents extends StatelessWidget {
         icon: Container(
           padding: EdgeInsets.symmetric(vertical: paddingY),
           child: Icon(
-            FeatherIcons.home,
-            size: iconSize,
+            EBIcons.home,
+            size: iconSize + 3, // since it's custom the frame is diff.
           ),
         ),
       ),

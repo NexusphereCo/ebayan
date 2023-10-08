@@ -1,4 +1,5 @@
 import 'package:ebayan/constants/colors.dart';
+import 'package:ebayan/constants/typography.dart';
 import 'package:ebayan/utils/dimens.dart';
 import 'package:flutter/material.dart';
 
@@ -41,9 +42,9 @@ class _EBTextFieldState extends State<EBTextField> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            widget._label,
-            style: const TextStyle(color: Colors.grey),
+          EBTypography.label(
+            text: widget._label,
+            muted: true,
           ),
           const SizedBox(height: 8.0),
           Container(
