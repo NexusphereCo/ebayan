@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:just_the_tooltip/just_the_tooltip.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class EBTopAppBar extends StatefulWidget implements PreferredSizeWidget {
   const EBTopAppBar({Key? key}) : super(key: key);
@@ -23,20 +24,46 @@ class EBTopAppBar extends StatefulWidget implements PreferredSizeWidget {
 class _EBTopAppBarState extends State<EBTopAppBar> {
   final joinButtonTooltipController = JustTheController();
   final drawerButtonTooltipController = JustTheController();
+  bool _finishedTutorial = false;
 
   @override
   void initState() {
     super.initState();
 
-    Future<void> showAndHideTooltip(JustTheController controller, int delayInSeconds) async {
-      await Future.delayed(Duration(seconds: delayInSeconds));
-      controller.showTooltip();
-      await Future.delayed(const Duration(seconds: 3));
-      controller.hideTooltip();
+    // Check if the tutorial has already been completed
+    Future<void> checkTutorialStatus() async {
+      final SharedPreferences prefs = await SharedPreferences.getInstance();
+
+      // If the tutorial is not finished, show it
+      if (!(prefs.getBool('finishedTutorial') ?? false)) {
+        // Function to show and hide tooltips with a delay
+        Future<void> showAndHideTooltip(JustTheController controller, int delayInSeconds) async {
+          await Future.delayed(Duration(seconds: delayInSeconds));
+          controller.showTooltip();
+          await Future.delayed(const Duration(seconds: 3));
+          controller.hideTooltip();
+        }
+
+        // Show tooltips with delays
+        showAndHideTooltip(joinButtonTooltipController, 1);
+        showAndHideTooltip(drawerButtonTooltipController, 4);
+
+        // Mark the tutorial as completed
+        prefs.setBool('finishedTutorial', true);
+      }
+
+      // Check if the tutorial has been finished
+      _finishedTutorial = prefs.getBool('finishedTutorial') ?? false;
+
+      // Hide tooltips if the tutorial has been finished
+      if (_finishedTutorial) {
+        joinButtonTooltipController.hideTooltip();
+        drawerButtonTooltipController.hideTooltip();
+      }
     }
 
-    showAndHideTooltip(joinButtonTooltipController, 1);
-    showAndHideTooltip(drawerButtonTooltipController, 4);
+    // Call the tutorial check function
+    checkTutorialStatus();
   }
 
   @override

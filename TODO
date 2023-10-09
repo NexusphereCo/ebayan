@@ -1,5 +1,4 @@
 PRIORITY:
-    [] implement tutorial
     [] use the textfield type
 -------
 TODO:
@@ -21,3 +20,4 @@ DONE:
     [X] try to fix if there's a way to reduce padding on drawerheader
     [X] add pintextbox
     [X] check if linear is possible on splashscreen
+    [X] implement tutorial

@@ -1,18 +1,27 @@
 import 'package:ebayan/constants/theme.dart';
+import 'package:ebayan/screens/auth/login.dart';
 import 'package:ebayan/screens/resident/dashboard.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-void main() => runApp(const InitApp());
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  final SharedPreferences prefs = await SharedPreferences.getInstance();
+
+  runApp(InitApp(prefs: prefs));
+}
 
 class InitApp extends StatelessWidget {
-  const InitApp({super.key});
+  final SharedPreferences prefs;
+
+  const InitApp({required this.prefs, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'eBayan',
       theme: EBTheme.data(),
-      home: const DashboardScreen(),
+      home: const LoginScreen(),
       debugShowCheckedModeBanner: false,
     );
   }
