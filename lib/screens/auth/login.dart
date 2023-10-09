@@ -1,5 +1,4 @@
 import 'package:ebayan/constants/colors.dart';
-import 'package:ebayan/constants/icons.dart';
 import 'package:ebayan/constants/typography.dart';
 import 'package:ebayan/screens/auth/register.dart';
 import 'package:ebayan/utils/dimens.dart';

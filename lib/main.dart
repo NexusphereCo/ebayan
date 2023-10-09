@@ -1,5 +1,5 @@
 import 'package:ebayan/constants/theme.dart';
-import 'package:ebayan/screens/auth/login.dart';
+import 'package:ebayan/screens/resident/dashboard.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(const InitApp());
@@ -12,7 +12,7 @@ class InitApp extends StatelessWidget {
     return MaterialApp(
       title: 'eBayan',
       theme: EBTheme.data(),
-      home: const LoginScreen(),
+      home: const DashboardScreen(),
       debugShowCheckedModeBanner: false,
     );
   }

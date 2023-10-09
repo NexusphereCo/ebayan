@@ -2,6 +2,7 @@ import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/constants/typography.dart';
 import 'package:ebayan/utils/dimens.dart';
 import 'package:flutter/material.dart';
+import 'package:pin_code_fields/pin_code_fields.dart';
 
 class EBTextField extends StatefulWidget {
   final String _label;
@@ -82,21 +83,80 @@ class _EBTextFieldState extends State<EBTextField> {
   }
 }
 
-class EBTextBox extends StatelessWidget {
-  final String _label;
-  final String _type; // text, password, date, number, ... etc.
-  final IconData _icon;
-  final IconData? _suffixIcon;
-  final void Function()? _suffixIconOnPressed;
-  final String? _placeholder;
+class MultiTextField extends StatefulWidget {
+  final void Function(String) onCompleted;
+  final void Function(String) onChanged;
 
-  const EBTextBox({super.key, String? placeholder, required String label, required IconData icon, required String type, IconData? suffixIcon, void Function()? suffixIconOnPressed})
-      : _type = type,
-        _icon = icon,
-        _suffixIcon = suffixIcon,
-        _suffixIconOnPressed = suffixIconOnPressed,
-        _label = label,
-        _placeholder = placeholder;
+  const MultiTextField({super.key, required this.onCompleted, required this.onChanged});
+
+  @override
+  State<StatefulWidget> createState() => _MultiTextFieldState();
+}
+
+class _MultiTextFieldState extends State<MultiTextField> {
+  @override
+  Widget build(BuildContext context) {
+    PinTheme pinTheme = PinTheme(
+      shape: PinCodeFieldShape.box,
+      borderRadius: BorderRadius.circular(6.0),
+      inactiveColor: EBColor.primary,
+      activeColor: EBColor.primary,
+      selectedColor: EBColor.primary,
+      errorBorderColor: EBColor.danger,
+      inactiveBorderWidth: 1,
+      activeBorderWidth: 1,
+      selectedBorderWidth: 3,
+      fieldHeight: 40.0,
+    );
+
+    const double textFieldGap = 50.0;
+    const int textFieldLength = 6;
+
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: textFieldGap),
+      child: PinCodeTextField(
+        pinTheme: pinTheme,
+        textStyle: const TextStyle(
+          color: EBColor.primary,
+          fontWeight: EBFontWeight.regular,
+          fontSize: 15,
+        ),
+        hintStyle: TextStyle(
+          color: EBColor.primary.withOpacity(0.5),
+          fontWeight: EBFontWeight.regular,
+          fontSize: 15,
+        ),
+        hintCharacter: '-',
+        length: textFieldLength,
+        cursorWidth: 2,
+        showCursor: true,
+        animationType: AnimationType.scale,
+        keyboardType: TextInputType.number,
+        appContext: context,
+        onCompleted: widget.onCompleted,
+        onChanged: widget.onChanged,
+      ),
+    );
+  }
+}
+
+class EBTextBox extends StatelessWidget {
+  final String label;
+  final String type; // text, password, date, number, ... etc.
+  final IconData icon;
+  final IconData? suffixIcon;
+  final void Function()? suffixIconOnPressed;
+  final String? placeholder;
+
+  const EBTextBox({
+    super.key,
+    required this.label,
+    required this.type,
+    required this.icon,
+    this.suffixIcon,
+    this.suffixIconOnPressed,
+    this.placeholder,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -106,13 +166,19 @@ class EBTextBox extends StatelessWidget {
           children: [
             const SizedBox(height: Spacing.formMd),
             Icon(
-              _icon,
+              icon,
               color: EBColor.primary,
             ),
           ],
         ),
         const SizedBox(width: Spacing.formMd),
-        EBTextField(label: _label, type: _type, placeholder: _placeholder, suffixIcon: _suffixIcon, suffixIconOnPressed: _suffixIconOnPressed),
+        EBTextField(
+          label: label,
+          type: type,
+          placeholder: placeholder,
+          suffixIcon: suffixIcon,
+          suffixIconOnPressed: suffixIconOnPressed,
+        ),
       ],
     );
   }

@@ -2,7 +2,9 @@ import 'package:ebayan/constants/assets.dart';
 import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/constants/icons.dart';
 import 'package:ebayan/constants/typography.dart';
+import 'package:ebayan/screens/auth/login.dart';
 import 'package:ebayan/screens/resident/join_brgy.dart';
+import 'package:ebayan/widgets/buttons.dart';
 import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -75,13 +77,26 @@ class EBDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const iconSize = 20.0;
+
     return Drawer(
       child: ListView(
         padding: const EdgeInsets.symmetric(horizontal: 10.0),
         children: [
-          DrawerHeader(
+          SizedBox(
+            height: 57.0,
             child: Row(
               children: [
+                Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 0),
+                  child: IconButton(
+                    onPressed: () {},
+                    icon: const Icon(
+                      EBIcons.menu,
+                      size: iconSize,
+                    ),
+                  ),
+                ),
                 EBTypography.h3(
                   text: 'eBayan',
                   color: EBColor.primary,
@@ -108,11 +123,10 @@ class EBDrawer extends StatelessWidget {
             onTap: () {},
           ),
           ListTile(
-            title: EBTypography.text(
-              text: 'Logout',
-              color: EBColor.danger,
-            ),
-            onTap: () {},
+            title: EBTypography.text(text: 'Logout', color: EBColor.danger),
+            onTap: () {
+              const EBBackButton(screenDestination: LoginScreen());
+            },
           ),
         ],
       ),
