@@ -24,12 +24,12 @@ class EBBottomAppBarContents extends StatelessWidget {
 
     List<BottomNavigationBarItem> links = [
       BottomNavigationBarItem(
-        label: 'Account',
+        label: 'Home',
         icon: Container(
           padding: EdgeInsets.symmetric(vertical: paddingY),
           child: Icon(
-            FeatherIcons.settings,
-            size: iconSize,
+            EBIcons.home,
+            size: iconSize + 3, // since it's custom the frame is diff.
           ),
         ),
       ),
@@ -44,12 +44,12 @@ class EBBottomAppBarContents extends StatelessWidget {
         ),
       ),
       BottomNavigationBarItem(
-        label: 'Home',
+        label: 'Account',
         icon: Container(
           padding: EdgeInsets.symmetric(vertical: paddingY),
           child: Icon(
-            EBIcons.home,
-            size: iconSize + 3, // since it's custom the frame is diff.
+            FeatherIcons.settings,
+            size: iconSize,
           ),
         ),
       ),
