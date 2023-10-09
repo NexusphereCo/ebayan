@@ -43,6 +43,7 @@ dependencies:
   pin_code_fields: ^8.0.1
   just_the_tooltip: ^0.0.12
   shared_preferences: ^2.2.1
+  font_awesome_flutter: ^10.5.0
     
 flutter_native_splash:
     color: '#3336AB'
