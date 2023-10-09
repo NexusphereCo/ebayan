@@ -1,11 +1,13 @@
 PRIORITY:
+    [] implement tutorial
     [] use the textfield type
 -------
 TODO:
     [] prevent footer/bottomappbar from showing on top of keyboard (when keyboard is shown)
     [] add keyboardType to EBTextField and refactor the password logic
     [] add a showpassword to register_resident
-    [] check if linear is possible on splashscreen
+    [] use semantics i.e. (Form)
+    [] fix _ convention on constructors
 -------
 DONE:
     [X] add documentation to 4 screens
@@ -18,3 +20,4 @@ DONE:
     [X] add custom icons (home & menu bar)
     [X] try to fix if there's a way to reduce padding on drawerheader
     [X] add pintextbox
+    [X] check if linear is possible on splashscreen
