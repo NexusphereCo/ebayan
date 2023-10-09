@@ -1,5 +1,4 @@
 import 'package:ebayan/constants/theme.dart';
-import 'package:ebayan/screens/auth/login.dart';
 import 'package:ebayan/screens/resident/dashboard.dart';
 import 'package:flutter/material.dart';
 

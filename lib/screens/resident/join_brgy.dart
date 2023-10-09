@@ -4,6 +4,7 @@ import 'package:ebayan/screens/resident/dashboard.dart';
 import 'package:ebayan/utils/dimens.dart';
 import 'package:ebayan/widgets/bottom_appbar.dart';
 import 'package:ebayan/widgets/buttons.dart';
+import 'package:ebayan/widgets/form.dart';
 import 'package:ebayan/widgets/top_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -43,6 +44,10 @@ class JoinBrgyScreen extends StatelessWidget {
                     muted: true,
                   ),
                   const SizedBox(height: Spacing.formLg),
+                  MultiTextField(
+                    onCompleted: (val) {},
+                    onChanged: (val) {},
+                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [

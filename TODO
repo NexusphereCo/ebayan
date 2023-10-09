@@ -17,3 +17,4 @@ DONE:
     [X] labels are not bold
     [X] add custom icons (home & menu bar)
     [X] try to fix if there's a way to reduce padding on drawerheader
+    [X] add pintextbox
