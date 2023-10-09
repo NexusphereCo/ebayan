@@ -1,3 +1,4 @@
+import 'package:ebayan/constants/assets.dart';
 import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/constants/typography.dart';
 import 'package:ebayan/utils/dimens.dart';
@@ -21,8 +22,6 @@ import 'package:flutter_svg/svg.dart';
  */
 
 class DashboardScreen extends StatelessWidget {
-  final String _illustrationPath = 'assets/svgs/illustration/empty-state.svg';
-
   const DashboardScreen({super.key});
 
   @override
@@ -51,7 +50,7 @@ class DashboardScreen extends StatelessWidget {
                   const SizedBox(height: Spacing.formLg),
                   Column(
                     children: [
-                      SvgPicture.asset(_illustrationPath),
+                      SvgPicture.asset(Asset.illustHouseEmptyPath),
                       const SizedBox(height: Spacing.formLg),
                       EBTypography.text(
                         text: "You currently aren't joined to any barangay spheres. Let's change that!",

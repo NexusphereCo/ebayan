@@ -1,3 +1,4 @@
+import 'package:ebayan/constants/assets.dart';
 import 'package:ebayan/constants/typography.dart';
 import 'package:ebayan/screens/resident/dashboard.dart';
 import 'package:ebayan/utils/dimens.dart';
@@ -18,8 +19,6 @@ import 'package:flutter_svg/svg.dart';
  */
 
 class JoinBrgyScreen extends StatelessWidget {
-  final String _illustrationPath = 'assets/svgs/illustration/join-brgy.svg';
-
   const JoinBrgyScreen({super.key});
 
   @override
@@ -36,7 +35,7 @@ class JoinBrgyScreen extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  SvgPicture.asset(_illustrationPath),
+                  SvgPicture.asset(Asset.illustHousesPath),
                   const SizedBox(height: Spacing.formLg),
                   EBTypography.h3(text: 'Enter Barangay Sphere Code'),
                   EBTypography.text(
