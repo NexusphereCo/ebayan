@@ -7,10 +7,37 @@ import 'package:ebayan/screens/resident/join_brgy.dart';
 import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:just_the_tooltip/just_the_tooltip.dart';
 import 'package:page_transition/page_transition.dart';
 
-class EBTopAppBar extends StatelessWidget implements PreferredSizeWidget {
+class EBTopAppBar extends StatefulWidget implements PreferredSizeWidget {
   const EBTopAppBar({Key? key}) : super(key: key);
+
+  @override
+  State<EBTopAppBar> createState() => _EBTopAppBarState();
+
+  @override
+  Size get preferredSize => AppBar().preferredSize;
+}
+
+class _EBTopAppBarState extends State<EBTopAppBar> {
+  final joinButtonTooltipController = JustTheController();
+  final drawerButtonTooltipController = JustTheController();
+
+  @override
+  void initState() {
+    super.initState();
+
+    Future<void> showAndHideTooltip(JustTheController controller, int delayInSeconds) async {
+      await Future.delayed(Duration(seconds: delayInSeconds));
+      controller.showTooltip();
+      await Future.delayed(const Duration(seconds: 3));
+      controller.hideTooltip();
+    }
+
+    showAndHideTooltip(joinButtonTooltipController, 1);
+    showAndHideTooltip(drawerButtonTooltipController, 4);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,37 +55,48 @@ class EBTopAppBar extends StatelessWidget implements PreferredSizeWidget {
           SvgPicture.asset(Asset.logoColorPath),
         ],
       ),
-      leading: Container(
-        margin: const EdgeInsets.fromLTRB(30.0, 0, 0, 0), // moves the drawer icon to the right more
-        child: InkResponse(
-          onTap: () {
-            Scaffold.of(context).openDrawer();
-          },
-          child: const Icon(
-            EBIcons.menu,
-            size: iconSize,
-            color: EBColor.dark,
+      leading: JustTheTooltip(
+        controller: drawerButtonTooltipController,
+        backgroundColor: EBColor.primary,
+        elevation: 0,
+        content: const TooltipContainer(message: 'Tap here to access your sidebar.'),
+        child: Container(
+          margin: const EdgeInsets.fromLTRB(20.0, 0, 0, 0), // moves the drawer icon to the right more
+          child: InkResponse(
+            onTap: () {
+              Scaffold.of(context).openDrawer();
+            },
+            child: const Icon(
+              EBIcons.menu,
+              size: iconSize,
+              color: EBColor.dark,
+            ),
           ),
         ),
       ),
       actions: [
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20.0),
-          child: IconButton(
-            icon: const Icon(
-              FeatherIcons.plus,
-              color: EBColor.primary,
+          child: JustTheTooltip(
+            controller: joinButtonTooltipController,
+            backgroundColor: EBColor.primary,
+            elevation: 0,
+            content: const TooltipContainer(message: 'Tap here to join a barangay!'),
+            child: IconButton(
+              icon: const Icon(
+                FeatherIcons.plus,
+                color: EBColor.primary,
+              ),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  PageTransition(
+                    type: PageTransitionType.rightToLeft,
+                    child: const JoinBrgyScreen(),
+                  ),
+                );
+              },
             ),
-            tooltip: 'Join to a barangay',
-            onPressed: () {
-              Navigator.push(
-                context,
-                PageTransition(
-                  type: PageTransitionType.rightToLeft,
-                  child: const JoinBrgyScreen(),
-                ),
-              );
-            },
           ),
         ),
       ],
@@ -67,8 +105,32 @@ class EBTopAppBar extends StatelessWidget implements PreferredSizeWidget {
     );
   }
 
-  @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
+}
+
+class TooltipContainer extends StatelessWidget {
+  final String message;
+
+  const TooltipContainer({
+    super.key,
+    required this.message,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    const double paddingTooltipContainer = 20.0;
+
+    return Container(
+      decoration: BoxDecoration(
+        color: EBColor.primary,
+        borderRadius: BorderRadius.circular(6.0),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(paddingTooltipContainer),
+        child: EBTypography.text(text: message, color: EBColor.light),
+      ),
+    );
+  }
 }
 
 class EBDrawer extends StatelessWidget {
