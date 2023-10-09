@@ -35,21 +35,20 @@ class DashboardScreen extends StatelessWidget {
         padding: const EdgeInsets.all(Global.paddingBody),
         child: Column(
           children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                EBTypography.h1(text: 'Welcome Back, '),
+                EBTypography.h1(
+                  text: 'Jane!',
+                  color: EBColor.primary,
+                ),
+              ],
+            ),
             Expanded(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      EBTypography.h1(text: 'Welcome Back, '),
-                      EBTypography.h1(
-                        text: 'Jane!',
-                        color: EBColor.primary,
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: Spacing.formLg),
                   Column(
                     children: [
                       SvgPicture.asset(Asset.illustHouseEmptyPath),
