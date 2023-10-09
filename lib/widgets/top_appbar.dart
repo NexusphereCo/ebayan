@@ -24,6 +24,7 @@ class EBTopAppBar extends StatefulWidget implements PreferredSizeWidget {
 class _EBTopAppBarState extends State<EBTopAppBar> {
   final joinButtonTooltipController = JustTheController();
   final drawerButtonTooltipController = JustTheController();
+
   bool _finishedTutorial = false;
 
   @override

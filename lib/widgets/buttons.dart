@@ -5,12 +5,12 @@ import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 
 class EBBackButton extends StatelessWidget {
-  final Widget _screenDestination;
+  final Widget screenDestination;
 
   const EBBackButton({
     super.key,
-    required Widget screenDestination,
-  }) : _screenDestination = screenDestination;
+    required this.screenDestination,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +23,7 @@ class EBBackButton extends StatelessWidget {
               context,
               PageTransition(
                 type: PageTransitionType.leftToRight,
-                child: _screenDestination,
+                child: screenDestination,
               ),
             );
           },
@@ -35,18 +35,21 @@ class EBBackButton extends StatelessWidget {
 }
 
 class EBButton extends StatelessWidget {
+  final String text;
+  final String theme;
+  final VoidCallback onPressed;
+
+  // styling
   final double _borderRadius = 50.0;
   final double _paddingX = 32.0;
   final double _paddingY = 18.0;
-  final String _text;
-  final VoidCallback _onPressed;
-  final String _theme;
 
-  const EBButton({Key? key, required void Function() onPressed, required String text, required String theme})
-      : _onPressed = onPressed,
-        _text = text,
-        _theme = theme,
-        super(key: key);
+  const EBButton({
+    Key? key,
+    required this.onPressed,
+    required this.text,
+    required this.theme,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -56,13 +59,13 @@ class EBButton extends StatelessWidget {
       ),
       padding: EdgeInsets.symmetric(horizontal: _paddingX, vertical: _paddingY),
       elevation: 0,
-      backgroundColor: _setColor(_theme),
+      backgroundColor: _setColor(theme),
     );
 
     ButtonStyle outlineButtonStyle = ElevatedButton.styleFrom(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(_borderRadius),
-        side: BorderSide(color: _setColor(_theme)),
+        side: BorderSide(color: _setColor(theme)),
       ),
       backgroundColor: EBColor.light,
       padding: EdgeInsets.symmetric(
@@ -73,11 +76,11 @@ class EBButton extends StatelessWidget {
     );
 
     return ElevatedButton(
-      onPressed: _onPressed,
-      style: !_theme.contains('outline') ? fillButtonStyle : outlineButtonStyle,
+      onPressed: onPressed,
+      style: !theme.contains('outline') ? fillButtonStyle : outlineButtonStyle,
       child: EBTypography.text(
-        text: _text,
-        color: _theme.contains('outline') ? _setColor(_theme) : EBColor.light,
+        text: text,
+        color: theme.contains('outline') ? _setColor(theme) : EBColor.light,
       ),
     );
   }

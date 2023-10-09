@@ -26,11 +26,11 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  bool showTxtPassword = false;
+  bool _showTxtPassword = false;
 
   void _showPassword() {
     setState(() {
-      showTxtPassword = !showTxtPassword;
+      _showTxtPassword = !_showTxtPassword;
     });
   }
 
@@ -69,8 +69,8 @@ class _LoginScreenState extends State<LoginScreen> {
                   label: 'Password',
                   icon: FeatherIcons.lock,
                   placeholder: 'Enter your password',
-                  type: showTxtPassword ? 'password-reveal' : 'password',
-                  suffixIcon: showTxtPassword ? FeatherIcons.eye : FeatherIcons.eyeOff,
+                  type: _showTxtPassword ? 'password-reveal' : 'password',
+                  suffixIcon: _showTxtPassword ? FeatherIcons.eye : FeatherIcons.eyeOff,
                   suffixIconOnPressed: _showPassword,
                 ),
                 const SizedBox(height: Spacing.formSm),
