@@ -125,7 +125,13 @@ class EBDrawer extends StatelessWidget {
           ListTile(
             title: EBTypography.text(text: 'Logout', color: EBColor.danger),
             onTap: () {
-              const EBBackButton(screenDestination: LoginScreen());
+              Navigator.push(
+                context,
+                PageTransition(
+                  type: PageTransitionType.leftToRight,
+                  child: const LoginScreen(),
+                ),
+              );
             },
           ),
         ],
