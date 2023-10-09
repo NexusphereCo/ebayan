@@ -4,7 +4,6 @@ import 'package:ebayan/constants/icons.dart';
 import 'package:ebayan/constants/typography.dart';
 import 'package:ebayan/screens/auth/login.dart';
 import 'package:ebayan/screens/resident/join_brgy.dart';
-import 'package:ebayan/widgets/buttons.dart';
 import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -90,7 +89,9 @@ class EBDrawer extends StatelessWidget {
                 Container(
                   margin: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 0),
                   child: IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Scaffold.of(context).closeDrawer();
+                    },
                     icon: const Icon(
                       EBIcons.menu,
                       size: iconSize,
