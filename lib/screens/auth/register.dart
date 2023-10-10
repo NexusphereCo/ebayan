@@ -23,71 +23,73 @@ class RegisterScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(Global.paddingBody),
-        child: Column(
-          children: [
-            const EBBackButton(screenDestination: LoginScreen()),
-            Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Column(
-                    children: [
-                      EBTypography.h1(
-                        text: 'Be part of a Barangay!',
-                        color: EBColor.primary,
-                      ),
-                      EBTypography.text(
-                        text: 'Which user are you?',
-                        muted: true,
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 50.0),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      EBTypography.label(
-                        text: 'I am a:',
-                        muted: true,
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: Spacing.formMd),
-                  SizedBox(
-                    width: double.infinity,
-                    child: EBButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          PageTransition(
-                            type: PageTransitionType.rightToLeft,
-                            child: const RegisterResidentScreen(),
-                          ),
-                        );
-                      },
-                      text: 'Barangay Resident',
-                      theme: 'primary',
+    return SafeArea(
+      child: Scaffold(
+        body: Padding(
+          padding: const EdgeInsets.all(Global.paddingBody),
+          child: Column(
+            children: [
+              const EBBackButton(screenDestination: LoginScreen()),
+              Expanded(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Column(
+                      children: [
+                        EBTypography.h1(
+                          text: 'Be part of a Barangay!',
+                          color: EBColor.primary,
+                        ),
+                        EBTypography.text(
+                          text: 'Which user are you?',
+                          muted: true,
+                        ),
+                      ],
                     ),
-                  ),
-                  const SizedBox(height: Spacing.formMd),
-                  SizedBox(
-                    width: double.infinity,
-                    child: EBButton(
-                      onPressed: () {},
-                      text: 'Barangay Official',
-                      theme: 'primary-outline',
+                    const SizedBox(height: 50.0),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        EBTypography.label(
+                          text: 'I am a:',
+                          muted: true,
+                        ),
+                      ],
                     ),
-                  ),
-                ],
+                    const SizedBox(height: Spacing.formMd),
+                    SizedBox(
+                      width: double.infinity,
+                      child: EBButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            PageTransition(
+                              type: PageTransitionType.rightToLeft,
+                              child: const RegisterResidentScreen(),
+                            ),
+                          );
+                        },
+                        text: 'Barangay Resident',
+                        theme: 'primary',
+                      ),
+                    ),
+                    const SizedBox(height: Spacing.formMd),
+                    SizedBox(
+                      width: double.infinity,
+                      child: EBButton(
+                        onPressed: () {},
+                        text: 'Barangay Official',
+                        theme: 'primary-outline',
+                      ),
+                    ),
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
+        bottomSheet: const EBFooter(),
       ),
-      bottomSheet: const EBFooter(),
     );
   }
 }

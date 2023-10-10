@@ -24,47 +24,49 @@ class JoinBrgyScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: const EBTopAppBar(),
-      drawer: const EBDrawer(),
-      body: Padding(
-        padding: const EdgeInsets.all(Global.paddingBody),
-        child: Column(
-          children: [
-            const EBBackButton(screenDestination: DashboardScreen()),
-            Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SvgPicture.asset(Asset.illustHousesPath),
-                  const SizedBox(height: Spacing.formLg),
-                  EBTypography.h3(text: 'Enter Barangay Sphere Code'),
-                  EBTypography.text(
-                    text: 'This code is disseminated by your barangay official',
-                    muted: true,
-                  ),
-                  const SizedBox(height: Spacing.formLg),
-                  MultiTextField(
-                    onCompleted: (val) {},
-                    onChanged: (val) {},
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      EBButton(
-                        onPressed: () {},
-                        text: 'Join',
-                        theme: 'primary',
-                      ),
-                    ],
-                  ),
-                ],
+    return SafeArea(
+      child: Scaffold(
+        appBar: const EBTopAppBar(),
+        drawer: const EBDrawer(),
+        body: Padding(
+          padding: const EdgeInsets.all(Global.paddingBody),
+          child: Column(
+            children: [
+              const EBBackButton(screenDestination: DashboardScreen()),
+              Expanded(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SvgPicture.asset(Asset.illustHousesPath),
+                    const SizedBox(height: Spacing.formLg),
+                    EBTypography.h3(text: 'Enter Barangay Sphere Code'),
+                    EBTypography.text(
+                      text: 'This code is disseminated by your barangay official',
+                      muted: true,
+                    ),
+                    const SizedBox(height: Spacing.formLg),
+                    MultiTextField(
+                      onCompleted: (val) {},
+                      onChanged: (val) {},
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        EBButton(
+                          onPressed: () {},
+                          text: 'Join',
+                          theme: 'primary',
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
+        bottomNavigationBar: const EBBottomAppBar(),
       ),
-      bottomNavigationBar: const EBBottomAppBar(),
     );
   }
 }

@@ -1,13 +1,16 @@
 PRIORITY:
-    [] use the textfield type
+    [] fix the notch covering body
 -------
 TODO:
     [] prevent footer/bottomappbar from showing on top of keyboard (when keyboard is shown)
-    [] add keyboardType to EBTextField and refactor the password logic
-    [] add a showpassword to register_resident
-    [] check if linear is possible on splashscreen
 -------
 DONE:
+    [X] fix the overflow on sphere's card
+    [X] fix _ convention on constructors
+    [X] use semantics i.e. (Form)
+    [X] add a showpassword to register_resident
+    [X] add keyboardType to EBTextField and refactor the password logic
+    [X] use the textfield type
     [X] add documentation to 4 screens
     [X] fix formatting on some code
     [X] add a bold leading text to register_resident
@@ -18,3 +21,5 @@ DONE:
     [X] add custom icons (home & menu bar)
     [X] try to fix if there's a way to reduce padding on drawerheader
     [X] add pintextbox
+    [X] check if linear is possible on splashscreen
+    [X] implement tutorial
