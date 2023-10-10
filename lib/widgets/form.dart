@@ -5,11 +5,11 @@ import 'package:flutter/material.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
 class EBTextField extends StatefulWidget {
-  final String _label;
-  final String _type; // text, password, date, number, ... etc.
-  final IconData? _suffixIcon;
-  final void Function()? _suffixIconOnPressed;
-  final String? _placeholder;
+  final String label;
+  final String type; // text, password, date, number, ... etc.
+  final IconData? suffixIcon;
+  final void Function()? suffixIconOnPressed;
+  final String? placeholder;
 
   // styling
   final double _paddingX = 15.0;
@@ -18,17 +18,12 @@ class EBTextField extends StatefulWidget {
 
   const EBTextField({
     Key? key,
-    required String label,
-    required String type,
-    IconData? suffixIcon,
-    void Function()? suffixIconOnPressed,
-    String? placeholder,
-  })  : _placeholder = placeholder,
-        _suffixIcon = suffixIcon,
-        _suffixIconOnPressed = suffixIconOnPressed,
-        _type = type,
-        _label = label,
-        super(key: key);
+    required this.label,
+    required this.type,
+    this.suffixIcon,
+    this.suffixIconOnPressed,
+    this.placeholder,
+  }) : super(key: key);
 
   @override
   _EBTextFieldState createState() => _EBTextFieldState();
@@ -44,7 +39,7 @@ class _EBTextFieldState extends State<EBTextField> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           EBTypography.label(
-            text: widget._label,
+            text: widget.label,
             muted: true,
           ),
           const SizedBox(height: 8.0),
@@ -63,14 +58,14 @@ class _EBTextFieldState extends State<EBTextField> {
                 });
               },
               child: TextField(
-                obscureText: (widget._type != 'password') ? false : true,
+                obscureText: (widget.type != 'password') ? false : true,
                 decoration: InputDecoration(
-                  hintText: widget._placeholder,
+                  hintText: widget.placeholder,
                   border: InputBorder.none,
-                  suffixIcon: (widget._type == 'password' || widget._type == 'password-reveal')
+                  suffixIcon: (widget.type == 'password' || widget.type == 'password-reveal')
                       ? IconButton(
-                          icon: Icon(widget._suffixIcon),
-                          onPressed: widget._suffixIconOnPressed,
+                          icon: Icon(widget.suffixIcon),
+                          onPressed: widget.suffixIconOnPressed,
                         )
                       : null,
                 ),
@@ -87,7 +82,11 @@ class MultiTextField extends StatefulWidget {
   final void Function(String) onCompleted;
   final void Function(String) onChanged;
 
-  const MultiTextField({super.key, required this.onCompleted, required this.onChanged});
+  const MultiTextField({
+    super.key,
+    required this.onCompleted,
+    required this.onChanged,
+  });
 
   @override
   State<StatefulWidget> createState() => _MultiTextFieldState();

@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:ebayan/widgets/form.dart';
 import 'package:feather_icons/feather_icons.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 /*
   Authored by: Miguel Damien L. Garcera
@@ -155,6 +156,14 @@ class RegisterResidentScreen extends StatelessWidget {
                         text: 'Register',
                         theme: 'primary',
                         onPressed: () {
+                          // NOTE: This is temporary
+                          Future<void> createNewUser() async {
+                            final SharedPreferences prefs = await SharedPreferences.getInstance();
+                            prefs.setBool('finishedTutorial', false);
+                          }
+
+                          createNewUser();
+
                           Navigator.push(
                             context,
                             PageTransition(

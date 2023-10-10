@@ -7,12 +7,12 @@ import 'package:flutter_svg/flutter_svg.dart';
 class EBFooter extends StatelessWidget {
   const EBFooter({super.key});
 
+  final double _footerHeight = 50.0;
+  final double _paddingX = 50.0;
+  final double _paddingY = 15.0;
+
   @override
   Widget build(BuildContext context) {
-    const double footerHeight = 50.0;
-    const double paddingX = 50.0;
-    const double paddingY = 15.0;
-
     return Container(
       decoration: BoxDecoration(
         border: Border(
@@ -23,9 +23,9 @@ class EBFooter extends StatelessWidget {
         ),
       ),
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: paddingX, vertical: paddingY),
+        padding: EdgeInsets.symmetric(horizontal: _paddingX, vertical: _paddingY),
         child: SizedBox(
-          height: footerHeight,
+          height: _footerHeight,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
