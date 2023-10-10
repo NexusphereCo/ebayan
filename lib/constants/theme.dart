@@ -11,6 +11,13 @@ class EBTheme {
       textTheme: GoogleFonts.outfitTextTheme().apply(
         bodyColor: EBColor.dark,
       ),
+      popupMenuTheme: PopupMenuThemeData(
+        elevation: 2,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10),
+          side: const BorderSide(color: EBColor.primary, width: 1.0),
+        ),
+      ),
     );
   }
 }
