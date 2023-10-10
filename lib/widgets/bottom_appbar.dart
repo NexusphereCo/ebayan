@@ -24,7 +24,7 @@ class EBBottomAppBarContents extends StatelessWidget {
 
     List<BottomNavigationBarItem> links = [
       BottomNavigationBarItem(
-        label: 'Home',
+        label: 'Sphere',
         icon: Container(
           padding: EdgeInsets.symmetric(vertical: paddingY),
           child: Icon(
