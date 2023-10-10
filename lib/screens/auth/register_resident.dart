@@ -22,137 +22,167 @@ import 'package:shared_preferences/shared_preferences.dart';
     personal information and login credentials to be used within the app.
  */
 
-class RegisterResidentScreen extends StatelessWidget {
+class RegisterResidentScreen extends StatefulWidget {
   const RegisterResidentScreen({super.key});
 
   @override
+  State<RegisterResidentScreen> createState() => _RegisterResidentScreenState();
+}
+
+class _RegisterResidentScreenState extends State<RegisterResidentScreen> {
+  bool _showPassword = false;
+
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      resizeToAvoidBottomInset: false,
-      body: ListView(
-        padding: const EdgeInsets.all(Global.paddingBody),
-        children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const EBBackButton(screenDestination: RegisterScreen()),
-              SizedBox(
-                width: double.infinity,
-                child: Column(
+    return SafeArea(
+      child: Scaffold(
+        body: ListView(
+          padding: const EdgeInsets.all(Global.paddingBody),
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const EBBackButton(screenDestination: RegisterScreen()),
+                SizedBox(
+                  width: double.infinity,
+                  child: Column(
+                    children: [
+                      EBTypography.h1(
+                        text: 'Be part of a Barangay!',
+                        color: EBColor.primary,
+                      ),
+                      Wrap(
+                        alignment: WrapAlignment.center,
+                        children: [
+                          EBTypography.text(
+                            text: 'Register as a ',
+                            muted: true,
+                            textAlign: TextAlign.center,
+                          ),
+                          EBTypography.text(
+                            text: 'Barangay Resident.',
+                            muted: true,
+                            textAlign: TextAlign.center,
+                            fontWeight: EBFontWeight.bold,
+                          ),
+                          EBTypography.text(
+                            text: ' Fill in your information to get started.',
+                            muted: true,
+                            textAlign: TextAlign.center,
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: Spacing.formMd),
+                EBTypography.label(text: 'Personal Information'),
+                const SizedBox(height: Spacing.formMd),
+                const Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    EBTypography.h1(
-                      text: 'Be part of a Barangay!',
-                      color: EBColor.primary,
+                    EBTextBox(
+                      label: 'First Name',
+                      icon: FeatherIcons.user,
+                      textField: EBTextField(
+                        placeholder: 'Enter your first name',
+                        type: TextInputType.name,
+                      ),
                     ),
-                    Wrap(
-                      alignment: WrapAlignment.center,
-                      children: [
-                        EBTypography.text(
-                          text: 'Register as a ',
-                          muted: true,
-                          textAlign: TextAlign.center,
-                        ),
-                        EBTypography.text(
-                          text: 'Barangay Resident.',
-                          muted: true,
-                          textAlign: TextAlign.center,
-                          fontWeight: EBFontWeight.bold,
-                        ),
-                        EBTypography.text(
-                          text: ' Fill in your information to get started.',
-                          muted: true,
-                          textAlign: TextAlign.center,
-                        ),
-                      ],
+                    SizedBox(height: Spacing.formMd),
+                    EBTextBox(
+                      label: 'Last Name',
+                      icon: FeatherIcons.user,
+                      textField: EBTextField(
+                        placeholder: 'Enter your last name',
+                        type: TextInputType.name,
+                      ),
+                    ),
+                    SizedBox(height: Spacing.formMd),
+                    EBTextBox(
+                      label: 'Contact Number',
+                      icon: FeatherIcons.phone,
+                      textField: EBTextField(
+                        placeholder: 'Enter your contact number',
+                        type: TextInputType.number,
+                      ),
+                    ),
+                    SizedBox(height: Spacing.formMd),
+                    EBTextBox(
+                      label: 'Address',
+                      icon: FeatherIcons.mapPin,
+                      textField: EBTextField(
+                        placeholder: 'Enter your address',
+                        type: TextInputType.text,
+                      ),
+                    ),
+                    SizedBox(height: Spacing.formMd),
+                    EBTextBox(
+                      label: 'Birth Date',
+                      icon: FeatherIcons.calendar,
+                      textField: EBTextField(
+                        placeholder: 'Enter your birth date',
+                        type: TextInputType.datetime,
+                      ),
+                    ),
+                    SizedBox(height: Spacing.formSm),
+                  ],
+                ),
+                const SizedBox(height: Spacing.formLg),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    EBTypography.label(text: 'Login Credentials'),
+                    EBTypography.text(
+                      text: 'This will be your account details when logging in to this app.',
+                      muted: true,
+                      textAlign: TextAlign.start,
                     ),
                   ],
                 ),
-              ),
-              const SizedBox(height: Spacing.formMd),
-              EBTypography.label(text: 'Personal Information'),
-              const SizedBox(height: Spacing.formMd),
-              const Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  EBTextBox(
-                    label: 'First Name',
-                    icon: FeatherIcons.user,
-                    placeholder: 'Enter your first name',
-                    type: 'text',
-                  ),
-                  SizedBox(height: Spacing.formMd),
-                  EBTextBox(
-                    label: 'Last Name',
-                    icon: FeatherIcons.user,
-                    placeholder: 'Enter your last name',
-                    type: 'text',
-                  ),
-                  SizedBox(height: Spacing.formMd),
-                  EBTextBox(
-                    label: 'Contact Number',
-                    icon: FeatherIcons.phone,
-                    placeholder: 'Enter your contact number',
-                    type: 'text',
-                  ),
-                  SizedBox(height: Spacing.formMd),
-                  EBTextBox(
-                    label: 'Address',
-                    icon: FeatherIcons.mapPin,
-                    placeholder: 'Enter your address',
-                    type: 'text',
-                  ),
-                  SizedBox(height: Spacing.formMd),
-                  EBTextBox(
-                    label: 'Birth Date',
-                    icon: FeatherIcons.calendar,
-                    placeholder: 'Enter your birth date',
-                    type: 'text',
-                  ),
-                  SizedBox(height: Spacing.formSm),
-                ],
-              ),
-              const SizedBox(height: Spacing.formLg),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  EBTypography.label(text: 'Login Credentials'),
-                  EBTypography.text(
-                    text: 'This will be your account details when logging in to this app.',
-                    muted: true,
-                    textAlign: TextAlign.start,
-                  ),
-                ],
-              ),
-              const SizedBox(height: Spacing.formMd),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  const EBTextBox(
-                    label: 'Username',
-                    icon: FeatherIcons.user,
-                    placeholder: 'Enter your username',
-                    type: 'text',
-                  ),
-                  const SizedBox(height: Spacing.formMd),
-                  const EBTextBox(
-                    label: 'Password',
-                    icon: FeatherIcons.lock,
-                    placeholder: 'Enter your password',
-                    type: 'password',
-                  ),
-                  const SizedBox(height: Spacing.formLg),
-                  TextButton(
-                    onPressed: () {},
-                    child: EBTypography.text(
-                      text: 'Clear Information',
-                      color: EBColor.danger,
-                      fontWeight: EBFontWeight.bold,
+                const SizedBox(height: Spacing.formMd),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    const EBTextBox(
+                      label: 'Username',
+                      icon: FeatherIcons.user,
+                      textField: EBTextField(
+                        placeholder: 'Enter your username',
+                        type: TextInputType.text,
+                      ),
                     ),
-                  ),
-                  const SizedBox(height: Spacing.formSm),
-                  SizedBox(
-                    width: double.infinity,
-                    child: EBButton(
+                    const SizedBox(height: Spacing.formMd),
+                    EBTextBox(
+                      label: 'Password',
+                      icon: FeatherIcons.lock,
+                      textField: EBTextField(
+                        placeholder: 'Enter your password',
+                        type: TextInputType.text,
+                        obscureText: _showPassword ? false : true,
+                        suffixIconButton: IconButton(
+                          icon: _showPassword ? const Icon(FeatherIcons.eye) : const Icon(FeatherIcons.eyeOff),
+                          onPressed: () {
+                            setState(() {
+                              _showPassword = !_showPassword;
+                            });
+                          },
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: Spacing.formLg),
+                    TextButton(
+                      onPressed: () {},
+                      child: EBTypography.text(
+                        text: 'Clear Information',
+                        color: EBColor.danger,
+                        fontWeight: EBFontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(height: Spacing.formSm),
+                    SizedBox(
+                      width: double.infinity,
+                      child: EBButton(
                         text: 'Register',
                         theme: 'primary',
                         onPressed: () {
@@ -171,41 +201,43 @@ class RegisterResidentScreen extends StatelessWidget {
                               child: const DashboardScreen(),
                             ),
                           );
-                        }),
-                  ),
-                  const SizedBox(height: Spacing.formSm),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      EBTypography.text(
-                        text: 'Already have an account? ',
-                      ),
-                      TextButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            PageTransition(
-                              type: PageTransitionType.rightToLeft,
-                              child: const LoginScreen(),
-                            ),
-                          );
                         },
-                        child: EBTypography.text(
-                          text: 'login.',
-                          color: EBColor.primary,
-                          fontWeight: EBFontWeight.bold,
-                        ),
                       ),
-                    ],
-                  ),
-                  const SizedBox(height: Spacing.formLg),
-                ],
-              ),
-            ],
-          ),
-        ],
+                    ),
+                    const SizedBox(height: Spacing.formSm),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        EBTypography.text(
+                          text: 'Already have an account? ',
+                        ),
+                        TextButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              PageTransition(
+                                type: PageTransitionType.rightToLeft,
+                                child: const LoginScreen(),
+                              ),
+                            );
+                          },
+                          child: EBTypography.text(
+                            text: 'login.',
+                            color: EBColor.primary,
+                            fontWeight: EBFontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: Spacing.formLg),
+                  ],
+                ),
+              ],
+            ),
+          ],
+        ),
+        bottomNavigationBar: const EBFooter(),
       ),
-      bottomNavigationBar: const EBFooter(),
     );
   }
 }

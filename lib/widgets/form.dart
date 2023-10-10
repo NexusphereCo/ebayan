@@ -2,78 +2,48 @@ import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/constants/typography.dart';
 import 'package:ebayan/utils/dimens.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
-class EBTextField extends StatefulWidget {
-  final String label;
-  final String type; // text, password, date, number, ... etc.
-  final IconData? suffixIcon;
-  final void Function()? suffixIconOnPressed;
-  final String? placeholder;
+class EBTextField extends StatelessWidget {
+  final String placeholder;
+  final TextInputType type;
 
-  // styling
-  final double _paddingX = 15.0;
-  final double _paddingY = 0;
-  final double _borderRadius = 7.0;
+  final int? maxLength;
+  final bool? obscureText;
+  final Icon? suffixIcon;
+  final IconButton? suffixIconButton;
+  final String? Function(String?)? validator;
 
   const EBTextField({
-    Key? key,
-    required this.label,
+    super.key,
+    required this.placeholder,
     required this.type,
+    this.obscureText,
     this.suffixIcon,
-    this.suffixIconOnPressed,
-    this.placeholder,
-  }) : super(key: key);
-
-  @override
-  _EBTextFieldState createState() => _EBTextFieldState();
-}
-
-class _EBTextFieldState extends State<EBTextField> {
-  bool _isFocused = false;
+    this.suffixIconButton,
+    this.maxLength,
+    this.validator,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          EBTypography.label(
-            text: widget.label,
-            muted: true,
-          ),
-          const SizedBox(height: 8.0),
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: widget._paddingX, vertical: widget._paddingY),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(widget._borderRadius),
-              border: Border.all(
-                color: _isFocused ? EBColor.primary : EBColor.dark, // Change border color when focused
-              ),
-            ),
-            child: Focus(
-              onFocusChange: (hasFocus) {
-                setState(() {
-                  _isFocused = hasFocus;
-                });
-              },
-              child: TextField(
-                obscureText: (widget.type != 'password') ? false : true,
-                decoration: InputDecoration(
-                  hintText: widget.placeholder,
-                  border: InputBorder.none,
-                  suffixIcon: (widget.type == 'password' || widget.type == 'password-reveal')
-                      ? IconButton(
-                          icon: Icon(widget.suffixIcon),
-                          onPressed: widget.suffixIconOnPressed,
-                        )
-                      : null,
-                ),
-              ),
-            ),
-          ),
-        ],
+    const borderRadius = 8.0;
+
+    return TextFormField(
+      keyboardType: TextInputType.text,
+      obscureText: obscureText ?? false,
+      decoration: InputDecoration(
+        border: const OutlineInputBorder(
+          borderRadius: BorderRadius.all(Radius.circular(borderRadius)),
+        ),
+        contentPadding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
+        hintText: placeholder,
+        counterText: null,
+        suffixIcon: (suffixIcon == null ? false : true) ? suffixIcon : suffixIconButton,
       ),
+      maxLength: maxLength,
+      validator: validator,
     );
   }
 }
@@ -105,10 +75,11 @@ class _MultiTextFieldState extends State<MultiTextField> {
       inactiveBorderWidth: 1,
       activeBorderWidth: 1,
       selectedBorderWidth: 3,
-      fieldHeight: 40.0,
+      fieldHeight: 50.0,
+      fieldWidth: 50,
     );
 
-    const double textFieldGap = 50.0;
+    const double textFieldGap = 0;
     const int textFieldLength = 6;
 
     return Container(
@@ -141,20 +112,14 @@ class _MultiTextFieldState extends State<MultiTextField> {
 
 class EBTextBox extends StatelessWidget {
   final String label;
-  final String type; // text, password, date, number, ... etc.
   final IconData icon;
-  final IconData? suffixIcon;
-  final void Function()? suffixIconOnPressed;
-  final String? placeholder;
+  final EBTextField textField;
 
   const EBTextBox({
     super.key,
     required this.label,
-    required this.type,
     required this.icon,
-    this.suffixIcon,
-    this.suffixIconOnPressed,
-    this.placeholder,
+    required this.textField,
   });
 
   @override
@@ -171,12 +136,15 @@ class EBTextBox extends StatelessWidget {
           ],
         ),
         const SizedBox(width: Spacing.formMd),
-        EBTextField(
-          label: label,
-          type: type,
-          placeholder: placeholder,
-          suffixIcon: suffixIcon,
-          suffixIconOnPressed: suffixIconOnPressed,
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              EBTypography.label(text: label, muted: true),
+              const SizedBox(height: Spacing.formSm),
+              textField,
+            ],
+          ),
         ),
       ],
     );
