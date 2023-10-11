@@ -3,6 +3,7 @@ import 'package:ebayan/constants/typography.dart';
 import 'package:ebayan/screens/auth/login.dart';
 import 'package:ebayan/screens/auth/register.dart';
 import 'package:ebayan/screens/resident/dashboard.dart';
+import 'package:ebayan/screens/resident/dashboard_empty.dart';
 import 'package:ebayan/utils/dimens.dart';
 import 'package:ebayan/widgets/buttons.dart';
 import 'package:ebayan/widgets/footer.dart';
@@ -31,6 +32,7 @@ class RegisterResidentScreen extends StatefulWidget {
 
 class _RegisterResidentScreenState extends State<RegisterResidentScreen> {
   bool _showPassword = false;
+  bool _showConfirmPassword = false;
 
   @override
   Widget build(BuildContext context) {
@@ -170,6 +172,24 @@ class _RegisterResidentScreenState extends State<RegisterResidentScreen> {
                         ),
                       ),
                     ),
+                    const SizedBox(height: Spacing.formMd),
+                    EBTextBox(
+                      label: 'Confirm Password',
+                      icon: FeatherIcons.lock,
+                      textField: EBTextField(
+                        placeholder: 'Re-enter your password',
+                        type: TextInputType.text,
+                        obscureText: _showConfirmPassword ? false : true,
+                        suffixIconButton: IconButton(
+                          icon: _showConfirmPassword ? const Icon(FeatherIcons.eye) : const Icon(FeatherIcons.eyeOff),
+                          onPressed: () {
+                            setState(() {
+                              _showConfirmPassword = !_showConfirmPassword;
+                            });
+                          },
+                        ),
+                      ),
+                    ),
                     const SizedBox(height: Spacing.formLg),
                     TextButton(
                       onPressed: () {},
@@ -198,7 +218,7 @@ class _RegisterResidentScreenState extends State<RegisterResidentScreen> {
                             context,
                             PageTransition(
                               type: PageTransitionType.rightToLeft,
-                              child: const DashboardScreen(),
+                              child: const DashboardEmptyScreen(),
                             ),
                           );
                         },
