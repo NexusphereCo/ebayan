@@ -2,7 +2,6 @@ PRIORITY:
     [] fix the notch covering body
 -------
 TODO:
-    [] prevent footer/bottomappbar from showing on top of keyboard (when keyboard is shown)
 -------
 DONE:
     [X] fix the overflow on sphere's card
@@ -23,3 +22,4 @@ DONE:
     [X] add pintextbox
     [X] check if linear is possible on splashscreen
     [X] implement tutorial
+    [x] prevent footer/bottomappbar from showing on top of keyboard (when keyboard is shown)

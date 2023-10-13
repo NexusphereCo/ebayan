@@ -125,7 +125,7 @@ class _LoginScreenState extends State<LoginScreen> {
             ],
           ),
         ),
-        bottomSheet: const EBFooter(),
+        bottomNavigationBar: const EBFooter(),
       ),
     );
   }

@@ -2,6 +2,7 @@ import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/constants/typography.dart';
 import 'package:ebayan/screens/auth/login.dart';
 import 'package:ebayan/screens/auth/register_resident.dart';
+import 'package:ebayan/screens/auth/register_official.dart';
 import 'package:ebayan/utils/dimens.dart';
 import 'package:ebayan/widgets/buttons.dart';
 import 'package:ebayan/widgets/footer.dart';
@@ -77,7 +78,15 @@ class RegisterScreen extends StatelessWidget {
                     SizedBox(
                       width: double.infinity,
                       child: EBButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            PageTransition(
+                              type: PageTransitionType.rightToLeft,
+                              child: const RegisterOfficialScreen(),
+                            ),
+                          );
+                        },
                         text: 'Barangay Official',
                         theme: 'primary-outline',
                       ),

@@ -16,20 +16,20 @@ import 'package:shared_preferences/shared_preferences.dart';
   Authored by: Miguel Damien L. Garcera
   Company: NexusphereCo.
   Project: eBayan
-  Feature: [EB-002] Register Resident Screen
-  Description: a register screen for brgy. residents to use. 
+  Feature: [EB-002] Register Official Screen
+  Description: a register screen for brgy. Officials to use. 
     upon registering as x, users will be filling up a form regarding their 
     personal information and login credentials to be used within the app.
  */
 
-class RegisterResidentScreen extends StatefulWidget {
-  const RegisterResidentScreen({super.key});
+class RegisterOfficialScreen extends StatefulWidget {
+  const RegisterOfficialScreen({super.key});
 
   @override
-  State<RegisterResidentScreen> createState() => _RegisterResidentScreenState();
+  State<RegisterOfficialScreen> createState() => _RegisterOfficialScreenState();
 }
 
-class _RegisterResidentScreenState extends State<RegisterResidentScreen> {
+class _RegisterOfficialScreenState extends State<RegisterOfficialScreen> {
   bool _showPassword = false;
   bool _showConfirmPassword = false;
 
@@ -61,7 +61,7 @@ class _RegisterResidentScreenState extends State<RegisterResidentScreen> {
                             textAlign: TextAlign.center,
                           ),
                           EBTypography.text(
-                            text: 'Barangay Resident.',
+                            text: 'Barangay Official.',
                             muted: true,
                             textAlign: TextAlign.center,
                             fontWeight: EBFontWeight.bold,
@@ -124,6 +124,24 @@ class _RegisterResidentScreenState extends State<RegisterResidentScreen> {
                       textField: EBTextField(
                         placeholder: 'Enter your birth date',
                         type: TextInputType.datetime,
+                      ),
+                    ),
+                    SizedBox(height: Spacing.formMd),
+                    EBTextBox(
+                      label: 'Barangay Associated',
+                      icon: FeatherIcons.navigation,
+                      textField: EBTextField(
+                        placeholder: 'Choose',
+                        type: TextInputType.streetAddress,
+                      ),
+                    ),
+                    SizedBox(height: Spacing.formMd),
+                    EBTextBox(
+                      label: 'Proof of Official Position',
+                      icon: FeatherIcons.file,
+                      textField: EBTextField(
+                        placeholder: '*.pdf',
+                        type: TextInputType.text,
                       ),
                     ),
                     SizedBox(height: Spacing.formSm),
