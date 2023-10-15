@@ -33,14 +33,16 @@ class EBTextField extends StatelessWidget {
       keyboardType: TextInputType.text,
       obscureText: obscureText ?? false,
       decoration: InputDecoration(
-        border: const OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(borderRadius)),
-        ),
-        contentPadding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
-        hintText: placeholder,
-        counterText: null,
-        suffixIcon: (suffixIcon == null ? false : true) ? suffixIcon : suffixIconButton,
-      ),
+          border: const OutlineInputBorder(
+            borderRadius: BorderRadius.all(Radius.circular(borderRadius)),
+          ),
+          contentPadding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
+          hintText: placeholder,
+          counterText: null,
+          suffixIcon: Padding(
+            padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),
+            child: (suffixIcon == null ? false : true) ? suffixIcon : suffixIconButton,
+          )),
       maxLength: maxLength,
       validator: validator,
     );
@@ -64,6 +66,9 @@ class MultiTextField extends StatefulWidget {
 class _MultiTextFieldState extends State<MultiTextField> {
   @override
   Widget build(BuildContext context) {
+    var fieldWidth = MediaQuery.of(context).size.width / 8;
+    var fieldWidthMax = 50.0;
+
     PinTheme pinTheme = PinTheme(
       shape: PinCodeFieldShape.box,
       borderRadius: BorderRadius.circular(6.0),
@@ -75,36 +80,32 @@ class _MultiTextFieldState extends State<MultiTextField> {
       activeBorderWidth: 1,
       selectedBorderWidth: 3,
       fieldHeight: 50.0,
-      fieldWidth: 50,
+      fieldWidth: (fieldWidth >= fieldWidthMax) ? fieldWidthMax : fieldWidth,
     );
 
-    const double textFieldGap = 0;
     const int textFieldLength = 6;
 
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: textFieldGap),
-      child: PinCodeTextField(
-        pinTheme: pinTheme,
-        textStyle: const TextStyle(
-          color: EBColor.primary,
-          fontWeight: EBFontWeight.regular,
-          fontSize: 15,
-        ),
-        hintStyle: TextStyle(
-          color: EBColor.primary.withOpacity(0.5),
-          fontWeight: EBFontWeight.regular,
-          fontSize: 15,
-        ),
-        hintCharacter: '-',
-        length: textFieldLength,
-        cursorWidth: 2,
-        showCursor: true,
-        animationType: AnimationType.scale,
-        keyboardType: TextInputType.number,
-        appContext: context,
-        onCompleted: widget.onCompleted,
-        onChanged: widget.onChanged,
+    return PinCodeTextField(
+      pinTheme: pinTheme,
+      textStyle: const TextStyle(
+        color: EBColor.primary,
+        fontWeight: EBFontWeight.regular,
+        fontSize: 15,
       ),
+      hintStyle: TextStyle(
+        color: EBColor.primary.withOpacity(0.5),
+        fontWeight: EBFontWeight.regular,
+        fontSize: 15,
+      ),
+      hintCharacter: '-',
+      length: textFieldLength,
+      cursorWidth: 2,
+      showCursor: true,
+      animationType: AnimationType.scale,
+      keyboardType: TextInputType.number,
+      appContext: context,
+      onCompleted: widget.onCompleted,
+      onChanged: widget.onChanged,
     );
   }
 }
