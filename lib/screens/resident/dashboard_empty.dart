@@ -1,7 +1,6 @@
 import 'package:ebayan/constants/assets.dart';
 import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/constants/typography.dart';
-import 'package:ebayan/screens/resident/announcement_list.dart';
 import 'package:ebayan/screens/resident/join_brgy.dart';
 import 'package:ebayan/utils/dimens.dart';
 import 'package:ebayan/widgets/bottom_appbar.dart';
@@ -26,8 +25,8 @@ import 'package:page_transition/page_transition.dart';
     for navigating the dashboard.
  */
 
-class DashboardScreen extends StatelessWidget {
-  const DashboardScreen({super.key});
+class DashboardEmptyScreen extends StatelessWidget {
+  const DashboardEmptyScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -49,8 +48,43 @@ class DashboardScreen extends StatelessWidget {
                   ),
                 ],
               ),
-              const SizedBox(height: Spacing.formLg),
-              const SphereCard(),
+              Expanded(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Column(
+                      children: [
+                        SvgPicture.asset(Asset.illustHouseEmptyPath),
+                        const SizedBox(height: Spacing.formLg),
+                        EBTypography.text(
+                          text: "You currently aren't joined to any barangay spheres. Let's change that!",
+                          muted: true,
+                          textAlign: TextAlign.center,
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: Spacing.formLg),
+                    SizedBox(
+                      width: double.infinity,
+                      child: EBButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            PageTransition(
+                              type: PageTransitionType.rightToLeft,
+                              child: const JoinBrgyScreen(),
+                            ),
+                          );
+                        },
+                        text: 'Get Started!',
+                        theme: 'primary',
+                      ),
+                    ),
+                    const SizedBox(height: Spacing.formLg),
+                    const SizedBox(height: Spacing.formLg),
+                  ],
+                ),
+              ),
             ],
           ),
         ),
@@ -141,18 +175,7 @@ class _SphereCardState extends State<SphereCard> {
               Column(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  EBButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          PageTransition(
-                            type: PageTransitionType.rightToLeft,
-                            child: const AnnouncementScreen(),
-                          ),
-                        );
-                      },
-                      text: 'View',
-                      theme: 'primary'),
+                  EBButton(onPressed: () {}, text: 'View', theme: 'primary'),
                 ],
               ),
             ],

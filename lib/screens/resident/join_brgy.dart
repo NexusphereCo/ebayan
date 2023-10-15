@@ -8,6 +8,7 @@ import 'package:ebayan/widgets/form.dart';
 import 'package:ebayan/widgets/top_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:page_transition/page_transition.dart';
 
 /*
   Authored by: Johcel Gene T. Bitara
@@ -53,7 +54,15 @@ class JoinBrgyScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         EBButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              PageTransition(
+                                type: PageTransitionType.rightToLeft,
+                                child: const DashboardScreen(),
+                              ),
+                            );
+                          },
                           text: 'Join',
                           theme: 'primary',
                         ),
