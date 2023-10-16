@@ -40,10 +40,13 @@ class RegisterScreen extends StatelessWidget {
                         EBTypography.h1(
                           text: 'Be part of a Barangay!',
                           color: EBColor.primary,
+                          maxLines: 2,
+                          textAlign: TextAlign.center,
                         ),
                         EBTypography.text(
                           text: 'Which user are you?',
                           muted: true,
+                          textAlign: TextAlign.center,
                         ),
                       ],
                     ),
@@ -71,7 +74,7 @@ class RegisterScreen extends StatelessWidget {
                           );
                         },
                         text: 'Barangay Resident',
-                        theme: 'primary',
+                        theme: EBButtonTheme.primary,
                       ),
                     ),
                     const SizedBox(height: Spacing.formMd),
@@ -88,7 +91,7 @@ class RegisterScreen extends StatelessWidget {
                           );
                         },
                         text: 'Barangay Official',
-                        theme: 'primary-outline',
+                        theme: EBButtonTheme.primaryOutlined,
                       ),
                     ),
                   ],

@@ -44,6 +44,7 @@ dependencies:
   just_the_tooltip: ^0.0.12
   shared_preferences: ^2.2.1
   font_awesome_flutter: ^10.5.0
+  auto_size_text: ^3.0.0
     
 flutter_native_splash:
     color: '#3336AB'

@@ -51,6 +51,8 @@ class _RegisterResidentScreenState extends State<RegisterResidentScreen> {
                       EBTypography.h1(
                         text: 'Be part of a Barangay!',
                         color: EBColor.primary,
+                        maxLines: 2,
+                        textAlign: TextAlign.center,
                       ),
                       Wrap(
                         alignment: WrapAlignment.center,
@@ -203,7 +205,7 @@ class _RegisterResidentScreenState extends State<RegisterResidentScreen> {
                       width: double.infinity,
                       child: EBButton(
                         text: 'Register',
-                        theme: 'primary',
+                        theme: EBButtonTheme.primary,
                         onPressed: () {
                           // NOTE: This is temporary
                           Future<void> createNewUser() async {
@@ -227,8 +229,10 @@ class _RegisterResidentScreenState extends State<RegisterResidentScreen> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        EBTypography.text(
-                          text: 'Already have an account? ',
+                        Flexible(
+                          child: EBTypography.text(
+                            text: 'Already have an account? ',
+                          ),
                         ),
                         TextButton(
                           onPressed: () {
@@ -240,10 +244,13 @@ class _RegisterResidentScreenState extends State<RegisterResidentScreen> {
                               ),
                             );
                           },
-                          child: EBTypography.text(
-                            text: 'login.',
-                            color: EBColor.primary,
-                            fontWeight: EBFontWeight.bold,
+                          style: ButtonStyle(padding: MaterialStateProperty.all(const EdgeInsets.all(0))),
+                          child: Flexible(
+                            child: EBTypography.text(
+                              text: 'login.',
+                              color: EBColor.primary,
+                              fontWeight: EBFontWeight.bold,
+                            ),
                           ),
                         ),
                       ],

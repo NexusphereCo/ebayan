@@ -39,9 +39,13 @@ class JoinBrgyScreen extends StatelessWidget {
                   children: [
                     SvgPicture.asset(Asset.illustHousesPath),
                     const SizedBox(height: Spacing.formLg),
-                    EBTypography.h3(text: 'Enter Barangay Sphere Code'),
+                    EBTypography.h3(
+                      text: 'Enter Barangay Sphere Code',
+                      textAlign: TextAlign.center,
+                    ),
                     EBTypography.text(
                       text: 'This code is disseminated by your barangay official',
+                      textAlign: TextAlign.center,
                       muted: true,
                     ),
                     const SizedBox(height: Spacing.formLg),
@@ -55,7 +59,7 @@ class JoinBrgyScreen extends StatelessWidget {
                         EBButton(
                           onPressed: () {},
                           text: 'Join',
-                          theme: 'primary',
+                          theme: EBButtonTheme.primary,
                         ),
                       ],
                     ),

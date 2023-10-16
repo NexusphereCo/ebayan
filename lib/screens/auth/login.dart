@@ -42,6 +42,8 @@ class _LoginScreenState extends State<LoginScreen> {
                   EBTypography.h1(
                     text: 'Welcome Back!',
                     color: EBColor.primary,
+                    maxLines: 2,
+                    textAlign: TextAlign.center,
                   ),
                   EBTypography.text(
                     text: 'Sign in to continue.',
@@ -93,7 +95,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     width: double.infinity,
                     child: EBButton(
                       text: 'Login',
-                      theme: 'primary',
+                      theme: EBButtonTheme.primary,
                       onPressed: () {},
                     ),
                   ),
@@ -101,7 +103,12 @@ class _LoginScreenState extends State<LoginScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      EBTypography.text(text: 'Don\'t have an account? '),
+                      Flexible(
+                        child: EBTypography.text(
+                          text: 'Don\'t have an account? ',
+                          cutOverflow: true,
+                        ),
+                      ),
                       TextButton(
                         onPressed: () {
                           Navigator.push(
@@ -112,10 +119,13 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                           );
                         },
-                        child: EBTypography.text(
-                          text: 'create a new account.',
-                          color: EBColor.primary,
-                          fontWeight: EBFontWeight.bold,
+                        style: ButtonStyle(padding: MaterialStateProperty.all(const EdgeInsets.all(0))),
+                        child: Flexible(
+                          child: EBTypography.text(
+                            text: 'create a new account.',
+                            color: EBColor.primary,
+                            fontWeight: EBFontWeight.bold,
+                          ),
                         ),
                       ),
                     ],
