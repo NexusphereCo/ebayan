@@ -5,9 +5,9 @@ import 'package:flutter/material.dart';
 class EBTheme {
   EBTheme._();
 
-  static TextTheme buildTextTheme() {
-    const baseTextStyle = TextStyle(fontFamily: 'Outfit');
+  static const baseTextStyle = TextStyle(fontFamily: 'Outfit');
 
+  static TextTheme buildTextTheme() {
     return const TextTheme(
       bodyLarge: baseTextStyle,
       bodyMedium: baseTextStyle,

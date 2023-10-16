@@ -90,12 +90,12 @@ class _MultiTextFieldState extends State<MultiTextField> {
       textStyle: const TextStyle(
         color: EBColor.primary,
         fontWeight: EBFontWeight.regular,
-        fontSize: 15,
+        fontSize: EBFontSize.label,
       ),
       hintStyle: TextStyle(
         color: EBColor.primary.withOpacity(0.5),
         fontWeight: EBFontWeight.regular,
-        fontSize: 15,
+        fontSize: EBFontSize.label,
       ),
       hintCharacter: '-',
       length: textFieldLength,

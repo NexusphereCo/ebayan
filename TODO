@@ -4,9 +4,9 @@ PRIORITY:
 -------
 TODO:
     [] add loading elements 
-    [] fix fonts from transitioning on default to custom font
 -------
 DONE:
+    [X] fix fonts from transitioning on default to custom font
     [X] explore and test button properties
     [X] add cards to a listview
     [X] fix responsiveness on some pages
