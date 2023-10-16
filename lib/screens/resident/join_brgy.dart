@@ -59,7 +59,7 @@ class JoinBrgyScreen extends StatelessWidget {
                         EBButton(
                           onPressed: () {},
                           text: 'Join',
-                          theme: 'primary',
+                          theme: EBButtonTheme.primary,
                         ),
                       ],
                     ),

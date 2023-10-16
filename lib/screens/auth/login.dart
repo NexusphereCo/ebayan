@@ -95,7 +95,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     width: double.infinity,
                     child: EBButton(
                       text: 'Login',
-                      theme: 'primary',
+                      theme: EBButtonTheme.primary,
                       onPressed: () {},
                     ),
                   ),

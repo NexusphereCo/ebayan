@@ -205,7 +205,7 @@ class _RegisterResidentScreenState extends State<RegisterResidentScreen> {
                       width: double.infinity,
                       child: EBButton(
                         text: 'Register',
-                        theme: 'primary',
+                        theme: EBButtonTheme.primary,
                         onPressed: () {
                           // NOTE: This is temporary
                           Future<void> createNewUser() async {

@@ -10,7 +10,7 @@ class EBColor {
   static const Color dark = Color(0xFF000000);
 
   static MaterialColor materialPrimary = const MaterialColor(
-    0xFF3336AB,
+    0xFF3336AB, // default
     <int, Color>{
       50: Color(0xFFF2F3FC), // Shade 50
       100: Color(0xFFD5D7F8), // Shade 100

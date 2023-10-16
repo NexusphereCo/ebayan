@@ -74,7 +74,7 @@ class RegisterScreen extends StatelessWidget {
                           );
                         },
                         text: 'Barangay Resident',
-                        theme: 'primary',
+                        theme: EBButtonTheme.primary,
                       ),
                     ),
                     const SizedBox(height: Spacing.formMd),
@@ -91,7 +91,7 @@ class RegisterScreen extends StatelessWidget {
                           );
                         },
                         text: 'Barangay Official',
-                        theme: 'primary-outline',
+                        theme: EBButtonTheme.primaryOutlined,
                       ),
                     ),
                   ],

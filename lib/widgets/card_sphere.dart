@@ -99,7 +99,7 @@ class _SphereCardState extends State<SphereCard> {
             Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                EBButton(onPressed: () {}, text: 'View', theme: 'primary'),
+                EBButton(onPressed: () {}, text: 'View', theme: EBButtonTheme.primary),
               ],
             ),
           ],

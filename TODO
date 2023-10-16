@@ -4,8 +4,10 @@ PRIORITY:
 -------
 TODO:
     [] add loading elements 
+    [] fix fonts from transitioning on default to custom font
 -------
 DONE:
+    [X] explore and test button properties
     [X] add cards to a listview
     [X] fix responsiveness on some pages
     [X] fix the overflow on sphere's card
