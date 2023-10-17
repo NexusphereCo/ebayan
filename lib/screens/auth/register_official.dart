@@ -3,7 +3,7 @@ import 'package:ebayan/constants/typography.dart';
 import 'package:ebayan/screens/auth/login.dart';
 import 'package:ebayan/screens/auth/register.dart';
 import 'package:ebayan/screens/resident/dashboard.dart';
-import 'package:ebayan/utils/dimens.dart';
+import 'package:ebayan/utils/style.dart';
 import 'package:ebayan/widgets/buttons.dart';
 import 'package:ebayan/widgets/footer.dart';
 import 'package:flutter/material.dart';

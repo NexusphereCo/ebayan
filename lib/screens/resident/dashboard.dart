@@ -1,6 +1,6 @@
 import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/constants/typography.dart';
-import 'package:ebayan/utils/dimens.dart';
+import 'package:ebayan/utils/style.dart';
 import 'package:ebayan/widgets/bottom_appbar.dart';
 import 'package:ebayan/widgets/card_sphere.dart';
 import 'package:ebayan/widgets/top_appbar.dart';
