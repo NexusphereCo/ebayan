@@ -1,8 +1,9 @@
 PRIORITY:
-    [] explore media query
+    [] implement backend for auth
 -------
 TODO:
     [] add loading elements 
+    [] explore media query
 -------
 DONE:
     [X] add a disable prop in forms
