@@ -4,6 +4,11 @@ PRIORITY:
 TODO:
     [] add loading elements 
     [] explore media query
+    [] Create button Sizes
+    [] Login Page (ListView)
+    [] Registration heading
+    [] Create Announcement [ListView.Builder]
+
 -------
 DONE:
     [X] add a disable prop in forms
