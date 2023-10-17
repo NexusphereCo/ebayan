@@ -1,8 +1,9 @@
 import 'package:ebayan/constants/assets.dart';
 import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/constants/typography.dart';
+import 'package:ebayan/screens/resident/announcement_list.dart';
 import 'package:ebayan/screens/resident/join_brgy.dart';
-import 'package:ebayan/utils/dimens.dart';
+import 'package:ebayan/utils/style.dart';
 import 'package:ebayan/widgets/bottom_appbar.dart';
 import 'package:ebayan/widgets/buttons.dart';
 import 'package:ebayan/widgets/top_appbar.dart';
@@ -77,7 +78,7 @@ class DashboardEmptyScreen extends StatelessWidget {
                           );
                         },
                         text: 'Get Started!',
-                        theme: 'primary',
+                        theme: EBButtonTheme.primary,
                       ),
                     ),
                     const SizedBox(height: Spacing.formLg),
@@ -175,7 +176,18 @@ class _SphereCardState extends State<SphereCard> {
               Column(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  EBButton(onPressed: () {}, text: 'View', theme: 'primary'),
+                  EBButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          PageTransition(
+                            type: PageTransitionType.rightToLeft,
+                            child: const AnnouncementScreen(),
+                          ),
+                        );
+                      },
+                      text: 'View',
+                      theme: EBButtonTheme.primary),
                 ],
               ),
             ],
