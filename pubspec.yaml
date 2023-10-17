@@ -37,13 +37,15 @@ dependencies:
 
   flutter_native_splash: ^2.3.2
   feather_icons: ^1.2.0
-  google_fonts: ^6.1.0
   flutter_svg: ^2.0.7
   page_transition: ^2.1.0
   pin_code_fields: ^8.0.1
   just_the_tooltip: ^0.0.12
   shared_preferences: ^2.2.1
   font_awesome_flutter: ^10.5.0
+  auto_size_text: ^3.0.0
+  firebase_core: ^2.17.0
+  firebase_auth: ^4.10.1
     
 flutter_native_splash:
     color: '#3336AB'
@@ -91,6 +93,17 @@ flutter:
     - family: EBIcons
       fonts:
         - asset: assets/fonts/ebayan/ebayan.ttf
+    - family: Outfit
+      fonts: 
+        - asset: assets/fonts/outfit/Outfit-Black.ttf
+        - asset: assets/fonts/outfit/Outfit-Bold.ttf
+        - asset: assets/fonts/outfit/Outfit-ExtraBold.ttf
+        - asset: assets/fonts/outfit/Outfit-ExtraLight.ttf
+        - asset: assets/fonts/outfit/Outfit-Light.ttf
+        - asset: assets/fonts/outfit/Outfit-Medium.ttf
+        - asset: assets/fonts/outfit/Outfit-Regular.ttf
+        - asset: assets/fonts/outfit/Outfit-SemiBold.ttf
+        - asset: assets/fonts/outfit/Outfit-Thin.ttf
   # #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

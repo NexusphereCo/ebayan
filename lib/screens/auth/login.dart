@@ -1,7 +1,7 @@
 import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/constants/typography.dart';
 import 'package:ebayan/screens/auth/register.dart';
-import 'package:ebayan/utils/dimens.dart';
+import 'package:ebayan/utils/style.dart';
 import 'package:ebayan/widgets/buttons.dart';
 import 'package:ebayan/widgets/footer.dart';
 import 'package:flutter/material.dart';
@@ -30,103 +30,111 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: Padding(
-          padding: const EdgeInsets.all(Global.paddingBody),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Column(
-                children: [
-                  EBTypography.h1(
-                    text: 'Welcome Back!',
-                    color: EBColor.primary,
+    return Scaffold(
+      body: Padding(
+        padding: const EdgeInsets.all(Global.paddingBody),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Column(
+              children: [
+                EBTypography.h1(
+                  text: 'Welcome Back!',
+                  color: EBColor.primary,
+                  maxLines: 2,
+                  textAlign: TextAlign.center,
+                ),
+                EBTypography.text(
+                  text: 'Sign in to continue.',
+                  muted: true,
+                ),
+              ],
+            ),
+            const SizedBox(height: Spacing.formMd),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                const EBTextBox(
+                  label: 'Username',
+                  icon: FeatherIcons.user,
+                  textField: EBTextField(
+                    placeholder: 'Enter your username',
+                    type: TextInputType.text,
                   ),
-                  EBTypography.text(
-                    text: 'Sign in to continue.',
-                    muted: true,
-                  ),
-                ],
-              ),
-              const SizedBox(height: Spacing.formMd),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  const EBTextBox(
-                    label: 'Username',
-                    icon: FeatherIcons.user,
-                    textField: EBTextField(
-                      placeholder: 'Enter your username',
-                      type: TextInputType.text,
+                ),
+                const SizedBox(height: Spacing.formMd),
+                EBTextBox(
+                  label: 'Password',
+                  icon: FeatherIcons.lock,
+                  textField: EBTextField(
+                    placeholder: 'Enter your password',
+                    type: TextInputType.text,
+                    obscureText: _showPassword ? false : true,
+                    suffixIconButton: IconButton(
+                      icon: _showPassword ? const Icon(FeatherIcons.eye) : const Icon(FeatherIcons.eyeOff),
+                      onPressed: () {
+                        setState(() {
+                          _showPassword = !_showPassword;
+                        });
+                      },
                     ),
                   ),
-                  const SizedBox(height: Spacing.formMd),
-                  EBTextBox(
-                    label: 'Password',
-                    icon: FeatherIcons.lock,
-                    textField: EBTextField(
-                      placeholder: 'Enter your password',
-                      type: TextInputType.text,
-                      obscureText: _showPassword ? false : true,
-                      suffixIconButton: IconButton(
-                        icon: _showPassword ? const Icon(FeatherIcons.eye) : const Icon(FeatherIcons.eyeOff),
-                        onPressed: () {
-                          setState(() {
-                            _showPassword = !_showPassword;
-                          });
-                        },
+                ),
+                const SizedBox(height: Spacing.formSm),
+                TextButton(
+                  onPressed: () {},
+                  child: EBTypography.text(
+                    text: 'Forgot Password?',
+                    color: EBColor.primary,
+                    fontWeight: EBFontWeight.bold,
+                  ),
+                ),
+                const SizedBox(height: Spacing.formMd),
+                SizedBox(
+                  width: double.infinity,
+                  child: EBButton(
+                    text: 'Login',
+                    theme: EBButtonTheme.primary,
+                    onPressed: () {},
+                  ),
+                ),
+                const SizedBox(height: Spacing.formSm),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Flexible(
+                      child: EBTypography.text(
+                        text: 'Don\'t have an account? ',
+                        cutOverflow: true,
                       ),
                     ),
-                  ),
-                  const SizedBox(height: Spacing.formSm),
-                  TextButton(
-                    onPressed: () {},
-                    child: EBTypography.text(
-                      text: 'Forgot Password?',
-                      color: EBColor.primary,
-                      fontWeight: EBFontWeight.bold,
-                    ),
-                  ),
-                  const SizedBox(height: Spacing.formMd),
-                  SizedBox(
-                    width: double.infinity,
-                    child: EBButton(
-                      text: 'Login',
-                      theme: 'primary',
-                      onPressed: () {},
-                    ),
-                  ),
-                  const SizedBox(height: Spacing.formSm),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      EBTypography.text(text: 'Don\'t have an account? '),
-                      TextButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            PageTransition(
-                              type: PageTransitionType.rightToLeft,
-                              child: const RegisterScreen(),
-                            ),
-                          );
-                        },
+                    TextButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          PageTransition(
+                            type: PageTransitionType.rightToLeft,
+                            child: const RegisterScreen(),
+                          ),
+                        );
+                      },
+                      style: ButtonStyle(padding: MaterialStateProperty.all(const EdgeInsets.all(0))),
+                      child: Flexible(
                         child: EBTypography.text(
                           text: 'create a new account.',
                           color: EBColor.primary,
                           fontWeight: EBFontWeight.bold,
                         ),
                       ),
-                    ],
-                  ),
-                ],
-              ),
-            ],
-          ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ],
         ),
-        bottomNavigationBar: const EBFooter(),
       ),
+      bottomNavigationBar: const EBFooter(),
     );
   }
 }

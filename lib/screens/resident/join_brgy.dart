@@ -1,7 +1,7 @@
 import 'package:ebayan/constants/assets.dart';
 import 'package:ebayan/constants/typography.dart';
 import 'package:ebayan/screens/resident/dashboard.dart';
-import 'package:ebayan/utils/dimens.dart';
+import 'package:ebayan/utils/style.dart';
 import 'package:ebayan/widgets/bottom_appbar.dart';
 import 'package:ebayan/widgets/buttons.dart';
 import 'package:ebayan/widgets/form.dart';
@@ -25,57 +25,51 @@ class JoinBrgyScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: const EBTopAppBar(),
-        drawer: const EBDrawer(),
-        body: Padding(
-          padding: const EdgeInsets.all(Global.paddingBody),
-          child: Column(
-            children: [
-              const EBBackButton(screenDestination: DashboardScreen()),
-              Expanded(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SvgPicture.asset(Asset.illustHousesPath),
-                    const SizedBox(height: Spacing.formLg),
-                    EBTypography.h3(text: 'Enter Barangay Sphere Code'),
-                    EBTypography.text(
-                      text: 'This code is disseminated by your barangay official',
-                      muted: true,
-                    ),
-                    const SizedBox(height: Spacing.formLg),
-                    MultiTextField(
-                      onCompleted: (val) {},
-                      onChanged: (val) {},
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        EBButton(
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              PageTransition(
-                                type: PageTransitionType.rightToLeft,
-                                child: const DashboardScreen(),
-                              ),
-                            );
-                          },
-                          text: 'Join',
-                          theme: 'primary',
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
+    return Scaffold(
+      appBar: const EBTopAppBar(),
+      drawer: const EBDrawer(),
+      body: Padding(
+        padding: const EdgeInsets.all(Global.paddingBody),
+        child: Column(
+          children: [
+            const EBBackButton(screenDestination: DashboardScreen()),
+            Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SvgPicture.asset(Asset.illustHousesPath),
+                  const SizedBox(height: Spacing.formLg),
+                  EBTypography.h3(
+                    text: 'Enter Barangay Sphere Code',
+                    textAlign: TextAlign.center,
+                  ),
+                  EBTypography.text(
+                    text: 'This code is disseminated by your barangay official',
+                    textAlign: TextAlign.center,
+                    muted: true,
+                  ),
+                  const SizedBox(height: Spacing.formLg),
+                  MultiTextField(
+                    onCompleted: (val) {},
+                    onChanged: (val) {},
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      EBButton(
+                        onPressed: () {},
+                        text: 'Join',
+                        theme: EBButtonTheme.primary,
+                      ),
+                    ],
+                  ),
+                ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
-        bottomNavigationBar: const EBBottomAppBar(),
       ),
+      bottomNavigationBar: const EBBottomAppBar(),
     );
   }
 }

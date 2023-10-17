@@ -1,9 +1,17 @@
 PRIORITY:
-    [] fix the notch covering body
+    [] implement backend for auth
 -------
 TODO:
+    [] add loading elements 
+    [] explore media query
 -------
 DONE:
+    [X] add a disable prop in forms
+    [X] be able to make the notification bar background adaptive to the colors of the app
+    [X] fix fonts from transitioning on default to custom font
+    [X] explore and test button properties
+    [X] add cards to a listview
+    [X] fix responsiveness on some pages
     [X] fix the overflow on sphere's card
     [X] fix _ convention on constructors
     [X] use semantics i.e. (Form)
@@ -23,3 +31,4 @@ DONE:
     [X] check if linear is possible on splashscreen
     [X] implement tutorial
     [x] prevent footer/bottomappbar from showing on top of keyboard (when keyboard is shown)
+    [X] use auto_size_text

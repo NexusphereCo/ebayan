@@ -4,6 +4,21 @@ import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 
+enum EBButtonTheme {
+  primary,
+  primaryOutlined,
+  secondary,
+  secondaryOutlined,
+  warning,
+  warningOutlined,
+  danger,
+  dangerOutlined,
+  light,
+  lightOutlined,
+  dark,
+  darkOutlined,
+}
+
 class EBBackButton extends StatelessWidget {
   final Widget screenDestination;
 
@@ -36,66 +51,113 @@ class EBBackButton extends StatelessWidget {
 
 class EBButton extends StatelessWidget {
   final String text;
-  final String theme;
+  final Icon? icon;
+  final EBButtonTheme theme;
   final VoidCallback onPressed;
+
+  // Array of themes in their categories
+  final defaultThemes = {
+    EBButtonTheme.primary,
+    EBButtonTheme.secondary,
+    EBButtonTheme.warning,
+    EBButtonTheme.danger,
+    EBButtonTheme.light,
+    EBButtonTheme.dark,
+  };
+  final outlineThemes = {
+    EBButtonTheme.primaryOutlined,
+    EBButtonTheme.secondaryOutlined,
+    EBButtonTheme.warningOutlined,
+    EBButtonTheme.dangerOutlined,
+    EBButtonTheme.lightOutlined,
+    EBButtonTheme.darkOutlined,
+  };
 
   // styling
   final double _borderRadius = 50.0;
   final double _paddingX = 32.0;
   final double _paddingY = 18.0;
 
-  const EBButton({
+  EBButton({
     Key? key,
     required this.onPressed,
     required this.text,
     required this.theme,
+    this.icon,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    ButtonStyle fillButtonStyle = ElevatedButton.styleFrom(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(_borderRadius),
-      ),
-      padding: EdgeInsets.symmetric(horizontal: _paddingX, vertical: _paddingY),
-      elevation: 0,
-      backgroundColor: _setColor(theme),
-    );
+    ButtonStyleButton button;
 
-    ButtonStyle outlineButtonStyle = ElevatedButton.styleFrom(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(_borderRadius),
-        side: BorderSide(color: _setColor(theme)),
-      ),
-      backgroundColor: EBColor.light,
-      padding: EdgeInsets.symmetric(
-        horizontal: _paddingX,
-        vertical: _paddingY,
-      ),
-      elevation: 0,
-    );
+    final btnPadding = EdgeInsets.symmetric(horizontal: _paddingX, vertical: _paddingY);
+    final btnShape = RoundedRectangleBorder(borderRadius: BorderRadius.circular(_borderRadius));
+    const textIconSpacing = 6.0;
 
-    return ElevatedButton(
-      onPressed: onPressed,
-      style: !theme.contains('outline') ? fillButtonStyle : outlineButtonStyle,
-      child: EBTypography.text(
-        text: text,
-        color: theme.contains('outline') ? _setColor(theme) : EBColor.light,
-      ),
-    );
+    // regular button
+    if (defaultThemes.contains(theme)) {
+      // apply the default styles
+      button = ElevatedButton(
+        onPressed: onPressed,
+        style: ElevatedButton.styleFrom(
+          shape: btnShape,
+          padding: btnPadding,
+          elevation: 0,
+          backgroundColor: _setColor(theme),
+        ),
+        child: Wrap(
+          crossAxisAlignment: WrapCrossAlignment.center,
+          spacing: textIconSpacing,
+          children: [
+            EBTypography.text(
+              text: text,
+              color: EBColor.light,
+            ),
+            if (icon != null) Container(child: icon),
+          ],
+        ),
+      );
+    }
+    // outlined button
+    else {
+      // apply the outline button styles
+      button = OutlinedButton(
+        onPressed: onPressed,
+        style: OutlinedButton.styleFrom(
+          side: BorderSide(color: _setColor(theme)),
+          shape: btnShape,
+          foregroundColor: _setColor(theme),
+          backgroundColor: Colors.transparent,
+          padding: btnPadding,
+          elevation: 0,
+        ),
+        child: Wrap(
+          crossAxisAlignment: WrapCrossAlignment.center,
+          spacing: textIconSpacing,
+          children: [
+            EBTypography.text(
+              text: text,
+              color: _setColor(theme),
+            ),
+            if (icon != null) Container(child: icon),
+          ],
+        ),
+      );
+    }
+    return button;
   }
 
-  Color _setColor(String theme) {
+  Color _setColor(EBButtonTheme theme) {
     switch (theme) {
-      case 'primary' || 'primary-outline':
+      case EBButtonTheme.primary || EBButtonTheme.primaryOutlined:
         return EBColor.primary;
-      case 'dark' || 'dark-outline':
+      case EBButtonTheme.dark || EBButtonTheme.darkOutlined:
         return EBColor.dark;
-      case 'light':
+      case EBButtonTheme.light || EBButtonTheme.lightOutlined:
         return EBColor.light;
-      case 'warning':
+      case EBButtonTheme.warning || EBButtonTheme.warningOutlined:
         return EBColor.warning;
-      case 'danger':
+      case EBButtonTheme.danger || EBButtonTheme.dangerOutlined:
         return EBColor.danger;
       default:
         return EBColor.dark;
