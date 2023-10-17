@@ -5,6 +5,7 @@ TODO:
     [] add loading elements 
 -------
 DONE:
+    [X] add a disable prop in forms
     [X] be able to make the notification bar background adaptive to the colors of the app
     [X] fix fonts from transitioning on default to custom font
     [X] explore and test button properties

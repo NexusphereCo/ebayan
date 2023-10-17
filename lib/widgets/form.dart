@@ -9,6 +9,7 @@ class EBTextField extends StatelessWidget {
   final TextInputType type;
 
   final int? maxLength;
+  final bool? enabled;
   final bool? obscureText;
   final Icon? suffixIcon;
   final IconButton? suffixIconButton;
@@ -23,6 +24,7 @@ class EBTextField extends StatelessWidget {
     this.suffixIconButton,
     this.maxLength,
     this.validator,
+    this.enabled,
   });
 
   @override
@@ -30,19 +32,27 @@ class EBTextField extends StatelessWidget {
     const borderRadius = 8.0;
 
     return TextFormField(
+      enabled: enabled,
       keyboardType: TextInputType.text,
       obscureText: obscureText ?? false,
       decoration: InputDecoration(
-          border: const OutlineInputBorder(
-            borderRadius: BorderRadius.all(Radius.circular(borderRadius)),
-          ),
-          contentPadding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
-          hintText: placeholder,
-          counterText: null,
-          suffixIcon: Padding(
-            padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),
-            child: (suffixIcon == null ? false : true) ? suffixIcon : suffixIconButton,
-          )),
+        filled: true,
+        fillColor: (!(enabled ?? true)) ? EBColor.materialPrimary[100] : Colors.transparent,
+        border: const OutlineInputBorder(
+          borderRadius: BorderRadius.all(Radius.circular(borderRadius)),
+        ),
+        disabledBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: EBColor.dark.withOpacity(0.5), width: 1),
+          borderRadius: const BorderRadius.all(Radius.circular(borderRadius)),
+        ),
+        contentPadding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
+        hintText: placeholder,
+        counterText: null,
+        suffixIcon: Padding(
+          padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),
+          child: (suffixIcon == null ? false : true) ? suffixIcon : suffixIconButton,
+        ),
+      ),
       maxLength: maxLength,
       validator: validator,
     );
