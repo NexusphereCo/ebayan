@@ -1,12 +1,14 @@
 import 'package:ebayan/constants/assets.dart';
 import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/constants/typography.dart';
+import 'package:ebayan/screens/resident/announcement_list.dart';
 import 'package:ebayan/utils/style.dart';
 import 'package:ebayan/widgets/buttons.dart';
 import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:page_transition/page_transition.dart';
 
 enum CardOptions { itemOne, itemTwo, itemThree }
 
@@ -99,7 +101,18 @@ class _SphereCardState extends State<SphereCard> {
             Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                EBButton(onPressed: () {}, text: 'View', theme: EBButtonTheme.primary),
+                EBButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        PageTransition(
+                          type: PageTransitionType.rightToLeft,
+                          child: const AnnouncementScreen(),
+                        ),
+                      );
+                    },
+                    text: 'View',
+                    theme: EBButtonTheme.primary),
               ],
             ),
           ],
