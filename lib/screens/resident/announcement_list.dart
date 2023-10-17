@@ -1,7 +1,8 @@
 import 'dart:math';
 import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/constants/typography.dart';
-import 'package:ebayan/utils/dimens.dart';
+import 'package:ebayan/utils/style.dart';
+import 'package:ebayan/widgets/bottom_appbar.dart';
 import 'package:ebayan/widgets/buttons.dart';
 import 'package:ebayan/widgets/top_appbar.dart';
 import 'package:feather_icons/feather_icons.dart';
@@ -61,6 +62,7 @@ class AnnouncementScreen extends StatelessWidget {
           ),
         ],
       ),
+      bottomNavigationBar: const EBBottomAppBar(),
     );
   }
 }
@@ -77,21 +79,27 @@ class AnnouncementCard extends StatelessWidget {
       decoration: BoxDecoration(color: EBColor.materialPrimary.shade200, borderRadius: BorderRadius.circular(15.0), border: Border.all(width: 3, color: EBColor.primary)),
       child: Expanded(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20.0),
+          padding: const EdgeInsets.symmetric(horizontal: 10.0),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  EBTypography.h4(text: "Barangay Community", color: EBColor.primary),
-                  EBTypography.h4(text: "Potluck Picnic: Let's", color: EBColor.primary),
-                  EBTypography.h4(text: "Celebrate Together!", color: EBColor.primary),
-                  EBTypography.small(text: 'September 10, 2034', color: EBColor.dark, muted: true),
-                ],
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    EBTypography.h4(
+                      text: "Barangay Community Potluck Picnic: Let's Celebrate Together!",
+                      color: EBColor.primary,
+                      cutOverflow: true,
+                      maxLines: 3,
+                    ),
+                    EBTypography.small(text: 'September 10, 2034', color: EBColor.dark, muted: true),
+                  ],
+                ),
               ),
+              const SizedBox(width: Spacing.formLg),
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -106,7 +114,7 @@ class AnnouncementCard extends StatelessWidget {
                         );
                       },
                       text: 'View',
-                      theme: 'primary'),
+                      theme: EBButtonTheme.primary),
                 ],
               ),
             ],
