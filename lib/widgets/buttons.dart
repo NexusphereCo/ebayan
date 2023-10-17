@@ -51,6 +51,7 @@ class EBBackButton extends StatelessWidget {
 
 class EBButton extends StatelessWidget {
   final String text;
+  final Icon? icon;
   final EBButtonTheme theme;
   final VoidCallback onPressed;
 
@@ -82,6 +83,7 @@ class EBButton extends StatelessWidget {
     required this.onPressed,
     required this.text,
     required this.theme,
+    this.icon,
   }) : super(key: key);
 
   @override
@@ -90,6 +92,7 @@ class EBButton extends StatelessWidget {
 
     final btnPadding = EdgeInsets.symmetric(horizontal: _paddingX, vertical: _paddingY);
     final btnShape = RoundedRectangleBorder(borderRadius: BorderRadius.circular(_borderRadius));
+    const textIconSpacing = 6.0;
 
     // regular button
     if (defaultThemes.contains(theme)) {
@@ -102,9 +105,16 @@ class EBButton extends StatelessWidget {
           elevation: 0,
           backgroundColor: _setColor(theme),
         ),
-        child: EBTypography.text(
-          text: text,
-          color: EBColor.light,
+        child: Wrap(
+          crossAxisAlignment: WrapCrossAlignment.center,
+          spacing: textIconSpacing,
+          children: [
+            EBTypography.text(
+              text: text,
+              color: EBColor.light,
+            ),
+            if (icon != null) Container(child: icon),
+          ],
         ),
       );
     }
@@ -121,9 +131,16 @@ class EBButton extends StatelessWidget {
           padding: btnPadding,
           elevation: 0,
         ),
-        child: EBTypography.text(
-          text: text,
-          color: _setColor(theme),
+        child: Wrap(
+          crossAxisAlignment: WrapCrossAlignment.center,
+          spacing: textIconSpacing,
+          children: [
+            EBTypography.text(
+              text: text,
+              color: _setColor(theme),
+            ),
+            if (icon != null) Container(child: icon),
+          ],
         ),
       );
     }
