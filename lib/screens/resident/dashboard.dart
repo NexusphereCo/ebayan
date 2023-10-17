@@ -24,84 +24,82 @@ class DashboardScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: const EBTopAppBar(),
-        drawer: const EBDrawer(),
-        body: Column(
-          children: [
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.all(Global.paddingBody),
-                child: ListView(
-                  children: [
-                    Wrap(
-                      alignment: WrapAlignment.center,
-                      children: [
-                        EBTypography.h1(text: 'Welcome Back, '),
-                        EBTypography.h1(
-                          text: 'Jane!',
-                          color: EBColor.primary,
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: Spacing.formLg),
-                    const SphereCard(),
-                    const SizedBox(height: Spacing.formMd),
-                    const SphereCard(),
-                    const SizedBox(height: Spacing.formMd),
-                    const SphereCard(),
-                    const SizedBox(height: Spacing.formLg),
-                    const SphereCard(),
-                    const SizedBox(height: Spacing.formMd),
-                    const SphereCard(),
-                    const SizedBox(height: Spacing.formMd),
-                    const SphereCard(),
-                  ],
-                ),
+    return Scaffold(
+      appBar: const EBTopAppBar(),
+      drawer: const EBDrawer(),
+      body: Column(
+        children: [
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.all(Global.paddingBody),
+              child: ListView(
+                children: [
+                  Wrap(
+                    alignment: WrapAlignment.center,
+                    children: [
+                      EBTypography.h1(text: 'Welcome Back, '),
+                      EBTypography.h1(
+                        text: 'Jane!',
+                        color: EBColor.primary,
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: Spacing.formLg),
+                  const SphereCard(),
+                  const SizedBox(height: Spacing.formMd),
+                  const SphereCard(),
+                  const SizedBox(height: Spacing.formMd),
+                  const SphereCard(),
+                  const SizedBox(height: Spacing.formLg),
+                  const SphereCard(),
+                  const SizedBox(height: Spacing.formMd),
+                  const SphereCard(),
+                  const SizedBox(height: Spacing.formMd),
+                  const SphereCard(),
+                ],
               ),
             ),
-            // Expanded(
-            //   child: Column(
-            //     mainAxisAlignment: MainAxisAlignment.center,
-            //     children: [
-            //       Column(
-            //         children: [
-            //           SvgPicture.asset(Asset.illustHouseEmptyPath),
-            //           const SizedBox(height: Spacing.formLg),
-            //           EBTypography.text(
-            //             text: "You currently aren't joined to any barangay spheres. Let's change that!",
-            //             muted: true,
-            //             textAlign: TextAlign.center,
-            //           ),
-            //         ],
-            //       ),
-            //       const SizedBox(height: Spacing.formLg),
-            //       SizedBox(
-            //         width: double.infinity,
-            //         child: EBButton(
-            //           onPressed: () {
-            //             Navigator.push(
-            //               context,
-            //               PageTransition(
-            //                 type: PageTransitionType.rightToLeft,
-            //                 child: const JoinBrgyScreen(),
-            //               ),
-            //             );
-            //           },
-            //           text: 'Get Started!',
-            //           theme: 'primary',
-            //         ),
-            //       ),
-            //       const SizedBox(height: Spacing.formLg),
-            //       const SizedBox(height: Spacing.formLg),
-            //     ],
-            //   ),
-            // ),
-          ],
-        ),
-        bottomNavigationBar: const EBBottomAppBar(),
+          ),
+          // Expanded(
+          //   child: Column(
+          //     mainAxisAlignment: MainAxisAlignment.center,
+          //     children: [
+          //       Column(
+          //         children: [
+          //           SvgPicture.asset(Asset.illustHouseEmptyPath),
+          //           const SizedBox(height: Spacing.formLg),
+          //           EBTypography.text(
+          //             text: "You currently aren't joined to any barangay spheres. Let's change that!",
+          //             muted: true,
+          //             textAlign: TextAlign.center,
+          //           ),
+          //         ],
+          //       ),
+          //       const SizedBox(height: Spacing.formLg),
+          //       SizedBox(
+          //         width: double.infinity,
+          //         child: EBButton(
+          //           onPressed: () {
+          //             Navigator.push(
+          //               context,
+          //               PageTransition(
+          //                 type: PageTransitionType.rightToLeft,
+          //                 child: const JoinBrgyScreen(),
+          //               ),
+          //             );
+          //           },
+          //           text: 'Get Started!',
+          //           theme: 'primary',
+          //         ),
+          //       ),
+          //       const SizedBox(height: Spacing.formLg),
+          //       const SizedBox(height: Spacing.formLg),
+          //     ],
+          //   ),
+          // ),
+        ],
       ),
+      bottomNavigationBar: const EBBottomAppBar(),
     );
   }
 }
