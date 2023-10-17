@@ -37,7 +37,7 @@ class _RegisterOfficialScreenState extends State<RegisterOfficialScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView(
-        padding: const EdgeInsets.all(Global.paddingBody),
+        padding: const EdgeInsets.symmetric(horizontal: Global.paddingBody),
         children: [
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,

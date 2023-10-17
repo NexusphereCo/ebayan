@@ -229,7 +229,7 @@ class _RegisterResidentScreenState extends State<RegisterResidentScreen> with Si
           children: [
             Expanded(
               child: Padding(
-                padding: const EdgeInsets.all(Global.paddingBody),
+                padding: const EdgeInsets.symmetric(horizontal: Global.paddingBody),
                 child: Column(
                   children: [
                     const SafeArea(child: EBBackButton(screenDestination: RegisterScreen())),
