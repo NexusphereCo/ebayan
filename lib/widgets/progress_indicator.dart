@@ -1,11 +1,11 @@
 import 'package:ebayan/constants/colors.dart';
 import 'package:flutter/material.dart';
 
-class ProgressIndicator extends StatelessWidget {
+class EBProgressIndicator extends StatelessWidget {
   final int currentIndex;
   final int length;
 
-  const ProgressIndicator({
+  const EBProgressIndicator({
     Key? key,
     required this.currentIndex,
     required this.length,
