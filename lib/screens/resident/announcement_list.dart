@@ -46,7 +46,7 @@ class AnnouncementScreen extends StatelessWidget {
                   const Divider(
                     color: EBColor.primary,
                     height: 25,
-                    thickness: 2,
+                    thickness: 1.5,
                     indent: 5,
                     endIndent: 5,
                   ),
@@ -76,7 +76,14 @@ class AnnouncementCard extends StatelessWidget {
       width: double.infinity,
       height: 125,
       margin: const EdgeInsets.only(bottom: 15.0),
-      decoration: BoxDecoration(color: EBColor.materialPrimary.shade200, borderRadius: BorderRadius.circular(15.0), border: Border.all(width: 3, color: EBColor.primary)),
+      decoration: BoxDecoration(
+        color: EBColor.materialPrimary.shade200,
+        borderRadius: BorderRadius.circular(15.0),
+        border: Border.all(
+          width: 2,
+          color: EBColor.primary,
+        ),
+      ),
       child: Expanded(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10.0),
@@ -131,37 +138,62 @@ class SphereInfoCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 80,
-      padding: const EdgeInsets.all(20.0),
-      decoration: BoxDecoration(color: EBColor.materialPrimary.shade200, borderRadius: BorderRadius.circular(15.0), border: Border.all(width: 3, color: EBColor.primary)),
+      height: 117,
+      padding: const EdgeInsets.all(15.0),
+      decoration: BoxDecoration(
+        color: EBColor.materialPrimary.shade200,
+        borderRadius: BorderRadius.circular(15.0),
+        border: Border.all(
+          width: 2,
+          color: EBColor.primary,
+        ),
+      ),
       child: Expanded(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                EBTypography.h4(text: 'San Felipe, Naga City', color: EBColor.dark),
-              ],
-            ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
+            EBTypography.h4(text: 'San Felipe, Naga City', color: EBColor.dark),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Row(
                   children: [
-                    EBTypography.small(text: '42', color: EBColor.primary),
-                    const SizedBox(width: 5),
-                    const Icon(
-                      FeatherIcons.user,
-                      size: 16,
-                      color: EBColor.primary,
+                    Column(
+                      children: [
+                        IconButton(
+                          padding: const EdgeInsets.only(right: 5.0),
+                          icon: const Icon(FeatherIcons.copy),
+                          onPressed: () {},
+                        ),
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        EBTypography.text(text: 'BSF-09124A', color: EBColor.dark),
+                        EBTypography.small(text: 'Copy this code', color: EBColor.dark),
+                      ],
+                    ),
+                  ],
+                ),
+                Column(
+                  children: [
+                    Row(
+                      children: [
+                        EBTypography.small(text: '42', color: EBColor.primary),
+                        const SizedBox(width: 5),
+                        const Icon(
+                          FeatherIcons.user,
+                          size: 20,
+                          color: EBColor.primary,
+                        ),
+                      ],
                     ),
                   ],
                 ),
               ],
-            ),
+            )
           ],
         ),
       ),
