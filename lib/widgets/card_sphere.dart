@@ -27,7 +27,7 @@ class _SphereCardState extends State<SphereCard> {
   Widget _cardHeader() {
     return Container(
       width: double.infinity,
-      height: 125,
+      height: 110,
       color: EBColor.primary,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10.0),
@@ -168,32 +168,35 @@ class _SphereCardState extends State<SphereCard> {
     var decoration = BoxDecoration(
       borderRadius: BorderRadius.circular(15.0),
       border: Border.all(
-        width: 3,
+        width: 2,
         color: EBColor.primary,
       ),
     );
 
     const borderRadius = BorderRadius.only(
-      bottomLeft: Radius.circular(15.0),
-      bottomRight: Radius.circular(15.0),
-      topLeft: Radius.circular(5.0),
-      topRight: Radius.circular(5.0),
+      bottomLeft: Radius.circular(12.5),
+      bottomRight: Radius.circular(12.5),
+      topLeft: Radius.circular(12.5),
+      topRight: Radius.circular(12.5),
     );
 
     return Container(
       decoration: decoration,
-      child: ClipRRect(
-        borderRadius: borderRadius,
-        child: Stack(
-          children: [
-            Column(
-              children: [
-                _cardHeader(),
-                _cardFooter(),
-              ],
-            ),
-            _cardOption(),
-          ],
+      margin: const EdgeInsets.only(bottom: 15.0),
+      child: Expanded(
+        child: ClipRRect(
+          borderRadius: borderRadius,
+          child: Stack(
+            children: [
+              Column(
+                children: [
+                  _cardHeader(),
+                  _cardFooter(),
+                ],
+              ),
+              _cardOption(),
+            ],
+          ),
         ),
       ),
     );
