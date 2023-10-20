@@ -111,17 +111,19 @@ class AnnouncementCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   EBButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          PageTransition(
-                            type: PageTransitionType.rightToLeft,
-                            child: const AnnouncementScreen(),
-                          ),
-                        );
-                      },
-                      text: 'View',
-                      theme: EBButtonTheme.primary),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        PageTransition(
+                          type: PageTransitionType.rightToLeft,
+                          child: const AnnouncementScreen(),
+                        ),
+                      );
+                    },
+                    text: 'View',
+                    theme: EBButtonTheme.primary,
+                    size: EBButtonSize.sm,
+                  ),
                 ],
               ),
             ],

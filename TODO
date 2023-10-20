@@ -1,18 +1,19 @@
 PRIORITY:
-    [] fix the tab footer to not show up
-    [] implement backend for auth
+    [] add loading elements 
+    
 -------
 TODO:
-    [] add loading elements 
     [] explore media query
-    [] Create button Sizes
     [] Login Page (ListView)
     [] Registration heading
     [] Create Announcement [ListView.Builder]
-    [] BottomNavBar
 
 -------
 DONE:
+    [X] implement backend for login
+    [X] Create button Sizes
+    [X] BottomNavBar
+    [X] fix the tab footer to not show up
     [X] change form design (floating label)
     [X] make the length to 5 (pintextbox)
     [X] add a disable prop in forms
