@@ -2,22 +2,28 @@ import 'package:ebayan/constants/theme.dart';
 import 'package:ebayan/screens/auth/login.dart';
 import 'package:ebayan/utils/global.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  final SharedPreferences prefs = await SharedPreferences.getInstance();
 
   setSystemUIOverlayStyle();
   await setPreferredOrientations();
+  await firebaseInit();
 
-  runApp(InitApp(prefs: prefs));
+  runApp(const InitApp());
+}
+
+Future<FirebaseApp> firebaseInit() async {
+  return await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
 }
 
 class InitApp extends StatelessWidget {
-  final SharedPreferences prefs;
-
-  const InitApp({required this.prefs, Key? key}) : super(key: key);
+  const InitApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
