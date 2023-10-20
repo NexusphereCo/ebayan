@@ -5,6 +5,7 @@ import 'package:ebayan/constants/typography.dart';
 import 'package:ebayan/screens/auth/login.dart';
 import 'package:ebayan/screens/resident/join_brgy.dart';
 import 'package:feather_icons/feather_icons.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:page_transition/page_transition.dart';
@@ -20,51 +21,6 @@ class EBTopAppBar extends StatefulWidget implements PreferredSizeWidget {
 }
 
 class _EBTopAppBarState extends State<EBTopAppBar> {
-  // final joinButtonTooltipController = JustTheController();
-  // final drawerButtonTooltipController = JustTheController();
-
-  // bool _finishedTutorial = false;
-
-  // @override
-  // void initState() {
-  //   super.initState();
-
-  //   // Check if the tutorial has already been completed
-  //   Future<void> checkTutorialStatus() async {
-  //     final SharedPreferences prefs = await SharedPreferences.getInstance();
-
-  //     // If the tutorial is not finished, show it
-  //     if (!(prefs.getBool('finishedTutorial') ?? false)) {
-  //       // Function to show and hide tooltips with a delay
-  //       Future<void> showAndHideTooltip(JustTheController controller, int delayInSeconds) async {
-  //         await Future.delayed(Duration(seconds: delayInSeconds));
-  //         controller.showTooltip();
-  //         await Future.delayed(const Duration(seconds: 3));
-  //         controller.hideTooltip();
-  //       }
-
-  //       // Show tooltips with delays
-  //       showAndHideTooltip(joinButtonTooltipController, 1);
-  //       showAndHideTooltip(drawerButtonTooltipController, 4);
-
-  //       // Mark the tutorial as completed
-  //       prefs.setBool('finishedTutorial', true);
-  //     }
-
-  //     // Check if the tutorial has been finished
-  //     _finishedTutorial = prefs.getBool('finishedTutorial') ?? false;
-
-  //     // Hide tooltips if the tutorial has been finished
-  //     if (_finishedTutorial) {
-  //       joinButtonTooltipController.hideTooltip();
-  //       drawerButtonTooltipController.hideTooltip();
-  //     }
-  //   }
-
-  //   // Call the tutorial check function
-  //   checkTutorialStatus();
-  // }
-
   @override
   Widget build(BuildContext context) {
     const iconSize = 20.0;
@@ -82,7 +38,8 @@ class _EBTopAppBarState extends State<EBTopAppBar> {
         ],
       ),
       leading: Container(
-        margin: const EdgeInsets.fromLTRB(20.0, 0, 0, 0), // moves the drawer icon to the right more
+        // moves the drawer icon to the right more
+        margin: const EdgeInsets.fromLTRB(20.0, 0, 0, 0),
         child: InkResponse(
           onTap: () {
             Scaffold.of(context).openDrawer();
@@ -147,8 +104,30 @@ class TooltipContainer extends StatelessWidget {
   }
 }
 
-class EBDrawer extends StatelessWidget {
+class EBDrawer extends StatefulWidget {
   const EBDrawer({super.key});
+
+  @override
+  State<EBDrawer> createState() => _EBDrawerState();
+}
+
+class _EBDrawerState extends State<EBDrawer> {
+  Future<void> logOut() async {
+    try {
+      await FirebaseAuth.instance.signOut();
+
+      // NOTE: fix this
+      Navigator.push(
+        context,
+        PageTransition(
+          type: PageTransitionType.leftToRight,
+          child: const LoginScreen(),
+        ),
+      );
+    } catch (e) {
+      print('Sign-in failed: $e');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -201,13 +180,7 @@ class EBDrawer extends StatelessWidget {
           ListTile(
             title: EBTypography.text(text: 'Logout', color: EBColor.danger),
             onTap: () {
-              Navigator.push(
-                context,
-                PageTransition(
-                  type: PageTransitionType.leftToRight,
-                  child: const LoginScreen(),
-                ),
-              );
+              logOut();
             },
           ),
         ],
