@@ -51,26 +51,6 @@ class _EBTopAppBarState extends State<EBTopAppBar> {
           ),
         ),
       ),
-      actions: [
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20.0),
-          child: IconButton(
-            icon: const Icon(
-              FeatherIcons.plus,
-              color: EBColor.primary,
-            ),
-            onPressed: () {
-              Navigator.push(
-                context,
-                PageTransition(
-                  type: PageTransitionType.rightToLeft,
-                  child: const JoinBrgyScreen(),
-                ),
-              );
-            },
-          ),
-        ),
-      ],
       backgroundColor: EBColor.light,
       elevation: 1,
     );

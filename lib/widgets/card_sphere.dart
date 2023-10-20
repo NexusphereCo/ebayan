@@ -166,18 +166,14 @@ class _SphereCardState extends State<SphereCard> {
   @override
   Widget build(BuildContext context) {
     var decoration = BoxDecoration(
-      borderRadius: BorderRadius.circular(15.0),
-      border: Border.all(
-        width: 2,
-        color: EBColor.primary,
-      ),
+      borderRadius: BorderRadius.circular(20.0),
     );
 
     const borderRadius = BorderRadius.only(
-      bottomLeft: Radius.circular(12.5),
-      bottomRight: Radius.circular(12.5),
-      topLeft: Radius.circular(12.5),
-      topRight: Radius.circular(12.5),
+      bottomLeft: Radius.circular(20),
+      bottomRight: Radius.circular(20),
+      topLeft: Radius.circular(20),
+      topRight: Radius.circular(20),
     );
 
     return Container(
