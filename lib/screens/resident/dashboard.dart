@@ -1,10 +1,13 @@
 import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/constants/typography.dart';
-import 'package:ebayan/utils/dimens.dart';
+import 'package:ebayan/screens/resident/join_brgy.dart';
+import 'package:ebayan/utils/style.dart';
 import 'package:ebayan/widgets/bottom_appbar.dart';
 import 'package:ebayan/widgets/card_sphere.dart';
 import 'package:ebayan/widgets/top_appbar.dart';
+import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
 
 /*
   Authored by: Miguel Damien L. Garcera
@@ -24,84 +27,53 @@ class DashboardScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: const EBTopAppBar(),
-        drawer: const EBDrawer(),
-        body: Column(
-          children: [
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.all(Global.paddingBody),
-                child: ListView(
-                  children: [
-                    Wrap(
-                      alignment: WrapAlignment.center,
-                      children: [
-                        EBTypography.h1(text: 'Welcome Back, '),
-                        EBTypography.h1(
-                          text: 'Jane!',
-                          color: EBColor.primary,
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: Spacing.formLg),
-                    const SphereCard(),
-                    const SizedBox(height: Spacing.formMd),
-                    const SphereCard(),
-                    const SizedBox(height: Spacing.formMd),
-                    const SphereCard(),
-                    const SizedBox(height: Spacing.formLg),
-                    const SphereCard(),
-                    const SizedBox(height: Spacing.formMd),
-                    const SphereCard(),
-                    const SizedBox(height: Spacing.formMd),
-                    const SphereCard(),
-                  ],
-                ),
+    return Scaffold(
+      appBar: const EBTopAppBar(),
+      drawer: const EBDrawer(),
+      body: ListView(
+        children: [
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: Global.paddingBody),
+              child: Column(
+                children: [
+                  Column(
+                    children: [
+                      const SizedBox(height: Spacing.formMd),
+                      Wrap(
+                        alignment: WrapAlignment.center,
+                        children: [
+                          EBTypography.h1(text: 'Welcome Back, '),
+                          EBTypography.h1(
+                            text: 'Jane!',
+                            color: EBColor.primary,
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: Spacing.formMd),
+                  const SphereCard(),
+                ],
               ),
             ),
-            // Expanded(
-            //   child: Column(
-            //     mainAxisAlignment: MainAxisAlignment.center,
-            //     children: [
-            //       Column(
-            //         children: [
-            //           SvgPicture.asset(Asset.illustHouseEmptyPath),
-            //           const SizedBox(height: Spacing.formLg),
-            //           EBTypography.text(
-            //             text: "You currently aren't joined to any barangay spheres. Let's change that!",
-            //             muted: true,
-            //             textAlign: TextAlign.center,
-            //           ),
-            //         ],
-            //       ),
-            //       const SizedBox(height: Spacing.formLg),
-            //       SizedBox(
-            //         width: double.infinity,
-            //         child: EBButton(
-            //           onPressed: () {
-            //             Navigator.push(
-            //               context,
-            //               PageTransition(
-            //                 type: PageTransitionType.rightToLeft,
-            //                 child: const JoinBrgyScreen(),
-            //               ),
-            //             );
-            //           },
-            //           text: 'Get Started!',
-            //           theme: 'primary',
-            //         ),
-            //       ),
-            //       const SizedBox(height: Spacing.formLg),
-            //       const SizedBox(height: Spacing.formLg),
-            //     ],
-            //   ),
-            // ),
-          ],
-        ),
-        bottomNavigationBar: const EBBottomAppBar(),
+          ),
+        ],
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(
+            context,
+            PageTransition(
+              type: PageTransitionType.rightToLeft,
+              child: const JoinBrgyScreen(),
+            ),
+          );
+        },
+        child: const Icon(FeatherIcons.plus),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      bottomNavigationBar: const EBBottomAppBar(),
     );
   }
 }

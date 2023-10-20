@@ -1,9 +1,12 @@
 import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/constants/typography.dart';
+import 'package:ebayan/constants/validation.dart';
 import 'package:ebayan/screens/auth/register.dart';
-import 'package:ebayan/utils/dimens.dart';
+import 'package:ebayan/screens/resident/dashboard.dart';
+import 'package:ebayan/utils/style.dart';
 import 'package:ebayan/widgets/buttons.dart';
 import 'package:ebayan/widgets/footer.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:ebayan/widgets/form.dart';
 import 'package:feather_icons/feather_icons.dart';
@@ -26,50 +29,84 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+  // TextControllers
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+
   bool _showPassword = false;
+
+  Future<void> signIn() async {
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: emailController.text,
+        password: passwordController.text,
+      );
+
+      // NOTE: fix this
+      Navigator.push(
+        context,
+        PageTransition(
+          type: PageTransitionType.leftToRight,
+          child: const DashboardScreen(),
+        ),
+      );
+    } catch (e) {
+      print('Sign-in failed: $e');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: Padding(
-          padding: const EdgeInsets.all(Global.paddingBody),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Column(
-                children: [
-                  EBTypography.h1(
-                    text: 'Welcome Back!',
-                    color: EBColor.primary,
-                    maxLines: 2,
-                    textAlign: TextAlign.center,
-                  ),
-                  EBTypography.text(
-                    text: 'Sign in to continue.',
-                    muted: true,
-                  ),
-                ],
-              ),
-              const SizedBox(height: Spacing.formMd),
-              Column(
+    return Scaffold(
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: Global.paddingBody),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Column(
+              children: [
+                EBTypography.h1(
+                  text: 'Welcome Back!',
+                  color: EBColor.primary,
+                  maxLines: 2,
+                  textAlign: TextAlign.center,
+                ),
+                EBTypography.text(
+                  text: 'Sign in to continue.',
+                  muted: true,
+                ),
+              ],
+            ),
+            const SizedBox(height: Spacing.formMd),
+            Form(
+              key: _formKey,
+              child: Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  const EBTextBox(
-                    label: 'Username',
+                  EBTextBox(
                     icon: FeatherIcons.user,
                     textField: EBTextField(
-                      placeholder: 'Enter your username',
+                      label: 'Username',
                       type: TextInputType.text,
+                      controller: emailController,
+                      validator: (value) {
+                        value = value?.trim();
+                        if (value == null || value.isEmpty) {
+                          return Validation.missingField;
+                        }
+                        return null;
+                      },
                     ),
                   ),
                   const SizedBox(height: Spacing.formMd),
                   EBTextBox(
-                    label: 'Password',
                     icon: FeatherIcons.lock,
                     textField: EBTextField(
-                      placeholder: 'Enter your password',
+                      label: 'Password',
                       type: TextInputType.text,
+                      controller: passwordController,
                       obscureText: _showPassword ? false : true,
                       suffixIconButton: IconButton(
                         icon: _showPassword ? const Icon(FeatherIcons.eye) : const Icon(FeatherIcons.eyeOff),
@@ -79,6 +116,13 @@ class _LoginScreenState extends State<LoginScreen> {
                           });
                         },
                       ),
+                      validator: (value) {
+                        value = value?.trim();
+                        if (value == null || value.isEmpty) {
+                          return Validation.missingField;
+                        }
+                        return null;
+                      },
                     ),
                   ),
                   const SizedBox(height: Spacing.formSm),
@@ -96,7 +140,11 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: EBButton(
                       text: 'Login',
                       theme: EBButtonTheme.primary,
-                      onPressed: () {},
+                      onPressed: () {
+                        if (_formKey.currentState?.validate() == true) {
+                          signIn();
+                        }
+                      },
                     ),
                   ),
                   const SizedBox(height: Spacing.formSm),
@@ -132,11 +180,11 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
-        bottomNavigationBar: const EBFooter(),
       ),
+      bottomNavigationBar: const EBFooter(),
     );
   }
 }

@@ -7,7 +7,7 @@ class EBColor {
   static const Color warning = Color(0xFFFF9314);
   static const Color danger = Color(0xFFF64040);
   static const Color light = Color(0xFFFFFFFF);
-  static const Color dark = Color(0xFF000000);
+  static const Color dark = Color(0xFF050A35);
 
   static MaterialColor materialPrimary = const MaterialColor(
     0xFF3336AB, // default

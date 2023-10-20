@@ -17,6 +17,10 @@ $ flutter run
 $ dart fix --apply
 # import dependencies
 $ dart pub get
+# firebase setup
+$ npm install -g firebase-tools
+$ dart pub global activate flutterfire_cli
+$ flutterfire configure --project=ebayan-4ebc1
 ```
 
 **How to clean flutter**

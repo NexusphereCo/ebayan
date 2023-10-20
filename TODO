@@ -1,12 +1,24 @@
 PRIORITY:
-    [] explore media query
-    [] be able to make the notification bar background adaptive to the colors of the app
+    [] add loading elements 
+    
 -------
 TODO:
-    [] add loading elements 
-    [] fix fonts from transitioning on default to custom font
+    [] explore media query
+    [] Login Page (ListView)
+    [] Registration heading
+    [] Create Announcement [ListView.Builder]
+
 -------
 DONE:
+    [X] implement backend for login
+    [X] Create button Sizes
+    [X] BottomNavBar
+    [X] fix the tab footer to not show up
+    [X] change form design (floating label)
+    [X] make the length to 5 (pintextbox)
+    [X] add a disable prop in forms
+    [X] be able to make the notification bar background adaptive to the colors of the app
+    [X] fix fonts from transitioning on default to custom font
     [X] explore and test button properties
     [X] add cards to a listview
     [X] fix responsiveness on some pages

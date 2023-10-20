@@ -19,6 +19,12 @@ enum EBButtonTheme {
   darkOutlined,
 }
 
+enum EBButtonSize {
+  lg,
+  md,
+  sm,
+}
+
 class EBBackButton extends StatelessWidget {
   final Widget screenDestination;
 
@@ -54,6 +60,9 @@ class EBButton extends StatelessWidget {
   final EBButtonTheme theme;
   final VoidCallback onPressed;
 
+  final Icon? icon;
+  final EBButtonSize? size;
+
   // Array of themes in their categories
   final defaultThemes = {
     EBButtonTheme.primary,
@@ -74,22 +83,41 @@ class EBButton extends StatelessWidget {
 
   // styling
   final double _borderRadius = 50.0;
-  final double _paddingX = 32.0;
-  final double _paddingY = 18.0;
+  double _paddingX = 32.0;
+  double _paddingY = 18.0;
 
   EBButton({
     Key? key,
     required this.onPressed,
     required this.text,
     required this.theme,
+    this.icon,
+    this.size,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     ButtonStyleButton button;
 
+    // if the size is specified
+    switch (size ?? EBButtonSize.md) {
+      case EBButtonSize.sm:
+        _paddingX = 15.0;
+        _paddingY = 10.0;
+        break;
+      case EBButtonSize.md:
+        _paddingX = 24.0;
+        _paddingY = 15.0;
+        break;
+      case EBButtonSize.lg:
+        _paddingX = 32.0;
+        _paddingY = 18.0;
+        break;
+    }
+
     final btnPadding = EdgeInsets.symmetric(horizontal: _paddingX, vertical: _paddingY);
     final btnShape = RoundedRectangleBorder(borderRadius: BorderRadius.circular(_borderRadius));
+    const textIconSpacing = 6.0;
 
     // regular button
     if (defaultThemes.contains(theme)) {
@@ -102,9 +130,27 @@ class EBButton extends StatelessWidget {
           elevation: 0,
           backgroundColor: _setColor(theme),
         ),
-        child: EBTypography.text(
-          text: text,
-          color: EBColor.light,
+        child: Wrap(
+          crossAxisAlignment: WrapCrossAlignment.center,
+          spacing: textIconSpacing,
+          children: [
+            switch (size ?? EBButtonSize.md) {
+              EBButtonSize.sm => EBTypography.small(
+                  text: text,
+                  color: EBColor.light,
+                ),
+              EBButtonSize.md => EBTypography.text(
+                  text: text,
+                  color: EBColor.light,
+                ),
+              EBButtonSize.lg => EBTypography.h3(
+                  text: text,
+                  color: EBColor.light,
+                  fontWeight: EBFontWeight.regular,
+                ),
+            },
+            if (icon != null) Container(child: icon),
+          ],
         ),
       );
     }
@@ -121,9 +167,27 @@ class EBButton extends StatelessWidget {
           padding: btnPadding,
           elevation: 0,
         ),
-        child: EBTypography.text(
-          text: text,
-          color: _setColor(theme),
+        child: Wrap(
+          crossAxisAlignment: WrapCrossAlignment.center,
+          spacing: textIconSpacing,
+          children: [
+            switch (size ?? EBButtonSize.md) {
+              EBButtonSize.sm => EBTypography.small(
+                  text: text,
+                  color: _setColor(theme),
+                ),
+              EBButtonSize.md => EBTypography.text(
+                  text: text,
+                  color: _setColor(theme),
+                ),
+              EBButtonSize.lg => EBTypography.h3(
+                  text: text,
+                  color: _setColor(theme),
+                  fontWeight: EBFontWeight.regular,
+                ),
+            },
+            if (icon != null) Container(child: icon),
+          ],
         ),
       );
     }

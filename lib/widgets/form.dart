@@ -1,14 +1,16 @@
 import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/constants/typography.dart';
-import 'package:ebayan/utils/dimens.dart';
+import 'package:ebayan/utils/style.dart';
 import 'package:flutter/material.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
 class EBTextField extends StatelessWidget {
-  final String placeholder;
+  final String label;
   final TextInputType type;
 
+  final TextEditingController? controller;
   final int? maxLength;
+  final bool? enabled;
   final bool? obscureText;
   final Icon? suffixIcon;
   final IconButton? suffixIconButton;
@@ -16,13 +18,15 @@ class EBTextField extends StatelessWidget {
 
   const EBTextField({
     super.key,
-    required this.placeholder,
+    required this.label,
     required this.type,
     this.obscureText,
     this.suffixIcon,
     this.suffixIconButton,
     this.maxLength,
     this.validator,
+    this.enabled,
+    this.controller,
   });
 
   @override
@@ -30,19 +34,31 @@ class EBTextField extends StatelessWidget {
     const borderRadius = 8.0;
 
     return TextFormField(
+      enabled: enabled,
       keyboardType: TextInputType.text,
+      controller: controller,
       obscureText: obscureText ?? false,
       decoration: InputDecoration(
-          border: const OutlineInputBorder(
-            borderRadius: BorderRadius.all(Radius.circular(borderRadius)),
-          ),
-          contentPadding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
-          hintText: placeholder,
-          counterText: null,
-          suffixIcon: Padding(
-            padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),
-            child: (suffixIcon == null ? false : true) ? suffixIcon : suffixIconButton,
-          )),
+        filled: true,
+        fillColor: (!(enabled ?? true)) ? EBColor.materialPrimary[100] : Colors.transparent,
+        border: const OutlineInputBorder(
+          borderRadius: BorderRadius.all(Radius.circular(borderRadius)),
+        ),
+        disabledBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: EBColor.dark.withOpacity(0.5), width: 1),
+          borderRadius: const BorderRadius.all(Radius.circular(borderRadius)),
+        ),
+        contentPadding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+        label: Text(
+          label,
+          style: const TextStyle(fontSize: EBFontSize.normal),
+        ),
+        counterText: null,
+        suffixIcon: Padding(
+          padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),
+          child: (suffixIcon == null ? false : true) ? suffixIcon : suffixIconButton,
+        ),
+      ),
       maxLength: maxLength,
       validator: validator,
     );
@@ -83,19 +99,19 @@ class _MultiTextFieldState extends State<MultiTextField> {
       fieldWidth: (fieldWidth >= fieldWidthMax) ? fieldWidthMax : fieldWidth,
     );
 
-    const int textFieldLength = 6;
+    const int textFieldLength = 5;
 
     return PinCodeTextField(
       pinTheme: pinTheme,
       textStyle: const TextStyle(
         color: EBColor.primary,
         fontWeight: EBFontWeight.regular,
-        fontSize: 15,
+        fontSize: EBFontSize.label,
       ),
       hintStyle: TextStyle(
         color: EBColor.primary.withOpacity(0.5),
         fontWeight: EBFontWeight.regular,
-        fontSize: 15,
+        fontSize: EBFontSize.label,
       ),
       hintCharacter: '-',
       length: textFieldLength,
@@ -111,13 +127,11 @@ class _MultiTextFieldState extends State<MultiTextField> {
 }
 
 class EBTextBox extends StatelessWidget {
-  final String label;
   final IconData icon;
   final EBTextField textField;
 
   const EBTextBox({
     super.key,
-    required this.label,
     required this.icon,
     required this.textField,
   });
@@ -125,22 +139,17 @@ class EBTextBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Column(
-          children: [
-            const SizedBox(height: Spacing.formMd),
-            Icon(
-              icon,
-              color: EBColor.primary,
-            ),
-          ],
+        Icon(
+          icon,
+          color: EBColor.primary,
         ),
         const SizedBox(width: Spacing.formMd),
         Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              EBTypography.label(text: label, muted: true),
               const SizedBox(height: Spacing.formSm),
               textField,
             ],

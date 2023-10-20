@@ -1,12 +1,14 @@
 import 'package:ebayan/constants/assets.dart';
 import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/constants/typography.dart';
-import 'package:ebayan/utils/dimens.dart';
+import 'package:ebayan/screens/resident/announcement_list.dart';
+import 'package:ebayan/utils/style.dart';
 import 'package:ebayan/widgets/buttons.dart';
 import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:page_transition/page_transition.dart';
 
 enum CardOptions { itemOne, itemTwo, itemThree }
 
@@ -25,7 +27,7 @@ class _SphereCardState extends State<SphereCard> {
   Widget _cardHeader() {
     return Container(
       width: double.infinity,
-      height: 125,
+      height: 110,
       color: EBColor.primary,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10.0),
@@ -99,7 +101,18 @@ class _SphereCardState extends State<SphereCard> {
             Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                EBButton(onPressed: () {}, text: 'View', theme: EBButtonTheme.primary),
+                EBButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        PageTransition(
+                          type: PageTransitionType.rightToLeft,
+                          child: const AnnouncementScreen(),
+                        ),
+                      );
+                    },
+                    text: 'View',
+                    theme: EBButtonTheme.primary),
               ],
             ),
           ],
@@ -153,34 +166,33 @@ class _SphereCardState extends State<SphereCard> {
   @override
   Widget build(BuildContext context) {
     var decoration = BoxDecoration(
-      borderRadius: BorderRadius.circular(15.0),
-      border: Border.all(
-        width: 3,
-        color: EBColor.primary,
-      ),
+      borderRadius: BorderRadius.circular(20.0),
     );
 
     const borderRadius = BorderRadius.only(
-      bottomLeft: Radius.circular(15.0),
-      bottomRight: Radius.circular(15.0),
-      topLeft: Radius.circular(5.0),
-      topRight: Radius.circular(5.0),
+      bottomLeft: Radius.circular(20),
+      bottomRight: Radius.circular(20),
+      topLeft: Radius.circular(20),
+      topRight: Radius.circular(20),
     );
 
     return Container(
       decoration: decoration,
-      child: ClipRRect(
-        borderRadius: borderRadius,
-        child: Stack(
-          children: [
-            Column(
-              children: [
-                _cardHeader(),
-                _cardFooter(),
-              ],
-            ),
-            _cardOption(),
-          ],
+      margin: const EdgeInsets.only(bottom: 15.0),
+      child: Expanded(
+        child: ClipRRect(
+          borderRadius: borderRadius,
+          child: Stack(
+            children: [
+              Column(
+                children: [
+                  _cardHeader(),
+                  _cardFooter(),
+                ],
+              ),
+              _cardOption(),
+            ],
+          ),
         ),
       ),
     );
