@@ -46,6 +46,8 @@ dependencies:
   auto_size_text: ^3.0.0
   firebase_core: ^2.17.0
   firebase_auth: ^4.10.1
+  cloud_firestore: ^4.11.0
+
     
 flutter_native_splash:
     color: '#3336AB'
