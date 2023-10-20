@@ -5,6 +5,12 @@ PRIORITY:
 TODO:
     [] add loading elements 
     [] explore media query
+    [] Create button Sizes
+    [] Login Page (ListView)
+    [] Registration heading
+    [] Create Announcement [ListView.Builder]
+    [] BottomNavBar
+
 -------
 DONE:
     [X] change form design (floating label)
