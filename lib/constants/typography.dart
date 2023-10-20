@@ -15,13 +15,13 @@ class EBFontWeight {
 class EBFontSize {
   EBFontSize._();
 
-  static const double h1 = 32.0;
-  static const double h2 = 24.0;
-  static const double h3 = 20.0;
-  static const double h4 = 18.0;
-  static const double normal = 15.0;
-  static const double label = 14.0;
-  static const double small = 13.0;
+  static const double h1 = 24.0;
+  static const double h2 = 20.0;
+  static const double h3 = 18.0;
+  static const double h4 = 15.0;
+  static const double normal = 14.0;
+  static const double label = 13.0;
+  static const double small = 10.0;
 }
 
 class EBTypography {

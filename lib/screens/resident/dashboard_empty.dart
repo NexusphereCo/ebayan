@@ -36,7 +36,7 @@ class DashboardEmptyScreen extends StatelessWidget {
         appBar: const EBTopAppBar(),
         drawer: const EBDrawer(),
         body: Padding(
-          padding: const EdgeInsets.all(Global.paddingBody),
+          padding: const EdgeInsets.symmetric(horizontal: Global.paddingBody),
           child: Column(
             children: [
               Row(

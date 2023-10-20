@@ -49,7 +49,10 @@ class EBTextField extends StatelessWidget {
           borderRadius: const BorderRadius.all(Radius.circular(borderRadius)),
         ),
         contentPadding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
-        label: Text(label),
+        label: Text(
+          label,
+          style: const TextStyle(fontSize: EBFontSize.normal),
+        ),
         counterText: null,
         suffixIcon: Padding(
           padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),
