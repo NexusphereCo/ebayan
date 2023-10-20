@@ -58,46 +58,41 @@ class _RegisterResidentScreenState extends State<RegisterResidentScreen> with Si
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 const EBTextBox(
-                  label: 'First Name',
                   icon: FeatherIcons.user,
                   textField: EBTextField(
-                    placeholder: 'Enter your first name',
+                    label: 'First Name',
                     type: TextInputType.name,
                   ),
                 ),
                 const SizedBox(height: Spacing.formMd),
                 const EBTextBox(
-                  label: 'Last Name',
                   icon: FeatherIcons.user,
                   textField: EBTextField(
-                    placeholder: 'Enter your last name',
+                    label: 'Last Name',
                     type: TextInputType.name,
                   ),
                 ),
                 const SizedBox(height: Spacing.formMd),
                 const EBTextBox(
-                  label: 'Contact Number',
                   icon: FeatherIcons.phone,
                   textField: EBTextField(
-                    placeholder: 'Enter your contact number',
+                    label: 'Contact Number',
                     type: TextInputType.number,
                   ),
                 ),
                 const SizedBox(height: Spacing.formMd),
                 const EBTextBox(
-                  label: 'Address',
                   icon: FeatherIcons.mapPin,
                   textField: EBTextField(
-                    placeholder: 'Enter your address',
+                    label: 'Address',
                     type: TextInputType.text,
                   ),
                 ),
                 const SizedBox(height: Spacing.formMd),
                 const EBTextBox(
-                  label: 'Birth Date',
                   icon: FeatherIcons.calendar,
                   textField: EBTextField(
-                    placeholder: 'Enter your birth date',
+                    label: 'Birth Date',
                     type: TextInputType.datetime,
                   ),
                 ),
@@ -136,28 +131,25 @@ class _RegisterResidentScreenState extends State<RegisterResidentScreen> with Si
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             EBTextBox(
-              label: 'Username',
               icon: FeatherIcons.user,
               textField: EBTextField(
-                placeholder: 'Enter your username',
+                label: 'Username',
                 type: TextInputType.text,
               ),
             ),
             SizedBox(height: Spacing.formMd),
             EBTextBox(
-              label: 'Password',
               icon: FeatherIcons.lock,
               textField: EBTextField(
-                placeholder: 'Enter your password',
+                label: 'Password',
                 type: TextInputType.text,
               ),
             ),
             SizedBox(height: Spacing.formMd),
             EBTextBox(
-              label: 'Confirm Password',
               icon: FeatherIcons.lock,
               textField: EBTextField(
-                placeholder: 'Re-enter your password',
+                label: 'Confirm Password',
                 type: TextInputType.text,
               ),
             ),
@@ -229,7 +221,7 @@ class _RegisterResidentScreenState extends State<RegisterResidentScreen> with Si
           children: [
             Expanded(
               child: Padding(
-                padding: const EdgeInsets.all(Global.paddingBody),
+                padding: const EdgeInsets.symmetric(horizontal: Global.paddingBody),
                 child: Column(
                   children: [
                     const SafeArea(child: EBBackButton(screenDestination: RegisterScreen())),
@@ -283,6 +275,11 @@ class _RegisterResidentScreenState extends State<RegisterResidentScreen> with Si
                 ),
               ),
             ),
+          ],
+        ),
+        bottomNavigationBar: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
             TabBar(
               controller: _tabController,
               labelStyle: const TextStyle(fontWeight: FontWeight.bold),
@@ -313,9 +310,9 @@ class _RegisterResidentScreenState extends State<RegisterResidentScreen> with Si
                 ),
               ],
             ),
+            const EBFooter(),
           ],
         ),
-        bottomNavigationBar: const EBFooter(),
       ),
     );
   }

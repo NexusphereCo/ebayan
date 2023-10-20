@@ -55,19 +55,17 @@ class _LoginScreenState extends State<LoginScreen> {
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 const EBTextBox(
-                  label: 'Username',
                   icon: FeatherIcons.user,
                   textField: EBTextField(
-                    placeholder: 'Enter your username',
+                    label: 'Username',
                     type: TextInputType.text,
                   ),
                 ),
                 const SizedBox(height: Spacing.formMd),
                 EBTextBox(
-                  label: 'Password',
                   icon: FeatherIcons.lock,
                   textField: EBTextField(
-                    placeholder: 'Enter your password',
+                    label: 'Password',
                     type: TextInputType.text,
                     obscureText: _showPassword ? false : true,
                     suffixIconButton: IconButton(

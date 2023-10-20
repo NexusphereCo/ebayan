@@ -5,9 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
 class EBTextField extends StatelessWidget {
-  final String placeholder;
+  final String label;
   final TextInputType type;
 
+  final TextEditingController? controller;
   final int? maxLength;
   final bool? enabled;
   final bool? obscureText;
@@ -17,7 +18,7 @@ class EBTextField extends StatelessWidget {
 
   const EBTextField({
     super.key,
-    required this.placeholder,
+    required this.label,
     required this.type,
     this.obscureText,
     this.suffixIcon,
@@ -25,6 +26,7 @@ class EBTextField extends StatelessWidget {
     this.maxLength,
     this.validator,
     this.enabled,
+    this.controller,
   });
 
   @override
@@ -34,6 +36,7 @@ class EBTextField extends StatelessWidget {
     return TextFormField(
       enabled: enabled,
       keyboardType: TextInputType.text,
+      controller: controller,
       obscureText: obscureText ?? false,
       decoration: InputDecoration(
         filled: true,
@@ -45,8 +48,8 @@ class EBTextField extends StatelessWidget {
           borderSide: BorderSide(color: EBColor.dark.withOpacity(0.5), width: 1),
           borderRadius: const BorderRadius.all(Radius.circular(borderRadius)),
         ),
-        contentPadding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
-        hintText: placeholder,
+        contentPadding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+        label: Text(label),
         counterText: null,
         suffixIcon: Padding(
           padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),
@@ -93,7 +96,7 @@ class _MultiTextFieldState extends State<MultiTextField> {
       fieldWidth: (fieldWidth >= fieldWidthMax) ? fieldWidthMax : fieldWidth,
     );
 
-    const int textFieldLength = 6;
+    const int textFieldLength = 5;
 
     return PinCodeTextField(
       pinTheme: pinTheme,
@@ -121,13 +124,11 @@ class _MultiTextFieldState extends State<MultiTextField> {
 }
 
 class EBTextBox extends StatelessWidget {
-  final String label;
   final IconData icon;
   final EBTextField textField;
 
   const EBTextBox({
     super.key,
-    required this.label,
     required this.icon,
     required this.textField,
   });
@@ -135,22 +136,17 @@ class EBTextBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Column(
-          children: [
-            const SizedBox(height: Spacing.formMd),
-            Icon(
-              icon,
-              color: EBColor.primary,
-            ),
-          ],
+        Icon(
+          icon,
+          color: EBColor.primary,
         ),
         const SizedBox(width: Spacing.formMd),
         Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              EBTypography.label(text: label, muted: true),
               const SizedBox(height: Spacing.formSm),
               textField,
             ],

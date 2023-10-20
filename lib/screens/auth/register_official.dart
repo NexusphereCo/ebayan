@@ -82,64 +82,57 @@ class _RegisterOfficialScreenState extends State<RegisterOfficialScreen> {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   EBTextBox(
-                    label: 'First Name',
                     icon: FeatherIcons.user,
                     textField: EBTextField(
-                      placeholder: 'Enter your first name',
+                      label: 'First Name',
                       type: TextInputType.name,
                     ),
                   ),
                   SizedBox(height: Spacing.formMd),
                   EBTextBox(
-                    label: 'Last Name',
                     icon: FeatherIcons.user,
                     textField: EBTextField(
-                      placeholder: 'Enter your last name',
+                      label: 'Last Name',
                       type: TextInputType.name,
                     ),
                   ),
                   SizedBox(height: Spacing.formMd),
                   EBTextBox(
-                    label: 'Contact Number',
                     icon: FeatherIcons.phone,
                     textField: EBTextField(
-                      placeholder: 'Enter your contact number',
+                      label: 'Contact Number',
                       type: TextInputType.number,
                     ),
                   ),
                   SizedBox(height: Spacing.formMd),
                   EBTextBox(
-                    label: 'Address',
                     icon: FeatherIcons.mapPin,
                     textField: EBTextField(
-                      placeholder: 'Enter your address',
+                      label: 'Address',
                       type: TextInputType.text,
                     ),
                   ),
                   SizedBox(height: Spacing.formMd),
                   EBTextBox(
-                    label: 'Birth Date',
                     icon: FeatherIcons.calendar,
                     textField: EBTextField(
-                      placeholder: 'Enter your birth date',
+                      label: 'Birth Date',
                       type: TextInputType.datetime,
                     ),
                   ),
                   SizedBox(height: Spacing.formMd),
                   EBTextBox(
-                    label: 'Barangay Associated',
                     icon: FeatherIcons.navigation,
                     textField: EBTextField(
-                      placeholder: 'Choose',
+                      label: 'Barangay',
                       type: TextInputType.streetAddress,
                     ),
                   ),
                   SizedBox(height: Spacing.formMd),
                   EBTextBox(
-                    label: 'Proof of Official Position',
                     icon: FeatherIcons.file,
                     textField: EBTextField(
-                      placeholder: '*.pdf',
+                      label: 'Proof of Official',
                       type: TextInputType.text,
                     ),
                   ),
@@ -163,19 +156,17 @@ class _RegisterOfficialScreenState extends State<RegisterOfficialScreen> {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   const EBTextBox(
-                    label: 'Username',
                     icon: FeatherIcons.user,
                     textField: EBTextField(
-                      placeholder: 'Enter your username',
+                      label: 'Username',
                       type: TextInputType.text,
                     ),
                   ),
                   const SizedBox(height: Spacing.formMd),
                   EBTextBox(
-                    label: 'Password',
                     icon: FeatherIcons.lock,
                     textField: EBTextField(
-                      placeholder: 'Enter your password',
+                      label: 'Password',
                       type: TextInputType.text,
                       obscureText: _showPassword ? false : true,
                       suffixIconButton: IconButton(
@@ -190,10 +181,9 @@ class _RegisterOfficialScreenState extends State<RegisterOfficialScreen> {
                   ),
                   const SizedBox(height: Spacing.formMd),
                   EBTextBox(
-                    label: 'Confirm Password',
                     icon: FeatherIcons.lock,
                     textField: EBTextField(
-                      placeholder: 'Re-enter your password',
+                      label: 'Confirm Password',
                       type: TextInputType.text,
                       obscureText: _showConfirmPassword ? false : true,
                       suffixIconButton: IconButton(

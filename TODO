@@ -1,4 +1,5 @@
 PRIORITY:
+    [] fix the tab footer to not show up
     [] implement backend for auth
 -------
 TODO:
@@ -6,6 +7,8 @@ TODO:
     [] explore media query
 -------
 DONE:
+    [X] change form design (floating label)
+    [X] make the length to 5 (pintextbox)
     [X] add a disable prop in forms
     [X] be able to make the notification bar background adaptive to the colors of the app
     [X] fix fonts from transitioning on default to custom font
