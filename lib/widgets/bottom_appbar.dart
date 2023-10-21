@@ -11,7 +11,7 @@ class EBBottomAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return const BottomAppBar(
       shape: CircularNotchedRectangle(),
-      notchMargin: 10.0,
+      notchMargin: 8.0,
       color: Colors.white,
       child: EBBottomAppBarContents(),
     );

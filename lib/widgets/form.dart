@@ -48,7 +48,7 @@ class EBTextField extends StatelessWidget {
           borderSide: BorderSide(color: EBColor.dark.withOpacity(0.5), width: 1),
           borderRadius: const BorderRadius.all(Radius.circular(borderRadius)),
         ),
-        contentPadding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+        contentPadding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 20.0),
         label: Text(
           label,
           style: const TextStyle(fontSize: EBFontSize.normal),
