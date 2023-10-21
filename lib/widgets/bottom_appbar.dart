@@ -1,10 +1,8 @@
 import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/constants/icons.dart';
 import 'package:ebayan/constants/typography.dart';
-import 'package:ebayan/screens/resident/join_brgy.dart';
 import 'package:flutter/material.dart';
 import 'package:feather_icons/feather_icons.dart';
-import 'package:page_transition/page_transition.dart';
 
 class EBBottomAppBar extends StatelessWidget {
   const EBBottomAppBar({super.key});
@@ -13,6 +11,7 @@ class EBBottomAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return const BottomAppBar(
       shape: CircularNotchedRectangle(),
+      notchMargin: 10.0,
       color: Colors.white,
       child: EBBottomAppBarContents(),
     );
