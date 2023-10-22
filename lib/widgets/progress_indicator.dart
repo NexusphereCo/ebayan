@@ -20,7 +20,7 @@ class EBProgressIndicator extends StatelessWidget {
         for (int i = 1; i <= length; i++)
           Container(
             height: 10,
-            width: 100,
+            width: 75,
             decoration: BoxDecoration(
               color: (i == currentIndex) ? EBColor.materialPrimary[500] : EBColor.materialPrimary[200],
               borderRadius: BorderRadius.circular(100.0),

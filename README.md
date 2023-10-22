@@ -20,7 +20,7 @@ $ dart pub get
 # firebase setup
 $ npm install -g firebase-tools
 $ dart pub global activate flutterfire_cli
-$ flutterfire configure --project=ebayan-4ebc1
+$ flutterfire configure --project=ebayan-nexusphere
 ```
 
 **How to clean flutter**

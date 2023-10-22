@@ -2,6 +2,7 @@ import 'package:ebayan/constants/theme.dart';
 import 'package:ebayan/screens/auth/login.dart';
 import 'package:ebayan/screens/resident/dashboard.dart';
 import 'package:ebayan/utils/global.dart';
+import 'package:ebayan/utils/routes.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -48,11 +49,7 @@ class AuthWrapper extends StatelessWidget {
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.active) {
           final user = snapshot.data;
-          if (user != null) {
-            return const DashboardScreen();
-          } else {
-            return const LoginScreen();
-          }
+          return user != null ? const DashboardScreen() : const LoginScreen();
         }
 
         return const Scaffold(

@@ -10,5 +10,5 @@ class Spacing {
 class Global {
   Global._();
 
-  static const double paddingBody = 30.0;
+  static const double paddingBody = 20.0;
 }

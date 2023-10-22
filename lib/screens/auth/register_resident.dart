@@ -4,9 +4,9 @@ import 'package:ebayan/screens/auth/register.dart';
 import 'package:ebayan/screens/resident/dashboard.dart';
 import 'package:ebayan/utils/style.dart';
 import 'package:ebayan/widgets/buttons.dart';
-import 'package:ebayan/widgets/footer.dart';
 import 'package:ebayan/widgets/form.dart';
 import 'package:ebayan/widgets/progress_indicator.dart';
+import 'package:ebayan/widgets/tabbar_footer.dart';
 import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
@@ -57,20 +57,27 @@ class _RegisterResidentScreenState extends State<RegisterResidentScreen> with Si
             Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                const EBTextBox(
-                  icon: FeatherIcons.user,
-                  textField: EBTextField(
-                    label: 'First Name',
-                    type: TextInputType.name,
-                  ),
-                ),
-                const SizedBox(height: Spacing.formMd),
-                const EBTextBox(
-                  icon: FeatherIcons.user,
-                  textField: EBTextField(
-                    label: 'Last Name',
-                    type: TextInputType.name,
-                  ),
+                const Row(
+                  children: [
+                    Icon(
+                      FeatherIcons.user,
+                      color: EBColor.primary,
+                    ),
+                    SizedBox(width: Spacing.formMd),
+                    Flexible(
+                      child: EBTextField(
+                        label: 'First Name',
+                        type: TextInputType.name,
+                      ),
+                    ),
+                    SizedBox(width: Spacing.formSm),
+                    Flexible(
+                      child: EBTextField(
+                        label: 'Last Name',
+                        type: TextInputType.name,
+                      ),
+                    ),
+                  ],
                 ),
                 const SizedBox(height: Spacing.formMd),
                 const EBTextBox(
@@ -277,42 +284,7 @@ class _RegisterResidentScreenState extends State<RegisterResidentScreen> with Si
             ),
           ],
         ),
-        bottomNavigationBar: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            TabBar(
-              controller: _tabController,
-              labelStyle: const TextStyle(fontWeight: FontWeight.bold),
-              unselectedLabelStyle: const TextStyle(fontWeight: FontWeight.normal),
-              indicator: const BoxDecoration(
-                border: Border(
-                  top: BorderSide(color: EBColor.primary, width: 2.0),
-                ),
-              ),
-              tabs: const [
-                Tab(
-                  child: Text(
-                    'Personal Information',
-                    style: TextStyle(
-                      fontFamily: EBTypography.fontFamily,
-                      color: EBColor.primary,
-                    ),
-                  ),
-                ),
-                Tab(
-                  child: Text(
-                    'Login Credentials',
-                    style: TextStyle(
-                      fontFamily: EBTypography.fontFamily,
-                      color: EBColor.primary,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            const EBFooter(),
-          ],
-        ),
+        bottomNavigationBar: TabBarFooter(tabController: _tabController),
       ),
     );
   }
