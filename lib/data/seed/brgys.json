@@ -1,0 +1,8691 @@
+[
+  {
+    "municipality": "BAAO",
+    "barangay_list": [
+      {
+        "name": "AGDANGAN POB. (SAN CAYETANO)",
+        "code": 95989,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "ANTIPOLO",
+        "code": 26528,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BAGUMBAYAN",
+        "code": 97170,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BULUANG (SAN ANTONIO)",
+        "code": 91866,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "CARANDAY (LA PURISIMA)",
+        "code": 25870,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "CRISTO REY",
+        "code": 69520,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "DEL PILAR",
+        "code": 81852,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "DEL ROSARIO (POB.)",
+        "code": 43136,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "IYAGAN",
+        "code": 67686,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "LA MEDALLA",
+        "code": 14750,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "LOURDES",
+        "code": 15340,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "NABABARERA",
+        "code": 44442,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "PUGAY (SAN RAFAEL)",
+        "code": 60063,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAGRADA",
+        "code": 54346,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SALVACION",
+        "code": 66084,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN FRANCISCO (POB.)",
+        "code": 30719,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN ISIDRO",
+        "code": 21782,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN JOSE (POB.)",
+        "code": 29239,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN JUAN",
+        "code": 82839,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN NICOLAS (POB.)",
+        "code": 63852,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN RAFAEL (IKPAN)",
+        "code": 27983,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN RAMON (POB.)",
+        "code": 54993,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN ROQUE (POB.)",
+        "code": 32306,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN VICENTE",
+        "code": 19998,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SANTA CRUZ (POB.)",
+        "code": 46064,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SANTA EULALIA",
+        "code": 64156,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SANTA ISABEL",
+        "code": 17132,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SANTA TERESA (VIGA)",
+        "code": 69133,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SANTA TERESITA",
+        "code": 69444,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "TAPOL",
+        "code": 15082,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      }
+    ]
+  },
+  {
+    "municipality": "BALATAN",
+    "barangay_list": [
+      {
+        "name": "CABANBANAN",
+        "code": 75635,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "CABUNGAN",
+        "code": 42678,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "CAMANGAHAN (CAORASAN)",
+        "code": 37289,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "CAYOGCOG",
+        "code": 29807,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "COGUIT",
+        "code": 28465,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "DURAN",
+        "code": 95823,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "LAGANAC",
+        "code": 69885,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "LULUASAN",
+        "code": 65676,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "MONTENEGRO (MAGUIRON)",
+        "code": 36716,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "PARARAO",
+        "code": 78873,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "PULANG DAGA",
+        "code": 53081,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAGRADA NACACALE",
+        "code": 21473,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN FRANCISCO",
+        "code": 11980,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SANTIAGO NACACALE",
+        "code": 49484,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SIRAMAG (POB.)",
+        "code": 70133,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "TAPAYAS",
+        "code": 60162,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "TOMATARAYO",
+        "code": 44251,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      }
+    ]
+  },
+  {
+    "municipality": "BATO",
+    "barangay_list": [
+      {
+        "name": "AGOS",
+        "code": 81361,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BACOLOD",
+        "code": 59420,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BULUANG",
+        "code": 91895,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "CARICOT",
+        "code": 92413,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "CAWACAGAN",
+        "code": 66513,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "COTMON",
+        "code": 89812,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "CRISTO REY",
+        "code": 94467,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "DEL ROSARIO",
+        "code": 59558,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "DIVINA PASTORA (POB.)",
+        "code": 48661,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "GOYUDAN",
+        "code": 94322,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "LOBONG",
+        "code": 62297,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "LUBIGAN",
+        "code": 74522,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "MAINIT",
+        "code": 65015,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "MANGA (MANGGA)",
+        "code": 61251,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "MASOLI",
+        "code": 39994,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "NEIGHBORHOOD",
+        "code": 88947,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "NIÑO JESUS",
+        "code": 72131,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "PAGATPATAN",
+        "code": 76190,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "PALO",
+        "code": 81795,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "PAYAK",
+        "code": 69644,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAGRADA (SAGRADA FAMILIA)",
+        "code": 87395,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SALVACION",
+        "code": 48284,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN ISIDRO (POB.)",
+        "code": 49813,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN JUAN",
+        "code": 61974,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN MIGUEL",
+        "code": 61534,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN RAFAEL (POB.)",
+        "code": 39568,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN ROQUE",
+        "code": 38712,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN VICENTE",
+        "code": 35695,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SANTA CRUZ (POB.)",
+        "code": 16399,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SANTIAGO (POB.)",
+        "code": 10510,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SOOC",
+        "code": 21948,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "TAGPOLO",
+        "code": 61244,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "TRES REYES (POB.)",
+        "code": 72892,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      }
+    ]
+  },
+  {
+    "municipality": "BOMBON",
+    "barangay_list": [
+      {
+        "name": "PAGAO (SAN JUAN)",
+        "code": 23616,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN ANTONIO",
+        "code": 48553,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN FRANCISCO",
+        "code": 89175,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN ISIDRO (POB.)",
+        "code": 65685,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN JOSE (POB.)",
+        "code": 94572,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN ROQUE (POB.)",
+        "code": 26875,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SANTO DOMINGO",
+        "code": 48368,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SIEMBRE",
+        "code": 35477,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      }
+    ]
+  },
+  {
+    "municipality": "BUHI",
+    "barangay_list": [
+      {
+        "name": "AMLONGAN (DEL ROSARIO)",
+        "code": 83055,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "ANTIPOLO",
+        "code": 73716,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BUROCBUSOC",
+        "code": 23036,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "CABATUAN",
+        "code": 84326,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "CAGMASLOG",
+        "code": 95104,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "DE LA FE",
+        "code": 89024,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "DELOS ANGELES (LOS ANGELES)",
+        "code": 90404,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "DIVINO ROSTRO",
+        "code": 10142,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "GABAS",
+        "code": 59125,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "IBAYUGAN",
+        "code": 80641,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "IGBAC",
+        "code": 36967,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "IPIL (FATIMA)",
+        "code": 86875,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "IRAYA (DEL ROSARIO)",
+        "code": 90873,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "LABAWON (SANTA TERESITA)",
+        "code": 83136,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "LOURDES (SANTA LOURDES)",
+        "code": 28350,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "MACAANGAY",
+        "code": 20001,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "MONTE CALVARIO",
+        "code": 33750,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "NAMURABOD",
+        "code": 19493,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAGRADA FAMILIA",
+        "code": 81821,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SALVACION",
+        "code": 22383,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN ANTONIO",
+        "code": 97897,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN BUENAVENTURA (POB.)",
+        "code": 88191,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN FRANCISCO (PARADA)",
+        "code": 33205,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN ISIDRO",
+        "code": 21224,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN JOSE BAYBAYON",
+        "code": 10342,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN JOSE SALAY",
+        "code": 90067,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN PASCUAL (POB.)",
+        "code": 40131,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN PEDRO (POB.)",
+        "code": 83131,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN RAFAEL",
+        "code": 60883,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN RAMON",
+        "code": 40772,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN ROQUE (POB.)",
+        "code": 88221,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN VICENTE",
+        "code": 26663,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SANTA CLARA (POB.)",
+        "code": 19845,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SANTA CRUZ",
+        "code": 10963,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SANTA ELENA (POB.)",
+        "code": 53352,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SANTA ISABEL",
+        "code": 57037,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SANTA JUSTINA",
+        "code": 91716,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "TAMBO",
+        "code": 19586,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      }
+    ]
+  },
+  {
+    "municipality": "BULA",
+    "barangay_list": [
+      {
+        "name": "BAGOLADIO",
+        "code": 86487,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BAGUMBAYAN",
+        "code": 54375,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BALAOGAN",
+        "code": 82949,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "CAORASAN",
+        "code": 64526,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "CASUGAD",
+        "code": 61410,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "CAUSIP",
+        "code": 82205,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "FABRICA",
+        "code": 27012,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "INOYONAN",
+        "code": 63010,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "ITANGON",
+        "code": 70552,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "KINALABASAHAN",
+        "code": 59300,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "LA PURISIMA",
+        "code": 10466,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "LA VICTORIA",
+        "code": 81543,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "LANIPGA",
+        "code": 78770,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "LUBGAN",
+        "code": 22958,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "OMBAO HEIGHTS",
+        "code": 79067,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "OMBAO POLPOG",
+        "code": 99561,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "PALSONG",
+        "code": 59734,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "PANOYPOYAN",
+        "code": 64290,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "PAWILI",
+        "code": 53639,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAGRADA (SAGRADA FAMILIA)",
+        "code": 99974,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SALVACION (POB.)",
+        "code": 47908,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN AGUSTIN",
+        "code": 19056,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN FRANCISCO",
+        "code": 50607,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN ISIDRO",
+        "code": 75100,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN JOSE",
+        "code": 31373,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN MIGUEL",
+        "code": 22879,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN RAMON",
+        "code": 15628,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN ROQUE (POB.)",
+        "code": 39477,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN ROQUE HEIGHTS",
+        "code": 52186,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SANTA ELENA",
+        "code": 73584,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SANTO DOMINGO",
+        "code": 90102,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SANTO NIÑO",
+        "code": 34768,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "TAISAN",
+        "code": 66999,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      }
+    ]
+  },
+  {
+    "municipality": "CABUSAO",
+    "barangay_list": [
+      {
+        "name": "BARCELONITA",
+        "code": 79667,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BIONG",
+        "code": 64623,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "CAMAGONG",
+        "code": 58112,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "CASTILLO",
+        "code": 29823,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "NEW POBLACION",
+        "code": 16650,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "PANDAN",
+        "code": 51534,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN PEDRO",
+        "code": 99844,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SANTA CRUZ",
+        "code": 42184,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SANTA LUTGARDA (POB.)",
+        "code": 68003,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      }
+    ]
+  },
+  {
+    "municipality": "CALABANGA",
+    "barangay_list": [
+      {
+        "name": "BALATASAN",
+        "code": 99947,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BALOMBON",
+        "code": 67758,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BALONGAY",
+        "code": 83284,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BELEN",
+        "code": 87521,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BIGAAS",
+        "code": 99279,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BINALIW",
+        "code": 33086,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BINANUAANAN GRANDE",
+        "code": 63410,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BINANUAANAN PEQUEÑO",
+        "code": 37236,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BONOT-SANTA ROSA",
+        "code": 13077,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BURABOD",
+        "code": 71869,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "CABANBANAN",
+        "code": 99670,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "CAGSAO",
+        "code": 60987,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "CAMUNING",
+        "code": 94443,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "COMAGUINGKING",
+        "code": 75148,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "DEL CARMEN (POB.)",
+        "code": 16640,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "DOMINOROG",
+        "code": 48872,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "FABRICA",
+        "code": 89173,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "HAROBAY",
+        "code": 32061,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "LA PURISIMA",
+        "code": 95778,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "LUGSAD",
+        "code": 69222,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "MANGUIRING",
+        "code": 62219,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "PAGATPAT (SAN JOSE)",
+        "code": 67942,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "PAOLBO",
+        "code": 77076,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "PINADA",
+        "code": 91437,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "PUNTA TARAWAL",
+        "code": 38857,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "QUINALE",
+        "code": 16315,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SABANG",
+        "code": 83059,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SALVACION-BAYBAY",
+        "code": 15416,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN ANTONIO (QUIPAYO)",
+        "code": 19605,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN ANTONIO POBLACION",
+        "code": 79393,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN BERNARDINO",
+        "code": 39646,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN FRANCISCO (POB.)",
+        "code": 70197,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN ISIDRO",
+        "code": 74463,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN LUCAS",
+        "code": 33401,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN MIGUEL (POB.)",
+        "code": 89095,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN PABLO (POB.)",
+        "code": 99816,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN ROQUE",
+        "code": 65026,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN VICENTE (POB.)",
+        "code": 65040,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SANTA CRUZ POBLACION",
+        "code": 23087,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SANTA CRUZ RATAY",
+        "code": 52539,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SANTA ISABEL (POB.)",
+        "code": 16619,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SANTA SALUD (POB.)",
+        "code": 22278,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SANTO DOMINGO",
+        "code": 31997,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SANTO NIÑO2 (QUIPAYO)",
+        "code": 50095,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SIBA-O",
+        "code": 83783,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SIBOBO",
+        "code": 28228,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SOGOD",
+        "code": 96723,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "TOMAGODTOD",
+        "code": 49798,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      }
+    ]
+  },
+  {
+    "municipality": "CAMALIGAN",
+    "barangay_list": [
+      {
+        "name": "DUGCAL",
+        "code": 85859,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "MARUPIT",
+        "code": 45902,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN FRANCISCO",
+        "code": 64996,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN JOSE-SAN PABLO (POB.)",
+        "code": 15437,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN JUAN-SAN RAMON (POB.)",
+        "code": 17912,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN LUCAS (POB.)",
+        "code": 71681,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN MARCOS (POB.)",
+        "code": 94821,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN MATEO (POB.)",
+        "code": 71183,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN ROQUE",
+        "code": 49753,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SANTO DOMINGO (POB.)",
+        "code": 64740,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SANTO TOMAS (POB.)",
+        "code": 51415,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SUA",
+        "code": 10711,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "TAROSANAN",
+        "code": 51602,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      }
+    ]
+  },
+  {
+    "municipality": "CANAMAN",
+    "barangay_list": [
+      {
+        "name": "BARAS (POB.)",
+        "code": 67919,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "DEL ROSARIO",
+        "code": 71714,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "DINAGA (POB.)",
+        "code": 47972,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "FUNDADO",
+        "code": 61341,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "HARING",
+        "code": 25993,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "IQUIN",
+        "code": 79034,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "LINAGA",
+        "code": 58708,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "MANGAYAWAN",
+        "code": 95996,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "PALO",
+        "code": 82156,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "PANGPANG (POB.)",
+        "code": 53555,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "PORO",
+        "code": 55743,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN AGUSTIN",
+        "code": 90351,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN FRANCISCO",
+        "code": 92119,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN JOSE EAST",
+        "code": 55633,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN JOSE WEST",
+        "code": 11768,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN JUAN",
+        "code": 84540,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN NICOLAS",
+        "code": 35356,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN ROQUE",
+        "code": 94329,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN VICENTE",
+        "code": 13179,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SANTA CRUZ (POB.)",
+        "code": 86441,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SANTA TERESITA",
+        "code": 50463,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SUA",
+        "code": 38098,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "TALIDTID",
+        "code": 73346,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "TIBGAO (POB.)",
+        "code": 77944,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      }
+    ]
+  },
+  {
+    "municipality": "CARAMOAN",
+    "barangay_list": [
+      {
+        "name": "AGAAS",
+        "code": 96992,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "ANTOLON",
+        "code": 31546,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BACGONG",
+        "code": 55401,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BAHAY",
+        "code": 14301,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BIKAL",
+        "code": 91790,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BINANUAHAN (POB.)",
+        "code": 36845,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "CABACONGAN",
+        "code": 42111,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "CADONG",
+        "code": 64327,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "CANATUAN",
+        "code": 82982,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "CAPUTATAN",
+        "code": 86433,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "COLONGCOGONG",
+        "code": 83567,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "DARAGA",
+        "code": 49574,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "GATA",
+        "code": 15380,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "GIBGOS",
+        "code": 67751,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "GOGON",
+        "code": 53953,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "GUIJALO",
+        "code": 99438,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "HANOPOL",
+        "code": 97662,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "HANOY",
+        "code": 59444,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "HAPONAN",
+        "code": 54630,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "ILAWOD",
+        "code": 52231,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "ILI-CENTRO (POB.)",
+        "code": 17751,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "LIDONG",
+        "code": 22603,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "LUBAS",
+        "code": 43677,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "MALABOG",
+        "code": 71777,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "MALIGAYA",
+        "code": 46621,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "MAMPIRAO",
+        "code": 45823,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "MANDICLUM (MANDICLOM)",
+        "code": 93700,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "MAQUEDA",
+        "code": 23582,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "MINALABA",
+        "code": 92582,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "ORING",
+        "code": 70293,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "OROC-OSOC",
+        "code": 86488,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "PAGOLINAN",
+        "code": 19098,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "PANDANAN",
+        "code": 32726,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "PANIMAN",
+        "code": 97102,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "PATAG-BELEN",
+        "code": 22399,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "PILI-CENTRO",
+        "code": 71933,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "PILI-TABIGUIAN",
+        "code": 31695,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "POLOAN",
+        "code": 37153,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SALVACION",
+        "code": 84877,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN ROQUE",
+        "code": 35490,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN VICENTE",
+        "code": 19572,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SANTA CRUZ",
+        "code": 66748,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SOLNOPAN",
+        "code": 45006,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "TABGON",
+        "code": 73874,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "TABIGUIAN",
+        "code": 51331,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "TABOG",
+        "code": 86239,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "TAWOG (POB.)",
+        "code": 18962,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "TEROGO",
+        "code": 19195,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "TOBOAN",
+        "code": 56935,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      }
+    ]
+  },
+  {
+    "municipality": "DEL GALLEGO",
+    "barangay_list": [
+      {
+        "name": "BAGONG SILANG",
+        "code": 29464,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BUCAL",
+        "code": 47776,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "CABASAG",
+        "code": 90882,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "COMADAYCADAY",
+        "code": 62970,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "COMADOGCADOG",
+        "code": 94020,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "DOMAGONDONG",
+        "code": 41159,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "KINALANGAN",
+        "code": 65815,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "MABINI",
+        "code": 13420,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "MAGAIS I",
+        "code": 40982,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "MAGAIS II",
+        "code": 18189,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "MANSALAYA",
+        "code": 61148,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "NAGKALIT",
+        "code": 20765,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "PALASPAS",
+        "code": 75449,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "PAMPLONA",
+        "code": 37323,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "PASAY",
+        "code": 70249,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "PINAGDAPIAN",
+        "code": 32568,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "PINUGUSAN",
+        "code": 91899,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "POBLACION ZONE III",
+        "code": 28092,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SABANG",
+        "code": 46232,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SALVACION",
+        "code": 92498,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN JUAN",
+        "code": 22686,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN PABLO",
+        "code": 43807,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SANTA RITA I",
+        "code": 28169,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SANTA RITA II",
+        "code": 58485,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SINAGAWSAWAN",
+        "code": 23805,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SINUKNIPAN I",
+        "code": 91462,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SINUKNIPAN II",
+        "code": 68428,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SUGSUGIN",
+        "code": 63273,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "TABION",
+        "code": 40728,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "TOMAGOKTOK",
+        "code": 95809,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "ZONE I FATIMA (POB.)",
+        "code": 61575,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "ZONE II SAN ANTONIO (POB.)",
+        "code": 33878,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      }
+    ]
+  },
+  {
+    "municipality": "GAINZA",
+    "barangay_list": [
+      {
+        "name": "CAGBUNGA",
+        "code": 52773,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "DAHILIG",
+        "code": 29351,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "DISTRICT I (POB.)",
+        "code": 96463,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "DISTRICT II (POB.)",
+        "code": 13617,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "LOOB",
+        "code": 30877,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "MALBONG",
+        "code": 36797,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "NAMUAT",
+        "code": 33769,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAMPALOC",
+        "code": 56835,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      }
+    ]
+  },
+  {
+    "municipality": "GARCHITORENA",
+    "barangay_list": [
+      {
+        "name": "ASON (ANSON)",
+        "code": 85838,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BAHI",
+        "code": 27205,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BARANGAY I (POB.)",
+        "code": 61642,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BARANGAY II (POB.)",
+        "code": 24285,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BARANGAY III (POB.)",
+        "code": 20058,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BARANGAY IV (POB.)",
+        "code": 53684,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BINAGASBASAN",
+        "code": 40872,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BURABOD",
+        "code": 89310,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "CAGAMUTAN",
+        "code": 76774,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "CAGNIPA",
+        "code": 89013,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "CANLONG",
+        "code": 89723,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "DANGLA",
+        "code": 37798,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "DEL PILAR",
+        "code": 33969,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "DENRICA",
+        "code": 45157,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "HARRISON",
+        "code": 57494,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "MANSANGAT",
+        "code": 30388,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "PAMBUHAN",
+        "code": 89089,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAGRADA",
+        "code": 50374,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SALVACION",
+        "code": 44601,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN VICENTE",
+        "code": 24125,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SUMAOY",
+        "code": 43805,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "TAMIAWON",
+        "code": 43658,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "TOYTOY",
+        "code": 57621,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      }
+    ]
+  },
+  {
+    "municipality": "GOA",
+    "barangay_list": [
+      {
+        "name": "ABUCAYAN",
+        "code": 72013,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BAGUMBAYAN GRANDE (POB.)",
+        "code": 15124,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BAGUMBAYAN PEQUEÑO (POB.)",
+        "code": 40249,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BALAYNAN",
+        "code": 96878,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BELEN (POB.)",
+        "code": 99560,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BUYO",
+        "code": 78826,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "CAGAYCAY",
+        "code": 78557,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "CATAGBACAN",
+        "code": 21387,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "DIGDIGON",
+        "code": 95588,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "GIMAGA",
+        "code": 40769,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "HALAWIG-GOGON",
+        "code": 32557,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "HIWACLOY",
+        "code": 57693,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "LA PURISIMA (POB.)",
+        "code": 70848,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "LAMON",
+        "code": 68152,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "MATACLA",
+        "code": 24397,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "MAYMATAN",
+        "code": 43455,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "MAYSALAY",
+        "code": 71638,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "NAPAWON (NAPUNUON)",
+        "code": 96754,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "PANDAY (POB.)",
+        "code": 69877,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "PAYATAN",
+        "code": 53168,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "PINAGLABANAN",
+        "code": 88754,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SALOG",
+        "code": 66786,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN BENITO (POB.)",
+        "code": 64566,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN ISIDRO (POB.)",
+        "code": 26093,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN ISIDRO WEST",
+        "code": 91490,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN JOSE (POB.)",
+        "code": 99073,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN JUAN BAUTISTA (POB.)",
+        "code": 55649,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN JUAN EVANGELISTA (POB.)",
+        "code": 32598,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN PEDRO (ARORO)",
+        "code": 58400,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SCOUT FUENTEBELLA",
+        "code": 89071,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "TABGON",
+        "code": 21430,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "TAGONGTONG",
+        "code": 71098,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "TAMBAN (MABINI)",
+        "code": 53975,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "TAYTAY (HALGON EAST)",
+        "code": 28791,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      }
+    ]
+  },
+  {
+    "municipality": "IRIGA CITY",
+    "barangay_list": [
+      {
+        "name": "ANTIPOLO",
+        "code": 23195,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "CRISTO REY",
+        "code": 76374,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "DEL ROSARIO (BANAO)",
+        "code": 53018,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "FRANCIA",
+        "code": 27188,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "LA ANUNCIACION",
+        "code": 59012,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "LA MEDALLA",
+        "code": 23016,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "LA PURISIMA",
+        "code": 34525,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "LA TRINIDAD",
+        "code": 30831,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "NIÑO JESUS",
+        "code": 72143,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "PERPETUAL HELP",
+        "code": 43509,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAGRADA",
+        "code": 40388,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SALVACION",
+        "code": 27900,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN AGUSTIN",
+        "code": 17115,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN ANDRES",
+        "code": 16357,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN ANTONIO",
+        "code": 66108,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN FRANCISCO (POB.)",
+        "code": 74801,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN ISIDRO",
+        "code": 72765,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN JOSE",
+        "code": 11681,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN JUAN",
+        "code": 76892,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN MIGUEL",
+        "code": 83021,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN NICOLAS",
+        "code": 96488,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN PEDRO",
+        "code": 82277,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN RAFAEL",
+        "code": 95036,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN RAMON",
+        "code": 52239,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN ROQUE (POB.)",
+        "code": 48524,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN VICENTE NORTE",
+        "code": 35632,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN VICENTE SUR",
+        "code": 53557,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SANTA CRUZ NORTE",
+        "code": 76299,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SANTA CRUZ SUR",
+        "code": 49211,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SANTA ELENA",
+        "code": 48420,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SANTA ISABEL",
+        "code": 26723,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SANTA MARIA",
+        "code": 19539,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SANTA TERESITA",
+        "code": 35901,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SANTIAGO",
+        "code": 70912,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SANTO DOMINGO",
+        "code": 82031,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SANTO NIÑO",
+        "code": 45660,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      }
+    ]
+  },
+  {
+    "municipality": "LAGONOY",
+    "barangay_list": [
+      {
+        "name": "AGOSAIS",
+        "code": 69580,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "AGPO-CAMAGONG-TABOG",
+        "code": 47182,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "AMOGUIS",
+        "code": 51818,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BALATON",
+        "code": 22678,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BINANUAHAN",
+        "code": 31774,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BOCOGAN",
+        "code": 22029,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BURABOD",
+        "code": 46468,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "CABOTONAN",
+        "code": 63381,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "DAHAT",
+        "code": 84949,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "DEL CARMEN",
+        "code": 78943,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "GIMAGTOCON",
+        "code": 37620,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "GINORANGAN (GENORANGAN)",
+        "code": 61052,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "GUBAT",
+        "code": 60844,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "GUIBAHOY",
+        "code": 15680,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "HIMANAG",
+        "code": 31308,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "KINAHOLOGAN",
+        "code": 73054,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "LOHO",
+        "code": 57440,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "MANAMOC",
+        "code": 98059,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "MANGOGON",
+        "code": 36904,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "MAPID",
+        "code": 20104,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "OLAS",
+        "code": 79565,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "OMALO",
+        "code": 24208,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "PANAGAN",
+        "code": 17762,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "PANICUAN",
+        "code": 57292,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "PINAMIHAGAN",
+        "code": 75973,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN FRANCISCO (POB.)",
+        "code": 83366,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN ISIDRO",
+        "code": 58728,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN ISIDRO NORTE (POB.)",
+        "code": 62214,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN ISIDRO SUR (POB.)",
+        "code": 64601,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN RAFAEL",
+        "code": 48571,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN RAMON",
+        "code": 48471,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN ROQUE",
+        "code": 48792,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN SEBASTIAN",
+        "code": 60221,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN VICENTE (POB.)",
+        "code": 74332,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SANTA CRUZ (POB.)",
+        "code": 68694,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SANTA MARIA (POB.)",
+        "code": 40274,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SARIPONGPONG (POB.)",
+        "code": 59998,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SIPACO",
+        "code": 53374,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      }
+    ]
+  },
+  {
+    "municipality": "LIBMANAN",
+    "barangay_list": [
+      {
+        "name": "ASLONG",
+        "code": 61313,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "AWAYAN",
+        "code": 35536,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BAGACAY",
+        "code": 20149,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BAGADION",
+        "code": 87297,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BAGAMELON",
+        "code": 40381,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BAGUMBAYAN",
+        "code": 60934,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BAHAO",
+        "code": 61525,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BAHAY",
+        "code": 46326,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BEGAJO NORTE",
+        "code": 67479,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BEGAJO SUR",
+        "code": 43013,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BEGUITO NUEVO",
+        "code": 45641,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BEGUITO VIEJO",
+        "code": 52233,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BIKAL",
+        "code": 44476,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BUSAK",
+        "code": 54750,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "CAIMA",
+        "code": 93460,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "CALABNIGAN",
+        "code": 74401,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "CAMAMBUGAN",
+        "code": 77563,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "CAMBALIDIO",
+        "code": 87309,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "CANDAMI",
+        "code": 14294,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "CANDATO",
+        "code": 21542,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "CAWAYAN",
+        "code": 95634,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "CONCEPCION",
+        "code": 49996,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "CUYAPI",
+        "code": 59520,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "DANAWAN",
+        "code": 16188,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "DUANG NIOG",
+        "code": 36005,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "HANDONG",
+        "code": 10567,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "IBID",
+        "code": 38056,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "INALAHAN",
+        "code": 33692,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "LABAO",
+        "code": 20430,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "LIBOD I",
+        "code": 85889,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "LIBOD II",
+        "code": 13111,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "LOBA-LOBA",
+        "code": 72936,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "MABINI",
+        "code": 22970,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "MALANSAD NUEVO",
+        "code": 64134,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "MALANSAD VIEJO",
+        "code": 55291,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "MALBOGON",
+        "code": 55402,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "MALINAO",
+        "code": 28920,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "MAMBALITE",
+        "code": 90426,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "MAMBAYAWAS",
+        "code": 34494,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "MAMBULO NUEVO",
+        "code": 76126,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "MAMBULO VIEJO",
+        "code": 21701,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "MANCAWAYAN",
+        "code": 75393,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "MANDACANAN",
+        "code": 18680,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "MANTALISAY",
+        "code": 97217,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "PADLOS",
+        "code": 55820,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "PAG-ORING NUEVO",
+        "code": 67831,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "PAG-ORING VIEJO",
+        "code": 39183,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "PALANGON",
+        "code": 41420,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "PALONG",
+        "code": 48549,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "PATAG",
+        "code": 56354,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "PLANZA",
+        "code": 46048,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "POBLACION",
+        "code": 94220,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "POTOT",
+        "code": 67387,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "PURO-BATIA",
+        "code": 20137,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "RONGOS",
+        "code": 78502,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SALVACION",
+        "code": 50636,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN ISIDRO",
+        "code": 26019,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN JUAN",
+        "code": 47322,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN PABLO",
+        "code": 58611,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN VICENTE",
+        "code": 15742,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SIBUJO",
+        "code": 88104,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SIGAMOT",
+        "code": 82012,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "STATION-CHURCH SITE",
+        "code": 13507,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "TABAN-FUNDADO",
+        "code": 42148,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "TAMPUHAN",
+        "code": 37081,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "TANAG",
+        "code": 61348,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "TARUM",
+        "code": 26013,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "TINALMUD NUEVO",
+        "code": 19715,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "TINALMUD VIEJO",
+        "code": 27032,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "TINANGKIHAN",
+        "code": 70824,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "UDOC",
+        "code": 83504,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "UMALO",
+        "code": 13779,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "USON",
+        "code": 87645,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "VILLADIMA (SANTA CRUZ)",
+        "code": 17281,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "VILLASOCORRO",
+        "code": 30137,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      }
+    ]
+  },
+  {
+    "municipality": "LUPI",
+    "barangay_list": [
+      {
+        "name": "ALLEOMAR",
+        "code": 13439,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BAGANGAN SR.",
+        "code": 78777,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BAGONG SIKAT",
+        "code": 92109,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BANGON",
+        "code": 44132,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BARRERA JR.",
+        "code": 91819,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BARRERA SR.",
+        "code": 55165,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BEL-CRUZ",
+        "code": 31215,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BELWANG",
+        "code": 34691,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BUENASUERTE",
+        "code": 53544,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BULAWAN JR.",
+        "code": 47206,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BULAWAN SR.",
+        "code": 25788,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "CABUTAGAN",
+        "code": 96738,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "CASAY",
+        "code": 99210,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "COLACLING (DEL ROSARIO)",
+        "code": 75273,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "CRISTO REY",
+        "code": 19491,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "DEL CARMEN",
+        "code": 17763,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "HAGUIMIT",
+        "code": 73706,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "HALUBAN (PIGBASAGAN)",
+        "code": 26703,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "KAIBIGAN",
+        "code": 20689,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "LA PURISIMA",
+        "code": 96123,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "LOURDES",
+        "code": 84895,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "MANGCAWAYAN",
+        "code": 32495,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "NAPOLIDAN",
+        "code": 57061,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "POBLACION",
+        "code": 78999,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "POLANTUNA",
+        "code": 63532,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAGRADA",
+        "code": 58449,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SALVACION",
+        "code": 56903,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN ISIDRO",
+        "code": 83517,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN JOSE",
+        "code": 83747,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN PEDRO",
+        "code": 21288,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN RAFAEL NORTE",
+        "code": 93253,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN RAFAEL SUR",
+        "code": 20843,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN RAMON",
+        "code": 31992,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN VICENTE",
+        "code": 83711,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SOOC",
+        "code": 96219,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "TANAWAN",
+        "code": 37402,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "TAPI (LUPI NUEVO)",
+        "code": 71319,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "TIBLE",
+        "code": 19976,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      }
+    ]
+  },
+  {
+    "municipality": "MAGARAO",
+    "barangay_list": [
+      {
+        "name": "BAROBAYBAY",
+        "code": 23412,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BELL (POB.)",
+        "code": 23042,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "CARANGCANG",
+        "code": 55155,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "CARIGSA",
+        "code": 78318,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "CASURAY",
+        "code": 85502,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "MONSERRAT (POB.)",
+        "code": 22072,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "PONONG",
+        "code": 99631,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN FRANCISCO (POB.)",
+        "code": 19367,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN ISIDRO (POB.)",
+        "code": 24868,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN JUAN (POB.)",
+        "code": 65316,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN MIGUEL",
+        "code": 27336,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN PANTALEON (POB.)",
+        "code": 50220,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SANTA LUCIA (POB.)",
+        "code": 92986,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SANTA ROSA",
+        "code": 18198,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SANTO TOMAS (POB.)",
+        "code": 17960,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      }
+    ]
+  },
+  {
+    "municipality": "MILAOR",
+    "barangay_list": [
+      {
+        "name": "ALIMBUYOG",
+        "code": 46857,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "AMPARADO (POB.)",
+        "code": 31073,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BALAGBAG",
+        "code": 50814,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BORONGBORONGAN",
+        "code": 12888,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "CABUGAO",
+        "code": 34018,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "CAPUCNASAN",
+        "code": 44660,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "DALIPAY",
+        "code": 15982,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "DEL ROSARIO (POB.)",
+        "code": 12657,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "FLORDELIZ",
+        "code": 25857,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "LIPOT",
+        "code": 90651,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "MAYAOPAYAWAN",
+        "code": 34851,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "MAYCATMON",
+        "code": 30049,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "MAYDASO",
+        "code": 57251,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN ANTONIO",
+        "code": 58433,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN JOSE (POB.)",
+        "code": 77389,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN MIGUEL (POB.)",
+        "code": 40783,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN ROQUE (POB.)",
+        "code": 57275,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN VICENTE (POB.)",
+        "code": 44068,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SANTO DOMINGO (POB.)",
+        "code": 37495,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "TARUSANAN",
+        "code": 82443,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      }
+    ]
+  },
+  {
+    "municipality": "MINALABAC",
+    "barangay_list": [
+      {
+        "name": "ANTIPOLO",
+        "code": 18121,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BAGOLATAO",
+        "code": 25119,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BAGONGBONG",
+        "code": 29012,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BALIUAG NUEVO",
+        "code": 97365,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BALIUAG VIEJO",
+        "code": 14785,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "CATANUSAN",
+        "code": 78097,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "DEL CARMEN-DEL ROSARIO (POB.)",
+        "code": 74274,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "DEL SOCORRO",
+        "code": 14289,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "HAMORAON",
+        "code": 44489,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "HOBO",
+        "code": 40727,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "IRAYANG SOLONG",
+        "code": 85693,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "MAGADAP",
+        "code": 53994,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "MALITBOG",
+        "code": 20932,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "MANAPAO",
+        "code": 94918,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "MATAOROC",
+        "code": 98977,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAGRADA (SAGRADA FAMILIA)",
+        "code": 92551,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SALINGOGON",
+        "code": 99201,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN ANTONIO",
+        "code": 63495,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN FELIPE-SANTIAGO (POB.)",
+        "code": 68416,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN FRANCISCO (POB.)",
+        "code": 61591,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN JOSE",
+        "code": 23173,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN JUAN-SAN LORENZO (POB.)",
+        "code": 64939,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "TABAN",
+        "code": 86949,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "TARIRIC",
+        "code": 76361,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "TIMBANG",
+        "code": 77105,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      }
+    ]
+  },
+  {
+    "municipality": "NABUA",
+    "barangay_list": [
+      {
+        "name": "ANGUSTIA (ANGUSTIA INAPATAN)",
+        "code": 15507,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "ANTIPOLO OLD",
+        "code": 11442,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "ANTIPOLO YOUNG",
+        "code": 72174,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "ARO-ALDAO",
+        "code": 33943,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BUSTRAC",
+        "code": 40892,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "DOLOROSA (DOLOROSA INAPATAN)",
+        "code": 77205,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "DURAN (JESUS DURAN)",
+        "code": 72112,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "INAPATAN (DEL ROSARIO INAPATAN)",
+        "code": 29849,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "LA OPINION",
+        "code": 70570,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "LA PURISIMA (LA PURISIMA AGUPIT)",
+        "code": 61740,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "LOURDES OLD",
+        "code": 63524,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "LOURDES YOUNG",
+        "code": 84741,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "MALAWAG (SAN JOSE MALAWAG)",
+        "code": 54840,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "PALOYON ORIENTAL",
+        "code": 59543,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "PALOYON PROPER (SAGRADA PALOYON)",
+        "code": 10431,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SALVACION QUE GATOS",
+        "code": 61118,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN ANTONIO (POB.)",
+        "code": 96281,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN ANTONIO OGBON",
+        "code": 76913,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN ESTEBAN (POB.)",
+        "code": 60313,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN FRANCISCO (POB.)",
+        "code": 35973,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN ISIDRO (POB.)",
+        "code": 69229,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN ISIDRO INAPATAN",
+        "code": 13443,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN JOSE (SAN JOSE PANGARAON)",
+        "code": 73976,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN JUAN (POB.)",
+        "code": 10281,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN LUIS (POB.)",
+        "code": 93758,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN MIGUEL (POB.)",
+        "code": 36507,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN NICOLAS (POB.)",
+        "code": 49246,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN ROQUE (POB.)",
+        "code": 54046,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN ROQUE MADAWON",
+        "code": 21399,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN ROQUE SAGUMAY",
+        "code": 97900,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN VICENTE GORONG-GORONG",
+        "code": 84546,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN VICENTE OGBON",
+        "code": 46799,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SANTA BARBARA (MALIBAN)",
+        "code": 52896,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SANTA CRUZ",
+        "code": 43097,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SANTA ELENA BARAS",
+        "code": 37898,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SANTA LUCIA BARAS",
+        "code": 82787,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SANTIAGO OLD",
+        "code": 82748,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SANTIAGO YOUNG",
+        "code": 71041,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SANTO DOMINGO",
+        "code": 38187,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "TANDAAY",
+        "code": 76741,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "TOPAS PROPER",
+        "code": 44643,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "TOPAS SOGOD",
+        "code": 70975,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      }
+    ]
+  },
+  {
+    "municipality": "NAGA CITY",
+    "barangay_list": [
+      {
+        "name": "ABELLA",
+        "code": 23255,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BAGUMBAYAN NORTE",
+        "code": 49313,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BAGUMBAYAN SUR",
+        "code": 12791,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BALATAS",
+        "code": 88185,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "CALAUAG",
+        "code": 55802,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "CARARAYAN",
+        "code": 89627,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "CAROLINA",
+        "code": 10990,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "CONCEPCION GRANDE",
+        "code": 61972,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "CONCEPCION PEQUEÑO",
+        "code": 80864,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "DAYANGDANG",
+        "code": 81619,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "DEL ROSARIO",
+        "code": 81514,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "DINAGA",
+        "code": 31417,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "IGUALDAD INTERIOR",
+        "code": 96453,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "LERMA",
+        "code": 13575,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "LIBOTON",
+        "code": 85357,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "MABOLO",
+        "code": 81183,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "PACOL",
+        "code": 11109,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "PANICUASON",
+        "code": 92296,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "PEÑAFRANCIA",
+        "code": 18580,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SABANG",
+        "code": 71775,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN FELIPE",
+        "code": 39793,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN FRANCISCO (POB.)",
+        "code": 28077,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN ISIDRO",
+        "code": 97103,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SANTA CRUZ",
+        "code": 98032,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "TABUCO",
+        "code": 71564,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "TINAGO",
+        "code": 38218,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "TRIANGULO",
+        "code": 17864,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      }
+    ]
+  },
+  {
+    "municipality": "OCAMPO",
+    "barangay_list": [
+      {
+        "name": "AYUGAN",
+        "code": 64058,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "CABARIWAN",
+        "code": 64826,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "CAGMANABA",
+        "code": 63400,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "DEL ROSARIO",
+        "code": 79849,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "GATBO",
+        "code": 38400,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "GUINABAN",
+        "code": 51867,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "HANAWAN",
+        "code": 12997,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "HIBAGO",
+        "code": 32759,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "LA PURISIMA NUEVO",
+        "code": 64799,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "MAY-OGOB",
+        "code": 33221,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "NEW MORIONES",
+        "code": 67603,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "OLD MORIONES",
+        "code": 35942,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "PINIT",
+        "code": 99825,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "POBLACION CENTRAL",
+        "code": 93047,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "POBLACION EAST",
+        "code": 21539,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "POBLACION WEST",
+        "code": 30874,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SALVACION",
+        "code": 46971,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN ANTONIO",
+        "code": 53758,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN FRANCISCO",
+        "code": 34713,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN JOSE ORAS",
+        "code": 51245,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN ROQUE COMMONAL",
+        "code": 24825,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN VICENTE",
+        "code": 82815,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SANTA CRUZ",
+        "code": 23512,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SANTO NIÑO",
+        "code": 38277,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "VILLAFLORIDA",
+        "code": 59702,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      }
+    ]
+  },
+  {
+    "municipality": "PAMPLONA",
+    "barangay_list": [
+      {
+        "name": "BATANG",
+        "code": 90382,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BURABOD",
+        "code": 37194,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "CAGBIBI",
+        "code": 30103,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "CAGBUNGA",
+        "code": 63006,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "CALAWAT",
+        "code": 78541,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "DEL ROSARIO",
+        "code": 11946,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "PATONG",
+        "code": 29014,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "POBLACION",
+        "code": 39574,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SALVACION",
+        "code": 27912,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN GABRIEL",
+        "code": 92018,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN ISIDRO",
+        "code": 22352,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN RAFAEL",
+        "code": 18095,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN RAMON",
+        "code": 32951,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN VICENTE",
+        "code": 77152,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "TAMBO",
+        "code": 81716,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "TAMPADONG",
+        "code": 49723,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "VENERACION (TAGUILID)",
+        "code": 21433,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      }
+    ]
+  },
+  {
+    "municipality": "PASACAO",
+    "barangay_list": [
+      {
+        "name": "ANTIPOLO",
+        "code": 51986,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BAGONG SILANG",
+        "code": 55024,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BAHAY",
+        "code": 98779,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BALOGO",
+        "code": 97802,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "CARANAN",
+        "code": 30579,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "CUCO",
+        "code": 80719,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "DALUPAON",
+        "code": 56070,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "HUBO",
+        "code": 67048,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "ITULAN",
+        "code": 83083,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "MACAD (HEBRIO LOURDES)",
+        "code": 31265,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "ODICON",
+        "code": 31913,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "QUITANG",
+        "code": 50130,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SALVACION",
+        "code": 86442,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN ANTONIO",
+        "code": 29886,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN CIRILO (POB.)",
+        "code": 13351,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SANTA ROSA DEL NORTE (POB.)",
+        "code": 22216,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SANTA ROSA DEL SUR (POB.)",
+        "code": 22433,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "TILNAC",
+        "code": 99781,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "TINALMUD",
+        "code": 91260,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      }
+    ]
+  },
+  {
+    "municipality": "PILI",
+    "barangay_list": [
+      {
+        "name": "ANAYAN",
+        "code": 56020,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BAGONG SIRANG",
+        "code": 51982,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BINANWAANAN",
+        "code": 64621,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BINOBONG",
+        "code": 88278,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "CADLAN",
+        "code": 33937,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "CAROYROYAN",
+        "code": 88310,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "CURRY",
+        "code": 10830,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "DEL ROSARIO",
+        "code": 19757,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "HIMAAO",
+        "code": 15247,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "LA PURISIMA",
+        "code": 15932,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "NEW SAN ROQUE",
+        "code": 19111,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "OLD SAN ROQUE (POB.)",
+        "code": 75918,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "PALESTINA",
+        "code": 60969,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "PAWILI",
+        "code": 35401,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAGRADA",
+        "code": 53517,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAGURONG",
+        "code": 22068,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN AGUSTIN",
+        "code": 78159,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN ANTONIO (POB.)",
+        "code": 94919,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN ISIDRO (POB.)",
+        "code": 25081,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN JOSE",
+        "code": 24457,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN JUAN (POB.)",
+        "code": 80487,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN VICENTE (POB.)",
+        "code": 92308,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SANTIAGO (POB.)",
+        "code": 25002,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SANTO NIÑO",
+        "code": 30135,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "TAGBONG",
+        "code": 82448,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "TINANGIS",
+        "code": 22221,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      }
+    ]
+  },
+  {
+    "municipality": "PRESENTACION (PARUBCAN)",
+    "barangay_list": [
+      {
+        "name": "AYUGAO",
+        "code": 55803,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BAGONG SIRANG",
+        "code": 49891,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BALIGUIAN",
+        "code": 24291,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BANTUGAN",
+        "code": 18770,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BICALEN",
+        "code": 33068,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BITAOGAN",
+        "code": 96255,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BUENAVISTA",
+        "code": 43669,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BULALACAO",
+        "code": 14678,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "CAGNIPA",
+        "code": 60195,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "LAGHA",
+        "code": 51361,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "LIDONG",
+        "code": 75867,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "LIWACSA",
+        "code": 62997,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "MAANGAS",
+        "code": 14545,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "PAGSANGAHAN",
+        "code": 20380,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "PATROCINIO",
+        "code": 86197,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "PILI",
+        "code": 69213,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SANTA MARIA (POB.)",
+        "code": 30621,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "TANAWAN",
+        "code": 72200,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      }
+    ]
+  },
+  {
+    "municipality": "RAGAY",
+    "barangay_list": [
+      {
+        "name": "AGAO-AO",
+        "code": 92037,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "AGRUPACION",
+        "code": 31825,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "AMOMOKPOK",
+        "code": 52377,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "APAD",
+        "code": 27486,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "APALE",
+        "code": 11088,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BANGA CAVES",
+        "code": 49456,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BAYA",
+        "code": 11942,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BINAHAN PROPER",
+        "code": 42712,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BINAHAN UPPER",
+        "code": 54024,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BUENASUERTE",
+        "code": 66537,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "CABADISAN",
+        "code": 52449,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "CABINITAN",
+        "code": 96222,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "CABUGAO",
+        "code": 73579,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "CADITAAN",
+        "code": 28369,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "CALE",
+        "code": 60076,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "CATABANGAN PROPER",
+        "code": 84688,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "F. SIMEON (PUGOD)",
+        "code": 38794,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "GODOFREDO REYES SR. (CATABANGAN CROSSING)",
+        "code": 94522,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "INANDAWA",
+        "code": 70446,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "LAGUIO",
+        "code": 46688,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "LANIPGA-CAWAYAN",
+        "code": 94404,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "LIBORO",
+        "code": 20833,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "LOHONG",
+        "code": 90674,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "LOWER OMON",
+        "code": 32033,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "LOWER SANTA CRUZ",
+        "code": 81440,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "PANAYTAYAN",
+        "code": 34144,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "PANAYTAYAN NUEVO",
+        "code": 79572,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "PATALUNAN",
+        "code": 42937,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "POBLACION ILAOD",
+        "code": 30536,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "POBLACION IRAYA",
+        "code": 87171,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "PORT JUNCTION NORTE",
+        "code": 21617,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "PORT JUNCTION SUR",
+        "code": 31917,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SALVACION",
+        "code": 82469,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAMAY",
+        "code": 85284,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN RAFAEL",
+        "code": 17597,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "TAGBAC",
+        "code": 96228,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "UPPER OMON",
+        "code": 79502,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "UPPER SANTA CRUZ",
+        "code": 29143,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      }
+    ]
+  },
+  {
+    "municipality": "SAGÑAY",
+    "barangay_list": [
+      {
+        "name": "ANIOG",
+        "code": 50974,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "ATULAYAN",
+        "code": 67348,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BONGALON",
+        "code": 92096,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BURACAN",
+        "code": 84666,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "CATALOTOAN",
+        "code": 79211,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "DEL CARMEN (POB.)",
+        "code": 77310,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "KILANTAAO",
+        "code": 73609,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "KILOMAON",
+        "code": 55380,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "MABCA",
+        "code": 30836,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "MINADONGJOL",
+        "code": 74266,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "NATO",
+        "code": 59306,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "PATITINAN",
+        "code": 36869,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN ANTONIO (POB.)",
+        "code": 66897,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN ISIDRO (POB.)",
+        "code": 31200,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN ROQUE (POB.)",
+        "code": 45414,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SANTO NIÑO",
+        "code": 16273,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SIBAGUAN",
+        "code": 76932,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "TINORONGAN",
+        "code": 20230,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "TURAGUE",
+        "code": 61730,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      }
+    ]
+  },
+  {
+    "municipality": "SAN FERNANDO",
+    "barangay_list": [
+      {
+        "name": "ALIANZA",
+        "code": 86220,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BEBERON",
+        "code": 83502,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BICAL",
+        "code": 21909,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BOCAL",
+        "code": 73602,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BONIFACIO (POB.)",
+        "code": 78381,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BUENAVISTA (POB.)",
+        "code": 70774,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "CALASCAGAS",
+        "code": 42208,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "COTMO",
+        "code": 97678,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "DACULANG TUBIG",
+        "code": 89228,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "DEL PILAR (POB.)",
+        "code": 47515,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "GARAN",
+        "code": 14944,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "GRIJALVO",
+        "code": 34972,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "LUPI",
+        "code": 52849,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "MARAGUIN",
+        "code": 25232,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "PAMUKID",
+        "code": 41391,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "PINAMASAGAN",
+        "code": 49882,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "PIPIAN",
+        "code": 56429,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "PLANZA",
+        "code": 13045,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "RIZAL (POB.)",
+        "code": 24392,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN JOAQUIN",
+        "code": 14679,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SANTA CRUZ",
+        "code": 30413,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "TAGPOCOL",
+        "code": 83991,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      }
+    ]
+  },
+  {
+    "municipality": "SAN JOSE",
+    "barangay_list": [
+      {
+        "name": "ADIANGAO",
+        "code": 13341,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BAGACAY",
+        "code": 73770,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BAHAY",
+        "code": 82879,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BOCLOD",
+        "code": 38326,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "CALALAHAN",
+        "code": 61518,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "CALAWIT",
+        "code": 77834,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "CAMAGONG",
+        "code": 60724,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "CATALOTOAN",
+        "code": 82941,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "DANLOG",
+        "code": 72651,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "DEL CARMEN (POB.)",
+        "code": 62274,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "DOLO",
+        "code": 55901,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "KINALANSAN",
+        "code": 81237,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "MAMPIRAO",
+        "code": 89986,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "MANZANA",
+        "code": 85534,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "MINORO",
+        "code": 61268,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "PALALE",
+        "code": 31490,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "PONGLON",
+        "code": 20340,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "PUGAY",
+        "code": 64111,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SABANG",
+        "code": 56660,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SALOGON",
+        "code": 71754,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN ANTONIO (POB.)",
+        "code": 84832,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN JUAN (POB.)",
+        "code": 47579,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN VICENTE (POB.)",
+        "code": 10279,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SANTA CRUZ (POB.)",
+        "code": 59503,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SOLEDAD (POB.)",
+        "code": 38418,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "TAGAS",
+        "code": 32795,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "TAMBANGAN",
+        "code": 31011,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "TELEGRAFO",
+        "code": 96593,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "TOMINAWOG",
+        "code": 49550,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      }
+    ]
+  },
+  {
+    "municipality": "SIPOCOT",
+    "barangay_list": [
+      {
+        "name": "ALDEZAR",
+        "code": 30793,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "ALTEZA",
+        "code": 38119,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "ANIB",
+        "code": 71342,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "AWAYAN",
+        "code": 18305,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "AZUCENA",
+        "code": 22605,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BAGONG SIRANG",
+        "code": 83501,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BINAHIAN",
+        "code": 65053,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BOLO NORTE",
+        "code": 24326,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BOLO SUR",
+        "code": 64171,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BULAN",
+        "code": 14589,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BULAWAN",
+        "code": 66696,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "CABUYAO",
+        "code": 21448,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "CAIMA",
+        "code": 22887,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "CALAGBANGAN",
+        "code": 33891,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "CALAMPINAY",
+        "code": 91256,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "CARAYRAYAN",
+        "code": 66454,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "COTMO",
+        "code": 26719,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "GABI",
+        "code": 74242,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "GAONGAN",
+        "code": 12360,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "IMPIG",
+        "code": 35065,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "LIPILIP",
+        "code": 45101,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "LUBIGAN JR.",
+        "code": 39352,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "LUBIGAN SR.",
+        "code": 32008,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "MALAGUICO",
+        "code": 10695,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "MALUBAGO",
+        "code": 33043,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "MANANGLE",
+        "code": 40282,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "MANGAPO",
+        "code": 98364,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "MANGGA",
+        "code": 80797,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "MANLUBANG",
+        "code": 23650,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "MANTILA",
+        "code": 27250,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "NORTH CENTRO (POB.)",
+        "code": 21516,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "NORTH VILLAZAR",
+        "code": 69585,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAGRADA FAMILIA",
+        "code": 23449,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SALANDA",
+        "code": 26240,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SALVACION",
+        "code": 68934,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN ISIDRO",
+        "code": 92595,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN VICENTE",
+        "code": 60422,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SERRANZANA",
+        "code": 69297,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SOUTH CENTRO (POB.)",
+        "code": 95680,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SOUTH VILLAZAR",
+        "code": 47805,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "TAISAN",
+        "code": 85888,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "TARA",
+        "code": 84026,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "TIBLE",
+        "code": 32868,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "TULA-TULA",
+        "code": 54522,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "VIGAAN",
+        "code": 13656,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "YABO",
+        "code": 96924,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      }
+    ]
+  },
+  {
+    "municipality": "SIRUMA",
+    "barangay_list": [
+      {
+        "name": "BAGONG SIRANG",
+        "code": 75556,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BAHAO",
+        "code": 31738,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BOBOAN",
+        "code": 48019,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BUTAWANAN",
+        "code": 52319,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "CABUGAO",
+        "code": 70004,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "FUNDADO",
+        "code": 47935,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "HOMESTEAD",
+        "code": 55945,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "LA PURISIMA",
+        "code": 58231,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "MABUHAY",
+        "code": 96173,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "MALACONINI",
+        "code": 58081,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "MATANDANG SIRUMA",
+        "code": 62943,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "NALAYAHAN",
+        "code": 55022,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "PAMINTAN-BANTILAN",
+        "code": 81582,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "PINITAN",
+        "code": 17441,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "POBLACION",
+        "code": 27819,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SALVACION",
+        "code": 53166,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN ANDRES",
+        "code": 18549,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN RAMON (DALDAGON)",
+        "code": 44846,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SULPA",
+        "code": 20639,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "TANDOC",
+        "code": 64495,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "TONGO-BANTIGUE",
+        "code": 85304,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "VITO",
+        "code": 79268,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      }
+    ]
+  },
+  {
+    "municipality": "TIGAON",
+    "barangay_list": [
+      {
+        "name": "ABO",
+        "code": 91373,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "CABALINADAN",
+        "code": 82110,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "CARAYCAYON",
+        "code": 17818,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "CASUNA",
+        "code": 94729,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "CONSOCEP",
+        "code": 41931,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "COYAOYAO",
+        "code": 68549,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "GAAO",
+        "code": 13908,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "GINGAROY",
+        "code": 32494,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "GUBAT",
+        "code": 82565,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "HUYONHUYON",
+        "code": 45235,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "LIBOD",
+        "code": 51576,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "MABALODBALOD",
+        "code": 93558,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "MAY-ANAO",
+        "code": 71260,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "PANAGAN",
+        "code": 78307,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "POBLACION",
+        "code": 90105,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SALVACION",
+        "code": 31817,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN ANTONIO",
+        "code": 50280,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN FRANCISCO",
+        "code": 82039,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN MIGUEL",
+        "code": 74344,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN RAFAEL",
+        "code": 18024,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "TALOJONGON",
+        "code": 18077,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "TINAWAGAN",
+        "code": 98519,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "VINAGRE",
+        "code": 54660,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      }
+    ]
+  },
+  {
+    "municipality": "TINAMBAC",
+    "barangay_list": [
+      {
+        "name": "AGAY-AYAN",
+        "code": 61491,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "ANTIPOLO",
+        "code": 95469,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BAGACAY",
+        "code": 40339,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BANGA",
+        "code": 89468,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BANI",
+        "code": 96795,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BATAAN",
+        "code": 38950,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BINALAY",
+        "code": 77269,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BOLAOBALITE",
+        "code": 78584,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BUENAVISTA",
+        "code": 40566,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "BUYO",
+        "code": 16464,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "CAGLILIOG",
+        "code": 49661,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "CALOCO",
+        "code": 37126,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "CAMAGONG",
+        "code": 68010,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "CANAYONAN",
+        "code": 16491,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "CAWAYNAN",
+        "code": 36196,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "DALIGAN",
+        "code": 86669,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "FILARCA (POB.)",
+        "code": 64766,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "LA MEDALLA (MILE 9)",
+        "code": 38334,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "LA PURISIMA (POB.)",
+        "code": 75702,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "LUPI",
+        "code": 33963,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "MAGSAYSAY (CAMP 4)",
+        "code": 97915,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "MAGTANG",
+        "code": 31094,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "MANANAO",
+        "code": 52489,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "NEW CAALUAN",
+        "code": 76005,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "OLAG GRANDE",
+        "code": 42569,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "OLAG PEQUEÑO",
+        "code": 32083,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "OLD CAALUAN",
+        "code": 21443,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "PAG-ASA",
+        "code": 85285,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "PANTAT",
+        "code": 68902,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAGRADA (CAMP 6)",
+        "code": 50020,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SALVACION",
+        "code": 80254,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SALVACION POBLACION",
+        "code": 20884,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN ANTONIO",
+        "code": 52254,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN ISIDRO (POB.)",
+        "code": 19616,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN JOSE (TILTILAN)",
+        "code": 29649,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN PASCUAL (POB.)",
+        "code": 30994,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN RAMON (CAMP 7)",
+        "code": 85208,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN ROQUE",
+        "code": 73359,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SAN VICENTE",
+        "code": 84904,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SANTA CRUZ (POB.)",
+        "code": 64118,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "SOGOD",
+        "code": 79194,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "TAMBANG",
+        "code": 29751,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "TIERRA NEVADA",
+        "code": 68600,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      },
+      {
+        "name": "UNION",
+        "code": 27896,
+        "region": "V",
+        "admin_id": null,
+        "resident_ids": [],
+        "zip_code": 0
+      }
+    ]
+  }
+]
