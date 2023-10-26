@@ -5,9 +5,16 @@ An intuitive barangay-to-community mobile application for announcement creation 
 ![Flutter](https://img.shields.io/badge/Flutter-%2302569B.svg?style=for-the-badge&logo=Flutter&logoColor=white)
 ![Dart](https://img.shields.io/badge/dart-%230175C2.svg?style=for-the-badge&logo=dart&logoColor=white)
 
-## **Development**
+## **Development** 👨‍💻
 
-**How to clone and run this project**
+### Prerequisites
+
+- NodeJS
+- Dart
+- Flutter
+- FirebaseCLI
+
+## **How to clone and run this project** 👨‍👨‍👦‍👦
 
 1. Clone the project.
 
@@ -31,7 +38,49 @@ dart pub global activate flutterfire_cli
 flutterfire configure --project=ebayan-nexusphere
 ```
 
-### **Miscellaneous**
+### **Seeding** 🌱
+
+This is what the json data should look like
+
+```json
+{
+  "__collections__": {
+    "subjects": { // root collection
+      "ITMC212": { // document
+        "className": "Intermediate Programming",
+        "__collections__": { // document sub-collection
+          "materials": {
+            "re152lyjhdA": {
+              "type": "video",
+              ...
+            }
+          }
+        }
+      },
+      "ISMC211": { // document
+        "className": "Introduction to Technopreneurship",
+        "__collections__": { // document sub-collection
+          "materials": {
+            ...
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+After running creating the data, run this command.
+
+```bash
+firestore-import --accountCredentials serviceKey.json --backupFile data.json
+```
+
+```bash
+firestore-export --accountCredentials serviceKey.json --backupFile data.json --nodePath collectionA/docId/...
+```
+
+## **Miscellaneous** 🤷‍♂️
 
 **Dart fix**
 
@@ -50,11 +99,11 @@ flutter clean
 flutter pub get
 ```
 
-## License
+## License 📋
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## Contributors
+## Contributors 👊
 
 We greatly appreciate contributions to this project. Special thanks to the following contributors for their valuable input and efforts:
 
