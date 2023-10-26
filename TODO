@@ -3,13 +3,13 @@ PRIORITY:
     
 -------
 TODO:
-    [] explore media query
     [] Login Page (ListView)
     [] Registration heading
     [] Create Announcement [ListView.Builder]
 
 -------
 DONE:
+    [X] explore media query
     [X] implement backend for login
     [X] Create button Sizes
     [X] BottomNavBar

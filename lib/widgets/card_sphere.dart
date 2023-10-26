@@ -1,7 +1,7 @@
 import 'package:ebayan/constants/assets.dart';
 import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/constants/typography.dart';
-import 'package:ebayan/screens/resident/announcement_list.dart';
+import 'package:ebayan/screens/resident/announcement.dart';
 import 'package:ebayan/utils/style.dart';
 import 'package:ebayan/widgets/buttons.dart';
 import 'package:feather_icons/feather_icons.dart';

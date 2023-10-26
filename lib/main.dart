@@ -1,13 +1,10 @@
 import 'package:ebayan/constants/theme.dart';
-import 'package:ebayan/screens/auth/login.dart';
-import 'package:ebayan/screens/resident/dashboard.dart';
+import 'package:ebayan/data/firebase_init.dart';
 import 'package:ebayan/utils/global.dart';
 import 'package:ebayan/utils/routes.dart';
+import 'package:ebayan/widgets/loading.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
-import 'package:firebase_core/firebase_core.dart';
-import 'firebase_options.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,12 +16,6 @@ Future<void> main() async {
   runApp(const InitApp());
 }
 
-Future<FirebaseApp> firebaseInit() async {
-  return await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
-}
-
 class InitApp extends StatelessWidget {
   const InitApp({Key? key}) : super(key: key);
 
@@ -34,6 +25,8 @@ class InitApp extends StatelessWidget {
       title: 'eBayan',
       theme: EBTheme.data(),
       home: const AuthWrapper(),
+      initialRoute: '/',
+      routes: Routes.routes,
       debugShowCheckedModeBanner: false,
     );
   }
@@ -49,14 +42,10 @@ class AuthWrapper extends StatelessWidget {
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.active) {
           final user = snapshot.data;
-          return user != null ? const DashboardScreen() : const LoginScreen();
+          Navigator.of(context).pushReplacementNamed(user != null ? '/login' : '/dashboard');
         }
 
-        return const Scaffold(
-          body: Center(
-            child: CircularProgressIndicator(),
-          ),
-        );
+        return const EBLoadingScreen();
       },
     );
   }
