@@ -4,6 +4,9 @@ An intuitive barangay-to-community mobile application for announcement creation 
 
 ![Flutter](https://img.shields.io/badge/Flutter-%2302569B.svg?style=for-the-badge&logo=Flutter&logoColor=white)
 ![Dart](https://img.shields.io/badge/dart-%230175C2.svg?style=for-the-badge&logo=dart&logoColor=white)
+![Google Cloud](https://img.shields.io/badge/Google_Cloud-4285F4?style=for-the-badge&logo=google-cloud&logoColor=white)
+![Android](https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white)
+![NodeJS](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)
 
 ## **Development** 👨‍💻
 
@@ -42,7 +45,7 @@ flutterfire configure --project=ebayan-nexusphere
 
 This is what the json data should look like
 
-```json
+```
 {
   "__collections__": {
     "subjects": { // root collection
