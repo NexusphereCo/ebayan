@@ -41,7 +41,13 @@ dart pub global activate flutterfire_cli
 flutterfire configure --project=ebayan-nexusphere
 ```
 
-### **Seeding** 🌱
+4. Run the program.
+```bash
+flutter run
+```
+
+
+## **Seeding** 🌱
 
 This is what the json data should look like
 
