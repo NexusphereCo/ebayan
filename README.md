@@ -1,3 +1,5 @@
+<img src="assets/imgs/logo-color.png" width="50" height="50">
+
 # eBayan: Bridging Communities; Boosting Progress
 
 An intuitive barangay-to-community mobile application for announcement creation management system.
