@@ -1,11 +1,17 @@
 import 'package:ebayan/constants/theme.dart';
 import 'package:ebayan/utils/routes.dart';
+import 'package:ebayan/widgets/components/loading.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
 
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -18,9 +24,14 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class RouteGuard extends StatelessWidget {
+class RouteGuard extends StatefulWidget {
   const RouteGuard({Key? key}) : super(key: key);
 
+  @override
+  State<RouteGuard> createState() => _RouteGuardState();
+}
+
+class _RouteGuardState extends State<RouteGuard> {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<User?>(
@@ -35,7 +46,7 @@ class RouteGuard extends StatelessWidget {
           });
         }
 
-        return const CircularProgressIndicator();
+        return const EBLoadingScreen();
       },
     );
   }
