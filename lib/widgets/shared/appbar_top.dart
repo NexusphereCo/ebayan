@@ -15,7 +15,7 @@ class EBAppBar extends StatefulWidget implements PreferredSizeWidget {
   State<EBAppBar> createState() => _EBAppBarState();
 
   @override
-  Size get preferredSize => AppBar().preferredSize;
+  Size get preferredSize => const Size.fromHeight(65.0);
 }
 
 class _EBAppBarState extends State<EBAppBar> {
@@ -50,11 +50,9 @@ class _EBAppBarState extends State<EBAppBar> {
         ),
       ),
       backgroundColor: EBColor.light,
-      elevation: 1,
+      elevation: 0,
     );
   }
-
-  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }
 
 class TooltipContainer extends StatelessWidget {

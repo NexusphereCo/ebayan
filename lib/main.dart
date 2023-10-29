@@ -1,5 +1,5 @@
 import 'package:ebayan/data/firebase_init.dart';
-import 'package:ebayan/screens/my_app.dart';
+import 'package:ebayan/screens/app.dart';
 import 'package:ebayan/utils/global.dart';
 import 'package:flutter/material.dart';
 
