@@ -40,7 +40,7 @@ class EBTextField extends StatelessWidget {
       obscureText: obscureText ?? false,
       decoration: InputDecoration(
         filled: true,
-        fillColor: (!(enabled ?? true)) ? EBColor.materialPrimary[100] : Colors.transparent,
+        fillColor: (!(enabled ?? true)) ? EBColor.primary[100] : Colors.transparent,
         border: const OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(borderRadius)),
         ),
@@ -103,7 +103,7 @@ class _MultiTextFieldState extends State<MultiTextField> {
 
     return PinCodeTextField(
       pinTheme: pinTheme,
-      textStyle: const TextStyle(
+      textStyle: TextStyle(
         color: EBColor.primary,
         fontWeight: EBFontWeight.regular,
         fontSize: EBFontSize.label,

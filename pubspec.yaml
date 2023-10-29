@@ -47,6 +47,7 @@ dependencies:
   cloud_firestore: ^4.11.0
   logger: ^2.0.2+1
   lottie: ^2.7.0
+  dots_indicator: ^2.1.1
 
 flutter_native_splash:
   color: '#3336AB'

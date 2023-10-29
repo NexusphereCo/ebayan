@@ -20,10 +20,10 @@ class TabBarFooter extends StatelessWidget {
           controller: _tabController,
           labelStyle: const TextStyle(fontWeight: FontWeight.bold),
           unselectedLabelStyle: const TextStyle(fontWeight: FontWeight.normal),
-          indicator: const BoxDecoration(
+          indicator: BoxDecoration(
             border: Border(top: BorderSide(color: EBColor.primary, width: 2.0)),
           ),
-          tabs: const [
+          tabs: [
             Tab(
               child: Text(
                 'Personal Information',

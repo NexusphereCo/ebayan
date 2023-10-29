@@ -16,7 +16,7 @@ class _EBAppBarBackState extends State<EBAppBarBack> {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      iconTheme: const IconThemeData(color: EBColor.primary),
+      iconTheme: IconThemeData(color: EBColor.primary),
       leading: Container(
         margin: const EdgeInsets.fromLTRB(20.0, 0, 0, 0),
         child: IconButton(

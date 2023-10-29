@@ -64,7 +64,7 @@ class _SphereCardState extends State<SphereCard> {
     return Container(
       width: double.infinity,
       height: 75,
-      color: EBColor.materialPrimary[100],
+      color: EBColor.primary[100],
       child: Padding(
         padding: const EdgeInsets.all(10.0),
         child: Row(
@@ -130,8 +130,8 @@ class _SphereCardState extends State<SphereCard> {
             selectedMenu = item;
           });
           if (item == CardOptions.itemOne) {
-            const snackBar = SnackBar(
-              content: Text('Brgy. sphere code has been copied to clipboard.'),
+            var snackBar = SnackBar(
+              content: const Text('Brgy. sphere code has been copied to clipboard.'),
               backgroundColor: EBColor.primary,
               elevation: 1,
             );

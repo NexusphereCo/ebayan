@@ -24,7 +24,7 @@ class _EBAppBarState extends State<EBAppBar> {
     const iconSize = 20.0;
 
     return AppBar(
-      iconTheme: const IconThemeData(color: EBColor.primary),
+      iconTheme: IconThemeData(color: EBColor.primary),
       title: Row(
         children: [
           EBTypography.h3(
