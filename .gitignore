@@ -48,3 +48,6 @@ google-services.json
 GoogleService-Info.plist
 firebase_*
 service_key.json
+
+# misc
+lib/screens/test
