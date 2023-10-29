@@ -2,7 +2,6 @@ import 'package:ebayan/constants/theme.dart';
 import 'package:ebayan/data/firebase_init.dart';
 import 'package:ebayan/utils/global.dart';
 import 'package:ebayan/utils/routes.dart';
-import 'package:ebayan/widgets/loading.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -24,16 +23,15 @@ class InitApp extends StatelessWidget {
     return MaterialApp(
       title: 'eBayan',
       theme: EBTheme.data(),
-      home: const AuthWrapper(),
-      initialRoute: '/',
       routes: Routes.routes,
+      home: const RouteGuard(),
       debugShowCheckedModeBanner: false,
     );
   }
 }
 
-class AuthWrapper extends StatelessWidget {
-  const AuthWrapper({super.key});
+class RouteGuard extends StatelessWidget {
+  const RouteGuard({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -42,10 +40,14 @@ class AuthWrapper extends StatelessWidget {
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.active) {
           final user = snapshot.data;
-          Navigator.of(context).pushReplacementNamed(user != null ? '/login' : '/dashboard');
+
+          // Use Future.delayed to perform navigation after the current build cycle
+          Future.delayed(Duration.zero, () {
+            Navigator.of(context).pushReplacementNamed(user == null ? '/login' : '/dashboard');
+          });
         }
 
-        return const EBLoadingScreen();
+        return const CircularProgressIndicator();
       },
     );
   }
