@@ -145,12 +145,12 @@ class EBTextBox extends StatelessWidget {
           icon,
           color: EBColor.primary,
         ),
-        const SizedBox(width: Spacing.formMd),
+        const SizedBox(width: Spacing.md),
         Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(height: Spacing.formSm),
+              const SizedBox(height: Spacing.sm),
               textField,
             ],
           ),

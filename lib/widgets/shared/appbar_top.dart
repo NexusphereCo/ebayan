@@ -2,23 +2,23 @@ import 'package:ebayan/constants/assets.dart';
 import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/constants/icons.dart';
 import 'package:ebayan/constants/typography.dart';
-import 'package:ebayan/screens/auth/login.dart';
+import 'package:ebayan/utils/routes.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:page_transition/page_transition.dart';
+import 'package:logger/logger.dart';
 
-class EBTopAppBar extends StatefulWidget implements PreferredSizeWidget {
-  const EBTopAppBar({Key? key}) : super(key: key);
+class EBAppBar extends StatefulWidget implements PreferredSizeWidget {
+  const EBAppBar({Key? key}) : super(key: key);
 
   @override
-  State<EBTopAppBar> createState() => _EBTopAppBarState();
+  State<EBAppBar> createState() => _EBAppBarState();
 
   @override
   Size get preferredSize => AppBar().preferredSize;
 }
 
-class _EBTopAppBarState extends State<EBTopAppBar> {
+class _EBAppBarState extends State<EBAppBar> {
   @override
   Widget build(BuildContext context) {
     const iconSize = 20.0;
@@ -94,16 +94,12 @@ class _EBDrawerState extends State<EBDrawer> {
     try {
       await FirebaseAuth.instance.signOut();
 
-      // NOTE: fix this
-      Navigator.push(
-        context,
-        PageTransition(
-          type: PageTransitionType.leftToRight,
-          child: const LoginScreen(),
-        ),
-      );
+      if (context.mounted) {
+        Navigator.of(context).push(createRoute('/login'));
+      }
     } catch (e) {
-      print('Sign-in failed: $e');
+      var logger = Logger();
+      logger.e('Sign-out failed: $e');
     }
   }
 

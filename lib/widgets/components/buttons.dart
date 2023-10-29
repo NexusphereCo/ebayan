@@ -2,7 +2,6 @@ import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/constants/typography.dart';
 import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
-import 'package:page_transition/page_transition.dart';
 
 enum EBButtonTheme {
   primary,
@@ -26,12 +25,7 @@ enum EBButtonSize {
 }
 
 class EBBackButton extends StatelessWidget {
-  final Widget screenDestination;
-
-  const EBBackButton({
-    super.key,
-    required this.screenDestination,
-  });
+  const EBBackButton({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -40,13 +34,7 @@ class EBBackButton extends StatelessWidget {
         IconButton(
           color: EBColor.primary,
           onPressed: () {
-            Navigator.push(
-              context,
-              PageTransition(
-                type: PageTransitionType.leftToRight,
-                child: screenDestination,
-              ),
-            );
+            Navigator.of(context).pop();
           },
           icon: const Icon(FeatherIcons.arrowLeft),
         ),

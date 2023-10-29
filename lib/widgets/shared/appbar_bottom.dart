@@ -4,8 +4,8 @@ import 'package:ebayan/constants/typography.dart';
 import 'package:flutter/material.dart';
 import 'package:feather_icons/feather_icons.dart';
 
-class EBBottomAppBar extends StatelessWidget {
-  const EBBottomAppBar({super.key});
+class EBAppBarBottom extends StatelessWidget {
+  const EBAppBarBottom({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -13,13 +13,13 @@ class EBBottomAppBar extends StatelessWidget {
       shape: CircularNotchedRectangle(),
       notchMargin: 8.0,
       color: Colors.white,
-      child: EBBottomAppBarContents(),
+      child: EBAppBarBottomContents(),
     );
   }
 }
 
-class EBBottomAppBarContents extends StatelessWidget {
-  const EBBottomAppBarContents({super.key});
+class EBAppBarBottomContents extends StatelessWidget {
+  const EBAppBarBottomContents({super.key});
 
   @override
   Widget build(BuildContext context) {

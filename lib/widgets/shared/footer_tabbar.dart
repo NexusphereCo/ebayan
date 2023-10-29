@@ -1,6 +1,6 @@
 import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/constants/typography.dart';
-import 'package:ebayan/widgets/footer.dart';
+import 'package:ebayan/widgets/shared/footer.dart';
 import 'package:flutter/material.dart';
 
 class TabBarFooter extends StatelessWidget {
@@ -21,9 +21,7 @@ class TabBarFooter extends StatelessWidget {
           labelStyle: const TextStyle(fontWeight: FontWeight.bold),
           unselectedLabelStyle: const TextStyle(fontWeight: FontWeight.normal),
           indicator: const BoxDecoration(
-            border: Border(
-              top: BorderSide(color: EBColor.primary, width: 2.0),
-            ),
+            border: Border(top: BorderSide(color: EBColor.primary, width: 2.0)),
           ),
           tabs: const [
             Tab(
