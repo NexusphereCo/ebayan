@@ -2,7 +2,6 @@ import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/constants/typography.dart';
 import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
-import 'package:page_transition/page_transition.dart';
 
 enum EBButtonTheme {
   primary,
@@ -26,12 +25,7 @@ enum EBButtonSize {
 }
 
 class EBBackButton extends StatelessWidget {
-  final Widget screenDestination;
-
-  const EBBackButton({
-    super.key,
-    required this.screenDestination,
-  });
+  const EBBackButton({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -40,13 +34,7 @@ class EBBackButton extends StatelessWidget {
         IconButton(
           color: EBColor.primary,
           onPressed: () {
-            Navigator.push(
-              context,
-              PageTransition(
-                type: PageTransitionType.leftToRight,
-                child: screenDestination,
-              ),
-            );
+            Navigator.of(context).pop();
           },
           icon: const Icon(FeatherIcons.arrowLeft),
         ),
@@ -83,8 +71,6 @@ class EBButton extends StatelessWidget {
 
   // styling
   final double _borderRadius = 50.0;
-  double _paddingX = 32.0;
-  double _paddingY = 18.0;
 
   EBButton({
     Key? key,
@@ -98,24 +84,26 @@ class EBButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ButtonStyleButton button;
+    double paddingX = 32.0;
+    double paddingY = 18.0;
 
     // if the size is specified
     switch (size ?? EBButtonSize.md) {
       case EBButtonSize.sm:
-        _paddingX = 15.0;
-        _paddingY = 10.0;
+        paddingX = 15.0;
+        paddingY = 10.0;
         break;
       case EBButtonSize.md:
-        _paddingX = 24.0;
-        _paddingY = 15.0;
+        paddingX = 24.0;
+        paddingY = 15.0;
         break;
       case EBButtonSize.lg:
-        _paddingX = 32.0;
-        _paddingY = 18.0;
+        paddingX = 32.0;
+        paddingY = 18.0;
         break;
     }
 
-    final btnPadding = EdgeInsets.symmetric(horizontal: _paddingX, vertical: _paddingY);
+    final btnPadding = EdgeInsets.symmetric(horizontal: paddingX, vertical: paddingY);
     final btnShape = RoundedRectangleBorder(borderRadius: BorderRadius.circular(_borderRadius));
     const textIconSpacing = 6.0;
 

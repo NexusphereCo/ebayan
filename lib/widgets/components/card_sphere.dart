@@ -1,14 +1,13 @@
 import 'package:ebayan/constants/assets.dart';
 import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/constants/typography.dart';
-import 'package:ebayan/screens/resident/announcement_list.dart';
+import 'package:ebayan/utils/routes.dart';
 import 'package:ebayan/utils/style.dart';
-import 'package:ebayan/widgets/buttons.dart';
+import 'package:ebayan/widgets/components/buttons.dart';
 import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:page_transition/page_transition.dart';
 
 enum CardOptions { itemOne, itemTwo, itemThree }
 
@@ -42,7 +41,7 @@ class _SphereCardState extends State<SphereCard> {
                 children: [
                   EBTypography.h4(text: 'Lorem Ipsum Dolor Something, Naga City', color: EBColor.light, maxLines: 2),
                   EBTypography.small(text: '092174', color: EBColor.light),
-                  const SizedBox(height: Spacing.formMd),
+                  const SizedBox(height: Spacing.md),
                 ],
               ),
             ),
@@ -65,7 +64,7 @@ class _SphereCardState extends State<SphereCard> {
     return Container(
       width: double.infinity,
       height: 75,
-      color: EBColor.materialPrimary[100],
+      color: EBColor.primary[100],
       child: Padding(
         padding: const EdgeInsets.all(10.0),
         child: Row(
@@ -85,7 +84,7 @@ class _SphereCardState extends State<SphereCard> {
                       ),
                     ],
                   ),
-                  const SizedBox(height: Spacing.formSm),
+                  const SizedBox(height: Spacing.sm),
                   Row(
                     children: [
                       const Icon(FeatherIcons.user, size: 16),
@@ -103,13 +102,7 @@ class _SphereCardState extends State<SphereCard> {
               children: [
                 EBButton(
                     onPressed: () {
-                      Navigator.push(
-                        context,
-                        PageTransition(
-                          type: PageTransitionType.rightToLeft,
-                          child: const AnnouncementScreen(),
-                        ),
-                      );
+                      Navigator.of(context).push(createRoute('/dashboard/announcements'));
                     },
                     text: 'View',
                     theme: EBButtonTheme.primary),
@@ -137,8 +130,8 @@ class _SphereCardState extends State<SphereCard> {
             selectedMenu = item;
           });
           if (item == CardOptions.itemOne) {
-            const snackBar = SnackBar(
-              content: Text('Brgy. sphere code has been copied to clipboard.'),
+            var snackBar = SnackBar(
+              content: const Text('Brgy. sphere code has been copied to clipboard.'),
               backgroundColor: EBColor.primary,
               elevation: 1,
             );

@@ -8,4 +8,6 @@ class Asset {
   static const String illustHousePath = 'assets/svgs/illustration/card-house.svg';
   static const String illustHousesPath = 'assets/svgs/illustration/join-brgy.svg';
   static const String illustHouseEmptyPath = 'assets/svgs/illustration/empty-state.svg';
+
+  static const String lottieLoadingLogo = 'assets/svgs/loading/loading-logo.json';
 }

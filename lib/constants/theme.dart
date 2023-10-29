@@ -29,10 +29,10 @@ class EBTheme {
 
   static ThemeData data() {
     return ThemeData(
-      primarySwatch: EBColor.materialPrimary,
+      primarySwatch: EBColor.primary,
       textTheme: buildTextTheme(),
       popupMenuTheme: PopupMenuThemeData(
-        textStyle: const TextStyle(
+        textStyle: TextStyle(
           fontFamily: EBTypography.fontFamily,
           fontSize: EBFontSize.label,
           fontWeight: EBFontWeight.regular,
@@ -41,7 +41,7 @@ class EBTheme {
         elevation: 2,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
-          side: const BorderSide(color: EBColor.primary, width: 1.0),
+          side: BorderSide(color: EBColor.primary, width: 1.0),
         ),
       ),
     );
