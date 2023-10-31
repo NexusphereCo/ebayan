@@ -8,6 +8,7 @@ TODO:
 ---
 
 DONE:
+[X] fix the new color scheme
 [X] Registration heading
 [X] Login Page (ListView)
 [X] use appbar for backbutton to maintain uniformity
