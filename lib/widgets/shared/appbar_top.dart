@@ -88,6 +88,8 @@ class EBDrawer extends StatefulWidget {
 }
 
 class _EBDrawerState extends State<EBDrawer> {
+  final Logger logger = Logger();
+
   Future<void> logOut() async {
     try {
       await FirebaseAuth.instance.signOut();
@@ -96,7 +98,6 @@ class _EBDrawerState extends State<EBDrawer> {
         Navigator.of(context).push(createRoute('/login'));
       }
     } catch (e) {
-      var logger = Logger();
       logger.e('Sign-out failed: $e');
     }
   }
