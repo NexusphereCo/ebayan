@@ -1,10 +1,18 @@
 class Spacing {
   Spacing._();
 
-  static const double label = 5.0;
-  static const double formSm = 5.0;
-  static const double formMd = 15.0;
-  static const double formLg = 30.0;
+  // Extra Small
+  static const double xs = 3.0;
+  // Small
+  static const double sm = 5.0;
+  // Medium
+  static const double md = 15.0;
+  // Large
+  static const double lg = 30.0;
+  // Extra Large
+  static const double xl = 45.0;
+  // Double Extra Large
+  static const double xxl = 60.0;
 }
 
 class Global {
