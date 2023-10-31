@@ -39,7 +39,7 @@ class _SphereCardState extends State<SphereCard> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  EBTypography.h4(text: 'Lorem Ipsum Dolor Something, Naga City', color: EBColor.light, maxLines: 2),
+                  EBTypography.h4(text: 'San Felipe, Naga City', color: EBColor.light, maxLines: 2),
                   EBTypography.small(text: '092174', color: EBColor.light),
                   const SizedBox(height: Spacing.md),
                 ],
@@ -120,7 +120,7 @@ class _SphereCardState extends State<SphereCard> {
       right: 10.0,
       child: PopupMenuButton<CardOptions>(
         offset: const Offset(0, 40),
-        icon: const Icon(
+        icon: Icon(
           FeatherIcons.moreHorizontal,
           color: EBColor.light,
         ),

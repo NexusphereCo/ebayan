@@ -91,7 +91,7 @@ class _MultiTextFieldState extends State<MultiTextField> {
       inactiveColor: EBColor.primary,
       activeColor: EBColor.primary,
       selectedColor: EBColor.primary,
-      errorBorderColor: EBColor.danger,
+      errorBorderColor: EBColor.red,
       inactiveBorderWidth: 1,
       activeBorderWidth: 1,
       selectedBorderWidth: 3,

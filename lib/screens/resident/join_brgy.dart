@@ -1,11 +1,9 @@
 import 'package:ebayan/constants/assets.dart';
 import 'package:ebayan/constants/typography.dart';
-import 'package:ebayan/screens/resident/dashboard.dart';
+import 'package:ebayan/layouts/layout_dashboard.dart';
 import 'package:ebayan/utils/style.dart';
-import 'package:ebayan/widgets/bottom_appbar.dart';
-import 'package:ebayan/widgets/buttons.dart';
-import 'package:ebayan/widgets/form.dart';
-import 'package:ebayan/widgets/top_appbar.dart';
+import 'package:ebayan/widgets/components/buttons.dart';
+import 'package:ebayan/widgets/components/form.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -25,19 +23,19 @@ class JoinBrgyScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const EBTopAppBar(),
+      appBar: const EBAppBar(),
       drawer: const EBDrawer(),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: Global.paddingBody),
         child: Column(
           children: [
-            const EBBackButton(screenDestination: DashboardScreen()),
+            const EBBackButton(),
             Expanded(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   SvgPicture.asset(Asset.illustHousesPath),
-                  const SizedBox(height: Spacing.formLg),
+                  const SizedBox(height: Spacing.lg),
                   EBTypography.h3(
                     text: 'Enter Barangay Sphere Code',
                     textAlign: TextAlign.center,
@@ -47,7 +45,7 @@ class JoinBrgyScreen extends StatelessWidget {
                     textAlign: TextAlign.center,
                     muted: true,
                   ),
-                  const SizedBox(height: Spacing.formLg),
+                  const SizedBox(height: Spacing.lg),
                   MultiTextField(
                     onCompleted: (val) {},
                     onChanged: (val) {},
@@ -68,7 +66,7 @@ class JoinBrgyScreen extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: const EBBottomAppBar(),
+      bottomNavigationBar: const EBAppBarBottom(),
     );
   }
 }

@@ -42,7 +42,7 @@ class _EBAppBarState extends State<EBAppBar> {
           onTap: () {
             Scaffold.of(context).openDrawer();
           },
-          child: const Icon(
+          child: Icon(
             EBIcons.menu,
             size: iconSize,
             color: EBColor.dark,
@@ -50,7 +50,7 @@ class _EBAppBarState extends State<EBAppBar> {
         ),
       ),
       backgroundColor: EBColor.light,
-      elevation: 0,
+      elevation: 1,
     );
   }
 }
@@ -150,7 +150,7 @@ class _EBDrawerState extends State<EBDrawer> {
             onTap: () {},
           ),
           ListTile(
-            title: EBTypography.text(text: 'Logout', color: EBColor.danger),
+            title: EBTypography.text(text: 'Logout', color: EBColor.red),
             onTap: () {
               logOut();
             },

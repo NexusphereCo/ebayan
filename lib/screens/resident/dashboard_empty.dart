@@ -1,17 +1,15 @@
 import 'package:ebayan/constants/assets.dart';
 import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/constants/typography.dart';
-import 'package:ebayan/screens/resident/announcement.dart';
-import 'package:ebayan/screens/resident/join_brgy.dart';
+import 'package:ebayan/utils/routes.dart';
 import 'package:ebayan/utils/style.dart';
-import 'package:ebayan/widgets/bottom_appbar.dart';
-import 'package:ebayan/widgets/buttons.dart';
-import 'package:ebayan/widgets/top_appbar.dart';
+import 'package:ebayan/widgets/components/buttons.dart';
+import 'package:ebayan/widgets/shared/appbar_bottom.dart';
+import 'package:ebayan/widgets/shared/appbar_top.dart';
 import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:page_transition/page_transition.dart';
 
 /*
   Authored by: Miguel Damien L. Garcera
@@ -33,7 +31,7 @@ class DashboardEmptyScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: const EBTopAppBar(),
+        appBar: const EBAppBar(),
         drawer: const EBDrawer(),
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: Global.paddingBody),
@@ -56,7 +54,7 @@ class DashboardEmptyScreen extends StatelessWidget {
                     Column(
                       children: [
                         SvgPicture.asset(Asset.illustHouseEmptyPath),
-                        const SizedBox(height: Spacing.formLg),
+                        const SizedBox(height: Spacing.lg),
                         EBTypography.text(
                           text: "You currently aren't joined to any barangay spheres. Let's change that!",
                           muted: true,
@@ -64,32 +62,26 @@ class DashboardEmptyScreen extends StatelessWidget {
                         ),
                       ],
                     ),
-                    const SizedBox(height: Spacing.formLg),
+                    const SizedBox(height: Spacing.lg),
                     SizedBox(
                       width: double.infinity,
                       child: EBButton(
                         onPressed: () {
-                          Navigator.push(
-                            context,
-                            PageTransition(
-                              type: PageTransitionType.rightToLeft,
-                              child: const JoinBrgyScreen(),
-                            ),
-                          );
+                          Navigator.of(context).push(createRoute('/dashboard/join_brgy'));
                         },
                         text: 'Get Started!',
                         theme: EBButtonTheme.primary,
                       ),
                     ),
-                    const SizedBox(height: Spacing.formLg),
-                    const SizedBox(height: Spacing.formLg),
+                    const SizedBox(height: Spacing.lg),
+                    const SizedBox(height: Spacing.lg),
                   ],
                 ),
               ),
             ],
           ),
         ),
-        bottomNavigationBar: const EBBottomAppBar(),
+        bottomNavigationBar: const EBAppBarBottom(),
       ),
     );
   }
@@ -126,7 +118,7 @@ class _SphereCardState extends State<SphereCard> {
                 children: [
                   EBTypography.h4(text: 'San Felipe, Naga City', color: EBColor.light),
                   EBTypography.small(text: '092174', color: EBColor.light),
-                  const SizedBox(height: Spacing.formMd),
+                  const SizedBox(height: Spacing.md),
                 ],
               ),
               Column(
@@ -177,17 +169,12 @@ class _SphereCardState extends State<SphereCard> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   EBButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          PageTransition(
-                            type: PageTransitionType.rightToLeft,
-                            child: const AnnouncementScreen(),
-                          ),
-                        );
-                      },
-                      text: 'View',
-                      theme: EBButtonTheme.primary),
+                    onPressed: () {
+                      Navigator.of(context).push(createRoute('/dashboard/announcements'));
+                    },
+                    text: 'View',
+                    theme: EBButtonTheme.primary,
+                  ),
                 ],
               ),
             ],
@@ -203,7 +190,7 @@ class _SphereCardState extends State<SphereCard> {
       right: 10.0,
       child: PopupMenuButton<SampleItem>(
         offset: const Offset(0, 40),
-        icon: const Icon(
+        icon: Icon(
           FeatherIcons.moreHorizontal,
           color: EBColor.light,
         ),
@@ -213,8 +200,8 @@ class _SphereCardState extends State<SphereCard> {
             selectedMenu = item;
           });
           if (item == SampleItem.itemOne) {
-            const snackBar = SnackBar(
-              content: Text('Brgy. sphere code has been copied to clipboard.'),
+            var snackBar = SnackBar(
+              content: const Text('Brgy. sphere code has been copied to clipboard.'),
               backgroundColor: EBColor.primary,
               elevation: 1,
             );
