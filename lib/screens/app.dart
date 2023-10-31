@@ -24,6 +24,9 @@ class _MyAppState extends State<MyApp> {
   }
 }
 
+/// this class checks for the user's authState meaning if they are
+/// logged in or not. it redirects them to which screen they should
+/// be redirected based on their state: login (guest) or dashboard (authenticated)
 class RouteGuard extends StatefulWidget {
   const RouteGuard({Key? key}) : super(key: key);
 
@@ -40,13 +43,14 @@ class _RouteGuardState extends State<RouteGuard> {
         if (snapshot.connectionState == ConnectionState.active) {
           final user = snapshot.data;
 
-          // Use Future.delayed to perform navigation after the current build cycle
+          // use Future.delayed to perform navigation after the current build cycle
           Future.delayed(Duration.zero, () {
             Navigator.of(context).pushReplacementNamed(user == null ? '/login' : '/dashboard');
           });
         }
 
-        return const EBLoadingScreen();
+        // show the loading screen
+        return const EBLoadingScreen(solid: true);
       },
     );
   }
