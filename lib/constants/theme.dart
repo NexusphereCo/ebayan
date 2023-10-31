@@ -2,10 +2,13 @@ import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/constants/typography.dart';
 import 'package:flutter/material.dart';
 
+/// defines the custom themes.
+///
+/// customizes theme for [Colors], [TextTheme], [PopupMenuThemeData]
 class EBTheme {
   EBTheme._();
 
-  static const baseTextStyle = TextStyle(fontFamily: 'Outfit');
+  static const baseTextStyle = TextStyle(fontFamily: EBTypography.fontFamily);
 
   static TextTheme buildTextTheme() {
     return const TextTheme(

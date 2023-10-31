@@ -1,3 +1,7 @@
+/// defines the asset's path.
+///
+/// each variable returns [String]
+/// sample invocation: Asset.logoColorPath
 class Asset {
   Asset._();
 

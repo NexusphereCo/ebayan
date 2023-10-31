@@ -1,7 +1,11 @@
 import 'package:flutter/widgets.dart';
 
+/// defines the custom icons.
+///
+/// each variable returns [IconData]
+/// sample call: [EBIcons.clip], etc.
 class EBIcons {
-  EBIcons._(); // Private constructor to prevent instantiation
+  EBIcons._();
 
   static const String fontFamily = 'EBIcons';
 

@@ -42,7 +42,7 @@ class _EBAppBarState extends State<EBAppBar> {
           onTap: () {
             Scaffold.of(context).openDrawer();
           },
-          child: const Icon(
+          child: Icon(
             EBIcons.menu,
             size: iconSize,
             color: EBColor.dark,
@@ -50,7 +50,7 @@ class _EBAppBarState extends State<EBAppBar> {
         ),
       ),
       backgroundColor: EBColor.light,
-      elevation: 0,
+      elevation: 1,
     );
   }
 }
@@ -88,6 +88,8 @@ class EBDrawer extends StatefulWidget {
 }
 
 class _EBDrawerState extends State<EBDrawer> {
+  final Logger logger = Logger();
+
   Future<void> logOut() async {
     try {
       await FirebaseAuth.instance.signOut();
@@ -96,7 +98,6 @@ class _EBDrawerState extends State<EBDrawer> {
         Navigator.of(context).push(createRoute('/login'));
       }
     } catch (e) {
-      var logger = Logger();
       logger.e('Sign-out failed: $e');
     }
   }
@@ -150,7 +151,7 @@ class _EBDrawerState extends State<EBDrawer> {
             onTap: () {},
           ),
           ListTile(
-            title: EBTypography.text(text: 'Logout', color: EBColor.danger),
+            title: EBTypography.text(text: 'Logout', color: EBColor.red),
             onTap: () {
               logOut();
             },

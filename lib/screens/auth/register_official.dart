@@ -1,16 +1,14 @@
 import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/constants/icons.dart';
 import 'package:ebayan/constants/typography.dart';
-import 'package:ebayan/screens/auth/register.dart';
-import 'package:ebayan/screens/resident/dashboard.dart';
+import 'package:ebayan/layouts/layout_auth.dart';
+import 'package:ebayan/utils/routes.dart';
 import 'package:ebayan/utils/style.dart';
-import 'package:ebayan/widgets/buttons.dart';
-import 'package:ebayan/widgets/form.dart';
-import 'package:ebayan/widgets/progress_indicator.dart';
-import 'package:ebayan/widgets/tabbar_footer.dart';
+import 'package:ebayan/widgets/components/buttons.dart';
+import 'package:ebayan/widgets/components/form.dart';
+import 'package:ebayan/widgets/components/progress_indicator.dart';
 import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
-import 'package:page_transition/page_transition.dart';
 
 class RegisterOfficialScreen extends StatefulWidget {
   const RegisterOfficialScreen({super.key});
@@ -47,90 +45,158 @@ class _RegisterOfficialScreenState extends State<RegisterOfficialScreen> with Si
     }
   }
 
+  @override
+  Widget build(BuildContext context) {
+    return DefaultTabController(
+      length: 2,
+      child: Scaffold(
+        appBar: const EBAppBarBack(),
+        body: Column(
+          children: [
+            _buildHeading(),
+            Expanded(
+              child: TabBarView(
+                controller: _tabController,
+                children: [
+                  _buildPersonalInfo(),
+                  _buildLoginCred(),
+                ],
+              ),
+            ),
+          ],
+        ),
+        bottomNavigationBar: TabBarFooter(tabController: _tabController),
+      ),
+    );
+  }
+
+  SizedBox _buildHeading() {
+    return SizedBox(
+      width: double.infinity,
+      child: Column(
+        children: [
+          EBTypography.h1(
+            text: 'Be part of a Barangay!',
+            color: EBColor.primary,
+            maxLines: 2,
+            textAlign: TextAlign.center,
+          ),
+          Wrap(
+            alignment: WrapAlignment.center,
+            children: [
+              EBTypography.text(
+                text: 'Register as a ',
+                muted: true,
+                textAlign: TextAlign.center,
+              ),
+              EBTypography.text(
+                text: 'Barangay Official.',
+                muted: true,
+                textAlign: TextAlign.center,
+                fontWeight: EBFontWeight.bold,
+              ),
+              EBTypography.text(
+                text: ' Fill in your information to get started.',
+                muted: true,
+                textAlign: TextAlign.center,
+              ),
+            ],
+          ),
+          const SizedBox(height: Spacing.md),
+          EBProgressIndicator(currentIndex: progressCurrentIndex, length: 2),
+          const SizedBox(height: Spacing.md),
+        ],
+      ),
+    );
+  }
+
   Widget _buildPersonalInfo() {
     return ListView(
       children: [
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            EBTypography.label(text: 'Personal Information'),
-            const SizedBox(height: Spacing.formMd),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                const Row(
-                  children: [
-                    Icon(
-                      FeatherIcons.user,
-                      color: EBColor.primary,
-                    ),
-                    SizedBox(width: Spacing.formMd),
-                    Flexible(
-                      child: EBTextField(
-                        label: 'First Name',
-                        type: TextInputType.name,
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: Global.paddingBody),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              EBTypography.label(text: 'Personal Information'),
+              const SizedBox(height: Spacing.md),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Row(
+                    children: [
+                      Icon(
+                        FeatherIcons.user,
+                        color: EBColor.primary,
                       ),
-                    ),
-                    SizedBox(width: Spacing.formSm),
-                    Flexible(
-                      child: EBTextField(
-                        label: 'Last Name',
-                        type: TextInputType.name,
+                      const SizedBox(width: Spacing.md),
+                      const Flexible(
+                        child: EBTextField(
+                          label: 'First Name',
+                          type: TextInputType.name,
+                        ),
                       ),
+                      const SizedBox(width: Spacing.sm),
+                      const Flexible(
+                        child: EBTextField(
+                          label: 'Last Name',
+                          type: TextInputType.name,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: Spacing.md),
+                  const EBTextBox(
+                    icon: FeatherIcons.phone,
+                    textField: EBTextField(
+                      label: 'Contact Number',
+                      type: TextInputType.number,
                     ),
-                  ],
-                ),
-                const SizedBox(height: Spacing.formMd),
-                const EBTextBox(
-                  icon: FeatherIcons.phone,
-                  textField: EBTextField(
-                    label: 'Contact Number',
-                    type: TextInputType.number,
                   ),
-                ),
-                const SizedBox(height: Spacing.formMd),
-                const EBTextBox(
-                  icon: FeatherIcons.mapPin,
-                  textField: EBTextField(
-                    label: 'Address',
-                    type: TextInputType.text,
+                  const SizedBox(height: Spacing.md),
+                  const EBTextBox(
+                    icon: FeatherIcons.mapPin,
+                    textField: EBTextField(
+                      label: 'Address',
+                      type: TextInputType.text,
+                    ),
                   ),
-                ),
-                const SizedBox(height: Spacing.formMd),
-                const EBTextBox(
-                  icon: FeatherIcons.calendar,
-                  textField: EBTextField(
-                    label: 'Birth Date',
-                    type: TextInputType.datetime,
+                  const SizedBox(height: Spacing.md),
+                  const EBTextBox(
+                    icon: FeatherIcons.calendar,
+                    textField: EBTextField(
+                      label: 'Birth Date',
+                      type: TextInputType.datetime,
+                    ),
                   ),
-                ),
-                const SizedBox(height: Spacing.formMd),
-                const EBTextBox(
-                  icon: EBIcons.home,
-                  textField: EBTextField(
-                    label: 'Barangay Associated',
-                    type: TextInputType.datetime,
+                  const SizedBox(height: Spacing.md),
+                  const EBTextBox(
+                    icon: EBIcons.home,
+                    textField: EBTextField(
+                      label: 'Barangay Associated',
+                      type: TextInputType.datetime,
+                    ),
                   ),
-                ),
-                const SizedBox(height: Spacing.formMd),
-                const EBTextBox(
-                  icon: FeatherIcons.file,
-                  textField: EBTextField(
-                    label: 'Proof of Official',
-                    type: TextInputType.datetime,
+                  const SizedBox(height: Spacing.md),
+                  const EBTextBox(
+                    icon: FeatherIcons.file,
+                    textField: EBTextField(
+                      label: 'Proof of Official',
+                      type: TextInputType.datetime,
+                    ),
                   ),
-                ),
-                const SizedBox(height: Spacing.formLg),
-                EBButton(
-                  text: 'Next',
-                  theme: EBButtonTheme.primaryOutlined,
-                  onPressed: () {
-                    nextTab();
-                  },
-                ),
-              ],
-            ),
-          ],
+                  const SizedBox(height: Spacing.lg),
+                  EBButton(
+                    text: 'Next',
+                    theme: EBButtonTheme.primaryOutlined,
+                    onPressed: () {
+                      nextTab();
+                    },
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ],
     );
@@ -139,170 +205,104 @@ class _RegisterOfficialScreenState extends State<RegisterOfficialScreen> with Si
   Widget _buildLoginCred() {
     return ListView(
       children: [
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            EBTypography.label(text: 'Login Credentials'),
-            EBTypography.text(
-              text: 'This will be your account details when logging in to this app.',
-              muted: true,
-              textAlign: TextAlign.start,
-            ),
-          ],
-        ),
-        const SizedBox(height: Spacing.formMd),
-        const Column(
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
-            EBTextBox(
-              icon: FeatherIcons.user,
-              textField: EBTextField(
-                label: 'Username',
-                type: TextInputType.text,
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: Global.paddingBody),
+          child: Column(
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  EBTypography.label(text: 'Login Credentials'),
+                  EBTypography.text(
+                    text: 'This will be your account details when logging in to this app.',
+                    muted: true,
+                    textAlign: TextAlign.start,
+                  ),
+                ],
               ),
-            ),
-            SizedBox(height: Spacing.formMd),
-            EBTextBox(
-              icon: FeatherIcons.lock,
-              textField: EBTextField(
-                label: 'Password',
-                type: TextInputType.text,
+              const SizedBox(height: Spacing.md),
+              const Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  EBTextBox(
+                    icon: FeatherIcons.user,
+                    textField: EBTextField(
+                      label: 'Username',
+                      type: TextInputType.text,
+                    ),
+                  ),
+                  SizedBox(height: Spacing.md),
+                  EBTextBox(
+                    icon: FeatherIcons.lock,
+                    textField: EBTextField(
+                      label: 'Password',
+                      type: TextInputType.text,
+                    ),
+                  ),
+                  SizedBox(height: Spacing.md),
+                  EBTextBox(
+                    icon: FeatherIcons.lock,
+                    textField: EBTextField(
+                      label: 'Confirm Password',
+                      type: TextInputType.text,
+                    ),
+                  ),
+                ],
               ),
-            ),
-            SizedBox(height: Spacing.formMd),
-            EBTextBox(
-              icon: FeatherIcons.lock,
-              textField: EBTextField(
-                label: 'Confirm Password',
-                type: TextInputType.text,
+              const SizedBox(height: Spacing.md),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  TextButton(
+                    onPressed: () {},
+                    child: EBTypography.text(
+                      text: 'Clear Information',
+                      color: EBColor.red,
+                      fontWeight: EBFontWeight.bold,
+                    ),
+                  ),
+                ],
               ),
-            ),
-          ],
-        ),
-        const SizedBox(height: Spacing.formLg),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            TextButton(
-              onPressed: () {},
-              child: EBTypography.text(
-                text: 'Clear Information',
-                color: EBColor.danger,
-                fontWeight: EBFontWeight.bold,
-              ),
-            ),
-          ],
-        ),
-        const SizedBox(height: Spacing.formSm),
-        SizedBox(
-          width: double.infinity,
-          child: EBButton(
-            text: 'Register',
-            theme: EBButtonTheme.primary,
-            onPressed: () {
-              Navigator.push(
-                context,
-                PageTransition(
-                  type: PageTransitionType.rightToLeft,
-                  child: const DashboardScreen(),
+              const SizedBox(height: Spacing.sm),
+              SizedBox(
+                width: double.infinity,
+                child: EBButton(
+                  text: 'Register',
+                  theme: EBButtonTheme.primary,
+                  onPressed: () {
+                    Navigator.of(context).push(createRoute('/dashboard'));
+                  },
                 ),
-              );
-            },
+              ),
+              const SizedBox(height: Spacing.sm),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Flexible(
+                    child: EBTypography.text(
+                      text: 'Already have an account? ',
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(0),
+                    child: TextButton(
+                      style: ButtonStyle(padding: MaterialStateProperty.all(EdgeInsets.zero)),
+                      onPressed: () {
+                        Navigator.of(context).push(createRoute('/login'));
+                      },
+                      child: EBTypography.text(
+                        text: 'login.',
+                        color: EBColor.primary,
+                        fontWeight: EBFontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ],
+              )
+            ],
           ),
         ),
-        const SizedBox(height: Spacing.formSm),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Flexible(
-              child: EBTypography.text(
-                text: 'Already have an account? ',
-              ),
-            ),
-            TextButton(
-              onPressed: () {},
-              style: ButtonStyle(padding: MaterialStateProperty.all(const EdgeInsets.all(0))),
-              child: Flexible(
-                child: EBTypography.text(
-                  text: 'login.',
-                  color: EBColor.primary,
-                  fontWeight: EBFontWeight.bold,
-                ),
-              ),
-            ),
-          ],
-        )
       ],
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 2,
-      child: Scaffold(
-        body: Column(
-          children: [
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: Global.paddingBody),
-                child: Column(
-                  children: [
-                    const SafeArea(child: EBBackButton(screenDestination: RegisterScreen())),
-                    SizedBox(
-                      width: double.infinity,
-                      child: Column(
-                        children: [
-                          EBTypography.h1(
-                            text: 'Be part of a Barangay!',
-                            color: EBColor.primary,
-                            maxLines: 2,
-                            textAlign: TextAlign.center,
-                          ),
-                          Wrap(
-                            alignment: WrapAlignment.center,
-                            children: [
-                              EBTypography.text(
-                                text: 'Register as a ',
-                                muted: true,
-                                textAlign: TextAlign.center,
-                              ),
-                              EBTypography.text(
-                                text: 'Barangay Official.',
-                                muted: true,
-                                textAlign: TextAlign.center,
-                                fontWeight: EBFontWeight.bold,
-                              ),
-                              EBTypography.text(
-                                text: ' Fill in your information to get started.',
-                                muted: true,
-                                textAlign: TextAlign.center,
-                              ),
-                            ],
-                          ),
-                          const SizedBox(height: Spacing.formMd),
-                          EBProgressIndicator(currentIndex: progressCurrentIndex, length: 2),
-                          const SizedBox(height: Spacing.formMd),
-                        ],
-                      ),
-                    ),
-                    Expanded(
-                      child: TabBarView(
-                        controller: _tabController,
-                        children: [
-                          _buildPersonalInfo(),
-                          _buildLoginCred(),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ],
-        ),
-        bottomNavigationBar: TabBarFooter(tabController: _tabController),
-      ),
     );
   }
 }

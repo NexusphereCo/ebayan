@@ -191,9 +191,9 @@ class EBButton extends StatelessWidget {
       case EBButtonTheme.light || EBButtonTheme.lightOutlined:
         return EBColor.light;
       case EBButtonTheme.warning || EBButtonTheme.warningOutlined:
-        return EBColor.warning;
+        return EBColor.yellow;
       case EBButtonTheme.danger || EBButtonTheme.dangerOutlined:
-        return EBColor.danger;
+        return EBColor.red;
       default:
         return EBColor.dark;
     }

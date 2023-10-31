@@ -2,6 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:ebayan/constants/colors.dart';
 import 'package:flutter/widgets.dart';
 
+/// defines the custom font weight
 class EBFontWeight {
   EBFontWeight._();
 
@@ -12,6 +13,7 @@ class EBFontWeight {
   static const FontWeight extraBold = FontWeight.w800;
 }
 
+/// defines the custom font size
 class EBFontSize {
   EBFontSize._();
 
@@ -52,7 +54,15 @@ class EBTypography {
     );
   }
 
-  // Typography headings and default text with default color dark
+  /// typography headings and texts with parameters.
+  /// @param [Text] text - required; the text message
+  /// @param [Color] color
+  /// @param [FontWeight] fontWeight
+  /// @param [bool] muted
+  /// @param [TextAlign] textAlign
+  /// @param [int] maxLines
+  /// @param [bool] cutOverflow
+  /// @returns [AutoSizeText]
   static Widget h1({required String text, Color? color, FontWeight? fontWeight, bool muted = false, TextAlign? textAlign, int? maxLines, bool? cutOverflow}) => _textStyle(text, EBFontSize.h1, color, muted, fontWeight ?? EBFontWeight.extraBold, textAlign, maxLines, cutOverflow);
   static Widget h2({required String text, Color? color, FontWeight? fontWeight, bool muted = false, TextAlign? textAlign, int? maxLines, bool? cutOverflow}) => _textStyle(text, EBFontSize.h2, color, muted, fontWeight ?? EBFontWeight.extraBold, textAlign, maxLines, cutOverflow);
   static Widget h3({required String text, Color? color, FontWeight? fontWeight, bool muted = false, TextAlign? textAlign, int? maxLines, bool? cutOverflow}) => _textStyle(text, EBFontSize.h3, color, muted, fontWeight ?? EBFontWeight.extraBold, textAlign, maxLines, cutOverflow);
