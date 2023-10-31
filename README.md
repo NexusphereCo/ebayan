@@ -53,11 +53,11 @@ flutter run
 
 This is what the json data should look like
 
-```
+```jsonc
 {
   "__collections__": {
     "subjects": { // root collection
-      "ITMC212": { // document
+      "ITMC212": { // documentId
         "className": "Intermediate Programming",
         "__collections__": { // document sub-collection
           "materials": {
@@ -68,12 +68,10 @@ This is what the json data should look like
           }
         }
       },
-      "ISMC211": { // document
+      "ISMC211": { // documentId
         "className": "Introduction to Technopreneurship",
         "__collections__": { // document sub-collection
-          "materials": {
             ...
-          }
         }
       }
     }
