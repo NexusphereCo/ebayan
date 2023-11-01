@@ -34,8 +34,8 @@ class _LoginScreenState extends State<LoginScreen> {
   final Logger logger = Logger();
 
   // TextControllers
-  final TextEditingController emailController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
 
   bool _showPassword = false;
   bool _showLoading = false;
@@ -43,6 +43,13 @@ class _LoginScreenState extends State<LoginScreen> {
   String _emailValidator = '';
   String _passwordValidator = '';
   String _miscValidator = '';
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -93,8 +100,8 @@ class _LoginScreenState extends State<LoginScreen> {
 
     try {
       await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: emailController.text,
-        password: passwordController.text,
+        email: _emailController.text,
+        password: _passwordController.text,
       );
 
       logger.d('user has successfully logged in! redirecting to dashboard...');
@@ -143,7 +150,7 @@ class _LoginScreenState extends State<LoginScreen> {
             textField: EBTextField(
               label: 'Username',
               type: TextInputType.text,
-              controller: emailController,
+              controller: _emailController,
               validator: (value) {
                 value = value?.trim();
                 if (value == null || value.isEmpty) return Validation.missingField;
@@ -158,14 +165,12 @@ class _LoginScreenState extends State<LoginScreen> {
             textField: EBTextField(
               label: 'Password',
               type: TextInputType.text,
-              controller: passwordController,
+              controller: _passwordController,
               obscureText: _showPassword ? false : true,
               suffixIconButton: IconButton(
                 icon: _showPassword ? const Icon(FeatherIcons.eye) : const Icon(FeatherIcons.eyeOff),
                 onPressed: () {
-                  setState(() {
-                    _showPassword = !_showPassword;
-                  });
+                  setState(() => _showPassword = !_showPassword);
                 },
               ),
               validator: (value) {
