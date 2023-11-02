@@ -3,7 +3,7 @@
     "municipalities": {
       "4432": {
         "municipality": "BAAO",
-        "zip_code": 4432,
+        "zipCode": 4432,
         "__collections__": {
           "barangays": {
             "95989": {
@@ -191,7 +191,7 @@
       },
       "4436": {
         "municipality": "BALATAN",
-        "zip_code": 4436,
+        "zipCode": 4436,
         "__collections__": {
           "barangays": {
             "75635": {
@@ -301,7 +301,7 @@
       },
       "4435": {
         "municipality": "BATO",
-        "zip_code": 4435,
+        "zipCode": 4435,
         "__collections__": {
           "barangays": {
             "81361": {
@@ -507,7 +507,7 @@
       },
       "4404": {
         "municipality": "BOMBON",
-        "zip_code": 4404,
+        "zipCode": 4404,
         "__collections__": {
           "barangays": {
             "23616": {
@@ -563,7 +563,7 @@
       },
       "4433": {
         "municipality": "BUHI",
-        "zip_code": 4433,
+        "zipCode": 4433,
         "__collections__": {
           "barangays": {
             "83055": {
@@ -799,7 +799,7 @@
       },
       "4430": {
         "municipality": "BULA",
-        "zip_code": 4430,
+        "zipCode": 4430,
         "__collections__": {
           "barangays": {
             "86487": {
@@ -1005,7 +1005,7 @@
       },
       "4406": {
         "municipality": "CABUSAO",
-        "zip_code": 4406,
+        "zipCode": 4406,
         "__collections__": {
           "barangays": {
             "79667": {
@@ -1067,7 +1067,7 @@
       },
       "4405": {
         "municipality": "CALABANGA",
-        "zip_code": 4405,
+        "zipCode": 4405,
         "__collections__": {
           "barangays": {
             "99947": {
@@ -1363,7 +1363,7 @@
       },
       "4401": {
         "municipality": "CAMALIGAN",
-        "zip_code": 4401,
+        "zipCode": 4401,
         "__collections__": {
           "barangays": {
             "85859": {
@@ -1449,7 +1449,7 @@
       },
       "4402": {
         "municipality": "CANAMAN",
-        "zip_code": 4402,
+        "zipCode": 4402,
         "__collections__": {
           "barangays": {
             "67919": {
@@ -1601,7 +1601,7 @@
       },
       "4429": {
         "municipality": "CARAMOAN",
-        "zip_code": 4429,
+        "zipCode": 4429,
         "__collections__": {
           "barangays": {
             "96992": {
@@ -1903,7 +1903,7 @@
       },
       "4411": {
         "municipality": "DEL GALLEGO",
-        "zip_code": 4411,
+        "zipCode": 4411,
         "__collections__": {
           "barangays": {
             "29464": {
@@ -2103,7 +2103,7 @@
       },
       "4412": {
         "municipality": "GAINZA",
-        "zip_code": 4412,
+        "zipCode": 4412,
         "__collections__": {
           "barangays": {
             "52773": {
@@ -2159,7 +2159,7 @@
       },
       "4428": {
         "municipality": "GARCHITORENA",
-        "zip_code": 4428,
+        "zipCode": 4428,
         "__collections__": {
           "barangays": {
             "85838": {
@@ -2305,7 +2305,7 @@
       },
       "4422": {
         "municipality": "GOA",
-        "zip_code": 4422,
+        "zipCode": 4422,
         "__collections__": {
           "barangays": {
             "72013": {
@@ -2517,7 +2517,7 @@
       },
       "4431": {
         "municipality": "IRIGA CITY",
-        "zip_code": 4431,
+        "zipCode": 4431,
         "__collections__": {
           "barangays": {
             "23195": {
@@ -2741,7 +2741,7 @@
       },
       "4425": {
         "municipality": "LAGONOY",
-        "zip_code": 4425,
+        "zipCode": 4425,
         "__collections__": {
           "barangays": {
             "69580": {
@@ -2977,7 +2977,7 @@
       },
       "4407": {
         "municipality": "LIBMANAN",
-        "zip_code": 4407,
+        "zipCode": 4407,
         "__collections__": {
           "barangays": {
             "61313": {
@@ -3435,7 +3435,7 @@
       },
       "4409": {
         "municipality": "LUPI",
-        "zip_code": 4409,
+        "zipCode": 4409,
         "__collections__": {
           "barangays": {
             "13439": {
@@ -3671,7 +3671,7 @@
       },
       "4403": {
         "municipality": "MAGARAO",
-        "zip_code": 4403,
+        "zipCode": 4403,
         "__collections__": {
           "barangays": {
             "23412": {
@@ -3769,7 +3769,7 @@
       },
       "4413": {
         "municipality": "MILAOR",
-        "zip_code": 4413,
+        "zipCode": 4413,
         "__collections__": {
           "barangays": {
             "46857": {
@@ -3897,7 +3897,7 @@
       },
       "4414": {
         "municipality": "MINALABAC",
-        "zip_code": 4414,
+        "zipCode": 4414,
         "__collections__": {
           "barangays": {
             "18121": {
@@ -4055,7 +4055,7 @@
       },
       "4434": {
         "municipality": "NABUA",
-        "zip_code": 4434,
+        "zipCode": 4434,
         "__collections__": {
           "barangays": {
             "15507": {
@@ -4315,7 +4315,7 @@
       },
       "4400": {
         "municipality": "NAGA CITY",
-        "zip_code": 4400,
+        "zipCode": 4400,
         "__collections__": {
           "barangays": {
             "23255": {
@@ -4485,7 +4485,7 @@
       },
       "4419": {
         "municipality": "OCAMPO",
-        "zip_code": 4419,
+        "zipCode": 4419,
         "__collections__": {
           "barangays": {
             "64058": {
@@ -4643,7 +4643,7 @@
       },
       "4416": {
         "municipality": "PAMPLONA",
-        "zip_code": 4416,
+        "zipCode": 4416,
         "__collections__": {
           "barangays": {
             "90382": {
@@ -4753,7 +4753,7 @@
       },
       "4417": {
         "municipality": "PASACAO",
-        "zip_code": 4417,
+        "zipCode": 4417,
         "__collections__": {
           "barangays": {
             "51986": {
@@ -4875,7 +4875,7 @@
       },
       "4418": {
         "municipality": "PILI",
-        "zip_code": 4418,
+        "zipCode": 4418,
         "__collections__": {
           "barangays": {
             "56020": {
@@ -5039,7 +5039,7 @@
       },
       "4424": {
         "municipality": "PRESENTACION (PARUBCAN)",
-        "zip_code": 4424,
+        "zipCode": 4424,
         "__collections__": {
           "barangays": {
             "55803": {
@@ -5155,7 +5155,7 @@
       },
       "4410": {
         "municipality": "RAGAY",
-        "zip_code": 4410,
+        "zipCode": 4410,
         "__collections__": {
           "barangays": {
             "92037": {
@@ -5391,7 +5391,7 @@
       },
       "4421": {
         "municipality": "SAGÑAY",
-        "zip_code": 4421,
+        "zipCode": 4421,
         "__collections__": {
           "barangays": {
             "50974": {
@@ -5513,7 +5513,7 @@
       },
       "4415": {
         "municipality": "SAN FERNANDO",
-        "zip_code": 4415,
+        "zipCode": 4415,
         "__collections__": {
           "barangays": {
             "86220": {
@@ -5653,7 +5653,7 @@
       },
       "4423": {
         "municipality": "SAN JOSE",
-        "zip_code": 4423,
+        "zipCode": 4423,
         "__collections__": {
           "barangays": {
             "13341": {
@@ -5835,7 +5835,7 @@
       },
       "4408": {
         "municipality": "SIPOCOT",
-        "zip_code": 4408,
+        "zipCode": 4408,
         "__collections__": {
           "barangays": {
             "30793": {
@@ -6119,7 +6119,7 @@
       },
       "4427": {
         "municipality": "SIRUMA",
-        "zip_code": 4427,
+        "zipCode": 4427,
         "__collections__": {
           "barangays": {
             "75556": {
@@ -6259,7 +6259,7 @@
       },
       "4420": {
         "municipality": "TIGAON",
-        "zip_code": 4420,
+        "zipCode": 4420,
         "__collections__": {
           "barangays": {
             "91373": {
@@ -6405,7 +6405,7 @@
       },
       "4426": {
         "municipality": "TINAMBAC",
-        "zip_code": 4426,
+        "zipCode": 4426,
         "__collections__": {
           "barangays": {
             "61491": {
