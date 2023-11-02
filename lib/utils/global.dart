@@ -1,3 +1,5 @@
+import 'package:ebayan/firebase_options.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -24,4 +26,10 @@ Future<void> setPreferredOrientations() {
     // allow portrait orientation in the upside-down position.
     DeviceOrientation.portraitDown,
   ]);
+}
+
+Future<FirebaseApp> firebaseInit() async {
+  return await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
 }
