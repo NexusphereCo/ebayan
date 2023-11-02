@@ -13,6 +13,8 @@ class Spacing {
   static const double xl = 45.0;
   // Double Extra Large
   static const double xxl = 60.0;
+  // Triple Extra Large
+  static const double xxxl = 100.0;
 }
 
 class Global {
