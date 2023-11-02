@@ -1,26 +1,17 @@
+import 'package:ebayan/screens/auth/login/login.controller.dart';
+import 'package:ebayan/screens/auth/login/login.model.dart';
 import 'package:ebayan/utils/routes.dart';
 import 'package:ebayan/widgets/components/loading.dart';
 import 'package:ebayan/widgets/components/snackbar.dart';
-import 'package:logger/logger.dart';
 import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/constants/typography.dart';
 import 'package:ebayan/constants/validation.dart';
 import 'package:ebayan/utils/style.dart';
 import 'package:ebayan/widgets/components/buttons.dart';
 import 'package:ebayan/widgets/shared/footer.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:ebayan/widgets/components/form.dart';
 import 'package:feather_icons/feather_icons.dart';
-
-/*
-  Authored by: Johcel Gene T. Bitara
-  Company: NexusphereCo.
-  Project: eBayan
-  Feature: [EB-001] Login Screen
-  Description: a login screen for brgy. officials/residents to use. 
-    in this screen, they are required to input their username and password.
- */
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -31,18 +22,14 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  final Logger logger = Logger();
 
-  // TextControllers
+  // Controller
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
   bool _showPassword = false;
-  bool _showLoading = false;
 
-  String _emailValidator = '';
-  String _passwordValidator = '';
-  String _miscValidator = '';
+  String _emailValidator = '', _passwordValidator = '', _miscValidator = '';
 
   @override
   void dispose() {
@@ -51,92 +38,62 @@ class _LoginScreenState extends State<LoginScreen> {
     super.dispose();
   }
 
+  Future<void> _signIn(BuildContext context) async {
+    EBLoadingScreen loadingScreen = const EBLoadingScreen();
+    LoginController loginController = LoginController();
+    final model = LoginModel(email: _emailController.text, password: _passwordController.text);
+
+    loadingScreen.show(context);
+    loginController.signIn(model).then((_) {
+      loadingScreen.hide(context);
+
+      if (context.mounted) Navigator.of(context).push(createRoute('/dashboard'));
+    }).catchError((err) {
+      loadingScreen.hide(context);
+
+      _miscValidator = err.toString();
+
+      _formKey.currentState?.validate();
+      if (context.mounted) ScaffoldMessenger.of(context).showSnackBar(snackBar(text: _miscValidator));
+    });
+  }
+
+  void _resetValidator() {
+    setState(() {
+      _emailValidator = '';
+      _passwordValidator = '';
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: Global.paddingBody),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: Global.paddingBody),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Column(
               children: [
-                Column(
-                  children: [
-                    EBTypography.h1(
-                      text: 'Welcome Back!',
-                      color: EBColor.primary,
-                      maxLines: 2,
-                      textAlign: TextAlign.center,
-                    ),
-                    EBTypography.text(
-                      text: 'Sign in to continue.',
-                      muted: true,
-                    ),
-                  ],
+                EBTypography.h1(
+                  text: 'Welcome Back!',
+                  color: EBColor.primary,
+                  maxLines: 2,
+                  textAlign: TextAlign.center,
                 ),
-                const SizedBox(height: Spacing.md),
-                _buildForm(context),
+                EBTypography.text(
+                  text: 'Sign in to continue.',
+                  muted: true,
+                ),
               ],
             ),
-          ),
-          if (_showLoading) const EBLoadingScreen(),
-        ],
+            const SizedBox(height: Spacing.md),
+            _buildForm(context),
+          ],
+        ),
       ),
       bottomNavigationBar: const EBFooter(),
     );
-  }
-
-  /// Attempts to sign in with the provided email and password.
-  ///
-  /// If successful, it navigates to the dashboard. If there are authentication errors,
-  /// it displays appropriate error messages and handles them accordingly.
-  ///
-  /// [context] is the current build context.
-  Future<void> _signIn(BuildContext context) async {
-    setState(() => _showLoading = true);
-
-    logger.d('logging in user...');
-
-    try {
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: _emailController.text,
-        password: _passwordController.text,
-      );
-
-      logger.d('user has successfully logged in! redirecting to dashboard...');
-
-      if (context.mounted) Navigator.of(context).push(createRoute('/dashboard'));
-    } on FirebaseAuthException catch (err) {
-      final errorMessages = {
-        'invalid-email': Validation.invalidEmail,
-        'wrong-password': Validation.wrongPassword,
-        'user-not-found': Validation.userNotFound,
-        'invalid_login_credentials': Validation.invalidLoginCred,
-        'too_many_requests': Validation.tooManyReq,
-      };
-
-      final errorMessage = errorMessages[err.code.toLowerCase()];
-
-      if (errorMessage != null) {
-        setState(() {
-          if (err.code == 'wrong-password') {
-            _passwordValidator = errorMessage;
-          } else if (err.code == 'invalid-email') {
-            _emailValidator = errorMessage;
-          } else {
-            _miscValidator = errorMessage;
-          }
-        });
-
-        _formKey.currentState?.validate();
-
-        if (context.mounted && _miscValidator.isNotEmpty) ScaffoldMessenger.of(context).showSnackBar(snackBar(text: _miscValidator));
-      }
-
-      setState(() => _showLoading = false);
-      logger.e('${err.code}: $err');
-    }
   }
 
   Form _buildForm(BuildContext context) {
@@ -198,13 +155,7 @@ class _LoginScreenState extends State<LoginScreen> {
               theme: EBButtonTheme.primary,
               onPressed: () {
                 _resetValidator();
-
-                logger.i('attempting to sign user in...');
-                logger.i('validation state (is-valid): ${_formKey.currentState?.validate()}');
-
-                if (_formKey.currentState?.validate() == true) {
-                  _signIn(context);
-                }
+                if (_formKey.currentState?.validate() == true) _signIn(context);
               },
             ),
           ),
@@ -232,12 +183,5 @@ class _LoginScreenState extends State<LoginScreen> {
         ],
       ),
     );
-  }
-
-  void _resetValidator() {
-    setState(() {
-      _emailValidator = '';
-      _passwordValidator = '';
-    });
   }
 }
