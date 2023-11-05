@@ -1,5 +1,5 @@
 import 'package:ebayan/screens/auth/login/login.controller.dart';
-import 'package:ebayan/screens/auth/login/login.model.dart';
+import 'package:ebayan/data/model/login.model.dart';
 import 'package:ebayan/utils/routes.dart';
 import 'package:ebayan/widgets/components/loading.dart';
 import 'package:ebayan/widgets/components/snackbar.dart';
@@ -44,7 +44,7 @@ class _LoginScreenState extends State<LoginScreen> {
     final model = LoginModel(email: _emailController.text, password: _passwordController.text);
 
     loadingScreen.show(context);
-    loginController.signIn(model).then((_) {
+    loginController.signIn(model).then((data) {
       loadingScreen.hide(context);
 
       if (context.mounted) Navigator.of(context).push(createRoute('/dashboard'));
