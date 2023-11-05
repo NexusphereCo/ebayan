@@ -31,6 +31,10 @@ class EBTheme {
   }
 
   static ThemeData data() {
+    const borderRadius = 8.0;
+    const scrollbarRadius = 100.0;
+    const scrollbarMargin = 5.0;
+
     return ThemeData(
       primarySwatch: EBColor.primary,
       textTheme: buildTextTheme(),
@@ -41,11 +45,26 @@ class EBTheme {
           fontWeight: EBFontWeight.regular,
           color: EBColor.primary,
         ),
-        elevation: 2,
+        elevation: 0,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(borderRadius),
           side: BorderSide(color: EBColor.primary, width: 1.0),
         ),
+      ),
+      inputDecorationTheme: InputDecorationTheme(
+        enabledBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: EBColor.dark),
+          borderRadius: BorderRadius.circular(borderRadius),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: EBColor.primary),
+          borderRadius: BorderRadius.circular(borderRadius),
+        ),
+      ),
+      scrollbarTheme: const ScrollbarThemeData(
+        radius: Radius.circular(scrollbarRadius),
+        crossAxisMargin: scrollbarMargin,
+        mainAxisMargin: scrollbarMargin,
       ),
     );
   }
