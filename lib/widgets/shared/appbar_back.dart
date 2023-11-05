@@ -3,7 +3,9 @@ import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
 
 class EBAppBarBack extends StatefulWidget implements PreferredSizeWidget {
-  const EBAppBarBack({Key? key}) : super(key: key);
+  final Widget? title;
+
+  const EBAppBarBack({Key? key, this.title}) : super(key: key);
 
   @override
   State<EBAppBarBack> createState() => _EBAppBarBackState();
@@ -16,6 +18,7 @@ class _EBAppBarBackState extends State<EBAppBarBack> {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      title: widget.title,
       iconTheme: IconThemeData(color: EBColor.primary),
       leading: Container(
         margin: const EdgeInsets.fromLTRB(20.0, 0, 0, 0),

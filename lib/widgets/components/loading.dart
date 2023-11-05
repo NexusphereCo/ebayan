@@ -1,6 +1,6 @@
-import 'package:dots_indicator/dots_indicator.dart';
 import 'package:ebayan/constants/assets.dart';
 import 'package:ebayan/constants/colors.dart';
+import 'package:ebayan/constants/typography.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
@@ -17,6 +17,32 @@ class EBLoadingScreen extends StatefulWidget {
 
   @override
   State<EBLoadingScreen> createState() => _EBLoadingScreenState();
+
+  void show(BuildContext context) {
+    showGeneralDialog(
+      context: context,
+      pageBuilder: (BuildContext buildContext, Animation<double> animation, Animation<double> secondaryAnimation) {
+        return this;
+      },
+      barrierDismissible: false,
+      barrierLabel: MaterialLocalizations.of(context).modalBarrierDismissLabel,
+      barrierColor: EBColor.light.withOpacity(0.5),
+      transitionDuration: const Duration(milliseconds: 200),
+      transitionBuilder: (BuildContext buildContext, Animation<double> animation, Animation<double> secondaryAnimation, Widget child) {
+        return FadeTransition(
+          opacity: CurvedAnimation(
+            parent: animation,
+            curve: Curves.easeOut,
+          ),
+          child: child,
+        );
+      },
+    );
+  }
+
+  void hide(BuildContext context) {
+    Navigator.of(context).pop();
+  }
 }
 
 class _EBLoadingScreenState extends State<EBLoadingScreen> {
@@ -48,26 +74,22 @@ class _EBLoadingScreenState extends State<EBLoadingScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: EBColor.light.withOpacity((widget.solid ?? false) ? 1 : 0.5),
-      height: double.infinity,
-      child: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Lottie.asset(Asset.lottieLoadingLogo),
-            DotsIndicator(
-              dotsCount: 3,
-              position: currentPage,
-              decorator: DotsDecorator(
-                size: const Size.square(10),
-                activeSize: const Size.square(10),
-                color: EBColor.primary[300]!,
-                activeColor: EBColor.primary,
-              ),
+    return Center(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Lottie.asset(Asset.lottieLoadingLogo),
+          Text(
+            'Loading...',
+            style: TextStyle(
+              fontFamily: EBTypography.fontFamily,
+              color: EBColor.primary,
+              decoration: TextDecoration.none,
+              fontSize: EBFontSize.normal,
+              fontWeight: EBFontWeight.regular,
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
