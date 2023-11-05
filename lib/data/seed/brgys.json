@@ -4376,7 +4376,31 @@
               "name": "DAYANGDANG",
               "code": 81619,
               "adminId": null,
-              "residentIds": []
+              "residentIds": [],
+              "__collections__": {
+                "announcements": {
+                  "82cPyHsRfMrtD7CsQYE1": {
+                    "body": "We are thrilled to announce the grand opening of our very own Barangay Farmers Market on November 1, 2023! Located in the heart of the barangay at the Barangay Square, this market is set to become a vibrant hub for local farmers, artisans, and the community. Join us from 8:00 AM to 4:00 PM to support our hard working local farmers and artisans. Here, you'll find fresh, locally sourced produce, homemade goods, handcrafted items, and more. By shopping at our market, you not only get to enjoy the best that our barangay has to offer but also contribute to sustainability and the growth of local businesses. We believe in building a sustainable and resilient community, and this market is a step in that direction. So, save the date and make your way to the grand opening of the Barangay Farmers Market – let's celebrate our local talent and products together!",
+                    "heading": "Barangay Farmers Market Grand Opening"
+                  },
+                  "ez04DbkVzbbtJTxJpVtQ": {
+                    "body": "Good health is wealth, and we're here to help you maintain it! Join us at the Barangay Health and Wellness Fair on October 15, 2023, from 9:00 AM to 3:00 PM at the Barangay Hall. We understand that taking care of your health is a top priority, and that's why we're offering free health check-ups, consultations with healthcare professionals, and informative health education sessions. This event is open to all residents of our barangay, so don't miss this unique opportunity to prioritize your well-being. Whether you have health concerns or simply want to ensure you're on the right track, our dedicated team of medical experts is here to assist you. We believe that a healthy community is a strong community, so come and be a part of this important initiative. See you there!",
+                    "heading": "Health and Wellness Fair: Free Check-Up for All Residents"
+                  },
+                  "3StuAgwV6ztommKbKv9H": {
+                    "body": "Our community's natural beauty is worth preserving, and we're calling upon all residents to come together for a meaningful cause. Join us on September 30, 2023, for the Barangay Environmental Cleanup Day. This event will take place at various locations throughout the barangay, including our parks, streets, and waterways. Together, we can make a significant impact on our environment. It's an opportunity for you and your family to contribute to the well-being of our beloved barangay, as well as promote environmental awareness and responsibility. Bring your gloves, trash bags, and a heart full of community spirit. Let's unite in a collective effort to ensure our barangay remains clean and green for generations to come.",
+                    "heading": "Barangay Environmental Cleanup Day"
+                  },
+                  "Yh1mt0lU239hAMTsxGka": {
+                    "body": "It's that time of the year again! LIGA 2023 is here, and we're gearing up for some friendly competition and community spirit. Starting on November 5, 2023, join us at the Barangay Sports Complex for a month-long sports extravaganza. We have an exciting lineup of sports events suitable for all ages and skill levels, including football, basketball, volleyball, and more. It's a fantastic opportunity to foster the spirit of sportsmanship, unity, and camaraderie within our barangay. Whether you're an athlete or a spectator, LIGA 2023 promises to be a celebration of our community's talent and togetherness. Don't miss out on the fun – gather your teams and register to be a part of the action. Let's make this year's LIGA the best one yet!",
+                    "heading": "LIGA 2023 - Barangay Sports Extravaganza"
+                  },
+                  "tVgGjdP1bZAs8vhxqGeK": {
+                    "body": "Calling all young talents in our barangay! We are excited to announce the Youth Talent Show scheduled for October 8, 2023, at the Barangay Community Center. Whether you sing, dance, act, perform magic, or have any other creative talent, this is your time to shine. This event is designed to celebrate the diverse talents within our youth community. It's an opportunity to showcase your skills, gain confidence, and inspire others with your creativity. We encourage all talented youngsters to register now and participate in this fantastic evening of entertainment and inspiration. Our talented youth represent the future of our barangay, and we want to support and showcase your abilities. Come and be a part of this extraordinary event that promises to be filled with incredible performances and a supportive audience cheering you on.",
+                    "heading": "Youth Talent Show: Unleash Your Creativity"
+                  }
+                }
+              }
             },
             "81514": {
               "name": "DEL ROSARIO",
