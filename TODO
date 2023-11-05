@@ -1,48 +1,58 @@
 PRIORITY:
 
+    [] implement fetching records from db
+    [] ui fix on floating label staying floated even unfocus
+    [] implement network catch screen
+
 ---
 
 TODO:
-[] Create Announcement [ListView.Builder]
+
+    [] Create Announcement [ListView.Builder]
 
 ---
 
 DONE:
-[X] fix the new color scheme
-[X] Registration heading
-[X] Login Page (ListView)
-[X] use appbar for backbutton to maintain uniformity
-[X] add loading elements
-[X] explore media query
-[X] implement backend for login
-[X] Create button Sizes
-[X] BottomNavBar
-[X] fix the tab footer to not show up
-[X] change form design (floating label)
-[X] make the length to 5 (pintextbox)
-[X] add a disable prop in forms
-[X] be able to make the notification bar background adaptive to the colors of the app
-[X] fix fonts from transitioning on default to custom font
-[X] explore and test button properties
-[X] add cards to a listview
-[X] fix responsiveness on some pages
-[X] fix the overflow on sphere's card
-[X] fix \_ convention on constructors
-[X] use semantics i.e. (Form)
-[X] add a showpassword to register_resident
-[X] add keyboardType to EBTextField and refactor the password logic
-[X] use the textfield type
-[X] add documentation to 4 screens
-[X] fix formatting on some code
-[X] add a bold leading text to register_resident
-[X] remove the b() in typography
-[X] make a go-back button component
-[X] add a focus border color for textfields
-[X] labels are not bold
-[X] add custom icons (home & menu bar)
-[X] try to fix if there's a way to reduce padding on drawerheader
-[X] add pintextbox
-[X] check if linear is possible on splashscreen
-[X] implement tutorial
-[x] prevent footer/bottomappbar from showing on top of keyboard (when keyboard is shown)
-[X] use auto_size_text
+
+    [X] change the default check button on bottom_picker
+    [X] reimport data on brgys
+    [X] implement dropdown for officials
+    [X] update the typography default color to black (remove it) use the themedata
+    [X] fix the new color scheme
+    [X] Registration heading
+    [X] Login Page (ListView)
+    [X] use appbar for backbutton to maintain uniformity
+    [X] add loading elements
+    [X] explore media query
+    [X] implement backend for login
+    [X] Create button Sizes
+    [X] BottomNavBar
+    [X] fix the tab footer to not show up
+    [X] change form design (floating label)
+    [X] make the length to 5 (pintextbox)
+    [X] add a disable prop in forms
+    [X] be able to make the notification bar background adaptive to the colors of the app
+    [X] fix fonts from transitioning on default to custom font
+    [X] explore and test button properties
+    [X] add cards to a listview
+    [X] fix responsiveness on some pages
+    [X] fix the overflow on sphere's card
+    [X] fix \_ convention on constructors
+    [X] use semantics i.e. (Form)
+    [X] add a showpassword to register_resident
+    [X] add keyboardType to EBTextField and refactor the password logic
+    [X] use the textfield type
+    [X] add documentation to 4 screens
+    [X] fix formatting on some code
+    [X] add a bold leading text to register_resident
+    [X] remove the b() in typography
+    [X] make a go-back button component
+    [X] add a focus border color for textfields
+    [X] labels are not bold
+    [X] add custom icons (home & menu bar)
+    [X] try to fix if there's a way to reduce padding on drawerheader
+    [X] add pintextbox
+    [X] check if linear is possible on splashscreen
+    [X] implement tutorial
+    [x] prevent footer/bottomappbar from showing on top of keyboard (when keyboard is shown)
+    [X] use auto_size_text
