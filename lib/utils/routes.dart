@@ -1,10 +1,10 @@
-import 'package:ebayan/screens/auth/login/login.dart';
-import 'package:ebayan/screens/auth/register_option/register.dart';
-import 'package:ebayan/screens/auth/register_official/register_official.dart';
-import 'package:ebayan/screens/auth/register_resident/register_resident.dart';
-import 'package:ebayan/screens/resident/announcement.dart';
-import 'package:ebayan/screens/resident/dashboard.dart';
-import 'package:ebayan/screens/resident/join_brgy.dart';
+import 'package:ebayan/presentation/auth/login/login.dart';
+import 'package:ebayan/presentation/auth/register_option/register.dart';
+import 'package:ebayan/presentation/auth/register_official/register_official.dart';
+import 'package:ebayan/presentation/auth/register_resident/register_resident.dart';
+import 'package:ebayan/presentation/resident/announcement.dart';
+import 'package:ebayan/presentation/resident/dashboard.dart';
+import 'package:ebayan/presentation/resident/join_brgy.dart';
 import 'package:flutter/material.dart';
 
 class Routes {

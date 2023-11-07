@@ -1,4 +1,4 @@
-import 'package:ebayan/screens/app.dart';
+import 'package:ebayan/presentation/app.dart';
 import 'package:ebayan/utils/global.dart';
 import 'package:flutter/material.dart';
 

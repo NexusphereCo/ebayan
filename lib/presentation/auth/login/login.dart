@@ -1,4 +1,4 @@
-import 'package:ebayan/screens/auth/login/login.controller.dart';
+import 'package:ebayan/presentation/auth/login/login.controller.dart';
 import 'package:ebayan/data/model/login.model.dart';
 import 'package:ebayan/utils/routes.dart';
 import 'package:ebayan/widgets/components/loading.dart';

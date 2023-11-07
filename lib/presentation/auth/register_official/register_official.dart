@@ -9,7 +9,7 @@ import 'package:ebayan/constants/validation.dart';
 import 'package:ebayan/data/model/barangay.dart';
 import 'package:ebayan/data/model/municipality.dart';
 import 'package:ebayan/layouts/layout_auth.dart';
-import 'package:ebayan/screens/auth/register_official/register_official.controller.dart';
+import 'package:ebayan/presentation/auth/register_official/register_official.controller.dart';
 import 'package:ebayan/utils/routes.dart';
 import 'package:ebayan/utils/style.dart';
 import 'package:ebayan/widgets/components/buttons.dart';
