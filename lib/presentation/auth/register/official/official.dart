@@ -564,7 +564,6 @@ class _RegisterOfficialScreenState extends State<RegisterOfficialScreen> with Si
 
                           // the user has selected a file
                           if (result != null) {
-                            Uint8List? fileBytes = result.files.first.bytes;
                             String fileName = result.files.first.name;
 
                             _proofDocController.text = fileName;

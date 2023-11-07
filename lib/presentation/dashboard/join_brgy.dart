@@ -1,9 +1,10 @@
 import 'package:ebayan/constants/assets.dart';
 import 'package:ebayan/constants/typography.dart';
-import 'package:ebayan/layouts/layout_dashboard.dart';
 import 'package:ebayan/utils/style.dart';
 import 'package:ebayan/widgets/components/buttons.dart';
 import 'package:ebayan/widgets/components/form.dart';
+import 'package:ebayan/widgets/shared/appbar_bottom.dart';
+import 'package:ebayan/widgets/shared/appbar_top.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 

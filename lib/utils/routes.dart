@@ -2,9 +2,9 @@ import 'package:ebayan/presentation/auth/login/login.dart';
 import 'package:ebayan/presentation/auth/register/register.dart';
 import 'package:ebayan/presentation/auth/register/official/official.dart';
 import 'package:ebayan/presentation/auth/register/resident/resident.dart';
-import 'package:ebayan/presentation/resident/announcement.dart';
-import 'package:ebayan/presentation/resident/dashboard.dart';
-import 'package:ebayan/presentation/resident/join_brgy.dart';
+import 'package:ebayan/presentation/dashboard/announcement.dart';
+import 'package:ebayan/presentation/dashboard/dashboard.dart';
+import 'package:ebayan/presentation/dashboard/join_brgy.dart';
 import 'package:flutter/material.dart';
 
 class Routes {
