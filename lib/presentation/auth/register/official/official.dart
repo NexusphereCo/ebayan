@@ -1,24 +1,21 @@
-import 'dart:io';
-
 import 'package:bottom_picker/bottom_picker.dart';
 import 'package:ebayan/constants/assets.dart';
 import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/constants/icons.dart';
 import 'package:ebayan/constants/typography.dart';
 import 'package:ebayan/constants/validation.dart';
+import 'package:ebayan/controller/auth_controller.dart';
 import 'package:ebayan/data/model/barangay_model.dart';
 import 'package:ebayan/data/model/municipality_model.dart';
-import 'package:ebayan/layouts/layout_auth.dart';
-import 'package:ebayan/presentation/auth/register_official/register_official.controller.dart';
 import 'package:ebayan/utils/routes.dart';
 import 'package:ebayan/utils/style.dart';
 import 'package:ebayan/widgets/components/buttons.dart';
 import 'package:ebayan/widgets/components/form.dart';
 import 'package:ebayan/widgets/components/progress_indicator.dart';
 import 'package:ebayan/widgets/components/snackbar.dart';
+import 'package:ebayan/widgets/shared/appbar_back.dart';
 import 'package:feather_icons/feather_icons.dart';
 import 'package:file_picker/file_picker.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';

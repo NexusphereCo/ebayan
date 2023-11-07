@@ -1,7 +1,7 @@
 import 'package:ebayan/presentation/auth/login/login.dart';
-import 'package:ebayan/presentation/auth/register_option/register.dart';
-import 'package:ebayan/presentation/auth/register_official/register_official.dart';
-import 'package:ebayan/presentation/auth/register_resident/register_resident.dart';
+import 'package:ebayan/presentation/auth/register/register.dart';
+import 'package:ebayan/presentation/auth/register/official/official.dart';
+import 'package:ebayan/presentation/auth/register/resident/resident.dart';
 import 'package:ebayan/presentation/resident/announcement.dart';
 import 'package:ebayan/presentation/resident/dashboard.dart';
 import 'package:ebayan/presentation/resident/join_brgy.dart';
