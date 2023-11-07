@@ -1,5 +1,5 @@
 import 'package:ebayan/presentation/auth/login/login.controller.dart';
-import 'package:ebayan/data/model/login.model.dart';
+import 'package:ebayan/data/model/login_model.dart';
 import 'package:ebayan/utils/routes.dart';
 import 'package:ebayan/widgets/components/loading.dart';
 import 'package:ebayan/widgets/components/snackbar.dart';

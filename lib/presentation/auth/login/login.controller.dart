@@ -1,5 +1,5 @@
 import 'package:ebayan/constants/validation.dart';
-import 'package:ebayan/data/model/login.model.dart';
+import 'package:ebayan/data/model/login_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:logger/logger.dart';
 

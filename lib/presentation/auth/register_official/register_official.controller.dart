@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:ebayan/data/model/barangay.dart';
-import 'package:ebayan/data/model/municipality.dart';
+import 'package:ebayan/data/model/barangay_model.dart';
+import 'package:ebayan/data/model/municipality_model.dart';
 import 'package:logger/logger.dart';
 
 class RegisterOfficialController {
