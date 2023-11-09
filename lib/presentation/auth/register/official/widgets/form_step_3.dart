@@ -62,8 +62,6 @@ Widget buildLoginCred({
                       suffixIconButton: IconButton(
                         icon: showPassword ? const Icon(FeatherIcons.eye) : const Icon(FeatherIcons.eyeOff),
                         onPressed: togglePassIconHandler,
-                        //   setState(() => showPassword = !showPassword);
-                        // },
                       ),
                       validator: (value) {
                         value = value?.trim();
@@ -83,12 +81,11 @@ Widget buildLoginCred({
                       suffixIconButton: IconButton(
                         icon: showPassword ? const Icon(FeatherIcons.eye) : const Icon(FeatherIcons.eyeOff),
                         onPressed: togglePassIconHandler,
-                        //   setState(() => showPassword = !showPassword);
-                        // },
                       ),
                       validator: (value) {
                         value = value?.trim();
                         if (value == null || value.isEmpty) return Validation.missingField;
+                        if (value != passwordController.text) return Validation.mismatchPassword;
                         return null;
                       },
                     ),

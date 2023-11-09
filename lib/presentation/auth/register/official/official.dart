@@ -1,11 +1,14 @@
 import 'package:bottom_picker/bottom_picker.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ebayan/constants/assets.dart';
 import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/constants/typography.dart';
 import 'package:ebayan/controller/auth_controller.dart';
 import 'package:ebayan/data/model/barangay_model.dart';
 import 'package:ebayan/data/model/municipality_model.dart';
+import 'package:ebayan/data/model/register_model.dart';
 import 'package:ebayan/utils/style.dart';
+import 'package:ebayan/widgets/components/loading.dart';
 import 'package:ebayan/widgets/components/progress_indicator.dart';
 import 'package:ebayan/widgets/components/snackbar.dart';
 import 'package:ebayan/widgets/shared/appbar_back.dart';
@@ -31,7 +34,8 @@ class _RegisterOfficialScreenState extends State<RegisterOfficialScreen> with Si
   final Logger log = Logger();
 
   // official controller
-  RegisterOfficialController registerController = RegisterOfficialController();
+  final RegisterOfficialController _registerController = RegisterOfficialController();
+  final EBLoadingScreen loadingScreen = const EBLoadingScreen();
 
   // formkey
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
@@ -59,6 +63,8 @@ class _RegisterOfficialScreenState extends State<RegisterOfficialScreen> with Si
   // variables
   bool _showPassword = false;
   bool _isBrgyFieldEnabled = false;
+  String _selectedMuniId = '';
+  String _selectedBarangayId = '';
 
   // tabbar
   int progressCurrentIndex = 1;
@@ -68,7 +74,7 @@ class _RegisterOfficialScreenState extends State<RegisterOfficialScreen> with Si
   List<BarangayModel> listOfBarangay = [];
 
   Future<void> _fetchMunicipalities() async {
-    registerController.fetchMunicipalities().then((data) {
+    _registerController.fetchMunicipalities().then((data) {
       listOfMunicipalities = data;
     }).catchError((err) {
       if (context.mounted) ScaffoldMessenger.of(context).showSnackBar(snackBar(text: err));
@@ -76,12 +82,10 @@ class _RegisterOfficialScreenState extends State<RegisterOfficialScreen> with Si
   }
 
   Future<void> _fetchBarangay(muniUid) async {
-    registerController.fetchBarangay(muniUid).then((data) {
+    _registerController.fetchBarangaysFromMunicipality(muniUid).then((data) {
       listOfBarangay = data;
     }).catchError((err) {
-      if (context.mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(snackBar(text: err.toString()));
-      }
+      if (context.mounted) ScaffoldMessenger.of(context).showSnackBar(snackBar(text: err));
     });
   }
 
@@ -120,6 +124,43 @@ class _RegisterOfficialScreenState extends State<RegisterOfficialScreen> with Si
     if (_tabController.index < _tabController.length - 1) {
       if (formKey.currentState?.validate() == true) {
         _tabController.animateTo(_tabController.index + 1);
+      }
+    }
+  }
+
+  void _register() async {
+    loadingScreen.show(context);
+
+    if (_formKey.currentState?.validate() == true) {
+      // create a request to the controller
+
+      try {
+        DocumentReference muniDocRef = _registerController.fetchMunicipality(_selectedMuniId);
+        DocumentReference brgyDocRef = _registerController.fetchBarangay(_selectedMuniId, _selectedBarangayId);
+
+        // map to the model to prepare for registration
+        RegisterOfficialModel model = RegisterOfficialModel(
+          firstName: _firstNameController.text,
+          lastName: _lastNameController.text,
+          email: _emailController.text,
+          contactNumber: _contactNumberController.text,
+          address: _addressController.text,
+          birthDate: _birthDateController.text,
+          municipality: muniDocRef,
+          barangayAssociated: brgyDocRef,
+          isApproved: false,
+          proofOfOfficial: _proofDocController.text,
+          username: _emailController.text,
+          password: _passwordController.text,
+        );
+
+        await _registerController.register(model);
+        if (context.mounted) loadingScreen.hide(context);
+      } catch (err) {
+        if (context.mounted) {
+          loadingScreen.hide(context);
+          ScaffoldMessenger.of(context).showSnackBar(snackBar(text: err.toString()));
+        }
       }
     }
   }
@@ -163,14 +204,21 @@ class _RegisterOfficialScreenState extends State<RegisterOfficialScreen> with Si
                       contactNumberController: _contactNumberController,
                       addressController: _addressController,
                       birthDateController: _birthDateController,
-                      birthDateOnSubmitHandler: (date) {
-                        setState(() {
-                          _birthDateController.text = DateFormat('yyyy-MM-dd').format(date);
-                        });
+                      birthDateOnTapHandler: () {
+                        BottomPicker.date(
+                          onSubmit: (date) {
+                            setState(() {
+                              _birthDateController.text = DateFormat('yyyy-MM-dd').format(date);
+                            });
+                          },
+                          title: '',
+                          maxDateTime: DateTime.now(),
+                          iconColor: EBColor.light,
+                          closeIconColor: EBColor.primary,
+                          buttonSingleColor: EBColor.primary,
+                        ).show(context);
                       },
-                      nextTabHandler: () {
-                        _nextTab(_formKey);
-                      },
+                      nextTabHandler: () => _nextTab(_formKey),
                     ),
                     buildBarangayAssociation(
                       context: context,
@@ -193,13 +241,18 @@ class _RegisterOfficialScreenState extends State<RegisterOfficialScreen> with Si
                           ],
                           onSubmit: (index) {
                             setState(() {
-                              _municipalityController.text = listOfMunicipalities[index].municipality;
+                              var docId = listOfMunicipalities[index].zipCode.toString();
+                              var selectedMunicipality = listOfMunicipalities[index].municipality;
+
+                              _municipalityController.text = selectedMunicipality;
+                              _selectedMuniId = docId;
                               _barangayController.text = '';
                               _isBrgyFieldEnabled = true;
-                              _fetchBarangay(listOfMunicipalities[index].zipCode.toString());
+
+                              _fetchBarangay(docId);
                             });
                           },
-                          title: '',
+                          title: 'Select a municipality',
                           iconColor: EBColor.light,
                           closeIconColor: EBColor.primary,
                           buttonSingleColor: EBColor.primary,
@@ -220,6 +273,7 @@ class _RegisterOfficialScreenState extends State<RegisterOfficialScreen> with Si
                           onSubmit: (index) {
                             setState(() {
                               _barangayController.text = listOfBarangay[index].name;
+                              _selectedBarangayId = listOfBarangay[index].code.toString();
                             });
                           },
                           title: '',
@@ -247,7 +301,7 @@ class _RegisterOfficialScreenState extends State<RegisterOfficialScreen> with Si
                       isBrgyFieldEnabled: _isBrgyFieldEnabled,
                       showPassword: _showPassword,
                       togglePassIconHandler: () => setState(() => _showPassword = !_showPassword),
-                      onRegisterHandler: () {},
+                      onRegisterHandler: () => _register(),
                     ),
                   ],
                 ),

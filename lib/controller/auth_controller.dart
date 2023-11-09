@@ -1,21 +1,25 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ebayan/constants/validation.dart';
 import 'package:ebayan/data/model/barangay_model.dart';
 import 'package:ebayan/data/model/login_model.dart';
 import 'package:ebayan/data/model/municipality_model.dart';
+import 'package:ebayan/data/model/register_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:logger/logger.dart';
 
 class LoginController {
-  Logger logger = Logger();
+  final Logger log = Logger();
 
   Future<void> signIn(LoginModel data) async {
     try {
-      logger.d('logging in user...');
+      log.d('logging in user...');
 
       await FirebaseAuth.instance.signInWithEmailAndPassword(email: data.email, password: data.password);
 
-      logger.d('user has successfully logged in! redirecting to dashboard...');
+      log.d('user has successfully logged in! redirecting to dashboard...');
     } on FirebaseAuthException catch (err) {
       final errorMessages = {
         'invalid-email': Validation.invalidEmail,
@@ -25,66 +29,80 @@ class LoginController {
         'too_many_requests': Validation.tooManyReq,
       };
 
-      logger.e('${err.code}: $err');
+      log.e('${err.code}: $err');
       throw errorMessages[err.code.toLowerCase()].toString();
+    } on Exception catch (err) {
+      log.e('An error occurred: $err');
+      throw 'An error occurred while fetching municipalities!';
     }
   }
 }
 
 class RegisterOfficialController {
-  Logger logger = Logger();
+  final Logger log = Logger();
 
-  dynamic fetchMunicipalities() async {
+  Future<List<MunicipalityModel>> fetchMunicipalities() async {
     try {
-      QuerySnapshot querySnapshot = await FirebaseFirestore.instance.collection('municipalities').orderBy('municipality').get();
+      final QuerySnapshot querySnapshot = await FirebaseFirestore.instance.collection('municipalities').orderBy('municipality').get();
+      final municipalities = querySnapshot.docs
+          .map((doc) => MunicipalityModel(
+                municipality: doc['municipality'],
+                zipCode: doc['zipCode'],
+              ))
+          .toList();
 
-      List<MunicipalityModel> municipalities = [];
-
-      if (querySnapshot.docs.isNotEmpty) {
-        for (QueryDocumentSnapshot doc in querySnapshot.docs) {
-          var data = doc.data() as Map<String, dynamic>;
-
-          municipalities.add(
-            MunicipalityModel(
-              municipality: data['municipality'],
-              zipCode: data['zipCode'],
-            ),
-          );
-        }
-
-        logger.d('Successfully fetched municipalities.');
-        return municipalities;
-      }
+      log.d('Successfully fetched municipalities.');
+      return municipalities;
     } catch (err) {
-      logger.e('$err');
+      log.e('An error occurred: $err');
       throw 'An error occurred while fetching municipalities!';
     }
   }
 
-  dynamic fetchBarangay(String muniUid) async {
+  DocumentReference fetchMunicipality(String muniId) {
     try {
-      var querySnapshot = await FirebaseFirestore.instance.collection('municipalities').doc(muniUid).collection('barangays').orderBy('name').get();
+      return FirebaseFirestore.instance.collection('municipalities').doc(muniId);
+    } catch (e) {
+      log.e('Error fetching municipality: $e');
+      throw 'An error occurred while fetching the municipality: $muniId';
+    }
+  }
 
-      List<BarangayModel> barangays = [];
+  Future<List<BarangayModel>> fetchBarangaysFromMunicipality(String muniId) async {
+    try {
+      final QuerySnapshot querySnapshot = await FirebaseFirestore.instance.collection('municipalities').doc(muniId).collection('barangays').orderBy('name').get();
+      final barangays = querySnapshot.docs
+          .map((doc) => BarangayModel(
+                name: doc['name'],
+                code: doc['code'],
+              ))
+          .toList();
 
-      if (querySnapshot.docs.isNotEmpty) {
-        for (QueryDocumentSnapshot doc in querySnapshot.docs) {
-          var data = doc.data() as Map<String, dynamic>;
-
-          barangays.add(
-            BarangayModel(
-              code: data['code'],
-              name: data['name'],
-            ),
-          );
-        }
-
-        logger.d('Successfully fetched Barangay.');
-        return barangays;
-      }
+      log.d('Successfully fetched Barangay.');
+      return barangays;
     } catch (err) {
-      logger.e('$err');
+      log.e('An error occurred: $err');
       throw 'An error occurred while fetching barangay!';
+    }
+  }
+
+  DocumentReference fetchBarangay(String muniId, String brgyId) {
+    try {
+      return FirebaseFirestore.instance.collection('municipalities').doc(muniId).collection('barangays').doc(brgyId);
+    } catch (e) {
+      log.e('Error fetching municipality: $e');
+      throw 'An error occurred while fetching the municipality: $brgyId';
+    }
+  }
+
+  Future<void> register(RegisterOfficialModel docData) async {
+    try {
+      // NOTE: add putting proof to the firebasestorage
+      await FirebaseFirestore.instance.collection('brgyOfficials').add(docData.toJson());
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(email: docData.email, password: docData.password);
+    } catch (e) {
+      log.e('An error occurred: $e');
+      throw 'An error occurred during registration.';
     }
   }
 }
