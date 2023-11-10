@@ -1,0 +1,26 @@
+{
+  "__collections__": {
+    "brgyResidents": {
+      "0DvIfL1Z2g8JKmOMk4ef": {
+        "firstName": "Johcel Gene",
+        "lastName": "Bitara",
+        "barangay": null,
+        "age": 21,
+        "finishedTutorial": false,
+        "contactNumber": "09701235561",
+        "address": "Dayangdang, Naga City",
+        "birthday": "2002-07-04"
+      },
+      "0kK9LvVU3AuA411f7DlY": {
+        "firstName": "John Kennedy",
+        "lastName": "Lucena",
+        "barangay": null,
+        "age": 27,
+        "finishedTutorial": false,
+        "contactNumber": "09705545631",
+        "address": "Dayangdang, Naga City",
+        "birthday": "1996-04-21"
+      }
+    }
+  }
+}

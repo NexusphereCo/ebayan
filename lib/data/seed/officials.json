@@ -1,0 +1,16 @@
+{
+  "__collections__": {
+    "brgyOfficials": {
+      "0DvIfL1Z2g8JKmOMk4ef": {
+        "firstName": "Miguel Damien",
+        "lastName": "Garcera",
+        "barangay": null,
+        "age": 21,
+        "finishedTutorial": false,
+        "contactNumber": "09431338891",
+        "address": "Dayangdang, Naga City",
+        "birthday": "2002-01-14"
+      }
+    }
+  }
+}
