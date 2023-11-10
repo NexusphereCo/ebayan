@@ -9,4 +9,5 @@ class Validation {
   static const String tooManyReq = 'Too many request. Try again later.';
   static const String wrongPassword = 'The password is incorrect.';
   static const String mismatchPassword = 'The password does not match.';
+  static const String weakPassword = 'The password requires a minimum of 6 characters.';
 }
