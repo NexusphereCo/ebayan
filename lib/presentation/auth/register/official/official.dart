@@ -142,6 +142,7 @@ class _RegisterOfficialScreenState extends State<RegisterOfficialScreen> with Si
           contactNumber: _contactNumberController.text,
           address: _addressController.text,
           birthDate: _birthDateController.text,
+          finishedTutorial: false,
           municipality: muniDocRef,
           barangayAssociated: brgyDocRef,
           isApproved: false,
