@@ -224,7 +224,6 @@ class _RegisterOfficialScreenState extends State<RegisterOfficialScreen> with Si
                       tabController: _tabController,
                       passwordController: _passwordController,
                       confirmPasswordController: _confirmPasswordController,
-                      isBrgyFieldEnabled: _isBrgyFieldEnabled,
                       showPassword: _showPassword,
                       togglePassIconHandler: () => _setTogglePassword(),
                       onRegisterHandler: _register,

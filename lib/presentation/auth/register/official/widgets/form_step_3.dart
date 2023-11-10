@@ -19,7 +19,6 @@ Widget buildLoginCred({
   // build context
   required BuildContext context,
   // variables
-  required bool isBrgyFieldEnabled,
   required bool showPassword,
 }) =>
     ListView(
