@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ebayan/constants/validation.dart';
 import 'package:ebayan/data/model/barangay_model.dart';
@@ -5,6 +7,7 @@ import 'package:ebayan/data/model/login_model.dart';
 import 'package:ebayan/data/model/municipality_model.dart';
 import 'package:ebayan/data/model/register_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:logger/logger.dart';
 
 class LoginController {
@@ -94,9 +97,19 @@ class RegisterOfficialController {
 
   Future<void> register(RegisterOfficialModel docData) async {
     try {
-      // NOTE: add putting proof to the firebasestorage
-      await FirebaseFirestore.instance.collection('brgyOfficials').add(docData.toJson());
+      log.i(docData.toJson());
+
       await FirebaseAuth.instance.createUserWithEmailAndPassword(email: docData.email, password: docData.password);
+      await FirebaseFirestore.instance.collection('brgyOfficials').add(docData.toJson());
+
+      // NOTE: THE FILEPATH IS NOT THE SAME. CHANGE IT ON THE VIEWMODEL
+      // putting doc proof to the firebaseStorage
+      final storage = FirebaseStorage.instance.ref();
+      final folder = storage.child('proofs');
+      final proof = folder.child('DOC_${docData.lastName.toUpperCase()}_${DateTime.timestamp()}.pdf');
+
+      await proof.putFile(docData.proofOfOfficial);
+      log.i('Successfully registered user! Navigating to dashboard');
     } catch (e) {
       log.e('An error occurred: $e');
       throw 'An error occurred during registration.';

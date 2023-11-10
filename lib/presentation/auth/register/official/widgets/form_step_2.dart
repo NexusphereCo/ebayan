@@ -21,6 +21,7 @@ Widget buildBarangayAssociation({
   required void Function() barangayOnTapHandler,
   required void Function() onClearFieldsHandler,
   required void Function() nextTabHandler,
+  required void Function(dynamic) setFilePath,
   // build context
   required BuildContext context,
   // variables
@@ -102,6 +103,7 @@ Widget buildBarangayAssociation({
                           String fileName = result.files.first.name;
 
                           proofDocController.text = fileName;
+                          setFilePath(result);
                         }
                       },
                     ),

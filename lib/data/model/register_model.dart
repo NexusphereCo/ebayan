@@ -1,5 +1,8 @@
 // this is used onRegister event
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:path/path.dart';
 
 class RegisterOfficialModel {
   // personal information
@@ -13,7 +16,7 @@ class RegisterOfficialModel {
   final DocumentReference municipality;
   final DocumentReference barangayAssociated;
   final bool isApproved;
-  final String proofOfOfficial;
+  final File proofOfOfficial;
   // login credentials
   final String username;
   final String password;
@@ -44,8 +47,8 @@ class RegisterOfficialModel {
       'municipality': municipality.id,
       'barangayAssociated': barangayAssociated.id,
       'isApproved': isApproved,
-      'proofOfOfficial': proofOfOfficial,
-      'username': username,
+      'proofOfOfficial': 'DOC_${lastName.toUpperCase()}_${DateTime.timestamp()}.pdf',
+      'username': email,
       'password': password,
     };
   }

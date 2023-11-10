@@ -1,3 +1,4 @@
+import 'package:bottom_picker/bottom_picker.dart';
 import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/constants/typography.dart';
 import 'package:ebayan/constants/validation.dart';
@@ -17,7 +18,7 @@ Widget buildPersonalInfo({
   required TextEditingController addressController,
   required TextEditingController birthDateController,
   // functions
-  required dynamic Function() birthDateOnTapHandler,
+  required dynamic Function(dynamic) birthDateOnTapHandler,
   required void Function() nextTabHandler,
   // build context
   required BuildContext context,
@@ -131,7 +132,16 @@ Widget buildPersonalInfo({
                       readOnly: true,
                       label: 'Birth Date',
                       type: TextInputType.datetime,
-                      onTap: () => birthDateOnTapHandler,
+                      onTap: () {
+                        BottomPicker.date(
+                          onSubmit: birthDateOnTapHandler,
+                          title: '',
+                          maxDateTime: DateTime.now(),
+                          iconColor: EBColor.light,
+                          closeIconColor: EBColor.primary,
+                          buttonSingleColor: EBColor.primary,
+                        ).show(context);
+                      },
                       validator: (value) {
                         value = value?.trim();
                         if (value == null || value.isEmpty) return Validation.missingField;

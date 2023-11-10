@@ -50,4 +50,4 @@ firebase_*
 service_key.json
 
 # misc
-lib/screens/test
+lib/presentation/test
