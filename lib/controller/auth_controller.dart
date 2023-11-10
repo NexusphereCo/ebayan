@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ebayan/constants/validation.dart';
 import 'package:ebayan/data/model/barangay_model.dart';
@@ -102,7 +100,6 @@ class RegisterOfficialController {
       await FirebaseAuth.instance.createUserWithEmailAndPassword(email: docData.email, password: docData.password);
       await FirebaseFirestore.instance.collection('brgyOfficials').add(docData.toJson());
 
-      // NOTE: THE FILEPATH IS NOT THE SAME. CHANGE IT ON THE VIEWMODEL
       // putting doc proof to the firebaseStorage
       final storage = FirebaseStorage.instance.ref();
       final folder = storage.child('proofs');
