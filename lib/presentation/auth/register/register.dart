@@ -3,7 +3,7 @@ import 'package:ebayan/constants/typography.dart';
 import 'package:ebayan/utils/routes.dart';
 import 'package:ebayan/utils/style.dart';
 import 'package:ebayan/widgets/components/buttons.dart';
-import 'package:ebayan/widgets/shared/appbar_back.dart';
+import 'package:ebayan/widgets/shared/appbar_top.dart';
 import 'package:ebayan/widgets/shared/footer.dart';
 import 'package:flutter/material.dart';
 
@@ -23,7 +23,7 @@ class RegisterScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const EBAppBarBack(),
+      appBar: const EBAppBar(enablePop: true, noTitle: true),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: Global.paddingBody),
         child: Center(

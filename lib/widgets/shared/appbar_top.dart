@@ -3,13 +3,23 @@ import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/constants/icons.dart';
 import 'package:ebayan/constants/typography.dart';
 import 'package:ebayan/utils/routes.dart';
+import 'package:feather_icons/feather_icons.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:logger/logger.dart';
 
 class EBAppBar extends StatefulWidget implements PreferredSizeWidget {
-  const EBAppBar({Key? key}) : super(key: key);
+  final Widget? title;
+  final bool? noTitle;
+  final bool? enablePop;
+
+  const EBAppBar({
+    Key? key,
+    this.enablePop,
+    this.title,
+    this.noTitle,
+  }) : super(key: key);
 
   @override
   State<EBAppBar> createState() => _EBAppBarState();
@@ -23,18 +33,27 @@ class _EBAppBarState extends State<EBAppBar> {
   Widget build(BuildContext context) {
     const iconSize = 20.0;
 
+    /// ```dart
+    /// AppBar() => default; returns a drawer with title heading and logo.
+    /// AppBar(enablePop: true) => returns a back button instead of drawer with title heading and logo.
+    /// AppBar(enablePop: true, noTitle: true) => returns a back button only with no content.
+    /// AppBar(enablePop: true, title: Widget..) => returns a back button with a custom title.
+    /// ```
     return AppBar(
       iconTheme: IconThemeData(color: EBColor.primary),
-      title: Row(
-        children: [
-          EBTypography.h3(
-            text: 'eBayan',
-            color: EBColor.primary,
-          ),
-          const SizedBox(width: 8),
-          SvgPicture.asset(Asset.logoColorPath),
-        ],
-      ),
+      title: !(widget.noTitle ?? false)
+          ? widget.title ??
+              Row(
+                children: [
+                  EBTypography.h3(
+                    text: 'eBayan',
+                    color: EBColor.primary,
+                  ),
+                  const SizedBox(width: 8),
+                  SvgPicture.asset(Asset.logoColorPath),
+                ],
+              )
+          : null,
       leading: Container(
         // moves the drawer icon to the right more
         margin: const EdgeInsets.fromLTRB(20.0, 0, 0, 0),
@@ -42,40 +61,25 @@ class _EBAppBarState extends State<EBAppBar> {
           onTap: () {
             Scaffold.of(context).openDrawer();
           },
-          child: Icon(
-            EBIcons.menu,
-            size: iconSize,
-            color: EBColor.dark,
-          ),
+          child: (widget.enablePop ?? false)
+              ? IconButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  icon: Icon(
+                    FeatherIcons.arrowLeft,
+                    color: EBColor.primary,
+                  ),
+                )
+              : Icon(
+                  EBIcons.menu,
+                  size: iconSize,
+                  color: EBColor.dark,
+                ),
         ),
       ),
       backgroundColor: EBColor.light,
       elevation: 1,
-    );
-  }
-}
-
-class TooltipContainer extends StatelessWidget {
-  final String message;
-
-  const TooltipContainer({
-    super.key,
-    required this.message,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    const double paddingTooltipContainer = 20.0;
-
-    return Container(
-      decoration: BoxDecoration(
-        color: EBColor.primary,
-        borderRadius: BorderRadius.circular(6.0),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(paddingTooltipContainer),
-        child: EBTypography.text(text: message, color: EBColor.light),
-      ),
     );
   }
 }
@@ -88,9 +92,9 @@ class EBDrawer extends StatefulWidget {
 }
 
 class _EBDrawerState extends State<EBDrawer> {
-  final Logger logger = Logger();
+  final Logger log = Logger();
 
-  Future<void> logOut() async {
+  Future<void> _logOut() async {
     try {
       await FirebaseAuth.instance.signOut();
 
@@ -98,7 +102,7 @@ class _EBDrawerState extends State<EBDrawer> {
         Navigator.of(context).push(createRoute(route: '/login'));
       }
     } catch (e) {
-      logger.e('Sign-out failed: $e');
+      log.e('Sign-out failed: $e');
     }
   }
 
@@ -153,7 +157,7 @@ class _EBDrawerState extends State<EBDrawer> {
           ListTile(
             title: EBTypography.text(text: 'Logout', color: EBColor.red),
             onTap: () {
-              logOut();
+              _logOut();
             },
           ),
         ],

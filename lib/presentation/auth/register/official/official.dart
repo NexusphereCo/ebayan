@@ -13,7 +13,7 @@ import 'package:ebayan/utils/style.dart';
 import 'package:ebayan/widgets/components/loading.dart';
 import 'package:ebayan/widgets/components/progress_indicator.dart';
 import 'package:ebayan/widgets/components/snackbar.dart';
-import 'package:ebayan/widgets/shared/appbar_back.dart';
+import 'package:ebayan/widgets/shared/appbar_top.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:intl/intl.dart';
@@ -168,7 +168,8 @@ class _RegisterOfficialScreenState extends State<RegisterOfficialScreen> with Si
     return DefaultTabController(
       length: tabLength,
       child: Scaffold(
-        appBar: EBAppBarBack(
+        appBar: EBAppBar(
+          enablePop: true,
           title: Wrap(
             spacing: Spacing.sm,
             crossAxisAlignment: WrapCrossAlignment.center,
