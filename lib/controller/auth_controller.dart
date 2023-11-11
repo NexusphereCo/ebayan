@@ -106,7 +106,25 @@ class RegisterOfficialController {
       final proof = folder.child('DOC_${docData.lastName.toUpperCase()}_${DateTime.timestamp()}.pdf');
 
       await proof.putFile(docData.proofOfOfficial);
-      log.i('Successfully registered user! Navigating to dashboard');
+      log.i('Successfully registered official! Navigating to dashboard');
+    } catch (e) {
+      log.e('An error occurred: $e');
+      throw 'An error occurred during registration.';
+    }
+  }
+}
+
+class RegisterResidentController {
+  final Logger log = Logger();
+
+  Future<void> register(RegisterResidentModel docData) async {
+    try {
+      log.i(docData.toJson());
+
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(email: docData.email, password: docData.password);
+      await FirebaseFirestore.instance.collection('brgyResidents').add(docData.toJson());
+
+      log.i('Successfully registered resident! Navigating to dashboard');
     } catch (e) {
       log.e('An error occurred: $e');
       throw 'An error occurred during registration.';

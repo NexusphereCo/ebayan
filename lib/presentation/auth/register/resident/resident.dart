@@ -1,31 +1,59 @@
+import 'package:ebayan/constants/assets.dart';
 import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/constants/typography.dart';
+import 'package:ebayan/controller/auth_controller.dart';
+import 'package:ebayan/data/model/register_model.dart';
 import 'package:ebayan/utils/routes.dart';
 import 'package:ebayan/utils/style.dart';
-import 'package:ebayan/widgets/components/buttons.dart';
-import 'package:ebayan/widgets/components/form.dart';
+import 'package:ebayan/widgets/components/loading.dart';
 import 'package:ebayan/widgets/components/progress_indicator.dart';
+import 'package:ebayan/widgets/components/snackbar.dart';
 import 'package:ebayan/widgets/shared/appbar_back.dart';
-import 'package:ebayan/widgets/shared/footer_tabbar.dart';
-import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:intl/intl.dart';
+
+import 'widgets/form_step_1.dart';
+import 'widgets/form_step_2.dart';
+import 'widgets/heading.dart';
+import 'widgets/tab_bar.dart';
 
 class RegisterResidentScreen extends StatefulWidget {
-  const RegisterResidentScreen({super.key});
+  const RegisterResidentScreen({Key? key}) : super(key: key);
 
   @override
   State<RegisterResidentScreen> createState() => _RegisterResidentScreenState();
 }
 
 class _RegisterResidentScreenState extends State<RegisterResidentScreen> with SingleTickerProviderStateMixin {
-  int progressCurrentIndex = 1;
+  final RegisterResidentController _registerController = RegisterResidentController();
+  final EBLoadingScreen loadingScreen = const EBLoadingScreen();
+
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
   late TabController _tabController;
+
+  final TextEditingController _firstNameController = TextEditingController();
+  final TextEditingController _lastNameController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _contactNumberController = TextEditingController();
+  final TextEditingController _addressController = TextEditingController();
+  final TextEditingController _birthDateController = TextEditingController();
+
+  final TextEditingController _usernameController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _confirmPasswordController = TextEditingController();
+
+  bool _showPassword = false;
+
+  int progressCurrentIndex = 1;
+  int tabLength = 2;
 
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 2, vsync: this);
 
+    _tabController = TabController(length: tabLength, vsync: this);
     _tabController.addListener(() {
       setState(() {
         progressCurrentIndex = _tabController.index + 1;
@@ -36,259 +64,132 @@ class _RegisterResidentScreenState extends State<RegisterResidentScreen> with Si
   @override
   void dispose() {
     _tabController.dispose();
+    _firstNameController.dispose();
+    _lastNameController.dispose();
+    _emailController.dispose();
+    _contactNumberController.dispose();
+    _addressController.dispose();
+    _birthDateController.dispose();
+    _passwordController.dispose();
+    _confirmPasswordController.dispose();
     super.dispose();
   }
 
-  void nextTab() {
+  void _nextTab(GlobalKey<FormState> formKey) {
+    _formKey.currentState?.validate();
+
     if (_tabController.index < _tabController.length - 1) {
       _tabController.animateTo(_tabController.index + 1);
+      if (_tabController.index == _tabController.length - 1) {
+        _usernameController.text = _emailController.text;
+      }
+    }
+  }
+
+  void _register() async {
+    loadingScreen.show(context);
+
+    if (_formKey.currentState?.validate() == true) {
+      try {
+        // map the data to a [RegisterResidentModel] model
+        RegisterResidentModel model = RegisterResidentModel(
+          firstName: _firstNameController.text,
+          lastName: _lastNameController.text,
+          email: _emailController.text,
+          contactNumber: _contactNumberController.text,
+          address: _addressController.text,
+          birthDate: _birthDateController.text,
+          username: _emailController.text,
+          password: _passwordController.text,
+        );
+
+        // call the controller register function
+        await _registerController.register(model);
+
+        if (context.mounted) {
+          loadingScreen.hide(context);
+          Navigator.of(context).pushReplacement(createRoute(route: '/dashboard', args: {'startTutorial': true}));
+        }
+      } catch (err) {
+        if (context.mounted) {
+          loadingScreen.hide(context);
+          ScaffoldMessenger.of(context).showSnackBar(snackBar(text: err.toString()));
+        }
+      }
+    } else {
+      if (context.mounted) loadingScreen.hide(context);
     }
   }
 
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 2,
+      length: tabLength,
       child: Scaffold(
-        appBar: const EBAppBarBack(),
-        body: SafeArea(
-          child: Column(
+        appBar: EBAppBarBack(
+          title: Wrap(
+            spacing: Spacing.sm,
+            crossAxisAlignment: WrapCrossAlignment.center,
             children: [
-              _buildHeading(),
-              Expanded(
+              EBTypography.h3(text: 'Register', color: EBColor.primary),
+              SvgPicture.asset(Asset.logoColorPath),
+            ],
+          ),
+        ),
+        body: Column(
+          children: [
+            buildTabBar(_tabController),
+            const SizedBox(height: Spacing.lg),
+            buildHeading(),
+            const SizedBox(height: Spacing.md),
+            Form(
+              key: _formKey,
+              child: Expanded(
                 child: TabBarView(
+                  physics: const NeverScrollableScrollPhysics(),
                   controller: _tabController,
                   children: [
-                    _buildPersonalInfo(),
-                    _buildLoginCred(),
+                    buildPersonalInfo(
+                      context: context,
+                      firstNameController: _firstNameController,
+                      lastNameController: _lastNameController,
+                      emailController: _emailController,
+                      contactNumberController: _contactNumberController,
+                      addressController: _addressController,
+                      birthDateController: _birthDateController,
+                      birthDateOnTapHandler: (date) => _setBirthDate(date),
+                      nextTabHandler: () => _nextTab(_formKey),
+                    ),
+                    buildLoginCred(
+                      context: context,
+                      tabController: _tabController,
+                      usernameController: _usernameController,
+                      passwordController: _passwordController,
+                      confirmPasswordController: _confirmPasswordController,
+                      showPassword: _showPassword,
+                      togglePassIconHandler: () => _setTogglePassword(),
+                      onRegisterHandler: _register,
+                    ),
                   ],
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
-        bottomNavigationBar: TabBarFooter(tabController: _tabController),
+        bottomNavigationBar: Padding(
+          padding: const EdgeInsets.symmetric(vertical: Spacing.lg),
+          child: EBProgressIndicator(currentIndex: progressCurrentIndex, length: tabLength),
+        ),
       ),
     );
   }
 
-  SizedBox _buildHeading() {
-    return SizedBox(
-      width: double.infinity,
-      child: Column(
-        children: [
-          EBTypography.h1(
-            text: 'Be part of a Barangay!',
-            color: EBColor.primary,
-            maxLines: 2,
-            textAlign: TextAlign.center,
-          ),
-          Wrap(
-            alignment: WrapAlignment.center,
-            children: [
-              EBTypography.text(
-                text: 'Register as a ',
-                muted: true,
-                textAlign: TextAlign.center,
-              ),
-              EBTypography.text(
-                text: 'Barangay Resident.',
-                muted: true,
-                textAlign: TextAlign.center,
-                fontWeight: EBFontWeight.bold,
-              ),
-              EBTypography.text(
-                text: ' Fill in your information to get started.',
-                muted: true,
-                textAlign: TextAlign.center,
-              ),
-            ],
-          ),
-          const SizedBox(height: Spacing.md),
-          EBProgressIndicator(currentIndex: progressCurrentIndex, length: 2),
-          const SizedBox(height: Spacing.md),
-        ],
-      ),
-    );
-  }
+  // Frontend scripts
+  void _setTogglePassword() => setState(() {
+        _showPassword = !_showPassword;
+      });
 
-  Widget _buildPersonalInfo() {
-    return ListView(
-      children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: Global.paddingBody),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              EBTypography.label(text: 'Personal Information'),
-              const SizedBox(height: Spacing.md),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  Row(
-                    children: [
-                      Icon(
-                        FeatherIcons.user,
-                        color: EBColor.primary,
-                      ),
-                      const SizedBox(width: Spacing.md),
-                      const Flexible(
-                        child: EBTextField(
-                          label: 'First Name',
-                          type: TextInputType.name,
-                        ),
-                      ),
-                      const SizedBox(width: Spacing.sm),
-                      const Flexible(
-                        child: EBTextField(
-                          label: 'Last Name',
-                          type: TextInputType.name,
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: Spacing.md),
-                  const EBTextBox(
-                    icon: FeatherIcons.phone,
-                    textField: EBTextField(
-                      label: 'Contact Number',
-                      type: TextInputType.number,
-                    ),
-                  ),
-                  const SizedBox(height: Spacing.md),
-                  const EBTextBox(
-                    icon: FeatherIcons.mapPin,
-                    textField: EBTextField(
-                      label: 'Address',
-                      type: TextInputType.text,
-                    ),
-                  ),
-                  const SizedBox(height: Spacing.md),
-                  const EBTextBox(
-                    icon: FeatherIcons.calendar,
-                    textField: EBTextField(
-                      label: 'Birth Date',
-                      type: TextInputType.datetime,
-                    ),
-                  ),
-                  const SizedBox(height: Spacing.md),
-                  EBButton(
-                    text: 'Next',
-                    theme: EBButtonTheme.primaryOutlined,
-                    onPressed: () {
-                      nextTab();
-                    },
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ),
-      ],
-    );
-  }
-
-  Widget _buildLoginCred() {
-    return ListView(
-      children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: Global.paddingBody),
-          child: Column(
-            children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  EBTypography.label(text: 'Login Credentials'),
-                  EBTypography.text(
-                    text: 'This will be your account details when logging in to this app.',
-                    muted: true,
-                    textAlign: TextAlign.start,
-                  ),
-                ],
-              ),
-              const SizedBox(height: Spacing.md),
-              const Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  EBTextBox(
-                    icon: FeatherIcons.user,
-                    textField: EBTextField(
-                      label: 'Username',
-                      type: TextInputType.text,
-                    ),
-                  ),
-                  SizedBox(height: Spacing.md),
-                  EBTextBox(
-                    icon: FeatherIcons.lock,
-                    textField: EBTextField(
-                      label: 'Password',
-                      type: TextInputType.text,
-                    ),
-                  ),
-                  SizedBox(height: Spacing.md),
-                  EBTextBox(
-                    icon: FeatherIcons.lock,
-                    textField: EBTextField(
-                      label: 'Confirm Password',
-                      type: TextInputType.text,
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: Spacing.md),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  TextButton(
-                    onPressed: () {},
-                    child: EBTypography.text(
-                      text: 'Clear Information',
-                      color: EBColor.red,
-                      fontWeight: EBFontWeight.bold,
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: Spacing.sm),
-              SizedBox(
-                width: double.infinity,
-                child: EBButton(
-                  text: 'Register',
-                  theme: EBButtonTheme.primary,
-                  onPressed: () {
-                    Navigator.of(context).push(createRoute(route: '/dashboard'));
-                  },
-                ),
-              ),
-              const SizedBox(height: Spacing.sm),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Flexible(
-                    child: EBTypography.text(
-                      text: 'Already have an account? ',
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(0),
-                    child: TextButton(
-                      style: ButtonStyle(padding: MaterialStateProperty.all(EdgeInsets.zero)),
-                      onPressed: () {
-                        Navigator.of(context).push(createRoute(route: '/login'));
-                      },
-                      child: EBTypography.text(
-                        text: 'login.',
-                        color: EBColor.primary,
-                        fontWeight: EBFontWeight.bold,
-                      ),
-                    ),
-                  ),
-                ],
-              )
-            ],
-          ),
-        ),
-      ],
-    );
-  }
+  void _setBirthDate(date) => setState(() {
+        _birthDateController.text = DateFormat('yyyy-MM-dd').format(date);
+      });
 }
