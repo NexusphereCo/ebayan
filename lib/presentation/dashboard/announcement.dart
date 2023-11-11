@@ -112,7 +112,7 @@ class AnnouncementCard extends StatelessWidget {
                 children: [
                   EBButton(
                     onPressed: () {
-                      Navigator.of(context).push(createRoute('/dashboard/announcements'));
+                      Navigator.of(context).push(createRoute(route: '/dashboard/announcements'));
                     },
                     text: 'View',
                     theme: EBButtonTheme.primary,

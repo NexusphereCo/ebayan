@@ -256,7 +256,7 @@ class _RegisterResidentScreenState extends State<RegisterResidentScreen> with Si
                   text: 'Register',
                   theme: EBButtonTheme.primary,
                   onPressed: () {
-                    Navigator.of(context).push(createRoute('/dashboard'));
+                    Navigator.of(context).push(createRoute(route: '/dashboard'));
                   },
                 ),
               ),
@@ -274,7 +274,7 @@ class _RegisterResidentScreenState extends State<RegisterResidentScreen> with Si
                     child: TextButton(
                       style: ButtonStyle(padding: MaterialStateProperty.all(EdgeInsets.zero)),
                       onPressed: () {
-                        Navigator.of(context).push(createRoute('/login'));
+                        Navigator.of(context).push(createRoute(route: '/login'));
                       },
                       child: EBTypography.text(
                         text: 'login.',

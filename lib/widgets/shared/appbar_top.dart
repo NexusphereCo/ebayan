@@ -95,7 +95,7 @@ class _EBDrawerState extends State<EBDrawer> {
       await FirebaseAuth.instance.signOut();
 
       if (context.mounted) {
-        Navigator.of(context).push(createRoute('/login'));
+        Navigator.of(context).push(createRoute(route: '/login'));
       }
     } catch (e) {
       logger.e('Sign-out failed: $e');

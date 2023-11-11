@@ -67,7 +67,7 @@ class DashboardEmptyScreen extends StatelessWidget {
                       width: double.infinity,
                       child: EBButton(
                         onPressed: () {
-                          Navigator.of(context).push(createRoute('/dashboard/join_brgy'));
+                          Navigator.of(context).push(createRoute(route: '/dashboard/join_brgy'));
                         },
                         text: 'Get Started!',
                         theme: EBButtonTheme.primary,
@@ -170,7 +170,7 @@ class _SphereCardState extends State<SphereCard> {
                 children: [
                   EBButton(
                     onPressed: () {
-                      Navigator.of(context).push(createRoute('/dashboard/announcements'));
+                      Navigator.of(context).push(createRoute(route: '/dashboard/announcements'));
                     },
                     text: 'View',
                     theme: EBButtonTheme.primary,

@@ -49,30 +49,6 @@ class _EBLoadingScreenState extends State<EBLoadingScreen> {
   double currentPage = 0;
 
   @override
-  void initState() {
-    super.initState();
-    _startDotsAnimation();
-  }
-
-  void _startDotsAnimation() {
-    Future.delayed(const Duration(seconds: 1), () {
-      if (mounted) {
-        setState(() {
-          // Cycle through 0, 1, 2
-          currentPage = (currentPage + 1) % 3;
-          // Start the animation again
-          _startDotsAnimation();
-        });
-      }
-    });
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Center(
       child: Column(

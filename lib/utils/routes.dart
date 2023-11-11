@@ -53,8 +53,8 @@ class Routes {
 /// Creates a custom page route for navigation.
 ///
 /// The [createRoute] function is used to generate a custom page route for
-/// navigation. It takes a [destination] parameter, which represents the
-/// name of the route to navigate to. It first checks if the [destination] has
+/// navigation. It takes a [route] parameter, which represents the
+/// name of the route to navigate to. It first checks if the [route] has
 /// a corresponding builder function in the [Routes.routesMap]. If a builder
 /// function is found, it creates a [PageRouteBuilder] with a custom animation
 /// effect using [SlideTransition].
@@ -62,7 +62,7 @@ class Routes {
 /// The animation starts from the right (1.0, 0.0) and moves to the left (0.0),
 /// applying a smoothing curve for the transition effect.
 ///
-/// If the [destination] is not found in the [Routes.routesMap], it throws an
+/// If the [route] is not found in the [Routes.routesMap], it throws an
 /// exception with the message "Invalid route. Cannot create route!".
 ///
 /// Example:
@@ -70,10 +70,10 @@ class Routes {
 /// ```dart
 /// Navigator.of(context).push(createRoute('/dashboard'));
 /// ```
-Route createRoute(String destination) {
+Route createRoute({required String route, Object? args}) {
   // Get the builder function for the given destination.
   // refer to the above variable for routesMap.
-  final destinationBuilder = Routes.routesMap[destination];
+  final destinationBuilder = Routes.routesMap[route];
 
   // Check if the builder function is found.
   if (destinationBuilder != null) {
@@ -81,7 +81,7 @@ Route createRoute(String destination) {
     return PageRouteBuilder(
       // The page builder function is used to build the destination widget.
       pageBuilder: (context, animation, secondaryAnimation) => destinationBuilder(),
-
+      settings: RouteSettings(name: route, arguments: args),
       // The transitionsBuilder is used to define the transition animation.
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
         // Define the start and end positions of the animation.

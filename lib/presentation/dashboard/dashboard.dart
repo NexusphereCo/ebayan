@@ -26,78 +26,81 @@ class DashboardScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: const EBAppBar(),
-      drawer: const EBDrawer(),
-      body: ListView(
-        children: [
-          Expanded(
-            child: Column(
-              children: [
-                Column(
-                  children: [
-                    const SizedBox(height: Spacing.md),
-                    Wrap(
-                      alignment: WrapAlignment.center,
-                      children: [
-                        EBTypography.h1(text: 'Welcome Back, '),
-                        EBTypography.h1(
-                          text: 'Jane!',
-                          color: EBColor.primary,
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-                const SizedBox(height: Spacing.md),
-                Container(
-                  margin: const EdgeInsets.fromLTRB(20, 0, 0, 0),
-                  child: Stack(
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: Scaffold(
+        appBar: const EBAppBar(),
+        drawer: const EBDrawer(),
+        body: ListView(
+          children: [
+            Expanded(
+              child: Column(
+                children: [
+                  Column(
                     children: [
-                      Align(
-                        alignment: Alignment.center,
-                        child: Container(
-                          width: double.infinity,
-                          height: 200,
-                          color: EBColor.primary[300],
-                        ),
-                      ),
-                      Column(
+                      const SizedBox(height: Spacing.md),
+                      Wrap(
+                        alignment: WrapAlignment.center,
                         children: [
-                          SizedBox(
-                            height: 200, // Set the desired height
-                            child: ListView(
-                              scrollDirection: Axis.horizontal,
-                              children: [
-                                for (int i = 0; i < 7; i++)
-                                  Container(
-                                    width: 300,
-                                    margin: const EdgeInsets.all(10.0),
-                                    color: EBColor.primary,
-                                  ),
-                              ],
-                            ),
+                          EBTypography.h1(text: 'Welcome Back, '),
+                          EBTypography.h1(
+                            text: 'Jane!',
+                            color: EBColor.primary,
                           ),
                         ],
                       ),
                     ],
                   ),
-                ),
-                const SizedBox(height: Spacing.md),
-                const SphereCard(),
-              ],
+                  const SizedBox(height: Spacing.md),
+                  Container(
+                    margin: const EdgeInsets.fromLTRB(20, 0, 0, 0),
+                    child: Stack(
+                      children: [
+                        Align(
+                          alignment: Alignment.center,
+                          child: Container(
+                            width: double.infinity,
+                            height: 200,
+                            color: EBColor.primary[300],
+                          ),
+                        ),
+                        Column(
+                          children: [
+                            SizedBox(
+                              height: 200, // Set the desired height
+                              child: ListView(
+                                scrollDirection: Axis.horizontal,
+                                children: [
+                                  for (int i = 0; i < 7; i++)
+                                    Container(
+                                      width: 300,
+                                      margin: const EdgeInsets.all(10.0),
+                                      color: EBColor.primary,
+                                    ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: Spacing.md),
+                  const SphereCard(),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            Navigator.of(context).push(createRoute(route: '/dashboard/join_brgy'));
+          },
+          child: const Icon(FeatherIcons.plus),
+        ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        bottomNavigationBar: const EBAppBarBottom(),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.of(context).push(createRoute('/dashboard/join_brgy'));
-        },
-        child: const Icon(FeatherIcons.plus),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      bottomNavigationBar: const EBAppBarBottom(),
     );
   }
 }

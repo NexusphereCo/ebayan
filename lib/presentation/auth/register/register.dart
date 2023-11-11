@@ -60,7 +60,7 @@ class RegisterScreen extends StatelessWidget {
                 width: double.infinity,
                 child: EBButton(
                   onPressed: () {
-                    Navigator.of(context).push(createRoute('/register/as_resident'));
+                    Navigator.of(context).push(createRoute(route: '/register/as_resident'));
                   },
                   text: 'Barangay Resident',
                   theme: EBButtonTheme.primary,
@@ -71,7 +71,7 @@ class RegisterScreen extends StatelessWidget {
                 width: double.infinity,
                 child: EBButton(
                   onPressed: () {
-                    Navigator.of(context).push(createRoute('/register/as_official'));
+                    Navigator.of(context).push(createRoute(route: '/register/as_official'));
                   },
                   text: 'Barangay Official',
                   theme: EBButtonTheme.primaryOutlined,
