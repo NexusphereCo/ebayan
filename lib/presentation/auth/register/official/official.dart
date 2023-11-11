@@ -51,6 +51,7 @@ class _RegisterOfficialScreenState extends State<RegisterOfficialScreen> with Si
   final TextEditingController _barangayController = TextEditingController();
   final TextEditingController _proofDocController = TextEditingController();
 
+  final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _confirmPasswordController = TextEditingController();
 
@@ -98,31 +99,30 @@ class _RegisterOfficialScreenState extends State<RegisterOfficialScreen> with Si
   }
 
   void _nextTab(GlobalKey<FormState> formKey) {
+    _formKey.currentState?.validate();
+
     if (_tabController.index < _tabController.length - 1) {
-      if (formKey.currentState?.validate() == true) {
-        _tabController.animateTo(_tabController.index + 1);
+      _tabController.animateTo(_tabController.index + 1);
+      if (_tabController.index == _tabController.length - 1) {
+        _usernameController.text = _emailController.text;
       }
     }
   }
 
   Future<void> _fetchMunicipalities() async {
-    loadingScreen.show(context);
     _registerController.fetchMunicipalities().then((data) {
       listOfMunicipalities = data;
     }).catchError((err) {
       if (context.mounted) ScaffoldMessenger.of(context).showSnackBar(snackBar(text: err));
     });
-    loadingScreen.hide(context);
   }
 
   Future<void> _fetchBarangay(muniUid) async {
-    loadingScreen.show(context);
     _registerController.fetchBarangaysFromMunicipality(muniUid).then((data) {
       listOfBarangay = data;
     }).catchError((err) {
       if (context.mounted) ScaffoldMessenger.of(context).showSnackBar(snackBar(text: err));
     });
-    loadingScreen.hide(context);
   }
 
   void _register() async {
@@ -130,10 +130,6 @@ class _RegisterOfficialScreenState extends State<RegisterOfficialScreen> with Si
 
     if (_formKey.currentState?.validate() == true) {
       try {
-        // get the document references
-        DocumentReference muniDocRef = _registerController.fetchMunicipality(_selectedMuniId);
-        DocumentReference brgyDocRef = _registerController.fetchBarangay(_selectedMuniId, _selectedBarangayId);
-
         // map the data to a [RegisterOfficialModel] model
         RegisterOfficialModel model = RegisterOfficialModel(
           firstName: _firstNameController.text,
@@ -142,30 +138,30 @@ class _RegisterOfficialScreenState extends State<RegisterOfficialScreen> with Si
           contactNumber: _contactNumberController.text,
           address: _addressController.text,
           birthDate: _birthDateController.text,
-          finishedTutorial: false,
-          municipality: muniDocRef,
-          barangayAssociated: brgyDocRef,
+          municipality: _selectedMuniId,
+          barangayAssociated: _selectedBarangayId,
           isApproved: false,
           proofOfOfficial: File(_docFilePath),
           username: _emailController.text,
           password: _passwordController.text,
         );
 
-        // call the controller register() function
-        await _registerController.register(model).then((value) {
-          Navigator.of(context).push(createRoute('/dashboard'));
-        });
+        // call the controller register function
+        await _registerController.register(model);
 
-        if (context.mounted) loadingScreen.hide(context);
+        if (context.mounted) {
+          loadingScreen.hide(context);
+          Navigator.of(context).pushReplacement(createRoute(route: '/dashboard', args: {'startTutorial': true}));
+        }
       } catch (err) {
         if (context.mounted) {
           loadingScreen.hide(context);
           ScaffoldMessenger.of(context).showSnackBar(snackBar(text: err.toString()));
         }
       }
+    } else {
+      if (context.mounted) loadingScreen.hide(context);
     }
-
-    if (context.mounted) loadingScreen.hide(context);
   }
 
   @override
@@ -223,6 +219,7 @@ class _RegisterOfficialScreenState extends State<RegisterOfficialScreen> with Si
                     buildLoginCred(
                       context: context,
                       tabController: _tabController,
+                      usernameController: _usernameController,
                       passwordController: _passwordController,
                       confirmPasswordController: _confirmPasswordController,
                       showPassword: _showPassword,
@@ -269,17 +266,17 @@ class _RegisterOfficialScreenState extends State<RegisterOfficialScreen> with Si
             ),
           )
           .toList(),
-      onSubmit: (index) {
-        setState(() {
+      onSubmit: (index) async {
+        setState(() async {
           var docId = listOfMunicipalities[index].zipCode.toString();
           var selectedMunicipality = listOfMunicipalities[index].municipality;
 
           _municipalityController.text = selectedMunicipality;
           _selectedMuniId = docId;
           _barangayController.text = '';
-          _isBrgyFieldEnabled = true;
 
-          _fetchBarangay(docId);
+          await _fetchBarangay(docId);
+          _isBrgyFieldEnabled = true;
         });
       },
       title: 'Select a municipality',

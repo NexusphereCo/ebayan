@@ -11,6 +11,7 @@ import 'package:flutter/material.dart';
 Widget buildLoginCred({
   required TabController tabController,
   // controllers
+  required TextEditingController usernameController,
   required TextEditingController passwordController,
   required TextEditingController confirmPasswordController,
   // functions
@@ -42,9 +43,10 @@ Widget buildLoginCred({
               Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  const EBTextBox(
+                  EBTextBox(
                     icon: FeatherIcons.user,
                     textField: EBTextField(
+                      controller: usernameController,
                       enabled: false,
                       label: 'Username',
                       type: TextInputType.text,
@@ -148,7 +150,7 @@ Widget buildLoginCred({
                     child: TextButton(
                       style: ButtonStyle(padding: MaterialStateProperty.all(EdgeInsets.zero)),
                       onPressed: () {
-                        Navigator.of(context).push(createRoute('/login'));
+                        Navigator.of(context).push(createRoute(route: '/login'));
                       },
                       child: EBTypography.text(
                         text: 'login.',

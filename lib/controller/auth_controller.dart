@@ -39,7 +39,7 @@ class LoginController {
 class RegisterOfficialController {
   final Logger log = Logger();
 
-  Future<List<MunicipalityModel>> fetchMunicipalities() async {
+  dynamic fetchMunicipalities() async {
     try {
       final QuerySnapshot querySnapshot = await FirebaseFirestore.instance.collection('municipalities').orderBy('municipality').get();
       final municipalities = querySnapshot.docs
@@ -66,7 +66,7 @@ class RegisterOfficialController {
     }
   }
 
-  Future<List<BarangayModel>> fetchBarangaysFromMunicipality(String muniId) async {
+  dynamic fetchBarangaysFromMunicipality(String muniId) async {
     try {
       final QuerySnapshot querySnapshot = await FirebaseFirestore.instance.collection('municipalities').doc(muniId).collection('barangays').orderBy('name').get();
       final barangays = querySnapshot.docs
