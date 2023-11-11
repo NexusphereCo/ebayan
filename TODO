@@ -1,19 +1,21 @@
 PRIORITY:
 
-    [] implement fetching records from db
-    [] ui fix on floating label staying floated even unfocus
-    [] implement network catch screen
-
 ---
 
 TODO:
 
+    [] ui fix on floating label staying floated even unfocus
+    [] implement network catch screen
     [] Create Announcement [ListView.Builder]
 
 ---
 
 DONE:
 
+    [x] finish register on official
+    [x] finish register on resident
+    [X] formkey on validate after previous->next is not working...
+    [X] implement fetching records from db
     [X] change the default check button on bottom_picker
     [X] reimport data on brgys
     [X] implement dropdown for officials
