@@ -47,7 +47,7 @@ class _LoginScreenState extends State<LoginScreen> {
     loginController.signIn(model).then((data) {
       loadingScreen.hide(context);
 
-      if (context.mounted) Navigator.of(context).push(createRoute('/dashboard'));
+      if (context.mounted) Navigator.of(context).push(createRoute(route: '/dashboard'));
     }).catchError((err) {
       loadingScreen.hide(context);
 
@@ -67,32 +67,35 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: Global.paddingBody),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Column(
-              children: [
-                EBTypography.h1(
-                  text: 'Welcome Back!',
-                  color: EBColor.primary,
-                  maxLines: 2,
-                  textAlign: TextAlign.center,
-                ),
-                EBTypography.text(
-                  text: 'Sign in to continue.',
-                  muted: true,
-                ),
-              ],
-            ),
-            const SizedBox(height: Spacing.md),
-            _buildForm(context),
-          ],
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: Scaffold(
+        body: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: Global.paddingBody),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Column(
+                children: [
+                  EBTypography.h1(
+                    text: 'Welcome Back!',
+                    color: EBColor.primary,
+                    maxLines: 2,
+                    textAlign: TextAlign.center,
+                  ),
+                  EBTypography.text(
+                    text: 'Sign in to continue.',
+                    muted: true,
+                  ),
+                ],
+              ),
+              const SizedBox(height: Spacing.md),
+              _buildForm(context),
+            ],
+          ),
         ),
+        bottomNavigationBar: const EBFooter(),
       ),
-      bottomNavigationBar: const EBFooter(),
     );
   }
 
@@ -169,7 +172,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               TextButton(
                 onPressed: () {
-                  Navigator.of(context).push(createRoute('/register'));
+                  Navigator.of(context).push(createRoute(route: '/register'));
                 },
                 style: ButtonStyle(padding: MaterialStateProperty.all(const EdgeInsets.all(0))),
                 child: EBTypography.text(
