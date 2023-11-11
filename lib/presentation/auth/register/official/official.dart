@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:bottom_picker/bottom_picker.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ebayan/constants/assets.dart';
 import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/constants/typography.dart';
