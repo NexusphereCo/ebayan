@@ -1,4 +1,5 @@
 import 'package:ebayan/firebase_options.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -32,4 +33,9 @@ Future<FirebaseApp> firebaseInit() async {
   return await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+}
+
+Future<String?> getCurrentUserName() async {
+  User? user = FirebaseAuth.instance.currentUser;
+  return user?.displayName;
 }

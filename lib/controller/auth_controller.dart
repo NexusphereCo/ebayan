@@ -97,8 +97,8 @@ class RegisterOfficialController {
     try {
       log.i(docData.toJson());
 
-      await FirebaseAuth.instance.createUserWithEmailAndPassword(email: docData.email, password: docData.password);
-      await FirebaseFirestore.instance.collection('brgyOfficials').add(docData.toJson());
+      UserCredential userCredentials = await FirebaseAuth.instance.createUserWithEmailAndPassword(email: docData.email, password: docData.password);
+      await FirebaseFirestore.instance.collection('brgyOfficials').doc(userCredentials.user?.uid).set(docData.toJson());
 
       // putting doc proof to the firebaseStorage
       final storage = FirebaseStorage.instance.ref();
@@ -106,6 +106,10 @@ class RegisterOfficialController {
       final proof = folder.child('DOC_${docData.lastName.toUpperCase()}_${DateTime.timestamp()}.pdf');
 
       await proof.putFile(docData.proofOfOfficial);
+
+      // set the display name
+      await userCredentials.user?.updateDisplayName(docData.firstName);
+
       log.i('Successfully registered official! Navigating to dashboard');
     } catch (e) {
       log.e('An error occurred: $e');
@@ -121,8 +125,11 @@ class RegisterResidentController {
     try {
       log.i(docData.toJson());
 
-      await FirebaseAuth.instance.createUserWithEmailAndPassword(email: docData.email, password: docData.password);
-      await FirebaseFirestore.instance.collection('brgyResidents').add(docData.toJson());
+      UserCredential userCredentials = await FirebaseAuth.instance.createUserWithEmailAndPassword(email: docData.email, password: docData.password);
+      await FirebaseFirestore.instance.collection('brgyResidents').doc(userCredentials.user?.uid).set(docData.toJson());
+
+      // set the display name
+      await userCredentials.user?.updateDisplayName(docData.firstName);
 
       log.i('Successfully registered resident! Navigating to dashboard');
     } catch (e) {

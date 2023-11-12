@@ -58,6 +58,7 @@ class RegisterResidentModel {
   final String contactNumber;
   final String address;
   final String birthDate;
+  final String? barangayAssociated;
   // login credentials
   final String username;
   final String password;
@@ -69,6 +70,7 @@ class RegisterResidentModel {
     required this.contactNumber,
     required this.address,
     required this.birthDate,
+    required this.barangayAssociated,
     required this.username,
     required this.password,
   });
@@ -81,6 +83,7 @@ class RegisterResidentModel {
       'contactNumber': contactNumber,
       'address': address,
       'birthDate': birthDate,
+      'barangayAssociated': barangayAssociated,
       'username': email,
     };
   }

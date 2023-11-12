@@ -101,6 +101,7 @@ class _RegisterResidentScreenState extends State<RegisterResidentScreen> with Si
           birthDate: _birthDateController.text,
           username: _emailController.text,
           password: _passwordController.text,
+          barangayAssociated: null,
         );
 
         // call the controller register function
