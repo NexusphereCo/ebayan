@@ -6,12 +6,11 @@ TODO:
 
     [] ui fix on floating label staying floated even unfocus
     [] implement network catch screen
-    [] Create Announcement [ListView.Builder]
 
 ---
 
 DONE:
-
+    [x] Create Announcement [ListView.Builder]
     [x] finish register on official
     [x] finish register on resident
     [X] formkey on validate after previous->next is not working...
