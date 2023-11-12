@@ -37,19 +37,19 @@ class RouteGuard extends StatefulWidget {
 class _RouteGuardState extends State<RouteGuard> {
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<User?>(
-      stream: FirebaseAuth.instance.authStateChanges(),
+    return FutureBuilder<User?>(
+      future: FirebaseAuth.instance.authStateChanges().first,
       builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.active) {
+        if (snapshot.connectionState == ConnectionState.done) {
           final user = snapshot.data;
 
-          // use Future.delayed to perform navigation after the current build cycle
+          // Use Future.delayed to perform navigation after the current build cycle.
           Future.delayed(Duration.zero, () {
             Navigator.of(context).pushReplacementNamed(user == null ? '/login' : '/dashboard');
           });
         }
 
-        // show the loading screen
+        // Show the loading screen or another appropriate widget.
         return const EBLoadingScreen(solid: true);
       },
     );
