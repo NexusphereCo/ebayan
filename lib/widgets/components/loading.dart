@@ -50,22 +50,25 @@ class _EBLoadingScreenState extends State<EBLoadingScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Lottie.asset(Asset.lottieLoadingLogo),
-          Text(
-            'Loading...',
-            style: TextStyle(
-              fontFamily: EBTypography.fontFamily,
-              color: EBColor.primary,
-              decoration: TextDecoration.none,
-              fontSize: EBFontSize.normal,
-              fontWeight: EBFontWeight.regular,
+    return Scaffold(
+      backgroundColor: Colors.transparent,
+      body: Center(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Lottie.asset(Asset.lottieLoadingLogo),
+            Text(
+              'Loading...',
+              style: TextStyle(
+                fontFamily: EBTypography.fontFamily,
+                color: EBColor.primary,
+                decoration: TextDecoration.none,
+                fontSize: EBFontSize.normal,
+                fontWeight: EBFontWeight.regular,
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
