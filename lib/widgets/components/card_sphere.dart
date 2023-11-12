@@ -102,7 +102,7 @@ class _SphereCardState extends State<SphereCard> {
               children: [
                 EBButton(
                     onPressed: () {
-                      Navigator.of(context).push(createRoute(route: '/dashboard/announcements'));
+                      Navigator.of(context).push(createRoute(route: '/dashboard/announcement_list'));
                     },
                     text: 'View',
                     theme: EBButtonTheme.primary),
@@ -171,7 +171,7 @@ class _SphereCardState extends State<SphereCard> {
 
     return Container(
       decoration: decoration,
-      margin: const EdgeInsets.only(bottom: 15.0),
+      margin: const EdgeInsets.all(Global.paddingBody),
       child: Expanded(
         child: ClipRRect(
           borderRadius: borderRadius,
