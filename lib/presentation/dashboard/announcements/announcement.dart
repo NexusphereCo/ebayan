@@ -1,6 +1,7 @@
 import 'dart:math';
 import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/constants/typography.dart';
+import 'package:ebayan/controller/announcement_controller.dart';
 import 'package:ebayan/utils/routes.dart';
 import 'package:ebayan/utils/style.dart';
 import 'package:ebayan/widgets/components/buttons.dart';
@@ -10,57 +11,64 @@ import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class AnnouncementScreen extends StatelessWidget {
-  const AnnouncementScreen({super.key});
+class AnnouncementListScreen extends StatefulWidget {
+  const AnnouncementListScreen({super.key});
 
+  State<AnnouncementListScreen> createState() => _AnnouncementListScreenState();
+}
+
+class _AnnouncementListScreenState extends State<AnnouncementListScreen> {
+  final AnnouncementController _announcementList = AnnouncementController();
   @override
   Widget build(BuildContext context) {
+    var announcements = _announcementList.fetchAnnouncements('4400');
     return Scaffold(
       appBar: const EBAppBar(),
       drawer: const EBDrawer(),
-      body: ListView(
-        children: [
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.all(24.0),
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      EBTypography.h1(text: 'Announcement'),
-                      const SizedBox(width: Spacing.sm),
-                      Transform.rotate(
-                        angle: -15 * pi / 180,
-                        child: FaIcon(
-                          FontAwesomeIcons.bullhorn,
-                          size: 30,
-                          color: EBColor.primary,
-                        ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => Navigator.of(context).push(createRoute(route: '/dashboard/create_announcement')),
+        child: const Icon(Icons.add),
+      ),
+      body: ListView.builder(
+        padding: const EdgeInsets.all(24.0),
+        /*itemCount: announcements.length + 1,*/
+        itemBuilder: (context, index) {
+          if (index == 0) {
+            return Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    EBTypography.h1(text: 'Announcement'),
+                    const SizedBox(width: Spacing.sm),
+                    Transform.rotate(
+                      angle: -15 * pi / 180,
+                      child: FaIcon(
+                        FontAwesomeIcons.bullhorn,
+                        size: 30,
+                        color: EBColor.primary,
                       ),
-                    ],
-                  ),
-                  const SizedBox(height: Spacing.md),
-                  const SphereInfoCard(),
-                  const SizedBox(height: Spacing.md),
-                  Divider(
-                    color: EBColor.primary,
-                    height: 25,
-                    thickness: 1.5,
-                    indent: 5,
-                    endIndent: 5,
-                  ),
-                  const SizedBox(height: Spacing.md),
-                  const AnnouncementCard(),
-                  const AnnouncementCard(),
-                  const AnnouncementCard(),
-                  const AnnouncementCard(),
-                  const AnnouncementCard(),
-                ],
-              ),
-            ),
-          ),
-        ],
+                    ),
+                  ],
+                ),
+                const SizedBox(height: Spacing.md),
+                const SphereInfoCard(),
+                const SizedBox(height: Spacing.md),
+                Divider(
+                  color: EBColor.primary,
+                  height: 25,
+                  thickness: 1.5,
+                  indent: 5,
+                  endIndent: 5,
+                ),
+                const SizedBox(height: Spacing.md),
+              ],
+            );
+          } else {
+            final dataIndex = index - 1;
+            return const AnnouncementCard(heading: 'text', body: 'body');
+          }
+        },
       ),
       bottomNavigationBar: const EBAppBarBottom(),
     );
@@ -68,7 +76,14 @@ class AnnouncementScreen extends StatelessWidget {
 }
 
 class AnnouncementCard extends StatelessWidget {
-  const AnnouncementCard({super.key});
+  final String heading;
+  final String body;
+
+  const AnnouncementCard({
+    super.key,
+    required this.heading,
+    required this.body,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -97,7 +112,7 @@ class AnnouncementCard extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     EBTypography.h4(
-                      text: "Barangay Community Potluck Picnic: Let's Celebrate Together!",
+                      text: heading,
                       color: EBColor.primary,
                       cutOverflow: true,
                       maxLines: 3,
