@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/constants/typography.dart';
@@ -84,11 +86,15 @@ class EBTextField extends StatelessWidget {
 class MultiTextField extends StatefulWidget {
   final void Function(String) onCompleted;
   final void Function(String) onChanged;
+  final String? Function(String?)? validator;
+  final StreamController<ErrorAnimationType>? errorController;
 
   const MultiTextField({
     super.key,
     required this.onCompleted,
     required this.onChanged,
+    this.validator,
+    this.errorController,
   });
 
   @override
@@ -111,7 +117,7 @@ class _MultiTextFieldState extends State<MultiTextField> {
       inactiveBorderWidth: 1,
       activeBorderWidth: 1,
       selectedBorderWidth: 3,
-      fieldHeight: 50.0,
+      fieldHeight: 60.0,
       fieldWidth: (fieldWidth >= fieldWidthMax) ? fieldWidthMax : fieldWidth,
     );
 
@@ -138,6 +144,8 @@ class _MultiTextFieldState extends State<MultiTextField> {
       appContext: context,
       onCompleted: widget.onCompleted,
       onChanged: widget.onChanged,
+      validator: widget.validator,
+      errorAnimationController: widget.errorController,
     );
   }
 }

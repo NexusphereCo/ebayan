@@ -10,4 +10,6 @@ class Validation {
   static const String wrongPassword = 'The password is incorrect.';
   static const String mismatchPassword = 'The password does not match.';
   static const String weakPassword = 'The password requires a minimum of 6 characters.';
+  static const String minLengthBrgyCode = 'The code requires a minimum of 5 digits.';
+  static const String invalidBrgyCode = 'This code is invalid. Try a different code.';
 }
