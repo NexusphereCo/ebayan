@@ -50,7 +50,7 @@ class EBTextField extends StatelessWidget {
     return TextFormField(
       onTap: onTap,
       enabled: enabled,
-      keyboardType: TextInputType.text,
+      keyboardType: type,
       controller: controller,
       obscureText: obscureText ?? false,
       readOnly: readOnly ?? false,
