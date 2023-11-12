@@ -51,7 +51,7 @@ class _EBLoadingScreenState extends State<EBLoadingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.transparent,
+      backgroundColor: (widget.solid ?? false) ? EBColor.light : Colors.transparent,
       body: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
