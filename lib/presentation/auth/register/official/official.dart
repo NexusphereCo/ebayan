@@ -275,8 +275,10 @@ class _RegisterOfficialScreenState extends State<RegisterOfficialScreen> with Si
           _selectedMuniId = docId;
           _barangayController.text = '';
 
+          setState(() => _isBrgyFieldEnabled = false);
+
           await _fetchBarangay(docId);
-          _isBrgyFieldEnabled = true;
+          setState(() => _isBrgyFieldEnabled = true);
         });
       },
       title: 'Select a municipality',
