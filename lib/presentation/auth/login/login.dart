@@ -29,8 +29,6 @@ class _LoginScreenState extends State<LoginScreen> {
 
   bool _showPassword = false;
 
-  String _emailValidator = '', _passwordValidator = '', _miscValidator = '';
-
   @override
   void dispose() {
     _emailController.dispose();
@@ -51,17 +49,8 @@ class _LoginScreenState extends State<LoginScreen> {
     }).catchError((err) {
       loadingScreen.hide(context);
 
-      _miscValidator = err.toString();
-
       _formKey.currentState?.validate();
-      if (context.mounted) ScaffoldMessenger.of(context).showSnackBar(snackBar(text: _miscValidator));
-    });
-  }
-
-  void _resetValidator() {
-    setState(() {
-      _emailValidator = '';
-      _passwordValidator = '';
+      if (context.mounted) ScaffoldMessenger.of(context).showSnackBar(snackBar(text: err.toString()));
     });
   }
 
@@ -113,8 +102,13 @@ class _LoginScreenState extends State<LoginScreen> {
               controller: _emailController,
               validator: (value) {
                 value = value?.trim();
-                if (value == null || value.isEmpty) return Validation.missingField;
-                if (_emailValidator.isNotEmpty) return Validation.invalidEmail;
+                final emailRegExp = RegExp(r'^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$');
+
+                if (value == null || value.isEmpty) {
+                  return Validation.missingField;
+                } else if (!emailRegExp.hasMatch(value)) {
+                  return Validation.invalidEmail;
+                }
                 return null;
               },
             ),
@@ -135,8 +129,10 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               validator: (value) {
                 value = value?.trim();
+                value = value?.trim();
                 if (value == null || value.isEmpty) return Validation.missingField;
-                if (_passwordValidator.isNotEmpty) return Validation.wrongPassword;
+                if (value.length < 6) return Validation.requiredMinPassword;
+
                 return null;
               },
             ),
@@ -157,7 +153,6 @@ class _LoginScreenState extends State<LoginScreen> {
               text: 'Login',
               theme: EBButtonTheme.primary,
               onPressed: () {
-                _resetValidator();
                 if (_formKey.currentState?.validate() == true) _signIn(context);
               },
             ),

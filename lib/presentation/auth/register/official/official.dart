@@ -5,6 +5,7 @@ import 'package:ebayan/constants/assets.dart';
 import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/constants/typography.dart';
 import 'package:ebayan/controller/auth_controller.dart';
+import 'package:ebayan/controller/brgy_controller.dart';
 import 'package:ebayan/data/model/barangay_model.dart';
 import 'package:ebayan/data/model/municipality_model.dart';
 import 'package:ebayan/data/model/register_model.dart';
@@ -33,6 +34,7 @@ class RegisterOfficialScreen extends StatefulWidget {
 
 class _RegisterOfficialScreenState extends State<RegisterOfficialScreen> with SingleTickerProviderStateMixin {
   final RegisterOfficialController _registerController = RegisterOfficialController();
+  final BarangayController _brgyController = BarangayController();
   final EBLoadingScreen loadingScreen = const EBLoadingScreen();
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
@@ -109,7 +111,7 @@ class _RegisterOfficialScreenState extends State<RegisterOfficialScreen> with Si
   }
 
   Future<void> _fetchMunicipalities() async {
-    _registerController.fetchMunicipalities().then((data) {
+    _brgyController.fetchMunicipalities().then((data) {
       listOfMunicipalities = data;
     }).catchError((err) {
       if (context.mounted) ScaffoldMessenger.of(context).showSnackBar(snackBar(text: err));
@@ -117,7 +119,7 @@ class _RegisterOfficialScreenState extends State<RegisterOfficialScreen> with Si
   }
 
   Future<void> _fetchBarangay(muniUid) async {
-    _registerController.fetchBarangaysFromMunicipality(muniUid).then((data) {
+    _brgyController.fetchBarangaysFromMunicipality(muniUid).then((data) {
       listOfBarangay = data;
     }).catchError((err) {
       if (context.mounted) ScaffoldMessenger.of(context).showSnackBar(snackBar(text: err));
@@ -150,7 +152,7 @@ class _RegisterOfficialScreenState extends State<RegisterOfficialScreen> with Si
 
         if (context.mounted) {
           loadingScreen.hide(context);
-          Navigator.of(context).pushReplacement(createRoute(route: '/dashboard', args: {'startTutorial': true}));
+          Navigator.of(context).pushReplacement(createRoute(route: '/dashboard'));
         }
       } catch (err) {
         if (context.mounted) {

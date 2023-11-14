@@ -1,9 +1,65 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:ebayan/data/model/barangay_model.dart';
+import 'package:ebayan/data/model/municipality_model.dart';
 import 'package:ebayan/utils/global.dart';
 import 'package:logger/logger.dart';
 
 class BarangayController {
   final Logger log = Logger();
+
+  dynamic fetchMunicipalities() async {
+    try {
+      final QuerySnapshot querySnapshot = await FirebaseFirestore.instance.collection('municipalities').orderBy('municipality').get();
+      final municipalities = querySnapshot.docs
+          .map((doc) => MunicipalityModel(
+                municipality: doc['municipality'],
+                zipCode: doc['zipCode'],
+              ))
+          .toList();
+
+      log.d('Successfully fetched municipalities.');
+      return municipalities;
+    } catch (err) {
+      log.e('An error occurred: $err');
+      throw 'An error occurred while fetching municipalities!';
+    }
+  }
+
+  DocumentReference fetchMunicipality(String muniId) {
+    try {
+      return FirebaseFirestore.instance.collection('municipalities').doc(muniId);
+    } catch (e) {
+      log.e('Error fetching municipality: $e');
+      throw 'An error occurred while fetching the municipality: $muniId';
+    }
+  }
+
+  dynamic fetchBarangaysFromMunicipality(String muniId) async {
+    try {
+      final QuerySnapshot querySnapshot = await FirebaseFirestore.instance.collection('municipalities').doc(muniId).collection('barangays').orderBy('name').get();
+      final barangays = querySnapshot.docs
+          .map((doc) => BarangayModel(
+                name: doc['name'],
+                code: doc['code'],
+              ))
+          .toList();
+
+      log.d('Successfully fetched Barangay.');
+      return barangays;
+    } catch (err) {
+      log.e('An error occurred: $err');
+      throw 'An error occurred while fetching barangay!';
+    }
+  }
+
+  DocumentReference fetchBarangay(String muniId, String brgyId) {
+    try {
+      return FirebaseFirestore.instance.collection('municipalities').doc(muniId).collection('barangays').doc(brgyId);
+    } catch (e) {
+      log.e('Error fetching municipality: $e');
+      throw 'An error occurred while fetching the municipality: $brgyId';
+    }
+  }
 
   Future<bool> hasJoinedBrgy() async {
     try {

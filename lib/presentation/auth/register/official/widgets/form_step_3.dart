@@ -67,7 +67,7 @@ Widget buildLoginCred({
                       validator: (value) {
                         value = value?.trim();
                         if (value == null || value.isEmpty) return Validation.missingField;
-                        if (value.length < 6) return Validation.weakPassword;
+                        if (value.length < 6) return Validation.requiredMinPassword;
 
                         return null;
                       },
@@ -89,7 +89,7 @@ Widget buildLoginCred({
                         value = value?.trim();
                         if (value == null || value.isEmpty) return Validation.missingField;
                         if (value != passwordController.text) return Validation.mismatchPassword;
-                        if (value.length < 6) return Validation.weakPassword;
+                        if (value.length < 6) return Validation.requiredMinPassword;
 
                         return null;
                       },
