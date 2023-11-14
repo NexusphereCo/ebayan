@@ -6,10 +6,11 @@ import 'package:logger/logger.dart';
 
 class BarangayController {
   final Logger log = Logger();
+  final FirebaseFirestore db = FirebaseFirestore.instance;
 
   dynamic fetchMunicipalities() async {
     try {
-      final QuerySnapshot querySnapshot = await FirebaseFirestore.instance.collection('municipalities').orderBy('municipality').get();
+      final QuerySnapshot querySnapshot = await db.collection('municipalities').orderBy('municipality').get();
       final municipalities = querySnapshot.docs
           .map((doc) => MunicipalityModel(
                 municipality: doc['municipality'],
@@ -27,7 +28,7 @@ class BarangayController {
 
   DocumentReference fetchMunicipality(String muniId) {
     try {
-      return FirebaseFirestore.instance.collection('municipalities').doc(muniId);
+      return db.collection('municipalities').doc(muniId);
     } catch (e) {
       log.e('Error fetching municipality: $e');
       throw 'An error occurred while fetching the municipality: $muniId';
@@ -36,7 +37,7 @@ class BarangayController {
 
   dynamic fetchBarangaysFromMunicipality(String muniId) async {
     try {
-      final QuerySnapshot querySnapshot = await FirebaseFirestore.instance.collection('municipalities').doc(muniId).collection('barangays').orderBy('name').get();
+      final QuerySnapshot querySnapshot = await db.collection('municipalities').doc(muniId).collection('barangays').orderBy('name').get();
       final barangays = querySnapshot.docs
           .map((doc) => BarangayModel(
                 name: doc['name'],
@@ -54,7 +55,7 @@ class BarangayController {
 
   DocumentReference fetchBarangay(String muniId, String brgyId) {
     try {
-      return FirebaseFirestore.instance.collection('municipalities').doc(muniId).collection('barangays').doc(brgyId);
+      return db.collection('municipalities').doc(muniId).collection('barangays').doc(brgyId);
     } catch (e) {
       log.e('Error fetching municipality: $e');
       throw 'An error occurred while fetching the municipality: $brgyId';
@@ -82,7 +83,8 @@ class BarangayController {
   Future<bool> isCodeValid(String code) async {
     try {
       // Query to find the barangayId across all municipalities
-      QuerySnapshot<Map<String, dynamic>> querySnapshot = await FirebaseFirestore.instance.collectionGroup('barangays').where('id', isEqualTo: code).where('code', isEqualTo: code).get();
+      var barangaysRef = db.collectionGroup('barangays');
+      var querySnapshot = await barangaysRef.where('code', isEqualTo: int.parse(code)).get();
 
       // Check if the query returned any documents
       log.i('Barangay code exist: ${querySnapshot.docs.isNotEmpty}');
@@ -100,10 +102,10 @@ class BarangayController {
       final user = await getCurrentUserInfo();
       final userType = await getUserType(user.id);
 
-      var userRef = FirebaseFirestore.instance.collection(userType).doc(user.id);
+      var userRef = db.collection(userType).doc(user.id);
       userRef.update({'barangayAssociated': code});
 
-      log.i('Successfully updated barangay.');
+      log.i('Successfully joined a barangay!.');
     } catch (e) {
       log.e('An error occurred. $e');
       throw 'An error occurred. $e';

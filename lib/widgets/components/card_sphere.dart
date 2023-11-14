@@ -28,34 +28,36 @@ class _SphereCardState extends State<SphereCard> {
       width: double.infinity,
       height: 110,
       color: EBColor.primary,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10.0),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Expanded(
-              flex: 6,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  EBTypography.h4(text: 'San Felipe, Naga City', color: EBColor.light, maxLines: 2),
-                  EBTypography.small(text: '092174', color: EBColor.light),
-                  const SizedBox(height: Spacing.md),
-                ],
-              ),
+      padding: const EdgeInsets.symmetric(horizontal: 10.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Expanded(
+            flex: 6,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                EBTypography.h4(
+                  text: 'San Felipe, Naga City',
+                  color: EBColor.light,
+                  maxLines: 2,
+                ),
+                EBTypography.small(text: '092174', color: EBColor.light),
+                const SizedBox(height: Spacing.md),
+              ],
             ),
-            Expanded(
-              flex: 4,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  SvgPicture.asset(Asset.illustHousePath, fit: BoxFit.fitHeight),
-                ],
-              ),
+          ),
+          Expanded(
+            flex: 4,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                SvgPicture.asset(Asset.illustHousePath, fit: BoxFit.fitHeight),
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
@@ -65,52 +67,53 @@ class _SphereCardState extends State<SphereCard> {
       width: double.infinity,
       height: 75,
       color: EBColor.primary[100],
-      child: Padding(
-        padding: const EdgeInsets.all(10.0),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    children: [
-                      const FaIcon(FontAwesomeIcons.bullhorn, size: 16),
-                      const SizedBox(width: 10),
-                      Expanded(
-                        child: EBTypography.small(text: 'New announcement', maxLines: 2),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: Spacing.sm),
-                  Row(
-                    children: [
-                      const Icon(FeatherIcons.user, size: 16),
-                      const SizedBox(width: 10),
-                      Expanded(
-                        child: EBTypography.small(text: '42 people'),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.end,
+      padding: const EdgeInsets.all(10.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Expanded(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                EBButton(
-                    onPressed: () {
-                      Navigator.of(context).push(createRoute(route: '/dashboard/announcement'));
-                    },
-                    text: 'View',
-                    theme: EBButtonTheme.primary),
+                _buildFooterRow(
+                  icon: const FaIcon(FontAwesomeIcons.bullhorn, size: 16),
+                  text: 'New announcement',
+                ),
+                const SizedBox(height: Spacing.sm),
+                _buildFooterRow(
+                  icon: const Icon(FeatherIcons.user, size: 16),
+                  text: '42 people',
+                ),
               ],
             ),
-          ],
-        ),
+          ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              EBButton(
+                onPressed: () {
+                  Navigator.of(context).push(createRoute(route: '/dashboard/announcement'));
+                },
+                text: 'View',
+                theme: EBButtonTheme.primary,
+              ),
+            ],
+          ),
+        ],
       ),
+    );
+  }
+
+  Widget _buildFooterRow({required Widget icon, required String text}) {
+    return Row(
+      children: [
+        icon,
+        const SizedBox(width: 10),
+        Expanded(
+          child: EBTypography.small(text: text, maxLines: 2),
+        ),
+      ],
     );
   }
 
@@ -158,34 +161,25 @@ class _SphereCardState extends State<SphereCard> {
 
   @override
   Widget build(BuildContext context) {
-    var decoration = BoxDecoration(
-      borderRadius: BorderRadius.circular(20.0),
-    );
-
-    const borderRadius = BorderRadius.only(
-      bottomLeft: Radius.circular(20),
-      bottomRight: Radius.circular(20),
-      topLeft: Radius.circular(20),
-      topRight: Radius.circular(20),
-    );
+    const borderRadius = BorderRadius.all(Radius.circular(20));
 
     return Container(
-      decoration: decoration,
+      decoration: BoxDecoration(
+        borderRadius: borderRadius,
+      ),
       margin: const EdgeInsets.all(Global.paddingBody),
-      child: Expanded(
-        child: ClipRRect(
-          borderRadius: borderRadius,
-          child: Stack(
-            children: [
-              Column(
-                children: [
-                  _cardHeader(),
-                  _cardFooter(),
-                ],
-              ),
-              _cardOption(),
-            ],
-          ),
+      child: ClipRRect(
+        borderRadius: borderRadius,
+        child: Stack(
+          children: [
+            Column(
+              children: [
+                _cardHeader(),
+                _cardFooter(),
+              ],
+            ),
+            _cardOption(),
+          ],
         ),
       ),
     );

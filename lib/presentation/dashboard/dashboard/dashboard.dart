@@ -1,4 +1,5 @@
 import 'package:ebayan/controller/brgy_controller.dart';
+import 'package:ebayan/presentation/dashboard/onboarding/onboarding.dart';
 import 'package:ebayan/widgets/components/loading.dart';
 import 'package:flutter/material.dart';
 
@@ -34,6 +35,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final args = ModalRoute.of(context)?.settings.arguments;
+    final startTutorial = (args != null && args is Map && args['startTutorial'] == true);
+
     return WillPopScope(
       onWillPop: () async => false,
       child: FutureBuilder<bool>(
@@ -43,7 +47,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
             return const EBLoadingScreen(solid: true);
           } else {
             // If the Future is complete, show the appropriate view based on the result.
-            return snapshot.data == true ? const JoinedDashboardView() : const EmptyDashboardView();
+            return snapshot.data == true
+                ? (startTutorial)
+                    ? const OnBoardingView()
+                    : const JoinedDashboardView()
+                : const EmptyDashboardView();
           }
         },
       ),

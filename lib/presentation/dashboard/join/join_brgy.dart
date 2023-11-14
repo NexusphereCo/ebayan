@@ -58,28 +58,35 @@ class _JoinBrgyScreenState extends State<JoinBrgyScreen> {
 
   Future<void> _join() async {
     try {
-      if (_formKey.currentState!.validate() == true) {
-        // Allow form submission
+      // validate the form
+      bool isFormValid = _formKey.currentState?.validate() == true;
+      if (isFormValid) {
         if (context.mounted) loadingScreen.show(context);
 
-        // Check if the code is valid
+        // check if the code is valid
         bool isCodeValid = await _brgyController.isCodeValid(code);
 
         if (isCodeValid) {
-          // Join them to a barangay
+          // join them to a barangay
           await _brgyController.joinBrgy(code);
 
+          // successfully joined a barangay...
+          // hide loading screen and navigate to the dashboard
           if (context.mounted) {
-            Navigator.of(context).pop();
             loadingScreen.hide(context);
+            Navigator.of(context).popUntil((route) => route.settings.name == '/dashboard');
           }
+        } else {
+          // hide loading screen, show error, and pop if code is invalid
+          if (context.mounted) loadingScreen.hide(context);
+          throw 'Invalid code.';
         }
-        throw 'Invalid code.';
       }
       throw 'Invalid form.';
     } catch (e) {
-      // Triggering error shake animation
-      errorController!.add(ErrorAnimationType.shake);
+      // triggering error shake animation
+      errorController?.add(ErrorAnimationType.shake);
+
       if (context.mounted) {
         ScaffoldMessenger.of(context).showSnackBar(snackBar(text: e.toString()));
         loadingScreen.hide(context);
@@ -143,43 +150,49 @@ class _JoinBrgyScreenState extends State<JoinBrgyScreen> {
                               backgroundColor: EBColor.light,
                               context: context,
                               builder: (BuildContext context) {
-                                return Expanded(
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(Global.paddingBody),
-                                    child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.start,
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: <Widget>[
-                                        EBTypography.h3(text: 'Note!'),
-                                        const SizedBox(height: Spacing.xs),
-                                        EBTypography.text(
-                                          text: 'This action will transfer your account from your current barangay to the selected one. \n\nAre you sure you want to proceed?',
-                                          muted: true,
-                                        ),
-                                        const SizedBox(height: Spacing.md),
-                                        Row(
-                                          mainAxisAlignment: MainAxisAlignment.end,
-                                          children: [
-                                            TextButton(
-                                              onPressed: () => Navigator.of(context).pop(),
-                                              child: EBTypography.text(text: 'Cancel', color: EBColor.red),
+                                return Column(
+                                  // Wrap with Column
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: <Widget>[
+                                    Expanded(
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(Global.paddingBody),
+                                        child: Column(
+                                          mainAxisAlignment: MainAxisAlignment.start,
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: <Widget>[
+                                            EBTypography.h3(text: 'Note!'),
+                                            const SizedBox(height: Spacing.xs),
+                                            EBTypography.text(
+                                              text: 'This action will transfer your account from your current barangay to the selected one. \n\nAre you sure you want to proceed?',
+                                              muted: true,
                                             ),
-                                            const SizedBox(width: Spacing.md),
-                                            EBButton(
-                                              onPressed: () => _join(),
-                                              text: 'Proceed',
-                                              theme: EBButtonTheme.primaryOutlined,
-                                              icon: const Icon(
-                                                FeatherIcons.arrowRight,
-                                                size: EBFontSize.normal,
-                                              ),
+                                            const SizedBox(height: Spacing.md),
+                                            Row(
+                                              mainAxisAlignment: MainAxisAlignment.end,
+                                              children: [
+                                                TextButton(
+                                                  onPressed: () => Navigator.of(context).pop(),
+                                                  child: EBTypography.text(text: 'Cancel', color: EBColor.red),
+                                                ),
+                                                const SizedBox(width: Spacing.md),
+                                                EBButton(
+                                                  onPressed: () => _join(),
+                                                  text: 'Proceed',
+                                                  theme: EBButtonTheme.primaryOutlined,
+                                                  icon: const Icon(
+                                                    FeatherIcons.arrowRight,
+                                                    size: EBFontSize.normal,
+                                                  ),
+                                                ),
+                                              ],
                                             ),
                                           ],
                                         ),
-                                      ],
+                                      ),
                                     ),
-                                  ),
+                                  ],
                                 );
                               },
                             );

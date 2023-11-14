@@ -21,6 +21,7 @@ class LoginController {
         'invalid-email': Validation.invalidEmail,
         'wrong-password': Validation.wrongPassword,
         'user-not-found': Validation.userNotFound,
+        'invalid-login-credentials': Validation.invalidLoginCred,
         'invalid_login_credentials': Validation.invalidLoginCred,
         'too_many_requests': Validation.tooManyReq,
       };
