@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:ebayan/firebase_options.dart';
@@ -79,6 +81,7 @@ Future<String> getUserType(String uid) async {
   }
 }
 
+/// this function handles connection error such as no connection.
 Future<void> connectionHandler(BuildContext context) async {
   final Logger log = Logger();
 
@@ -96,4 +99,9 @@ Future<void> connectionHandler(BuildContext context) async {
       }
     }
   });
+}
+
+Future<bool> isConnected() async {
+  final connectivityResult = await Connectivity().checkConnectivity();
+  return (connectivityResult != ConnectivityResult.none);
 }
