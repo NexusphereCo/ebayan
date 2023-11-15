@@ -114,7 +114,7 @@ class _RegisterOfficialScreenState extends State<RegisterOfficialScreen> with Si
     _brgyController.fetchMunicipalities().then((data) {
       listOfMunicipalities = data;
     }).catchError((err) {
-      if (context.mounted) ScaffoldMessenger.of(context).showSnackBar(snackBar(text: err));
+      if (context.mounted) ScaffoldMessenger.of(context).showSnackBar(EBSnackBar.info(text: err));
     });
   }
 
@@ -122,7 +122,7 @@ class _RegisterOfficialScreenState extends State<RegisterOfficialScreen> with Si
     _brgyController.fetchBarangaysFromMunicipality(muniUid).then((data) {
       listOfBarangay = data;
     }).catchError((err) {
-      if (context.mounted) ScaffoldMessenger.of(context).showSnackBar(snackBar(text: err));
+      if (context.mounted) ScaffoldMessenger.of(context).showSnackBar(EBSnackBar.info(text: err));
     });
   }
 
@@ -157,7 +157,7 @@ class _RegisterOfficialScreenState extends State<RegisterOfficialScreen> with Si
       } catch (err) {
         if (context.mounted) {
           loadingScreen.hide(context);
-          ScaffoldMessenger.of(context).showSnackBar(snackBar(text: err.toString()));
+          ScaffoldMessenger.of(context).showSnackBar(EBSnackBar.info(text: err.toString()));
         }
       }
     } else {

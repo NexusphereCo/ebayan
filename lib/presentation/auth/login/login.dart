@@ -54,7 +54,7 @@ class _LoginScreenState extends State<LoginScreen> {
       loadingScreen.hide(context);
 
       _formKey.currentState?.validate();
-      if (context.mounted) ScaffoldMessenger.of(context).showSnackBar(snackBar(text: err.toString()));
+      if (context.mounted) ScaffoldMessenger.of(context).showSnackBar(EBSnackBar.info(text: err.toString()));
     });
   }
 

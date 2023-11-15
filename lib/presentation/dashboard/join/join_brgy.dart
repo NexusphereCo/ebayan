@@ -88,7 +88,7 @@ class _JoinBrgyScreenState extends State<JoinBrgyScreen> {
       errorController?.add(ErrorAnimationType.shake);
 
       if (context.mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(snackBar(text: e.toString()));
+        ScaffoldMessenger.of(context).showSnackBar(EBSnackBar.info(text: e.toString()));
         loadingScreen.hide(context);
       }
     }

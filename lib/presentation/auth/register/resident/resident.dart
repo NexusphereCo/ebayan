@@ -114,7 +114,7 @@ class _RegisterResidentScreenState extends State<RegisterResidentScreen> with Si
       } catch (err) {
         if (context.mounted) {
           loadingScreen.hide(context);
-          ScaffoldMessenger.of(context).showSnackBar(snackBar(text: err.toString()));
+          ScaffoldMessenger.of(context).showSnackBar(EBSnackBar.info(text: err.toString()));
         }
       }
     } else {

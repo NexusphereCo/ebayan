@@ -58,6 +58,11 @@ class EBTheme {
           fontWeight: EBFontWeight.regular,
           color: EBColor.light,
         ),
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(
+            Radius.circular(borderRadius),
+          ),
+        ),
         behavior: SnackBarBehavior.floating,
         insetPadding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
         backgroundColor: EBColor.primary,
