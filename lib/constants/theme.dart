@@ -51,6 +51,17 @@ class EBTheme {
           side: BorderSide(color: EBColor.primary, width: 1.0),
         ),
       ),
+      snackBarTheme: SnackBarThemeData(
+        contentTextStyle: TextStyle(
+          fontFamily: EBTypography.fontFamily,
+          fontSize: EBFontSize.label,
+          fontWeight: EBFontWeight.regular,
+          color: EBColor.light,
+        ),
+        behavior: SnackBarBehavior.floating,
+        insetPadding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
+        backgroundColor: EBColor.primary,
+      ),
       inputDecorationTheme: InputDecorationTheme(
         enabledBorder: OutlineInputBorder(
           borderSide: BorderSide(color: EBColor.dark),
