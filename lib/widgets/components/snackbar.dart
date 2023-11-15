@@ -14,7 +14,9 @@ class EBSnackBar {
         children: [
           Icon(FeatherIcons.info, color: EBColor.light),
           const SizedBox(width: Spacing.md),
-          Text(text),
+          Flexible(
+            child: EBTypography.text(text: text, color: EBColor.light),
+          ),
         ],
       ),
     );
@@ -27,13 +29,15 @@ class EBSnackBar {
         children: [
           Icon(FeatherIcons.wifiOff, color: EBColor.light),
           const SizedBox(width: Spacing.md),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              EBTypography.h4(text: 'Lost Connection!', color: EBColor.light, textAlign: TextAlign.start),
-              const SizedBox(height: Spacing.xs),
-              EBTypography.text(text: 'You are not connected to a network.', color: EBColor.light, textAlign: TextAlign.start),
-            ],
+          Flexible(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                EBTypography.h4(text: 'Lost Connection!', color: EBColor.light, textAlign: TextAlign.start),
+                const SizedBox(height: Spacing.xs),
+                EBTypography.text(text: 'You are not connected to a network.', color: EBColor.light, textAlign: TextAlign.start),
+              ],
+            ),
           ),
         ],
       ),
