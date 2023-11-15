@@ -5,6 +5,7 @@ import 'package:ebayan/presentation/auth/register/resident/resident.dart';
 import 'package:ebayan/presentation/dashboard/announcements/announcement.dart';
 import 'package:ebayan/presentation/dashboard/dashboard/dashboard.dart';
 import 'package:ebayan/presentation/dashboard/join/join_brgy.dart';
+import 'package:ebayan/presentation/error/502/connection_lost.dart';
 import 'package:flutter/material.dart';
 
 class Routes {
@@ -24,6 +25,9 @@ class Routes {
   static const String joinBrgy = '/dashboard/join_brgy';
   static const String announcementList = '/dashboard/announcement';
 
+  // Errors
+  static const String connectionLost = '/error/502';
+
   /// NOTE(Gene): when adding routes here, make sure to modify both variables
   /// Routes.routesMap and Routes.routes.
 
@@ -36,6 +40,8 @@ class Routes {
     dashboard: () => const DashboardScreen(),
     joinBrgy: () => const JoinBrgyScreen(),
     announcementList: () => const AnnouncementListScreen(),
+    // miscellanious
+    connectionLost: () => const ConnectionLostScreen(),
   };
 
   // Map that associates route names with their corresponding builder functions.
@@ -47,6 +53,7 @@ class Routes {
     dashboard: (BuildContext context) => const DashboardScreen(),
     joinBrgy: (BuildContext context) => const JoinBrgyScreen(),
     announcementList: (BuildContext context) => const AnnouncementListScreen(),
+    connectionLost: (BuildContext context) => const ConnectionLostScreen(),
   };
 }
 

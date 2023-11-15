@@ -51,6 +51,7 @@ dependencies:
   intl: ^0.18.1
   file_picker: ^6.1.1
   firebase_storage: ^11.4.1
+  connectivity_plus: ^5.0.1
 
 flutter_native_splash:
   color: '#3336AB'
