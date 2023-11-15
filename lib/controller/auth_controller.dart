@@ -24,6 +24,7 @@ class LoginController {
         'invalid-login-credentials': Validation.invalidLoginCred,
         'invalid_login_credentials': Validation.invalidLoginCred,
         'too_many_requests': Validation.tooManyReq,
+        'network-request-failed': Validation.networkFail,
       };
 
       log.e('${err.code}: $err');
