@@ -41,6 +41,8 @@ class _EBAppBarState extends State<EBAppBar> {
     /// ```
     return AppBar(
       iconTheme: IconThemeData(color: EBColor.primary),
+      backgroundColor: EBColor.light,
+      elevation: 1,
       title: !(widget.noTitle ?? false)
           ? widget.title ??
               Row(
@@ -57,29 +59,27 @@ class _EBAppBarState extends State<EBAppBar> {
       leading: Container(
         // moves the drawer icon to the right more
         margin: const EdgeInsets.fromLTRB(20.0, 0, 0, 0),
-        child: InkResponse(
-          onTap: () {
-            Scaffold.of(context).openDrawer();
-          },
-          child: (widget.enablePop ?? false)
-              ? IconButton(
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                  icon: Icon(
-                    FeatherIcons.arrowLeft,
-                    color: EBColor.primary,
-                  ),
-                )
-              : Icon(
+        child: (widget.enablePop ?? false)
+            ? IconButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                icon: Icon(
+                  FeatherIcons.arrowLeft,
+                  color: EBColor.primary,
+                ),
+              )
+            : InkResponse(
+                onTap: () {
+                  Scaffold.of(context).openDrawer();
+                },
+                child: Icon(
                   EBIcons.menu,
                   size: iconSize,
                   color: EBColor.dark,
                 ),
-        ),
+              ),
       ),
-      backgroundColor: EBColor.light,
-      elevation: 1,
     );
   }
 }
