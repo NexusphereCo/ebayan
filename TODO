@@ -1,7 +1,5 @@
 PRIORITY:
 
-    [] fix the appbar_top config
-
 ---
 
 TODO:
@@ -13,6 +11,7 @@ TODO:
 
 DONE:
 
+    [X] fix the appbar_top config
     [x] Create Announcement [ListView.Builder]
     [x] finish register on official
     [x] finish register on resident
