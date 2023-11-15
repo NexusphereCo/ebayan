@@ -1,5 +1,6 @@
 import 'package:ebayan/constants/assets.dart';
 import 'package:ebayan/constants/typography.dart';
+import 'package:ebayan/utils/global.dart';
 import 'package:ebayan/utils/routes.dart';
 import 'package:ebayan/utils/style.dart';
 import 'package:ebayan/widgets/components/buttons.dart';
@@ -24,10 +25,21 @@ import 'heading.dart';
     for navigating the dashboard.
  */
 
-class EmptyDashboardView extends StatelessWidget {
+class EmptyDashboardView extends StatefulWidget {
   const EmptyDashboardView({
     super.key,
   });
+
+  @override
+  State<EmptyDashboardView> createState() => _EmptyDashboardViewState();
+}
+
+class _EmptyDashboardViewState extends State<EmptyDashboardView> {
+  @override
+  void initState() {
+    connectionHandler(context);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

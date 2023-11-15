@@ -3,6 +3,7 @@ import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/constants/typography.dart';
 import 'package:ebayan/controller/auth_controller.dart';
 import 'package:ebayan/data/model/register_model.dart';
+import 'package:ebayan/utils/global.dart';
 import 'package:ebayan/utils/routes.dart';
 import 'package:ebayan/utils/style.dart';
 import 'package:ebayan/widgets/components/loading.dart';
@@ -51,6 +52,7 @@ class _RegisterResidentScreenState extends State<RegisterResidentScreen> with Si
 
   @override
   void initState() {
+    connectionHandler(context);
     super.initState();
 
     _tabController = TabController(length: tabLength, vsync: this);

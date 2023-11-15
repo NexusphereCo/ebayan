@@ -9,6 +9,7 @@ import 'package:ebayan/controller/brgy_controller.dart';
 import 'package:ebayan/data/model/barangay_model.dart';
 import 'package:ebayan/data/model/municipality_model.dart';
 import 'package:ebayan/data/model/register_model.dart';
+import 'package:ebayan/utils/global.dart';
 import 'package:ebayan/utils/routes.dart';
 import 'package:ebayan/utils/style.dart';
 import 'package:ebayan/widgets/components/loading.dart';
@@ -70,6 +71,7 @@ class _RegisterOfficialScreenState extends State<RegisterOfficialScreen> with Si
 
   @override
   void initState() {
+    connectionHandler(context);
     super.initState();
 
     _fetchMunicipalities();

@@ -5,6 +5,7 @@ import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/constants/typography.dart';
 import 'package:ebayan/controller/brgy_controller.dart';
 import 'package:ebayan/presentation/dashboard/join/widgets/pin_code_field.dart';
+import 'package:ebayan/utils/global.dart';
 import 'package:ebayan/utils/style.dart';
 import 'package:ebayan/widgets/components/buttons.dart';
 import 'package:ebayan/widgets/components/loading.dart';
@@ -46,6 +47,7 @@ class _JoinBrgyScreenState extends State<JoinBrgyScreen> {
 
   @override
   void initState() {
+    connectionHandler(context);
     errorController = StreamController<ErrorAnimationType>();
     super.initState();
   }
