@@ -20,8 +20,11 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final EBLoadingScreen loadingScreen = const EBLoadingScreen();
 
   // Controller
+  final LoginController loginController = LoginController();
+
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
@@ -41,8 +44,6 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   Future<void> _signIn(BuildContext context) async {
-    EBLoadingScreen loadingScreen = const EBLoadingScreen();
-    LoginController loginController = LoginController();
     final model = LoginModel(email: _emailController.text, password: _passwordController.text);
 
     loadingScreen.show(context);
