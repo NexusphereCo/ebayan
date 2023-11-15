@@ -1,5 +1,6 @@
 import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/constants/typography.dart';
+import 'package:ebayan/utils/style.dart';
 import 'package:flutter/material.dart';
 
 /// defines the custom themes.
@@ -45,9 +46,10 @@ class EBTheme {
           fontWeight: EBFontWeight.regular,
           color: EBColor.primary,
         ),
-        elevation: 0,
+        elevation: 5,
+        shadowColor: EBColor.primary[100],
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(borderRadius),
+          borderRadius: BorderRadius.circular(EBBorderRadius.md),
           side: BorderSide(color: EBColor.primary, width: 1.0),
         ),
       ),
