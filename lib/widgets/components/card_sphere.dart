@@ -164,9 +164,7 @@ class _SphereCardState extends State<SphereCard> {
     const borderRadius = BorderRadius.all(Radius.circular(20));
 
     return Container(
-      decoration: BoxDecoration(
-        borderRadius: borderRadius,
-      ),
+      decoration: const BoxDecoration(borderRadius: borderRadius),
       margin: const EdgeInsets.all(Global.paddingBody),
       child: ClipRRect(
         borderRadius: borderRadius,
