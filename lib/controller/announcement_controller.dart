@@ -9,7 +9,7 @@ class AnnouncementController {
   Future<List<AnnouncementModel>> fetchAnnouncements(String muniId) async {
     try {
       final User? user = FirebaseAuth.instance.currentUser;
-      final userDoc = await FirebaseFirestore.instance.collection('brgyResidents').doc(user?.uid).get();
+      final userDoc = await FirebaseFirestore.instance.collection('users').doc(user?.uid).get();
 
       if (userDoc.exists) {
         final QuerySnapshot querySnapshot = await FirebaseFirestore.instance.collection('municipalities').doc(muniId).collection('barangays').doc(userDoc['barangayAssociated']).collection('announcements').get();

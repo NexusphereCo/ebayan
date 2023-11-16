@@ -1,7 +1,8 @@
 // this is used onRegister event
 import 'dart:io';
 
-class RegisterOfficialModel {
+class OfficialModel {
+  final String userType;
   // personal information
   final String firstName;
   final String lastName;
@@ -18,7 +19,7 @@ class RegisterOfficialModel {
   final String username;
   final String password;
 
-  RegisterOfficialModel({
+  OfficialModel({
     required this.firstName,
     required this.lastName,
     required this.email,
@@ -31,10 +32,16 @@ class RegisterOfficialModel {
     required this.proofOfOfficial,
     required this.username,
     required this.password,
+    required this.userType,
   });
 
+  /// This will be used to be stored in the firestore
+  /// notice that password is not included because it is
+  /// stored in the firebase auth.
+  /// returns a [Map] json.
   Map<String, dynamic> toJson() {
     return {
+      'userType': userType,
       'firstName': firstName,
       'lastName': lastName,
       'email': email,
@@ -50,7 +57,8 @@ class RegisterOfficialModel {
   }
 }
 
-class RegisterResidentModel {
+class ResidentModel {
+  final String userType;
   // personal information
   final String firstName;
   final String lastName;
@@ -63,7 +71,8 @@ class RegisterResidentModel {
   final String username;
   final String password;
 
-  RegisterResidentModel({
+  ResidentModel({
+    required this.userType,
     required this.firstName,
     required this.lastName,
     required this.email,
@@ -75,8 +84,13 @@ class RegisterResidentModel {
     required this.password,
   });
 
+  /// This will be used to be stored in the firestore
+  /// notice that password is not included because it is
+  /// stored in the firebase auth.
+  /// returns a [Map] json.
   Map<String, dynamic> toJson() {
     return {
+      'userType': userType,
       'firstName': firstName,
       'lastName': lastName,
       'email': email,
