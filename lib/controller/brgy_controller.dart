@@ -58,7 +58,7 @@ class BarangayController {
     var barangaysRef = _db.collectionGroup('barangays');
     var barangaySnapshot = await barangaysRef.where('code', isEqualTo: int.parse(brgyId)).get();
 
-    // Check if there is a document
+    // Check if there is no document
     if (barangaySnapshot.docs.isEmpty) {
       _log.e('Barangay: $brgyId not found');
       throw 'Barangay not found!';
@@ -68,14 +68,18 @@ class BarangayController {
     var doc = barangaySnapshot.docs.first;
 
     // Fetch announcements
-    List<AnnouncementModel> announcements = await doc.reference.collection('announcements').get().then((announcementSnapshot) {
-      return announcementSnapshot.docs
+    final announcementsSnapshot = await doc.reference.collection('announcements').get();
+    List<AnnouncementModel> announcements = [];
+
+    if (announcementsSnapshot.docs.isNotEmpty) {
+      announcements = announcementsSnapshot.docs
           .map((doc) => AnnouncementModel(
-                heading: doc['title'],
+                heading: doc['heading'],
+                body: doc['body'],
                 timeCreated: doc['timeCreated'],
               ))
           .toList();
-    });
+    }
 
     // Return the BarangayViewModel with the mapped announcements
     return BarangayViewModel(
@@ -107,9 +111,14 @@ class BarangayController {
   }
 
   Future<void> joinBrgy(String code) async {
+    // get the user's info to access the joined barangay
     final user = await _userController.getCurrentUserInfo();
     var userRef = _db.collection('users').doc(user.id);
 
+    // append also to the new barangay.residentIds and remove from the previous
+    // TODO: implement this
+
+    // update the user.barangayAssociated to the new code
     await userRef.update({'barangayAssociated': code});
 
     _log.i('Successfully joined a barangay!');
