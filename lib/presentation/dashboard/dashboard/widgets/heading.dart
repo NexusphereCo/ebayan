@@ -9,7 +9,7 @@ Widget buildHeading() => Wrap(
         EBTypography.h1(text: 'Welcome Back, '),
         EBTypography.h1(
           text: FirebaseAuth.instance.currentUser?.displayName ?? 'User',
-          color: EBColor.primary,
+          color: EBColor.green,
         ),
       ],
     );

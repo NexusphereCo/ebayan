@@ -1,4 +1,3 @@
-import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/constants/typography.dart';
 import 'package:ebayan/utils/style.dart';
@@ -114,11 +113,12 @@ class EBTextBox extends StatelessWidget {
   }
 }
 
+/**
 class EBDropdownButton extends StatefulWidget {
   final List<String> items;
-  String? selectedValue;
+  final String? selectedValue;
 
-  EBDropdownButton({
+  const EBDropdownButton({
     Key? key, // Add the key parameter
     required this.items,
     this.selectedValue,
@@ -170,3 +170,4 @@ class _EBDropdownButtonState extends State<EBDropdownButton> {
     );
   }
 }
+ */
