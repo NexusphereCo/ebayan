@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ebayan/controller/user_controller.dart';
-import 'package:ebayan/data/model/announcement_model.dart';
 import 'package:ebayan/data/model/barangay_model.dart';
 import 'package:ebayan/data/model/municipality_model.dart';
+import 'package:ebayan/data/viewmodel/announcement_view_model.dart';
 import 'package:ebayan/data/viewmodel/barangay_view_model.dart';
 import 'package:logger/logger.dart';
 
@@ -68,18 +68,23 @@ class BarangayController {
     var doc = barangaySnapshot.docs.first;
 
     // Fetch announcements
-    final announcementsSnapshot = await doc.reference.collection('announcements').get();
-    List<AnnouncementModel> announcements = [];
+    final announcementsSnapshot = await doc.reference.collection('announcements').orderBy('timeCreated', descending: true).limit(7).get();
+    List<AnnouncementViewModel> announcements = [];
 
     if (announcementsSnapshot.docs.isNotEmpty) {
       announcements = announcementsSnapshot.docs
-          .map((doc) => AnnouncementModel(
+          .map((doc) => AnnouncementViewModel(
+                id: doc.id,
                 heading: doc['heading'],
                 body: doc['body'],
-                timeCreated: doc['timeCreated'],
+                timeCreated: (doc['timeCreated'] as Timestamp).toDate(),
               ))
           .toList();
     }
+
+    // Get the total users joined in my barangay
+    final usersJoinedBrgySnapshot = await _db.collection('users').where('barangayAssociated', isEqualTo: brgyId).get();
+    int numOfPeople = usersJoinedBrgySnapshot.size;
 
     // Return the BarangayViewModel with the mapped announcements
     return BarangayViewModel(
@@ -87,6 +92,7 @@ class BarangayController {
       name: doc['name'],
       adminId: doc['adminId'],
       announcements: announcements,
+      numOfPeople: numOfPeople,
     );
   }
 
@@ -114,9 +120,6 @@ class BarangayController {
     // get the user's info to access the joined barangay
     final user = await _userController.getCurrentUserInfo();
     var userRef = _db.collection('users').doc(user.id);
-
-    // append also to the new barangay.residentIds and remove from the previous
-    // TODO: implement this
 
     // update the user.barangayAssociated to the new code
     await userRef.update({'barangayAssociated': code});
