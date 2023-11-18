@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:ebayan/data/model/announcement_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:logger/logger.dart';
 
@@ -7,15 +8,17 @@ class AnnouncementController {
   final FirebaseFirestore db = FirebaseFirestore.instance;
   final User? user = FirebaseAuth.instance.currentUser;
 
-  Future<void> createAnnouncement(
-    Map<String, dynamic> data,
-  ) async {
+  Future<void> createAnnouncement(Map<String, dynamic> data) async {
     try {
-      await _validateUser();
+      _validateUser();
 
-      String? barangayId = await _getBarangayId();
+      final DocumentSnapshot userDoc = await db.collection('users').doc(user!.uid).get();
 
-      await db.collection('barangays').doc(barangayId).collection('announcements').add(data);
+      // Reference the specific collection path
+      CollectionReference<Map<String, dynamic>> announcements = db.collection('municipalities').doc(userDoc['muniId']).collection('barangays').doc(userDoc['barangayAssociated']).collection('announcements');
+
+      // Add the announcement to the specific collection
+      await announcements.add(data);
 
       log.i('Announcement created successfully.');
     } catch (e) {
@@ -24,13 +27,16 @@ class AnnouncementController {
     }
   }
 
-  Future<void> updateAnnouncement(String announcementId, Map<String, dynamic> data) async {
+  Future<void> updateAnnouncement(String annId, Map<String, dynamic> data) async {
     try {
-      await _validateUser();
+      _validateUser();
 
-      String? barangayId = await _getBarangayId();
+      final DocumentSnapshot userDoc = await db.collection('users').doc(user!.uid).get();
+      // Reference the specific document in the announcements collection
+      DocumentReference<Map<String, dynamic>> announcement = db.collection('municipalities').doc(userDoc['muniId']).collection('barangays').doc(userDoc['barangayAssociated']).collection('announcements').doc(annId);
 
-      await db.collection('barangays').doc(barangayId).collection('announcements').doc(announcementId).update(data);
+      // Update the document with the new data
+      await announcement.update(data);
 
       log.i('Announcement updated successfully.');
     } catch (e) {
@@ -39,13 +45,17 @@ class AnnouncementController {
     }
   }
 
-  Future<void> deleteAnnouncement(String announcementId) async {
+  Future<void> deleteAnnouncement(String annId) async {
     try {
-      await _validateUser();
+      _validateUser();
 
-      String? barangayId = await _getBarangayId();
+      final DocumentSnapshot userDoc = await db.collection('users').doc(user!.uid).get();
+      // Reference the specific document in the announcements collection
 
-      await db.collection('barangays').doc(barangayId).collection('announcements').doc(announcementId).delete();
+      DocumentReference<Map<String, dynamic>> announcement = db.collection('municipalities').doc(userDoc['muniId']).collection('barangays').doc(userDoc['barangayAssociated']).collection('announcements').doc(annId);
+
+      // Delete the document
+      await announcement.delete();
 
       log.i('Announcement deleted successfully.');
     } catch (e) {
@@ -54,53 +64,34 @@ class AnnouncementController {
     }
   }
 
-  Future<List<Map<String, dynamic>>> fetchAnnouncements() async {
+  Future<Stream<QuerySnapshot>> fetchAnnouncements() async {
     try {
-      await _validateUser();
+      _validateUser();
 
-      String? barangayId = await _getBarangayId();
+      final DocumentSnapshot userDoc = await db.collection('users').doc(user!.uid).get();
+      final CollectionReference announcements = db.collection('municipalities').doc(userDoc['muniId']).collection('barangays').doc(userDoc['barangayAssociated']).collection('announcements');
 
-      final QuerySnapshot querySnapshot = await db.collection('barangays').doc(barangayId).collection('announcements').orderBy('timeCreated', descending: true).get();
+      final announcementList = announcements.orderBy('timeCreated', descending: true).snapshots();
 
-      final announcements = querySnapshot.docs
-          .map((doc) => {
-                'id': doc.id,
-                'body': doc['body'],
-                'heading': doc['heading'],
-                'timeCreated': doc['timeCreated'],
-              })
-          .toList();
+      // Log data when received
+      announcementList.listen((data) {
+        for (var announcement in data.docs) {
+          log.i('Announcement ID: ${announcement.id}');
+          log.i('Announcement Data: ${announcement.data()}');
+        }
+      });
 
       log.d('Successfully fetched announcements.');
-      return announcements;
+      return announcementList;
     } catch (err) {
       log.e('An error occurred: $err');
       throw 'An error occurred while fetching announcements.';
     }
   }
 
-  Future<void> _validateUser() async {
+  void _validateUser() {
     if (user == null) {
       throw 'User not authenticated.';
-    }
-  }
-
-  Future<String?> _getBarangayId() async {
-    try {
-      if (user == null) {
-        throw 'User not authenticated.';
-      }
-
-      final DocumentSnapshot userDoc = await db.collection('users').doc(user!.uid).get();
-
-      if (userDoc.exists) {
-        return userDoc['barangayAssociated'];
-      } else {
-        throw 'User document not found.';
-      }
-    } catch (e) {
-      log.e('An error occurred: $e');
-      throw 'An error occurred while getting barangayId.';
     }
   }
 }
