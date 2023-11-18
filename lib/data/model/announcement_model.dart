@@ -1,10 +1,22 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-
 class AnnouncementModel {
-  final String heading;
+  final String id;
   final String body;
-  final Timestamp timeCreated;
-  final CollectionReference? comments;
+  final String heading;
+  final DateTime timeCreated;
 
-  AnnouncementModel({required this.heading, required this.body, required this.timeCreated, this.comments});
+  AnnouncementModel({
+    required this.id,
+    required this.body,
+    required this.heading,
+    required this.timeCreated,
+  });
+
+  factory AnnouncementModel.fromMap(Map<String, dynamic> map) {
+    return AnnouncementModel(
+      id: map['id'],
+      body: map['body'],
+      heading: map['heading'],
+      timeCreated: map['timeCreated'].toDate(), // Assuming 'timeCreated' is a Firestore Timestamp
+    );
+  }
 }
