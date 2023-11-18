@@ -1,18 +1,17 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:ebayan/data/model/announcement_model.dart';
+import 'package:ebayan/data/viewmodel/announcement_view_model.dart';
 
 class BarangayViewModel {
   final String? adminId;
   final int code;
   final String name;
-  final List<AnnouncementModel>? announcements;
-  final List<DocumentReference>? residentIds;
+  final List<AnnouncementViewModel>? announcements;
+  final int? numOfPeople;
 
   BarangayViewModel({
     this.adminId,
     required this.code,
     required this.name,
     this.announcements,
-    this.residentIds,
+    this.numOfPeople,
   });
 }
