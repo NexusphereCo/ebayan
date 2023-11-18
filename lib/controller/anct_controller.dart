@@ -64,28 +64,48 @@ class AnnouncementController {
     }
   }
 
-  Future<Stream<QuerySnapshot>> fetchAnnouncements() async {
+  Future<List<String>> fetchAnnouncementIDs() async {
     try {
       _validateUser();
 
       final DocumentSnapshot userDoc = await db.collection('users').doc(user!.uid).get();
       final CollectionReference announcements = db.collection('municipalities').doc(userDoc['muniId']).collection('barangays').doc(userDoc['barangayAssociated']).collection('announcements');
 
-      final announcementList = announcements.orderBy('timeCreated', descending: true).snapshots();
+      final announcementList = await announcements.get();
 
-      // Log data when received
-      announcementList.listen((data) {
-        for (var announcement in data.docs) {
-          log.i('Announcement ID: ${announcement.id}');
-          log.i('Announcement Data: ${announcement.data()}');
-        }
-      });
+      final List<String> announcementIDs = announcementList.docs.map((doc) => doc.id).toList();
 
-      log.d('Successfully fetched announcements.');
-      return announcementList;
+      log.d('Successfully fetched announcement IDs.');
+      return announcementIDs;
     } catch (err) {
       log.e('An error occurred: $err');
-      throw 'An error occurred while fetching announcements.';
+      throw 'An error occurred while fetching announcement IDs.';
+    }
+  }
+
+  Future<AnnouncementModel> viewAnnouncement(String annId) async {
+    try {
+      _validateUser();
+
+      final DocumentSnapshot userDoc = await db.collection('users').doc(user!.uid).get();
+      // Reference the specific document in the announcements collection
+      DocumentSnapshot<Map<String, dynamic>> announcement = await db.collection('municipalities').doc(userDoc['muniId']).collection('barangays').doc(userDoc['barangayAssociated']).collection('announcements').doc(annId).get();
+
+      if (announcement.exists) {
+        // Map the document data to your AnnouncementModel class
+        AnnouncementModel announcementData = AnnouncementModel.fromMap(announcement.data()!);
+
+        log.i('Announcement details fetched successfully:'
+            '\nHeading: ${announcementData.heading}'
+            '\nBody: ${announcementData.body}'
+            '\nTime Created: ${announcementData.formattedTime}');
+        return announcementData;
+      } else {
+        throw 'Announcement not found.';
+      }
+    } catch (e) {
+      log.e('An error occurred: $e');
+      throw 'An error occurred while fetching the announcement details.';
     }
   }
 
