@@ -49,16 +49,9 @@ Future<String?> getCurrentUserName() async {
 Future<DocumentSnapshot<Map<String, dynamic>>> getCurrentUserInfo() async {
   try {
     final User? user = FirebaseAuth.instance.currentUser;
-    final officialDoc = await FirebaseFirestore.instance.collection('brgyOfficials').doc(user?.uid).get();
-    final residentDoc = await FirebaseFirestore.instance.collection('brgyResidents').doc(user?.uid).get();
+    final userDoc = await FirebaseFirestore.instance.collection('users').doc(user?.uid).get();
 
-    if (officialDoc.exists) {
-      return officialDoc;
-    } else if (residentDoc.exists) {
-      return residentDoc;
-    } else {
-      throw 'Document is not found!';
-    }
+    return userDoc;
   } catch (e) {
     throw 'Document is not found!';
   }
@@ -66,16 +59,9 @@ Future<DocumentSnapshot<Map<String, dynamic>>> getCurrentUserInfo() async {
 
 Future<String> getUserType(String uid) async {
   try {
-    final officialDoc = await FirebaseFirestore.instance.collection('brgyOfficials').doc(uid).get();
-    final residentDoc = await FirebaseFirestore.instance.collection('brgyResidents').doc(uid).get();
+    final userDoc = await FirebaseFirestore.instance.collection('users').doc(uid).get();
 
-    if (officialDoc.exists) {
-      return 'brgyOfficials';
-    } else if (residentDoc.exists) {
-      return 'brgyResidents';
-    } else {
-      throw 'Document is not found!';
-    }
+    return 'user';
   } catch (e) {
     throw 'Document is not found!';
   }
