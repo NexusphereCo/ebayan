@@ -7,9 +7,7 @@ Widget buildHeading() => Wrap(
       alignment: WrapAlignment.center,
       children: [
         EBTypography.h1(text: 'Welcome Back, '),
-        EBTypography.h1(
-          text: FirebaseAuth.instance.currentUser?.displayName ?? 'User',
-          color: EBColor.green,
-        ),
+        EBTypography.h1(text: FirebaseAuth.instance.currentUser?.displayName ?? 'User!', color: EBColor.green),
+        EBTypography.h1(text: '!', color: EBColor.green),
       ],
     );
