@@ -1,5 +1,4 @@
 import 'dart:math';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/constants/typography.dart';
 import 'package:ebayan/controller/anct_controller.dart';

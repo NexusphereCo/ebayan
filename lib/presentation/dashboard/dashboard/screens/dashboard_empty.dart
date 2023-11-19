@@ -10,7 +10,7 @@ import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import 'heading.dart';
+import '../widgets/heading.dart';
 
 class EmptyDashboardView extends StatefulWidget {
   const EmptyDashboardView({

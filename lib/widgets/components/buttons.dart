@@ -50,6 +50,7 @@ class EBButton extends StatelessWidget {
 
   final Icon? icon;
   final EBButtonSize? size;
+  final bool? disabled;
 
   // Array of themes in their categories
   final defaultThemes = {
@@ -79,6 +80,7 @@ class EBButton extends StatelessWidget {
     required this.theme,
     this.icon,
     this.size,
+    this.disabled,
   }) : super(key: key);
 
   @override
@@ -111,12 +113,13 @@ class EBButton extends StatelessWidget {
     if (defaultThemes.contains(theme)) {
       // apply the default styles
       button = ElevatedButton(
-        onPressed: onPressed,
+        onPressed: !(disabled ?? false) ? onPressed : null,
         style: ElevatedButton.styleFrom(
           shape: btnShape,
           padding: btnPadding,
           elevation: 0,
           backgroundColor: _setColor(theme),
+          disabledBackgroundColor: _setColor(theme).withOpacity(0.5),
         ),
         child: Wrap(
           crossAxisAlignment: WrapCrossAlignment.center,
@@ -146,12 +149,13 @@ class EBButton extends StatelessWidget {
     else {
       // apply the outline button styles
       button = OutlinedButton(
-        onPressed: onPressed,
+        onPressed: !(disabled ?? false) ? onPressed : null,
         style: OutlinedButton.styleFrom(
           side: BorderSide(color: _setColor(theme)),
           shape: btnShape,
           foregroundColor: _setColor(theme),
           backgroundColor: Colors.transparent,
+          disabledBackgroundColor: _setColor(theme).withOpacity(0.5),
           padding: btnPadding,
           elevation: 0,
         ),
