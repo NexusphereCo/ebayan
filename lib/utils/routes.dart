@@ -2,7 +2,8 @@ import 'package:ebayan/presentation/auth/login/login.dart';
 import 'package:ebayan/presentation/auth/register/register.dart';
 import 'package:ebayan/presentation/auth/register/official/official.dart';
 import 'package:ebayan/presentation/auth/register/resident/resident.dart';
-import 'package:ebayan/presentation/dashboard/announcements/announcement.dart';
+import 'package:ebayan/presentation/dashboard/announcements/announcement_list.dart';
+import 'package:ebayan/presentation/dashboard/announcements/create_announcement.dart';
 import 'package:ebayan/presentation/dashboard/dashboard/dashboard.dart';
 import 'package:ebayan/presentation/dashboard/join/join_brgy.dart';
 import 'package:flutter/material.dart';
@@ -22,7 +23,8 @@ class Routes {
   // Dashboard related
   static const String dashboard = '/dashboard';
   static const String joinBrgy = '/dashboard/join_brgy';
-  static const String announcementList = '/dashboard/announcement';
+  static const String announcementList = '/dashboard/announcement_list';
+  static const String createAnnouncement = '/dashboard/create_announcement';
 
   /// NOTE(Gene): when adding routes here, make sure to modify both variables
   /// Routes.routesMap and Routes.routes.
@@ -36,6 +38,7 @@ class Routes {
     dashboard: () => const DashboardScreen(),
     joinBrgy: () => const JoinBrgyScreen(),
     announcementList: () => const AnnouncementListScreen(),
+    createAnnouncement: () => CreateAnnouncementScreen(),
   };
 
   // Map that associates route names with their corresponding builder functions.
@@ -47,6 +50,7 @@ class Routes {
     dashboard: (BuildContext context) => const DashboardScreen(),
     joinBrgy: (BuildContext context) => const JoinBrgyScreen(),
     announcementList: (BuildContext context) => const AnnouncementListScreen(),
+    createAnnouncement: (BuildContext context) => CreateAnnouncementScreen(),
   };
 }
 
