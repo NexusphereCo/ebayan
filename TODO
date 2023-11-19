@@ -1,16 +1,18 @@
 PRIORITY:
 
+    [] fix the spam issue in clicking the bottom appbar from stacking on the stack
+
 ---
 
 TODO:
 
     [] ui fix on floating label staying floated even unfocus
-    [] implement network catch screen
 
 ---
 
 DONE:
 
+    [X] implement network catch screen
     [X] fix the appbar_top config
     [x] Create Announcement [ListView.Builder]
     [x] finish register on official
