@@ -38,7 +38,7 @@ class Routes {
     dashboard: () => const DashboardScreen(),
     joinBrgy: () => const JoinBrgyScreen(),
     announcementList: () => const AnnouncementListScreen(),
-    createAnnouncement: () => CreateAnnouncementScreen(),
+    createAnnouncement: () => const CreateAnnouncementScreen(),
   };
 
   // Map that associates route names with their corresponding builder functions.
@@ -50,7 +50,7 @@ class Routes {
     dashboard: (BuildContext context) => const DashboardScreen(),
     joinBrgy: (BuildContext context) => const JoinBrgyScreen(),
     announcementList: (BuildContext context) => const AnnouncementListScreen(),
-    createAnnouncement: (BuildContext context) => CreateAnnouncementScreen(),
+    createAnnouncement: (BuildContext context) => const CreateAnnouncementScreen(),
   };
 }
 
