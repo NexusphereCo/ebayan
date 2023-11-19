@@ -73,7 +73,11 @@ class AnnouncementController {
 
       final announcementList = await announcements.get();
 
-      final List<String> announcementIDs = announcementList.docs.map((doc) => doc.id).toList();
+      final List<String> announcementIDs = announcementList.docs.map((doc) {
+        final String announcementID = doc.id;
+        log.d('Announcement ID: $announcementID');
+        return announcementID;
+      }).toList();
 
       log.d('Successfully fetched announcement IDs.');
       return announcementIDs;
