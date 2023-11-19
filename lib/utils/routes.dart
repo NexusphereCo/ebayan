@@ -2,15 +2,16 @@ import 'package:ebayan/presentation/auth/login/login.dart';
 import 'package:ebayan/presentation/auth/register/register.dart';
 import 'package:ebayan/presentation/auth/register/official/official.dart';
 import 'package:ebayan/presentation/auth/register/resident/resident.dart';
+import 'package:ebayan/presentation/dashboard/announcements/announcement.dart';
 import 'package:ebayan/presentation/dashboard/announcements/announcement_list.dart';
 import 'package:ebayan/presentation/dashboard/announcements/create_announcement.dart';
 import 'package:ebayan/presentation/dashboard/dashboard/dashboard.dart';
 import 'package:ebayan/presentation/dashboard/join/join_brgy.dart';
 import 'package:flutter/material.dart';
+import 'package:logger/logger.dart';
 
 class Routes {
   Routes._();
-
   // Screens
   static const String splash = '/splash';
 
@@ -25,9 +26,11 @@ class Routes {
   static const String joinBrgy = '/dashboard/join_brgy';
   static const String announcementList = '/dashboard/announcement_list';
   static const String createAnnouncement = '/dashboard/create_announcement';
+  static const String announcement = '/dashboard/announcement';
 
   /// NOTE(Gene): when adding routes here, make sure to modify both variables
   /// Routes.routesMap and Routes.routes.
+  static final Logger log = Logger();
 
   // Map that associates route names with their corresponding screen widgets.
   static final Map<String, Widget Function()> routesMap = {
@@ -37,8 +40,9 @@ class Routes {
     registerResident: () => const RegisterResidentScreen(),
     dashboard: () => const DashboardScreen(),
     joinBrgy: () => const JoinBrgyScreen(),
-    announcementList: () => const AnnouncementListScreen(),
+    announcementList: () => AnnouncementListScreen(brgyName: 'default', brgyCode: 'default'),
     createAnnouncement: () => CreateAnnouncementScreen(),
+    announcement: () => const AnnouncementScreen(annId: 'default'),
   };
 
   // Map that associates route names with their corresponding builder functions.
@@ -49,8 +53,29 @@ class Routes {
     registerResident: (BuildContext context) => const RegisterResidentScreen(),
     dashboard: (BuildContext context) => const DashboardScreen(),
     joinBrgy: (BuildContext context) => const JoinBrgyScreen(),
-    announcementList: (BuildContext context) => const AnnouncementListScreen(),
+    announcementList: (BuildContext context) {
+      final args = ModalRoute.of(context)?.settings.arguments;
+      if (args is Map<String, dynamic> && args.containsKey('brgyName')) {
+        final barangayName = args['brgyName'];
+        final barangayCode = args['brgyCode'];
+
+        return AnnouncementListScreen(
+          brgyName: barangayName,
+          brgyCode: barangayCode,
+        );
+      } else {
+        throw Exception("Invalid arguments for AnnouncementListScreen");
+      }
+    },
     createAnnouncement: (BuildContext context) => CreateAnnouncementScreen(),
+    announcement: (BuildContext context) {
+      final args = ModalRoute.of(context)?.settings.arguments;
+      if (args is String) {
+        return AnnouncementScreen(annId: args);
+      } else {
+        throw Exception("Invalid arguments for AnnouncementScreen");
+      }
+    },
   };
 }
 
