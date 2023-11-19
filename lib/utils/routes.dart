@@ -1,3 +1,4 @@
+import 'package:ebayan/presentation/auth/account/info.dart';
 import 'package:ebayan/presentation/auth/login/login.dart';
 import 'package:ebayan/presentation/auth/register/register.dart';
 import 'package:ebayan/presentation/auth/register/official/official.dart';
@@ -17,6 +18,7 @@ class Routes {
   // Authentication related
   static const String login = '/login';
   static const String register = '/register';
+  static const String accountInfo = '/account/info';
   static const String registerOfficial = '/register/as_official';
   static const String registerResident = '/register/as_resident';
 
@@ -33,6 +35,7 @@ class Routes {
   static final Map<String, Widget Function()> routesMap = {
     login: () => const LoginScreen(),
     register: () => const RegisterScreen(),
+    accountInfo: () => const AccountScreen(),
     registerOfficial: () => const RegisterOfficialScreen(),
     registerResident: () => const RegisterResidentScreen(),
     dashboard: () => const DashboardScreen(),
@@ -45,6 +48,7 @@ class Routes {
   static final routes = <String, WidgetBuilder>{
     login: (BuildContext context) => const LoginScreen(),
     register: (BuildContext context) => const RegisterScreen(),
+    accountInfo: (BuildContext context) => const AccountScreen(),
     registerOfficial: (BuildContext context) => const RegisterOfficialScreen(),
     registerResident: (BuildContext context) => const RegisterResidentScreen(),
     dashboard: (BuildContext context) => const DashboardScreen(),

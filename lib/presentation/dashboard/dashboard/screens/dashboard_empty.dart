@@ -79,7 +79,7 @@ class _EmptyDashboardViewState extends State<EmptyDashboardView> {
         child: const Icon(FeatherIcons.plus),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      bottomNavigationBar: const EBAppBarBottom(),
+      bottomNavigationBar: const EBAppBarBottom(activeIndex: 1),
     );
   }
 }

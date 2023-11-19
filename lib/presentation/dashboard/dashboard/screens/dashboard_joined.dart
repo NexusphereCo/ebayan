@@ -90,7 +90,7 @@ class _JoinedDashboardViewState extends State<JoinedDashboardView> {
               child: const Icon(FeatherIcons.plus),
             ),
             floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-            bottomNavigationBar: const EBAppBarBottom(),
+            bottomNavigationBar: const EBAppBarBottom(activeIndex: 1),
           );
         }
       },

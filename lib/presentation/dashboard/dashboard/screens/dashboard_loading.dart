@@ -175,7 +175,7 @@ class _JoinedDashboardLoadingViewState extends State<JoinedDashboardLoadingView>
             child: const Icon(FeatherIcons.plus),
           ),
           floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-          bottomNavigationBar: const EBAppBarBottom(),
+          bottomNavigationBar: const EBAppBarBottom(activeIndex: 1),
         ),
         Center(
           child: CircularProgressIndicator(

@@ -147,7 +147,7 @@ class _JoinBrgyScreenState extends State<JoinBrgyScreen> {
           ),
         ),
       ),
-      bottomNavigationBar: const EBAppBarBottom(),
+      bottomNavigationBar: const EBAppBarBottom(activeIndex: 1),
     );
   }
 }
