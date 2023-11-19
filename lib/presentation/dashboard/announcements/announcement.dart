@@ -4,10 +4,11 @@ import 'package:ebayan/controller/anct_controller.dart';
 import 'package:ebayan/data/model/announcement_model.dart';
 import 'package:ebayan/utils/style.dart';
 import 'package:ebayan/widgets/components/buttons.dart';
+import 'package:ebayan/widgets/shared/appbar_top.dart';
 import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
 
-class AnnouncementScreen extends StatelessWidget {
+class AnnouncementScreen extends StatefulWidget {
   final String annId;
 
   const AnnouncementScreen({
@@ -16,25 +17,51 @@ class AnnouncementScreen extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  _AnnouncementScreenState createState() => _AnnouncementScreenState();
+}
+
+class _AnnouncementScreenState extends State<AnnouncementScreen> {
+  final AnnouncementController _announcementController = AnnouncementController();
+  late Future<AnnouncementModel> _announcementFuture;
+
+  @override
+  void initState() {
+    super.initState();
+    _announcementFuture = _announcementController.viewAnnouncement(widget.annId);
+  }
+
+  @override
   Widget build(BuildContext context) {
     return FutureBuilder<AnnouncementModel>(
-      future: AnnouncementController().viewAnnouncement(annId),
+      future: _announcementFuture,
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return const CircularProgressIndicator();
+          return const Scaffold(
+            body: Center(
+              child: CircularProgressIndicator(),
+            ),
+          );
         } else if (snapshot.hasError) {
-          return Text('Error: ${snapshot.error}');
+          return Scaffold(
+            body: Center(
+              child: Text('Error: ${snapshot.error}'),
+            ),
+          );
         } else if (!snapshot.hasData) {
-          return const Text('Announcement not found.');
+          return const Scaffold(
+            body: Center(
+              child: Text('Announcement not found.'),
+            ),
+          );
         } else {
           AnnouncementModel announcement = snapshot.data!;
           return Scaffold(
+            appBar: const EBAppBar(enablePop: true, noTitle: true),
             body: Padding(
               padding: const EdgeInsets.all(Global.paddingBody),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  const EBBackButton(),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.start,
