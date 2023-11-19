@@ -1,6 +1,7 @@
 import 'package:ebayan/constants/assets.dart';
 import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/constants/typography.dart';
+import 'package:ebayan/presentation/dashboard/dashboard/widgets/loading_bar.dart';
 import 'package:ebayan/utils/routes.dart';
 import 'package:ebayan/utils/style.dart';
 import 'package:ebayan/widgets/components/buttons.dart';
@@ -14,17 +15,20 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 enum CardOptions { itemOne, itemTwo, itemThree }
 
 class SphereCard extends StatefulWidget {
-  final String brgyName;
-  final String brgyCode;
-  final bool hasNewAnnouncements;
-  final int numOfPeople;
+  final String? brgyName;
+  final String? brgyCode;
+  final bool? hasNewAnnouncements;
+  final int? numOfPeople;
+
+  final bool? isLoading;
 
   const SphereCard({
     super.key,
-    required this.brgyName,
-    required this.brgyCode,
-    required this.hasNewAnnouncements,
-    required this.numOfPeople,
+    this.brgyName,
+    this.brgyCode,
+    this.hasNewAnnouncements,
+    this.numOfPeople,
+    this.isLoading,
   });
 
   @override
@@ -49,12 +53,20 @@ class _SphereCardState extends State<SphereCard> {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                EBTypography.h4(
-                  text: widget.brgyName,
-                  color: EBColor.light,
-                  maxLines: 2,
-                ),
-                EBTypography.small(text: widget.brgyCode, color: EBColor.light),
+                (widget.isLoading ?? false)
+                    ? buildLoadingContainer(width: 150, colors: [EBColor.primary[800]!, EBColor.primary[700]!.withOpacity(0.5)])
+                    : EBTypography.h4(
+                        text: widget.brgyName!,
+                        color: EBColor.light,
+                        maxLines: 2,
+                      ),
+                const SizedBox(height: Spacing.sm),
+                (widget.isLoading ?? false)
+                    ? buildLoadingContainer(width: 75, colors: [EBColor.primary[800]!, EBColor.primary[700]!.withOpacity(0.5)])
+                    : EBTypography.small(
+                        text: widget.brgyCode!,
+                        color: EBColor.light,
+                      ),
                 const SizedBox(height: Spacing.md),
               ],
             ),
@@ -87,15 +99,19 @@ class _SphereCardState extends State<SphereCard> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                _buildFooterRow(
-                  icon: const FaIcon(FontAwesomeIcons.bullhorn, size: 16),
-                  text: widget.hasNewAnnouncements ? 'New announcements' : 'No recent announcements',
-                ),
+                (widget.isLoading ?? false)
+                    ? buildLoadingContainer(width: 100, colors: [EBColor.primary[400]!, EBColor.primary[300]!.withOpacity(0.5)])
+                    : _buildFooterRow(
+                        icon: const FaIcon(FontAwesomeIcons.bullhorn, size: 16),
+                        text: widget.hasNewAnnouncements! ? 'New announcements' : 'No recent announcements',
+                      ),
                 const SizedBox(height: Spacing.sm),
-                _buildFooterRow(
-                  icon: const Icon(FeatherIcons.user, size: 16),
-                  text: '${widget.numOfPeople} people',
-                ),
+                (widget.isLoading ?? false)
+                    ? buildLoadingContainer(width: 50, colors: [EBColor.primary[400]!, EBColor.primary[300]!.withOpacity(0.5)])
+                    : _buildFooterRow(
+                        icon: const Icon(FeatherIcons.user, size: 16),
+                        text: '${widget.numOfPeople} people',
+                      ),
               ],
             ),
           ),
@@ -144,7 +160,7 @@ class _SphereCardState extends State<SphereCard> {
             selectedMenu = item;
           });
           if (item == CardOptions.itemOne) {
-            Clipboard.setData(ClipboardData(text: widget.brgyCode));
+            Clipboard.setData(ClipboardData(text: widget.brgyCode!));
             ScaffoldMessenger.of(context).showSnackBar(EBSnackBar.info(text: 'Brgy. sphere code has been copied to your clipboard.'));
           }
         },
@@ -186,7 +202,7 @@ class _SphereCardState extends State<SphereCard> {
                 _cardFooter(),
               ],
             ),
-            _cardOption(),
+            !(widget.isLoading ?? false) ? _cardOption() : Container(),
           ],
         ),
       ),

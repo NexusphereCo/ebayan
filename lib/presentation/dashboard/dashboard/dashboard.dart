@@ -3,8 +3,8 @@ import 'package:ebayan/presentation/dashboard/onboarding/onboarding.dart';
 import 'package:ebayan/widgets/components/loading.dart';
 import 'package:flutter/material.dart';
 
-import 'widgets/dashboard_empty.dart';
-import 'widgets/dashboard_joined.dart';
+import 'screens/dashboard_empty.dart';
+import 'screens/dashboard_joined.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
