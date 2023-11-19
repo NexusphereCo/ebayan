@@ -68,10 +68,7 @@ class EBTextField extends StatelessWidget {
           style: const TextStyle(fontSize: EBFontSize.normal),
         ),
         counterText: '',
-        suffixIcon: Padding(
-          padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),
-          child: (suffixIcon == null ? false : true) ? suffixIcon : suffixIconButton,
-        ),
+        suffixIcon: suffixIcon ?? suffixIconButton,
       ),
       maxLength: maxLength,
       validator: validator,

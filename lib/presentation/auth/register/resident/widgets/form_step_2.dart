@@ -60,9 +60,12 @@ Widget buildLoginCred({
                       label: 'Password',
                       type: TextInputType.text,
                       obscureText: showPassword ? false : true,
-                      suffixIconButton: IconButton(
-                        icon: showPassword ? const Icon(FeatherIcons.eye) : const Icon(FeatherIcons.eyeOff),
-                        onPressed: togglePassIconHandler,
+                      suffixIconButton: Padding(
+                        padding: const EdgeInsets.only(right: 10.0),
+                        child: IconButton(
+                          icon: showPassword ? const Icon(FeatherIcons.eye) : const Icon(FeatherIcons.eyeOff),
+                          onPressed: togglePassIconHandler,
+                        ),
                       ),
                       validator: (value) {
                         value = value?.trim();
@@ -81,9 +84,12 @@ Widget buildLoginCred({
                       label: 'Confirm Password',
                       type: TextInputType.text,
                       obscureText: showPassword ? false : true,
-                      suffixIconButton: IconButton(
-                        icon: showPassword ? const Icon(FeatherIcons.eye) : const Icon(FeatherIcons.eyeOff),
-                        onPressed: togglePassIconHandler,
+                      suffixIconButton: Padding(
+                        padding: const EdgeInsets.only(right: 10.0),
+                        child: IconButton(
+                          icon: showPassword ? const Icon(FeatherIcons.eye) : const Icon(FeatherIcons.eyeOff),
+                          onPressed: togglePassIconHandler,
+                        ),
                       ),
                       validator: (value) {
                         value = value?.trim();

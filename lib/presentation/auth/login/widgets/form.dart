@@ -47,9 +47,12 @@ Widget buildForm({
           type: TextInputType.text,
           controller: passwordController,
           obscureText: !showPassword,
-          suffixIconButton: IconButton(
-            icon: showPassword ? const Icon(FeatherIcons.eye) : const Icon(FeatherIcons.eyeOff),
-            onPressed: onTogglePasswordHandler,
+          suffixIconButton: Padding(
+            padding: const EdgeInsets.only(right: 10.0),
+            child: IconButton(
+              icon: showPassword ? const Icon(FeatherIcons.eye) : const Icon(FeatherIcons.eyeOff),
+              onPressed: onTogglePasswordHandler,
+            ),
           ),
           validator: (value) {
             value = value?.trim();
