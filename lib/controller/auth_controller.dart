@@ -7,13 +7,14 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:logger/logger.dart';
 
 class LoginController {
+  final FirebaseAuth _dbAuth = FirebaseAuth.instance;
   final Logger log = Logger();
 
   Future<void> signIn(LoginModel data) async {
     try {
       log.d('logging in user...');
 
-      await FirebaseAuth.instance.signInWithEmailAndPassword(email: data.email, password: data.password);
+      await _dbAuth.signInWithEmailAndPassword(email: data.email, password: data.password);
 
       log.d('user has successfully logged in! redirecting to dashboard...');
     } on FirebaseAuthException catch (err) {
@@ -37,14 +38,16 @@ class LoginController {
 }
 
 class RegisterOfficialController {
+  final FirebaseAuth _dbAuth = FirebaseAuth.instance;
+  final FirebaseFirestore _dbFirestore = FirebaseFirestore.instance;
   final Logger log = Logger();
 
-  Future<void> register(RegisterOfficialModel docData) async {
+  Future<void> register(OfficialModel docData) async {
     try {
       log.i(docData.toJson());
 
-      UserCredential userCredentials = await FirebaseAuth.instance.createUserWithEmailAndPassword(email: docData.email, password: docData.password);
-      await FirebaseFirestore.instance.collection('brgyOfficials').doc(userCredentials.user?.uid).set(docData.toJson());
+      UserCredential userCredentials = await _dbAuth.createUserWithEmailAndPassword(email: docData.email, password: docData.password);
+      await _dbFirestore.collection('users').doc(userCredentials.user?.uid).set(docData.toJson());
 
       // putting doc proof to the firebaseStorage
       final storage = FirebaseStorage.instance.ref();
@@ -65,14 +68,16 @@ class RegisterOfficialController {
 }
 
 class RegisterResidentController {
+  final FirebaseAuth _dbAuth = FirebaseAuth.instance;
+  final FirebaseFirestore _dbFirestore = FirebaseFirestore.instance;
   final Logger log = Logger();
 
-  Future<void> register(RegisterResidentModel docData) async {
+  Future<void> register(ResidentModel docData) async {
     try {
       log.i(docData.toJson());
 
-      UserCredential userCredentials = await FirebaseAuth.instance.createUserWithEmailAndPassword(email: docData.email, password: docData.password);
-      await FirebaseFirestore.instance.collection('brgyResidents').doc(userCredentials.user?.uid).set(docData.toJson());
+      UserCredential userCredentials = await _dbAuth.createUserWithEmailAndPassword(email: docData.email, password: docData.password);
+      await _dbFirestore.collection('users').doc(userCredentials.user?.uid).set(docData.toJson());
 
       // set the display name
       await userCredentials.user?.updateDisplayName(docData.firstName);

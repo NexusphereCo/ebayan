@@ -1,16 +1,20 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:ebayan/controller/user_controller.dart';
+import 'package:ebayan/data/model/announcement_model.dart';
 import 'package:ebayan/data/model/barangay_model.dart';
 import 'package:ebayan/data/model/municipality_model.dart';
-import 'package:ebayan/utils/global.dart';
+import 'package:ebayan/data/viewmodel/barangay_view_model.dart';
 import 'package:logger/logger.dart';
 
 class BarangayController {
-  final Logger log = Logger();
-  final FirebaseFirestore db = FirebaseFirestore.instance;
+  final Logger _log = Logger();
+  final FirebaseFirestore _db = FirebaseFirestore.instance;
+  final UserController _userController = UserController();
 
-  dynamic fetchMunicipalities() async {
-    try {
-      final QuerySnapshot querySnapshot = await db.collection('municipalities').orderBy('municipality').get();
+  Future<List<MunicipalityModel>> fetchMunicipalities() async {
+    final querySnapshot = await _db.collection('municipalities').orderBy('municipality').get();
+
+    if (querySnapshot.docs.isNotEmpty) {
       final municipalities = querySnapshot.docs
           .map((doc) => MunicipalityModel(
                 municipality: doc['municipality'],
@@ -18,26 +22,22 @@ class BarangayController {
               ))
           .toList();
 
-      log.d('Successfully fetched municipalities.');
+      _log.d('Successfully fetched municipalities.');
       return municipalities;
-    } catch (err) {
-      log.e('An error occurred: $err');
-      throw 'An error occurred while fetching municipalities!';
+    } else {
+      _log.e('No municipalities found!');
+      throw 'No municipalities found!';
     }
   }
 
   DocumentReference fetchMunicipality(String muniId) {
-    try {
-      return db.collection('municipalities').doc(muniId);
-    } catch (e) {
-      log.e('Error fetching municipality: $e');
-      throw 'An error occurred while fetching the municipality: $muniId';
-    }
+    return _db.collection('municipalities').doc(muniId);
   }
 
-  dynamic fetchBarangaysFromMunicipality(String muniId) async {
-    try {
-      final QuerySnapshot querySnapshot = await db.collection('municipalities').doc(muniId).collection('barangays').orderBy('name').get();
+  Future<List<BarangayModel>> fetchBarangaysFromMunicipality(String muniId) async {
+    final querySnapshot = await _db.collection('municipalities').doc(muniId).collection('barangays').orderBy('name').get();
+
+    if (querySnapshot.docs.isNotEmpty) {
       final barangays = querySnapshot.docs
           .map((doc) => BarangayModel(
                 name: doc['name'],
@@ -45,92 +45,82 @@ class BarangayController {
               ))
           .toList();
 
-      log.d('Successfully fetched Barangay.');
+      _log.d('Successfully fetched Barangay.');
       return barangays;
-    } catch (err) {
-      log.e('An error occurred: $err');
-      throw 'An error occurred while fetching barangay!';
+    } else {
+      _log.e('No barangays found!');
+      throw 'No barangays found!';
     }
   }
 
-  DocumentReference fetchBarangay(String muniId, String brgyId) {
-    try {
-      return db.collection('municipalities').doc(muniId).collection('barangays').doc(brgyId);
-    } catch (e) {
-      log.e('Error fetching municipality: $e');
-      throw 'An error occurred while fetching the municipality: $brgyId';
-    }
-  }
+  Future<BarangayViewModel> fetchBarangay(String brgyId) async {
+    // Find the barangay
+    var barangaysRef = _db.collectionGroup('barangays');
+    var barangaySnapshot = await barangaysRef.where('code', isEqualTo: int.parse(brgyId)).get();
 
-  Future<String?> getMunicipalityIdFromBarangayId(String barangayId) async {
-    try {
-      // Query to find the municipalityId based on the barangayId
-      var querySnapshot = await db.collectionGroup('barangays').where('barangayId', isEqualTo: barangayId).limit(1).get();
-
-      if (querySnapshot.docs.isNotEmpty) {
-        var barangayDoc = querySnapshot.docs.first;
-        var municipalityId = barangayDoc.reference.parent.parent?.id;
-        return municipalityId;
-      } else {
-        log.i('Barangay with ID $barangayId not found.');
-        return null;
-      }
-    } catch (e) {
-      // Handle exceptions
-      log.e('An error occurred: $e');
-      return null;
+    // Check if there is no document
+    if (barangaySnapshot.docs.isEmpty) {
+      _log.e('Barangay: $brgyId not found');
+      throw 'Barangay not found!';
     }
+
+    // Take the first document assuming there's only one match
+    var doc = barangaySnapshot.docs.first;
+
+    // Fetch announcements
+    final announcementsSnapshot = await doc.reference.collection('announcements').get();
+    List<AnnouncementModel> announcements = [];
+
+    if (announcementsSnapshot.docs.isNotEmpty) {
+      announcements = announcementsSnapshot.docs
+          .map((doc) => AnnouncementModel(
+                heading: doc['heading'],
+                body: doc['body'],
+                timeCreated: doc['timeCreated'],
+              ))
+          .toList();
+    }
+
+    // Return the BarangayViewModel with the mapped announcements
+    return BarangayViewModel(
+      code: doc['code'],
+      name: doc['name'],
+      adminId: doc['adminId'],
+      announcements: announcements,
+    );
   }
 
   Future<bool> hasJoinedBrgy() async {
-    try {
-      final user = await getCurrentUserInfo();
-      log.i(user.data());
+    final user = await _userController.getCurrentUserInfo();
 
-      if (user.exists) {
-        bool hasJoined = user.data()?['barangayAssociated'] != null ? true : false;
-        log.i('Has joined a barangay: $hasJoined');
+    bool hasJoined = user.barangayAssociated != null;
+    _log.i('Has joined a barangay: $hasJoined');
 
-        return hasJoined;
-      }
-      throw 'Document is not found.';
-    } catch (e) {
-      log.e('An error occurred. $e');
-      throw 'An error occurred. $e';
-    }
+    return hasJoined;
   }
 
   Future<bool> isCodeValid(String code) async {
-    try {
-      // Query to find the barangayId across all municipalities
-      var barangaysRef = db.collectionGroup('barangays');
-      var querySnapshot = await barangaysRef.where('code', isEqualTo: int.parse(code)).get();
+    // Query to find the barangayId across all municipalities
+    var barangaysRef = _db.collectionGroup('barangays');
+    var querySnapshot = await barangaysRef.where('code', isEqualTo: int.tryParse(code)).get();
 
-      // Check if the query returned any documents
-      log.i('Barangay code exist: ${querySnapshot.docs.isNotEmpty}');
+    // Log whether the query returned any documents
+    _log.i('Barangay code exist: ${querySnapshot.docs.isNotEmpty}');
 
-      return querySnapshot.docs.isNotEmpty;
-    } catch (e) {
-      // Handle exceptions
-      log.e('An error occurred: $e');
-      return false;
-    }
+    return querySnapshot.docs.isNotEmpty;
   }
 
   Future<void> joinBrgy(String code) async {
-    try {
-      final user = await getCurrentUserInfo();
-      final userType = await getUserType(user.id);
+    // get the user's info to access the joined barangay
+    final user = await _userController.getCurrentUserInfo();
+    var userRef = _db.collection('users').doc(user.id);
 
-      var userRef = db.collection(userType).doc(user.id);
+    // append also to the new barangay.residentIds and remove from the previous
+    // TODO: implement this
 
-      userRef.update({'barangayAssociated': code});
-      userRef.update({'muniId': getMunicipalityIdFromBarangayId(code)});
+    // update the user.barangayAssociated to the new code
+    await userRef.update({'barangayAssociated': code});
 
-      log.i('Successfully joined a barangay!.');
-    } catch (e) {
-      log.e('An error occurred. $e');
-      throw 'An error occurred. $e';
-    }
+    _log.i('Successfully joined a barangay!');
   }
 }

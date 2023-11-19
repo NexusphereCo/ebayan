@@ -12,6 +12,9 @@ class Asset {
   static const String illustHousePath = 'assets/svgs/illustration/card-house.svg';
   static const String illustHousesPath = 'assets/svgs/illustration/join-brgy.svg';
   static const String illustHouseEmptyPath = 'assets/svgs/illustration/empty-state.svg';
+  static const String illustRecentAnnCircleBackg = 'assets/svgs/illustration/card-recent-ann-circle.svg';
+  static const String illustRecentAnnNone = 'assets/svgs/illustration/card-recent-ann-circle-empty.svg';
+  static const String illustRecentAnnCardWaveBackg = 'assets/svgs/illustration/card-recent-ann-wave.svg';
 
   static const String lottieLoadingLogo = 'assets/svgs/loading/loading-logo.json';
 }

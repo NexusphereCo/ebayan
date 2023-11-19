@@ -112,7 +112,7 @@ class _RegisterOfficialScreenState extends State<RegisterOfficialScreen> with Si
     }
   }
 
-  Future<void> _fetchMunicipalities() async {
+  void _fetchMunicipalities() {
     _brgyController.fetchMunicipalities().then((data) {
       listOfMunicipalities = data;
     }).catchError((err) {
@@ -120,7 +120,7 @@ class _RegisterOfficialScreenState extends State<RegisterOfficialScreen> with Si
     });
   }
 
-  Future<void> _fetchBarangay(muniUid) async {
+  void _fetchBarangay(muniUid) {
     _brgyController.fetchBarangaysFromMunicipality(muniUid).then((data) {
       listOfBarangay = data;
     }).catchError((err) {
@@ -134,7 +134,8 @@ class _RegisterOfficialScreenState extends State<RegisterOfficialScreen> with Si
     if (_formKey.currentState?.validate() == true) {
       try {
         // map the data to a [RegisterOfficialModel] model
-        RegisterOfficialModel model = RegisterOfficialModel(
+        OfficialModel model = OfficialModel(
+          userType: 'OFFICIAL',
           firstName: _firstNameController.text,
           lastName: _lastNameController.text,
           email: _emailController.text,
@@ -270,19 +271,22 @@ class _RegisterOfficialScreenState extends State<RegisterOfficialScreen> with Si
             ),
           )
           .toList(),
-      onSubmit: (index) async {
-        setState(() async {
-          var docId = listOfMunicipalities[index].zipCode.toString();
-          var selectedMunicipality = listOfMunicipalities[index].municipality;
+      onSubmit: (index) {
+        var docId = listOfMunicipalities[index].zipCode.toString();
+        var selectedMunicipality = listOfMunicipalities[index].municipality;
 
-          _municipalityController.text = selectedMunicipality;
-          _selectedMuniId = docId;
-          _barangayController.text = '';
+        _municipalityController.text = selectedMunicipality;
+        _selectedMuniId = docId;
+        _barangayController.text = '';
 
-          setState(() => _isBrgyFieldEnabled = false);
+        setState(() {
+          _isBrgyFieldEnabled = false;
+        });
 
-          await _fetchBarangay(docId);
-          setState(() => _isBrgyFieldEnabled = true);
+        _fetchBarangay(docId);
+
+        setState(() {
+          _isBrgyFieldEnabled = true;
         });
       },
       title: 'Select a municipality',
