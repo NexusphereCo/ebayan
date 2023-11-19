@@ -1,5 +1,4 @@
 import 'dart:math';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/constants/typography.dart';
 import 'package:ebayan/controller/anct_controller.dart';
@@ -159,7 +158,9 @@ class AnnouncementCard extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         EBButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.of(context).push(createRoute(route: '/dashboard/announcement', args: annId));
+                          },
                           text: 'View',
                           theme: EBButtonTheme.primary,
                           size: EBButtonSize.sm,
