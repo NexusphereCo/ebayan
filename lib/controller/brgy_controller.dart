@@ -90,26 +90,6 @@ class BarangayController {
     );
   }
 
-  Future<String?> getMunicipalityIdFromBarangayId(String barangayId) async {
-    try {
-      // Query to find the municipalityId based on the barangayId
-      var querySnapshot = await db.collectionGroup('barangays').where('barangayId', isEqualTo: barangayId).limit(1).get();
-
-      if (querySnapshot.docs.isNotEmpty) {
-        var barangayDoc = querySnapshot.docs.first;
-        var municipalityId = barangayDoc.reference.parent.parent?.id;
-        return municipalityId;
-      } else {
-        log.i('Barangay with ID $barangayId not found.');
-        return null;
-      }
-    } catch (e) {
-      // Handle exceptions
-      log.e('An error occurred: $e');
-      return null;
-    }
-  }
-
   Future<bool> hasJoinedBrgy() async {
     final user = await _userController.getCurrentUserInfo();
 
@@ -117,6 +97,25 @@ class BarangayController {
     _log.i('Has joined a barangay: $hasJoined');
 
     return hasJoined;
+  }
+
+  Future<String?> getMunicipalityIdFromBarangayId(String barangayId) async {
+    try {
+      // Query to find the municipalityId based on the barangayId
+      var querySnapshot = await _db.collectionGroup('barangays').where('barangayId', isEqualTo: barangayId).limit(1).get();
+      if (querySnapshot.docs.isNotEmpty) {
+        var barangayDoc = querySnapshot.docs.first;
+        var municipalityId = barangayDoc.reference.parent.parent?.id;
+        return municipalityId;
+      } else {
+        _log.i('Barangay with ID $barangayId not found.');
+        return null;
+      }
+    } catch (e) {
+      // Handle exceptions
+      _log.e('An error occurred: $e');
+      return null;
+    }
   }
 
   Future<bool> isCodeValid(String code) async {
