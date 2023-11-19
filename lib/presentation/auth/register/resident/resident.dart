@@ -94,7 +94,8 @@ class _RegisterResidentScreenState extends State<RegisterResidentScreen> with Si
     if (_formKey.currentState?.validate() == true) {
       try {
         // map the data to a [RegisterResidentModel] model
-        RegisterResidentModel model = RegisterResidentModel(
+        ResidentModel model = ResidentModel(
+          userType: 'RESIDENT',
           firstName: _firstNameController.text,
           lastName: _lastNameController.text,
           email: _emailController.text,

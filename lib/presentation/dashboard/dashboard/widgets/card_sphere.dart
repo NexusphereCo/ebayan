@@ -4,16 +4,27 @@ import 'package:ebayan/constants/typography.dart';
 import 'package:ebayan/utils/routes.dart';
 import 'package:ebayan/utils/style.dart';
 import 'package:ebayan/widgets/components/buttons.dart';
+import 'package:ebayan/widgets/components/snackbar.dart';
 import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 enum CardOptions { itemOne, itemTwo, itemThree }
 
 class SphereCard extends StatefulWidget {
+  final String brgyName;
+  final String brgyCode;
+  final bool hasNewAnnouncements;
+  final int numOfPeople;
+
   const SphereCard({
     super.key,
+    required this.brgyName,
+    required this.brgyCode,
+    required this.hasNewAnnouncements,
+    required this.numOfPeople,
   });
 
   @override
@@ -39,11 +50,11 @@ class _SphereCardState extends State<SphereCard> {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 EBTypography.h4(
-                  text: 'San Felipe, Naga City',
+                  text: widget.brgyName,
                   color: EBColor.light,
                   maxLines: 2,
                 ),
-                EBTypography.small(text: '092174', color: EBColor.light),
+                EBTypography.small(text: widget.brgyCode, color: EBColor.light),
                 const SizedBox(height: Spacing.md),
               ],
             ),
@@ -78,12 +89,12 @@ class _SphereCardState extends State<SphereCard> {
               children: [
                 _buildFooterRow(
                   icon: const FaIcon(FontAwesomeIcons.bullhorn, size: 16),
-                  text: 'New announcement',
+                  text: widget.hasNewAnnouncements ? 'New announcements' : 'No recent announcements',
                 ),
                 const SizedBox(height: Spacing.sm),
                 _buildFooterRow(
                   icon: const Icon(FeatherIcons.user, size: 16),
-                  text: '42 people',
+                  text: '${widget.numOfPeople} people',
                 ),
               ],
             ),
@@ -133,25 +144,24 @@ class _SphereCardState extends State<SphereCard> {
             selectedMenu = item;
           });
           if (item == CardOptions.itemOne) {
-            var snackBar = SnackBar(
-              content: const Text('Brgy. sphere code has been copied to clipboard.'),
-              backgroundColor: EBColor.primary,
-              elevation: 1,
-            );
-            ScaffoldMessenger.of(context).showSnackBar(snackBar);
+            Clipboard.setData(ClipboardData(text: widget.brgyCode));
+            ScaffoldMessenger.of(context).showSnackBar(EBSnackBar.info(text: 'Brgy. sphere code has been copied to your clipboard.'));
           }
         },
         itemBuilder: (BuildContext context) => <PopupMenuEntry<CardOptions>>[
           const PopupMenuItem<CardOptions>(
             value: CardOptions.itemOne,
+            height: 40,
             child: Text('Copy Code'),
           ),
           const PopupMenuItem<CardOptions>(
             value: CardOptions.itemTwo,
+            height: 40,
             child: Text('Leave Barangay Sphere'),
           ),
           const PopupMenuItem<CardOptions>(
             value: CardOptions.itemThree,
+            height: 40,
             child: Text('View People'),
           ),
         ],
