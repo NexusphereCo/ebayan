@@ -23,7 +23,7 @@ class _SwitchExampleState extends State<SwitchButton> {
   @override
   Widget build(BuildContext context) {
     return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.start,
       children: <Widget>[
         Switch(
           value: light,
@@ -33,9 +33,7 @@ class _SwitchExampleState extends State<SwitchButton> {
             });
           },
           activeTrackColor: EBColor.primary[100],
-          inactiveTrackColor: EBColor.dark[100],
           activeColor: EBColor.primary,
-          inactiveThumbColor: EBColor.dark[300],
         ),
       ],
     );

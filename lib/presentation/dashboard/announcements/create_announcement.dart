@@ -52,33 +52,38 @@ class _CreateAnnouncementScreenState extends State<CreateAnnouncementScreen> {
         child: Padding(
           padding: const EdgeInsets.all(Global.paddingBody),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  EBTypography.h2(
+                  EBTypography.h1(
                     text: 'Create Announcement',
                     color: EBColor.primary,
                   ),
                 ],
               ),
               const SizedBox(height: Spacing.md),
-              Column(
+              Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  EBTypography.h4(
-                    text: "Send SMS",
-                    muted: true,
-                  ),
-                  const SwitchButton(),
-                  EBTypography.small(
-                    text: 'This will send a group text a message to all people within the barangay.',
-                    muted: true,
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      EBTypography.h4(
+                        text: "Send SMS",
+                        muted: true,
+                      ),
+                      const SwitchButton(),
+                      EBTypography.small(
+                        text: 'This will send a group text a message to all people within the barangay.',
+                        muted: true,
+                      ),
+                    ],
                   ),
                 ],
               ),
-              const SizedBox(height: Spacing.md),
+              const SizedBox(height: Spacing.lg),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -91,14 +96,14 @@ class _CreateAnnouncementScreenState extends State<CreateAnnouncementScreen> {
                         ),
                       ),
                       hintText: "Subject",
-                      contentPadding: EdgeInsets.symmetric(horizontal: 18.0, vertical: 18.0),
+                      contentPadding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 15.0),
                     ),
                   ),
                   const SizedBox(height: Spacing.md),
                   TextField(
                     controller: _bodyController,
                     textAlign: TextAlign.start,
-                    maxLines: 15,
+                    maxLines: 13,
                     decoration: const InputDecoration(
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(
@@ -106,7 +111,7 @@ class _CreateAnnouncementScreenState extends State<CreateAnnouncementScreen> {
                         ),
                       ),
                       hintText: "Announce something to your Sphere",
-                      contentPadding: EdgeInsets.symmetric(horizontal: 18.0, vertical: 18.0),
+                      contentPadding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 15.0),
                     ),
                   )
                 ],
@@ -119,44 +124,52 @@ class _CreateAnnouncementScreenState extends State<CreateAnnouncementScreen> {
                     children: [
                       IconButton(
                         padding: const EdgeInsets.only(right: 5.0),
-                        icon: const Icon(FeatherIcons.calendar),
-                        color: EBColor.primary,
+                        icon: Icon(
+                          FeatherIcons.plusCircle,
+                          color: EBColor.primary,
+                        ),
                         onPressed: () => _selectDate(context),
                       ),
-                      EBButton(
-                        text: 'Cancel',
-                        theme: EBButtonTheme.primaryOutlined,
-                        onPressed: () {},
-                      ),
-                      EBButton(
-                        text: 'Post',
-                        theme: EBButtonTheme.primary,
-                        icon: const Icon(FeatherIcons.send),
-                        onPressed: () async {
-                          try {
-                            String heading = _headingController.text;
-                            String body = _bodyController.text;
+                      Row(
+                        children: [
+                          EBButton(
+                            text: 'Cancel',
+                            theme: EBButtonTheme.primaryOutlined,
+                            onPressed: () {},
+                          ),
+                          const SizedBox(width: Spacing.sm),
+                          EBButton(
+                            text: 'Post',
+                            theme: EBButtonTheme.primary,
+                            icon: Icon(FeatherIcons.send, color: EBColor.light, size: EBFontSize.h4),
+                            onPressed: () async {
+                              try {
+                                String heading = _headingController.text;
+                                String body = _bodyController.text;
 
-                            // Format the selected date as a string with only date and time
-                            String formattedDate = DateFormat('yyyy-MM-dd HH:mm:ss').format(_selectedDate);
+                                // Format the selected date as a string with only date and time
+                                String formattedDate = DateFormat('yyyy-MM-dd HH:mm:ss').format(_selectedDate);
 
-                            await _announcementController.createAnnouncement({
-                              'heading': heading,
-                              'body': body,
-                              'timeCreated': formattedDate,
-                            });
+                                await _announcementController.createAnnouncement({
+                                  'heading': heading,
+                                  'body': body,
+                                  'timeCreated': formattedDate,
+                                });
 
-                            // Navigate to a success screen or perform other actions upon successful creation
-                          } catch (e) {
-                            log.e('An error occurred: $e');
-                            throw 'An error occurred while creating the announcement.';
-                          }
-                        },
+                                // Navigate to a success screen or perform other actions upon successful creation
+                              } catch (e) {
+                                log.e('An error occurred: $e');
+                                throw 'An error occurred while creating the announcement.';
+                              }
+                            },
+                          ),
+                        ],
                       ),
                     ],
                   ),
                 ],
-              )
+              ),
+              const SizedBox(height: Spacing.md),
             ],
           ),
         ),
