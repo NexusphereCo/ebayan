@@ -5,6 +5,7 @@ import 'package:ebayan/utils/routes.dart';
 import 'package:ebayan/utils/style.dart';
 import 'package:ebayan/widgets/shared/appbar_bottom.dart';
 import 'package:ebayan/widgets/shared/appbar_top.dart';
+import 'package:ebayan/widgets/utils/fade_in.dart';
 import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -70,81 +71,83 @@ class _JoinedDashboardLoadingViewState extends State<JoinedDashboardLoadingView>
                                     scrollDirection: Axis.horizontal,
                                     itemCount: 3,
                                     itemBuilder: (context, index) {
-                                      return Container(
-                                        width: 300,
-                                        margin: const EdgeInsets.all(10.0),
-                                        decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(EBBorderRadius.lg),
-                                          border: Border.all(color: EBColor.dullGreen),
-                                          color: EBColor.light,
-                                          boxShadow: [
-                                            BoxShadow(
-                                              color: EBColor.dullGreen[500]!.withOpacity(0.35),
-                                              spreadRadius: 2,
-                                              blurRadius: 5,
-                                              offset: const Offset(0, 3),
-                                            ),
-                                          ],
-                                        ),
-                                        child: ClipRRect(
-                                          borderRadius: BorderRadius.circular(EBBorderRadius.lg),
-                                          child: Stack(
-                                            children: [
-                                              Positioned.fill(
-                                                child: SvgPicture.asset(
-                                                  Asset.illustRecentAnnCardWaveBackg,
-                                                  fit: BoxFit.cover,
-                                                ),
+                                      return FadeIn(
+                                        child: Container(
+                                          width: 300,
+                                          margin: const EdgeInsets.all(10.0),
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(EBBorderRadius.lg),
+                                            border: Border.all(color: EBColor.dullGreen),
+                                            color: EBColor.light,
+                                            boxShadow: [
+                                              BoxShadow(
+                                                color: EBColor.dullGreen[500]!.withOpacity(0.35),
+                                                spreadRadius: 2,
+                                                blurRadius: 5,
+                                                offset: const Offset(0, 3),
                                               ),
-                                              Padding(
-                                                padding: const EdgeInsets.symmetric(horizontal: Spacing.md, vertical: Spacing.lg),
-                                                child: Column(
-                                                  mainAxisSize: MainAxisSize.min,
-                                                  children: [
-                                                    Row(
-                                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                      children: [
-                                                        Container(
-                                                          padding: const EdgeInsets.symmetric(horizontal: EBBorderRadius.md, vertical: EBBorderRadius.xs),
-                                                          decoration: BoxDecoration(
-                                                            color: EBColor.green,
-                                                            borderRadius: const BorderRadius.all(Radius.circular(EBBorderRadius.lg)),
-                                                          ),
-                                                          child: const SizedBox(width: 50, height: 12),
-                                                        ),
-                                                        buildLoadingContainer(width: 50),
-                                                      ],
-                                                    ),
-                                                    const SizedBox(height: Spacing.md),
-                                                    Row(
-                                                      crossAxisAlignment: CrossAxisAlignment.center,
-                                                      children: [
-                                                        Icon(FeatherIcons.circle, color: EBColor.green),
-                                                        const SizedBox(width: Spacing.sm),
-                                                        buildLoadingContainer(width: 50),
-                                                      ],
-                                                    ),
-                                                    Column(
-                                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                                      children: [
-                                                        const SizedBox(height: Spacing.sm),
-                                                        buildLoadingContainer(width: double.infinity),
-                                                        const SizedBox(height: Spacing.sm),
-                                                        buildLoadingContainer(width: 100),
-                                                      ],
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                              Positioned(
-                                                bottom: 0,
-                                                right: 0,
-                                                child: IconButton(
-                                                  onPressed: () {},
-                                                  icon: const Icon(FeatherIcons.arrowRight),
-                                                ),
-                                              )
                                             ],
+                                          ),
+                                          child: ClipRRect(
+                                            borderRadius: BorderRadius.circular(EBBorderRadius.lg),
+                                            child: Stack(
+                                              children: [
+                                                Positioned.fill(
+                                                  child: SvgPicture.asset(
+                                                    Asset.illustRecentAnnCardWaveBackg,
+                                                    fit: BoxFit.cover,
+                                                  ),
+                                                ),
+                                                Padding(
+                                                  padding: const EdgeInsets.symmetric(horizontal: Spacing.md, vertical: Spacing.lg),
+                                                  child: Column(
+                                                    mainAxisSize: MainAxisSize.min,
+                                                    children: [
+                                                      Row(
+                                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                        children: [
+                                                          Container(
+                                                            padding: const EdgeInsets.symmetric(horizontal: EBBorderRadius.md, vertical: EBBorderRadius.xs),
+                                                            decoration: BoxDecoration(
+                                                              color: EBColor.green,
+                                                              borderRadius: const BorderRadius.all(Radius.circular(EBBorderRadius.lg)),
+                                                            ),
+                                                            child: const SizedBox(width: 50, height: 12),
+                                                          ),
+                                                          buildLoadingContainer(width: 50),
+                                                        ],
+                                                      ),
+                                                      const SizedBox(height: Spacing.md),
+                                                      Row(
+                                                        crossAxisAlignment: CrossAxisAlignment.center,
+                                                        children: [
+                                                          Icon(FeatherIcons.circle, color: EBColor.green),
+                                                          const SizedBox(width: Spacing.sm),
+                                                          buildLoadingContainer(width: 50),
+                                                        ],
+                                                      ),
+                                                      Column(
+                                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                                        children: [
+                                                          const SizedBox(height: Spacing.sm),
+                                                          buildLoadingContainer(width: double.infinity),
+                                                          const SizedBox(height: Spacing.sm),
+                                                          buildLoadingContainer(width: 100),
+                                                        ],
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                                Positioned(
+                                                  bottom: 0,
+                                                  right: 0,
+                                                  child: IconButton(
+                                                    onPressed: () {},
+                                                    icon: const Icon(FeatherIcons.arrowRight),
+                                                  ),
+                                                )
+                                              ],
+                                            ),
                                           ),
                                         ),
                                       );
