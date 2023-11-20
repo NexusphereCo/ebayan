@@ -104,7 +104,14 @@ class _SphereCardState extends State<SphereCard> {
             children: [
               EBButton(
                 onPressed: () {
-                  Navigator.of(context).push(createRoute(route: '/dashboard/announcement_list'));
+                  Navigator.pushNamed(
+                    context,
+                    Routes.announcementList,
+                    arguments: {
+                      'brgyName': widget.brgyName, // Pass the actual value from your widget state
+                      'brgyCode': widget.brgyCode, // Pass the actual value from your widget state
+                    },
+                  );
                 },
                 text: 'View',
                 theme: EBButtonTheme.primary,
