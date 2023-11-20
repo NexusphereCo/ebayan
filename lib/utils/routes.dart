@@ -40,7 +40,10 @@ class Routes {
     registerResident: () => const RegisterResidentScreen(),
     dashboard: () => const DashboardScreen(),
     joinBrgy: () => const JoinBrgyScreen(),
-    announcementList: () => AnnouncementListScreen(brgyName: 'default', brgyCode: 'default'),
+    announcementList: () => AnnouncementListScreen(
+          brgyName: 'default',
+          brgyCode: 'default',
+        ),
     createAnnouncement: () => CreateAnnouncementScreen(),
     announcement: () => const AnnouncementScreen(annId: 'default'),
   };
@@ -54,18 +57,10 @@ class Routes {
     dashboard: (BuildContext context) => const DashboardScreen(),
     joinBrgy: (BuildContext context) => const JoinBrgyScreen(),
     announcementList: (BuildContext context) {
-      final args = ModalRoute.of(context)?.settings.arguments;
-      if (args is Map<String, dynamic> && args.containsKey('brgyName')) {
-        final barangayName = args['brgyName'];
-        final barangayCode = args['brgyCode'];
-
-        return AnnouncementListScreen(
-          brgyName: barangayName,
-          brgyCode: barangayCode,
-        );
-      } else {
-        throw Exception("Invalid arguments for AnnouncementListScreen");
-      }
+      final args = ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>;
+      final brgyName = args['brgyName'];
+      final brgyCode = args['brgyCode'];
+      return AnnouncementListScreen(brgyName: brgyName, brgyCode: brgyCode);
     },
     createAnnouncement: (BuildContext context) => CreateAnnouncementScreen(),
     announcement: (BuildContext context) {

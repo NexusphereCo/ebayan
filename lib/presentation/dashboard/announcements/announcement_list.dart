@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'package:ebayan/constants/assets.dart';
 import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/constants/typography.dart';
 import 'package:ebayan/controller/anct_controller.dart';
@@ -9,11 +10,20 @@ import 'package:ebayan/widgets/components/buttons.dart';
 import 'package:ebayan/widgets/shared/appbar_top.dart';
 import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:logger/logger.dart';
 
 class AnnouncementListScreen extends StatefulWidget {
-  const AnnouncementListScreen({Key? key}) : super(key: key);
+  final Logger log = Logger();
+  final String brgyName;
+  final String brgyCode;
+
+  AnnouncementListScreen({
+    Key? key,
+    required this.brgyName,
+    required this.brgyCode,
+  }) : super(key: key);
 
   @override
   State<AnnouncementListScreen> createState() => _AnnouncementListScreenState();
@@ -45,56 +55,53 @@ class _AnnouncementListScreenState extends State<AnnouncementListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: const EBAppBar(),
-        drawer: const EBDrawer(),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () => Navigator.of(context).push(createRoute(route: '/dashboard/create_announcement')),
-          child: const Icon(Icons.add),
-        ),
-        body: ListView.builder(
-          padding: const EdgeInsets.all(24.0),
-          itemCount: announcementIDs.length + 1,
-          itemBuilder: (context, index) {
-            final dataIndex = index - 1;
+      appBar: const EBAppBar(),
+      drawer: const EBDrawer(),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => Navigator.of(context).push(createRoute(route: '/dashboard/create_announcement')),
+        child: const Icon(Icons.add),
+      ),
+      body: ListView.builder(
+        padding: const EdgeInsets.all(24.0),
+        itemCount: announcementIDs.length + 1,
+        itemBuilder: (context, index) {
+          final dataIndex = index - 1;
 
-            if (index == 0) {
-              return Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      EBTypography.h1(text: 'Announcement'),
-                      const SizedBox(width: Spacing.sm),
-                      Transform.rotate(
-                        angle: -15 * pi / 180,
-                        child: FaIcon(
-                          FontAwesomeIcons.bullhorn,
-                          size: 30,
-                          color: EBColor.primary,
-                        ),
+          if (index == 0) {
+            return Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    EBTypography.h1(text: 'Announcement'),
+                    const SizedBox(width: Spacing.sm),
+                    Transform.rotate(
+                      angle: -15 * pi / 180,
+                      child: FaIcon(
+                        FontAwesomeIcons.bullhorn,
+                        size: 30,
+                        color: EBColor.primary,
                       ),
-                    ],
-                  ),
-                  const SizedBox(height: Spacing.md),
-                  const SphereInfoCard(),
-                  const SizedBox(height: Spacing.md),
-                  Divider(
-                    color: EBColor.primary,
-                    height: 25,
-                    thickness: 1.5,
-                    indent: 5,
-                    endIndent: 5,
-                  ),
-                  const SizedBox(height: Spacing.md),
-                ],
-              );
-            } else {
-              return AnnouncementCard(
-                annId: announcementIDs[dataIndex],
-              );
-            }
-          },
-        ));
+                    ),
+                  ],
+                ),
+                const SizedBox(height: Spacing.md),
+                // Use _cardHeader method from SphereCard
+                CardHeader(
+                  barangayName: widget.brgyName,
+                  barangayCode: widget.brgyCode,
+                ),
+                const SizedBox(height: Spacing.md),
+              ],
+            );
+          } else {
+            return AnnouncementCard(
+              annId: announcementIDs[dataIndex],
+            );
+          }
+        },
+      ),
+    );
   }
 }
 
@@ -112,28 +119,30 @@ class AnnouncementCard extends StatelessWidget {
       future: AnnouncementController().viewAnnouncement(annId),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return const CircularProgressIndicator(); // Show loading indicator while fetching data
+          return const Center(
+            child: CircularProgressIndicator(),
+          ); // Show loading indicator while fetching data
         } else if (snapshot.hasError) {
-          return Text('Error: ${snapshot.error}');
+          return Center(
+            child: Text('Error: ${snapshot.error}'),
+          );
         } else if (!snapshot.hasData) {
-          return const Text('Announcement not found.');
+          return const Center(
+            child: Text('Announcement not found.'),
+          );
         } else {
           final AnnouncementModel announcement = snapshot.data!;
           return Container(
             width: double.infinity,
             height: 125,
-            margin: const EdgeInsets.only(bottom: 15.0),
+            margin: const EdgeInsets.only(bottom: 10.0),
             decoration: BoxDecoration(
               color: EBColor.primary.shade200,
               borderRadius: BorderRadius.circular(15.0),
-              border: Border.all(
-                width: 2,
-                color: EBColor.primary,
-              ),
             ),
             child: Expanded(
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                padding: const EdgeInsets.symmetric(horizontal: 15.0),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -146,10 +155,11 @@ class AnnouncementCard extends StatelessWidget {
                           EBTypography.h4(
                             text: announcement.heading,
                             color: EBColor.primary,
+                            fontWeight: FontWeight.bold,
                             cutOverflow: true,
                             maxLines: 3,
                           ),
-                          EBTypography.small(text: announcement.formattedTime, color: EBColor.dark, muted: true),
+                          EBTypography.small(text: announcement.formattedTime, color: EBColor.dark, fontWeight: EBFontWeight.regular),
                         ],
                       ),
                     ),
@@ -159,11 +169,11 @@ class AnnouncementCard extends StatelessWidget {
                       children: [
                         EBButton(
                           onPressed: () {
-                            Navigator.of(context).push(createRoute(route: '/dashboard/announcement', args: annId));
+                            Navigator.pushNamed(context, Routes.announcement, arguments: annId);
                           },
                           text: 'View',
                           theme: EBButtonTheme.primary,
-                          size: EBButtonSize.sm,
+                          size: EBButtonSize.md,
                         ),
                       ],
                     ),
@@ -178,70 +188,53 @@ class AnnouncementCard extends StatelessWidget {
   }
 }
 
-class SphereInfoCard extends StatelessWidget {
-  const SphereInfoCard({Key? key}) : super(key: key);
+class CardHeader extends StatelessWidget {
+  final String barangayName;
+  final String barangayCode;
+
+  const CardHeader({Key? key, required this.barangayName, required this.barangayCode}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 117,
-      padding: const EdgeInsets.all(15.0),
       decoration: BoxDecoration(
-        color: EBColor.primary.shade200,
-        borderRadius: BorderRadius.circular(15.0),
-        border: Border.all(
-          width: 2,
-          color: EBColor.primary,
+        color: EBColor.primary,
+        borderRadius: const BorderRadius.only(
+          topLeft: Radius.circular(20.0),
+          topRight: Radius.circular(20.0),
         ),
       ),
-      child: Expanded(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            EBTypography.h4(text: 'San Felipe, Naga City', color: EBColor.dark),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
+      height: 110,
+      padding: const EdgeInsets.symmetric(horizontal: 10.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Expanded(
+            flex: 6,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Row(
-                  children: [
-                    Column(
-                      children: [
-                        IconButton(
-                          padding: const EdgeInsets.only(right: 5.0),
-                          icon: const Icon(FeatherIcons.copy),
-                          onPressed: () {},
-                        ),
-                      ],
-                    ),
-                    Column(
-                      children: [
-                        EBTypography.text(text: 'BSF-09124A', color: EBColor.dark),
-                        EBTypography.small(text: 'Copy this code', color: EBColor.dark),
-                      ],
-                    ),
-                  ],
+                EBTypography.h4(
+                  text: barangayName,
+                  color: EBColor.light,
+                  maxLines: 2,
                 ),
-                Column(
-                  children: [
-                    Row(
-                      children: [
-                        EBTypography.small(text: '42', color: EBColor.primary),
-                        const SizedBox(width: 5),
-                        Icon(
-                          FeatherIcons.user,
-                          size: 20,
-                          color: EBColor.primary,
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
+                EBTypography.small(text: barangayCode, color: EBColor.light),
+                const SizedBox(height: Spacing.md),
               ],
-            )
-          ],
-        ),
+            ),
+          ),
+          Expanded(
+            flex: 4,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                SvgPicture.asset(Asset.illustHousePath, fit: BoxFit.fitHeight),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
