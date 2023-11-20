@@ -33,4 +33,9 @@ class UserController {
       throw 'Document is not found!';
     }
   }
+
+  Future<void> logOut() async {
+    await FirebaseAuth.instance.signOut();
+    log.i('User has been logged out.');
+  }
 }
