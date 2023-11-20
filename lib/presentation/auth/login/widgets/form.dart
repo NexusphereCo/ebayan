@@ -37,6 +37,7 @@ Widget buildForm({
             }
             return null;
           },
+          maxLines: 1,
         ),
       ),
       const SizedBox(height: Spacing.md),
@@ -54,8 +55,8 @@ Widget buildForm({
               onPressed: onTogglePasswordHandler,
             ),
           ),
+          maxLines: 1,
           validator: (value) {
-            value = value?.trim();
             value = value?.trim();
             if (value == null || value.isEmpty) return Validation.missingField;
             if (value.length < 6) return Validation.requiredMinPassword;

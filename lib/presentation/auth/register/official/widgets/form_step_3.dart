@@ -67,6 +67,7 @@ Widget buildLoginCred({
                           onPressed: togglePassIconHandler,
                         ),
                       ),
+                      maxLines: 1,
                       validator: (value) {
                         value = value?.trim();
                         if (value == null || value.isEmpty) return Validation.missingField;
@@ -91,6 +92,7 @@ Widget buildLoginCred({
                           onPressed: togglePassIconHandler,
                         ),
                       ),
+                      maxLines: 1,
                       validator: (value) {
                         value = value?.trim();
                         if (value == null || value.isEmpty) return Validation.missingField;

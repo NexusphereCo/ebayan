@@ -50,6 +50,7 @@ Widget buildLoginCred({
                       enabled: false,
                       label: 'Username',
                       type: TextInputType.text,
+                      maxLines: 1,
                     ),
                   ),
                   const SizedBox(height: Spacing.md),
@@ -67,6 +68,7 @@ Widget buildLoginCred({
                           onPressed: togglePassIconHandler,
                         ),
                       ),
+                      maxLines: 1,
                       validator: (value) {
                         value = value?.trim();
                         if (value == null || value.isEmpty) return Validation.missingField;
@@ -91,6 +93,7 @@ Widget buildLoginCred({
                           onPressed: togglePassIconHandler,
                         ),
                       ),
+                      maxLines: 1,
                       validator: (value) {
                         value = value?.trim();
                         if (value == null || value.isEmpty) return Validation.missingField;

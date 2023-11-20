@@ -20,6 +20,8 @@ class EBTextField extends StatelessWidget {
   final List<TextInputFormatter>? inputFormatters;
   final void Function()? onTap;
   final String? Function(String?)? validator;
+  final bool? isDense;
+  final int? maxLines;
 
   const EBTextField({
     super.key,
@@ -37,6 +39,8 @@ class EBTextField extends StatelessWidget {
     this.onTap,
     this.inputFormatters,
     this.focusNode,
+    this.isDense,
+    this.maxLines,
   });
 
   @override
@@ -69,8 +73,10 @@ class EBTextField extends StatelessWidget {
         ),
         counterText: '',
         suffixIcon: suffixIcon ?? suffixIconButton,
+        isDense: isDense,
       ),
       maxLength: maxLength,
+      maxLines: maxLines,
       validator: validator,
     );
   }
