@@ -7,6 +7,8 @@ enum EBButtonTheme {
   primary,
   primaryOutlined,
   secondary,
+  success,
+  successOutlined,
   secondaryOutlined,
   warning,
   warningOutlined,
@@ -56,6 +58,7 @@ class EBButton extends StatelessWidget {
   final defaultThemes = {
     EBButtonTheme.primary,
     EBButtonTheme.secondary,
+    EBButtonTheme.success,
     EBButtonTheme.warning,
     EBButtonTheme.danger,
     EBButtonTheme.light,
@@ -64,6 +67,7 @@ class EBButton extends StatelessWidget {
   final outlineThemes = {
     EBButtonTheme.primaryOutlined,
     EBButtonTheme.secondaryOutlined,
+    EBButtonTheme.successOutlined,
     EBButtonTheme.warningOutlined,
     EBButtonTheme.dangerOutlined,
     EBButtonTheme.lightOutlined,
@@ -194,6 +198,8 @@ class EBButton extends StatelessWidget {
         return EBColor.dark;
       case EBButtonTheme.light || EBButtonTheme.lightOutlined:
         return EBColor.light;
+      case EBButtonTheme.success || EBButtonTheme.successOutlined:
+        return EBColor.green;
       case EBButtonTheme.warning || EBButtonTheme.warningOutlined:
         return EBColor.yellow;
       case EBButtonTheme.danger || EBButtonTheme.dangerOutlined:
