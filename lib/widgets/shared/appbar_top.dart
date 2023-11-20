@@ -2,23 +2,27 @@ import 'package:ebayan/constants/assets.dart';
 import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/constants/icons.dart';
 import 'package:ebayan/constants/typography.dart';
+import 'package:ebayan/presentation/dashboard/announcements/widgets/menu_button.dart';
 import 'package:ebayan/utils/routes.dart';
 import 'package:feather_icons/feather_icons.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:logger/logger.dart';
+import 'package:popover/popover.dart';
 
 class EBAppBar extends StatefulWidget implements PreferredSizeWidget {
   final Widget? title;
   final bool? noTitle;
   final bool? enablePop;
+  final bool? more;
 
   const EBAppBar({
     Key? key,
     this.enablePop,
     this.title,
     this.noTitle,
+    this.more,
   }) : super(key: key);
 
   @override
@@ -28,7 +32,11 @@ class EBAppBar extends StatefulWidget implements PreferredSizeWidget {
   Size get preferredSize => const Size.fromHeight(65.0);
 }
 
+enum CardOptions { itemOne, itemTwo }
+
 class _EBAppBarState extends State<EBAppBar> {
+  CardOptions? selectedMenu;
+
   @override
   Widget build(BuildContext context) {
     const iconSize = 20.0;
@@ -58,7 +66,7 @@ class _EBAppBarState extends State<EBAppBar> {
           : null,
       leading: Container(
         // moves the drawer icon to the right more
-        margin: const EdgeInsets.fromLTRB(20.0, 0, 0, 0),
+        margin: const EdgeInsets.fromLTRB(8.0, 0, 0, 0),
         child: (widget.enablePop ?? false)
             ? IconButton(
                 onPressed: () {
@@ -80,6 +88,44 @@ class _EBAppBarState extends State<EBAppBar> {
                 ),
               ),
       ),
+      actions: [
+        Container(
+          margin: const EdgeInsets.fromLTRB(0, 0, 8.0, 0),
+          child: (widget.more ?? false)
+              ? PopupMenuButton<CardOptions>(
+                  offset: const Offset(-18, 35),
+                  icon: Icon(
+                    FeatherIcons.moreVertical,
+                    color: EBColor.primary,
+                  ),
+                  initialValue: selectedMenu,
+                  onSelected: (CardOptions item) {
+                    setState(() {
+                      selectedMenu = item;
+                    });
+                  },
+                  itemBuilder: (BuildContext context) => <PopupMenuEntry<CardOptions>>[
+                    const PopupMenuItem<CardOptions>(
+                      value: CardOptions.itemOne,
+                      height: 30,
+                      child: Text(
+                        'Edit Announcement',
+                        style: TextStyle(fontSize: 12),
+                      ),
+                    ),
+                    const PopupMenuItem<CardOptions>(
+                      value: CardOptions.itemTwo,
+                      height: 30,
+                      child: Text(
+                        'Delete Announcement',
+                        style: TextStyle(fontSize: 12),
+                      ),
+                    ),
+                  ],
+                )
+              : null, // Add this line to handle the case when more is false
+        ),
+      ],
     );
   }
 }
