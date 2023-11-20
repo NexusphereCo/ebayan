@@ -3,7 +3,6 @@ import 'package:ebayan/constants/typography.dart';
 import 'package:ebayan/controller/anct_controller.dart';
 import 'package:ebayan/data/model/announcement_model.dart';
 import 'package:ebayan/utils/style.dart';
-import 'package:ebayan/widgets/components/buttons.dart';
 import 'package:ebayan/widgets/shared/appbar_top.dart';
 import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
@@ -56,7 +55,11 @@ class _AnnouncementScreenState extends State<AnnouncementScreen> {
         } else {
           AnnouncementModel announcement = snapshot.data!;
           return Scaffold(
-            appBar: const EBAppBar(enablePop: true, noTitle: true),
+            appBar: const EBAppBar(
+              enablePop: true,
+              noTitle: true,
+              more: true,
+            ),
             body: Padding(
               padding: const EdgeInsets.all(Global.paddingBody),
               child: Column(
