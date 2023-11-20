@@ -13,6 +13,7 @@ import 'package:ebayan/widgets/utils/fade_in.dart';
 import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:intl/intl.dart';
 
 import 'widgets/confirm_logout_modal.dart';
 import 'widgets/form.dart';
@@ -31,6 +32,12 @@ class _AccountScreenState extends State<AccountScreen> {
   final EBLoadingScreen _loadingScreen = const EBLoadingScreen();
 
   // TextEditingController
+  final TextEditingController _firstNameController = TextEditingController();
+  final TextEditingController _lastNameController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _contactNumberController = TextEditingController();
+  final TextEditingController _addressController = TextEditingController();
+  final TextEditingController _birthDateController = TextEditingController();
 
   // variables
   bool _isEditing = false;
@@ -77,40 +84,39 @@ class _AccountScreenState extends State<AccountScreen> {
                   future: _fetchUserData(),
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
-                      return SizedBox(
-                        height: MediaQuery.of(context).size.height / 2,
-                        child: Center(
-                          child: CircularProgressIndicator(
-                            color: EBColor.green,
-                            strokeCap: StrokeCap.round,
-                          ),
-                        ),
-                      );
+                      return _buildLoadingIndicator(context);
                     } else {
                       final UserViewModel user = snapshot.data!;
 
+                      _firstNameController.text = user.firstName;
+                      _lastNameController.text = user.lastName;
+                      _birthDateController.text = user.birthDate;
+                      _contactNumberController.text = user.contactNumber;
+                      _emailController.text = user.email;
+                      _addressController.text = user.address;
+
                       return StatefulBuilder(
                         builder: (BuildContext context, StateSetter setState) {
-                          return FadeIn(
-                            child: Padding(
-                              padding: const EdgeInsets.all(Global.paddingBody),
-                              child: buildForm(
-                                  context: context,
-                                  formKey: _formKey,
-                                  isEditing: _isEditing,
-                                  userData: user,
-                                  onEditHandler: () {
-                                    setState(() {
-                                      _isEditing = !_isEditing;
-                                    });
-                                  },
-                                  onLogoutHandler: () {
-                                    showConfirmLogoutModal(
-                                      context: context,
-                                      onProceedHandler: _logOut,
-                                    );
-                                  }),
-                            ),
+                          return buildForm(
+                            context: context,
+                            formKey: _formKey,
+                            // variables
+                            isEditing: _isEditing,
+                            userData: user,
+                            // controllers
+                            firstNameController: _firstNameController,
+                            lastNameController: _lastNameController,
+                            contactNumberController: _contactNumberController,
+                            emailController: _emailController,
+                            addressController: _addressController,
+                            birthDateController: _birthDateController,
+                            birthDateOnTapHandler: (date) => setState(() {
+                              _birthDateController.text = DateFormat('yyyy-MM-dd').format(date);
+                            }),
+                            onEditHandler: () => setState(() {
+                              _isEditing = !_isEditing;
+                            }),
+                            onLogoutHandler: () => showConfirmLogoutModal(context: context, onProceedHandler: _logOut),
                           );
                         },
                       );
@@ -122,15 +128,19 @@ class _AccountScreenState extends State<AccountScreen> {
           ),
         ],
       ),
-      floatingActionButton: (_isEditing)
-          ? EBButton(
-              onPressed: () {},
-              text: 'Save',
-              theme: EBButtonTheme.primary,
-              icon: const Icon(FeatherIcons.arrowRight, size: EBFontSize.normal),
-            )
-          : null,
       bottomNavigationBar: const EBAppBarBottom(activeIndex: 4),
+    );
+  }
+
+  Widget _buildLoadingIndicator(BuildContext context) {
+    return SizedBox(
+      height: MediaQuery.of(context).size.height / 2,
+      child: Center(
+        child: CircularProgressIndicator(
+          color: EBColor.green,
+          strokeCap: StrokeCap.round,
+        ),
+      ),
     );
   }
 }
