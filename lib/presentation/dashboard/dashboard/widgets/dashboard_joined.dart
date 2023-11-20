@@ -14,6 +14,7 @@ import 'package:ebayan/widgets/shared/appbar_top.dart';
 import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:logger/logger.dart';
 
 import 'announcement_card.dart';
 import 'heading.dart';
@@ -30,7 +31,6 @@ class JoinedDashboardView extends StatefulWidget {
 class _JoinedDashboardViewState extends State<JoinedDashboardView> {
   final BarangayController _brgyController = BarangayController();
   final UserController _userController = UserController();
-
   // variables
   String barangayName = '∙∙∙';
   String barangayCode = '∙∙∙';
@@ -116,9 +116,7 @@ class _JoinedDashboardViewState extends State<JoinedDashboardView> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.of(context).push(createRoute(route: '/dashboard/join_brgy'));
-        },
+        onPressed: () {},
         child: const Icon(FeatherIcons.plus),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
