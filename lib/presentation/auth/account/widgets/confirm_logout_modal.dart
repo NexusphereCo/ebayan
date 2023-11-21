@@ -26,7 +26,7 @@ Future<void> showConfirmLogoutModal({
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              EBTypography.h3(text: 'Leaving soon?'),
+              EBTypography.h3(text: 'Leaving so soon?'),
               const SizedBox(height: Spacing.xs),
               EBTypography.text(
                 text: 'Logging out will end your current session, requiring you to sign in again. \n\nAre you sure you want to proceed?',

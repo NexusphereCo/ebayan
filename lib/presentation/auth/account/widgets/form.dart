@@ -12,6 +12,7 @@ import 'package:intl/intl.dart';
 import 'large_button.dart';
 
 Widget buildForm({
+  required BuildContext context,
   required GlobalKey<FormState> formKey,
   required UserViewModel userData,
   // controllers
@@ -26,7 +27,7 @@ Widget buildForm({
   required bool isEditing,
   required void Function() onEditHandler,
   required void Function() onLogoutHandler,
-  required BuildContext context,
+  required void Function() onSaveHandler,
 }) {
   final inputDecoration = InputDecoration(
     contentPadding: EdgeInsets.zero,
@@ -215,7 +216,7 @@ Widget buildForm({
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
                                 EBButton(
-                                  onPressed: () {},
+                                  onPressed: onSaveHandler,
                                   text: 'Save',
                                   theme: EBButtonTheme.successOutlined,
                                   icon: const Icon(FeatherIcons.arrowRight, size: EBFontSize.normal),

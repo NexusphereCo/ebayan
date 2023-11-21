@@ -98,26 +98,26 @@ class _AccountScreenState extends State<AccountScreen> {
                       return StatefulBuilder(
                         builder: (BuildContext context, StateSetter setState) {
                           return buildForm(
-                            context: context,
-                            formKey: _formKey,
-                            // variables
-                            isEditing: _isEditing,
-                            userData: user,
-                            // controllers
-                            firstNameController: _firstNameController,
-                            lastNameController: _lastNameController,
-                            contactNumberController: _contactNumberController,
-                            emailController: _emailController,
-                            addressController: _addressController,
-                            birthDateController: _birthDateController,
-                            birthDateOnTapHandler: (date) => setState(() {
-                              _birthDateController.text = DateFormat('yyyy-MM-dd').format(date);
-                            }),
-                            onEditHandler: () => setState(() {
-                              _isEditing = !_isEditing;
-                            }),
-                            onLogoutHandler: () => showConfirmLogoutModal(context: context, onProceedHandler: _logOut),
-                          );
+                              context: context,
+                              formKey: _formKey,
+                              // variables
+                              isEditing: _isEditing,
+                              userData: user,
+                              // controllers
+                              firstNameController: _firstNameController,
+                              lastNameController: _lastNameController,
+                              contactNumberController: _contactNumberController,
+                              emailController: _emailController,
+                              addressController: _addressController,
+                              birthDateController: _birthDateController,
+                              birthDateOnTapHandler: (date) => setState(() {
+                                    _birthDateController.text = DateFormat('yyyy-MM-dd').format(date);
+                                  }),
+                              onEditHandler: () => setState(() {
+                                    _isEditing = !_isEditing;
+                                  }),
+                              onLogoutHandler: () => showConfirmLogoutModal(context: context, onProceedHandler: _logOut),
+                              onSaveHandler: () {});
                         },
                       );
                     }
