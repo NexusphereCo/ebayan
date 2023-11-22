@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ebayan/constants/validation.dart';
 import 'package:ebayan/data/model/login_model.dart';
-import 'package:ebayan/data/model/register_model.dart';
+import 'package:ebayan/data/model/user_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:logger/logger.dart';
@@ -42,7 +42,7 @@ class RegisterOfficialController {
   final FirebaseFirestore _dbFirestore = FirebaseFirestore.instance;
   final Logger log = Logger();
 
-  Future<void> register(OfficialModel docData) async {
+  Future<void> register(UserModel docData) async {
     try {
       log.i(docData.toJson());
 
@@ -54,7 +54,7 @@ class RegisterOfficialController {
       final folder = storage.child('proofs');
       final proof = folder.child('DOC_${docData.lastName.toUpperCase()}_${DateTime.timestamp()}.pdf');
 
-      await proof.putFile(docData.proofOfOfficial);
+      await proof.putFile(docData.proofOfOfficial!);
 
       // set the display name
       await userCredentials.user?.updateDisplayName(docData.firstName);
@@ -72,7 +72,7 @@ class RegisterResidentController {
   final FirebaseFirestore _dbFirestore = FirebaseFirestore.instance;
   final Logger log = Logger();
 
-  Future<void> register(ResidentModel docData) async {
+  Future<void> register(UserModel docData) async {
     try {
       log.i(docData.toJson());
 

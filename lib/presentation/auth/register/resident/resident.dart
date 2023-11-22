@@ -2,7 +2,7 @@ import 'package:ebayan/constants/assets.dart';
 import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/constants/typography.dart';
 import 'package:ebayan/controller/auth_controller.dart';
-import 'package:ebayan/data/model/register_model.dart';
+import 'package:ebayan/data/model/user_model.dart';
 import 'package:ebayan/utils/global.dart';
 import 'package:ebayan/utils/routes.dart';
 import 'package:ebayan/utils/style.dart';
@@ -93,9 +93,8 @@ class _RegisterResidentScreenState extends State<RegisterResidentScreen> with Si
 
     if (_formKey.currentState?.validate() == true) {
       try {
-        // map the data to a [RegisterResidentModel] model
-        ResidentModel model = ResidentModel(
-          userType: 'RESIDENT',
+        UserModel model = UserModel(
+          userType: UserType.resident,
           firstName: _firstNameController.text,
           lastName: _lastNameController.text,
           email: _emailController.text,

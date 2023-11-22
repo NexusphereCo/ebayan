@@ -8,7 +8,7 @@ import 'package:ebayan/controller/auth_controller.dart';
 import 'package:ebayan/controller/brgy_controller.dart';
 import 'package:ebayan/data/model/barangay_model.dart';
 import 'package:ebayan/data/model/municipality_model.dart';
-import 'package:ebayan/data/model/register_model.dart';
+import 'package:ebayan/data/model/user_model.dart';
 import 'package:ebayan/utils/global.dart';
 import 'package:ebayan/utils/routes.dart';
 import 'package:ebayan/utils/style.dart';
@@ -59,7 +59,6 @@ class _RegisterOfficialScreenState extends State<RegisterOfficialScreen> with Si
 
   bool _showPassword = false;
   bool _isBrgyFieldEnabled = false;
-  String _selectedMuniId = '';
   String _selectedBarangayId = '';
   String _docFilePath = '';
 
@@ -133,16 +132,14 @@ class _RegisterOfficialScreenState extends State<RegisterOfficialScreen> with Si
 
     if (_formKey.currentState?.validate() == true) {
       try {
-        // map the data to a [RegisterOfficialModel] model
-        OfficialModel model = OfficialModel(
-          userType: 'OFFICIAL',
+        UserModel model = UserModel(
+          userType: UserType.official,
           firstName: _firstNameController.text,
           lastName: _lastNameController.text,
           email: _emailController.text,
           contactNumber: _contactNumberController.text,
           address: _addressController.text,
           birthDate: _birthDateController.text,
-          municipality: _selectedMuniId,
           barangayAssociated: _selectedBarangayId,
           isApproved: false,
           proofOfOfficial: File(_docFilePath),
@@ -276,7 +273,6 @@ class _RegisterOfficialScreenState extends State<RegisterOfficialScreen> with Si
         var selectedMunicipality = listOfMunicipalities[index].municipality;
 
         _municipalityController.text = selectedMunicipality;
-        _selectedMuniId = docId;
         _barangayController.text = '';
 
         setState(() {
