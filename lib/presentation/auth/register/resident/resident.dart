@@ -111,7 +111,7 @@ class _RegisterResidentScreenState extends State<RegisterResidentScreen> with Si
 
         if (context.mounted) {
           loadingScreen.hide(context);
-          Navigator.of(context).pushReplacement(createRoute(route: '/dashboard', args: {'startTutorial': true}));
+          Navigator.of(context).pushReplacement(createRoute(route: Routes.dashboard, args: {'startTutorial': true}));
         }
       } catch (err) {
         if (context.mounted) {

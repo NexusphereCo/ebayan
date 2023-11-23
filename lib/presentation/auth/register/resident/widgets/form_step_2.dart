@@ -159,7 +159,7 @@ Widget buildLoginCred({
                     child: TextButton(
                       style: ButtonStyle(padding: MaterialStateProperty.all(EdgeInsets.zero)),
                       onPressed: () {
-                        Navigator.of(context).push(createRoute(route: '/login'));
+                        Navigator.of(context).push(createRoute(route: Routes.login));
                       },
                       child: EBTypography.text(
                         text: 'login.',

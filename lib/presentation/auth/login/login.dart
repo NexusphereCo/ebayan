@@ -50,7 +50,7 @@ class _LoginScreenState extends State<LoginScreen> {
     loginController.signIn(model).then((data) {
       loadingScreen.hide(context);
 
-      if (context.mounted) Navigator.of(context).push(createRoute(route: '/dashboard'));
+      if (context.mounted) Navigator.of(context).push(createRoute(route: Routes.dashboard));
     }).catchError((err) {
       loadingScreen.hide(context);
 

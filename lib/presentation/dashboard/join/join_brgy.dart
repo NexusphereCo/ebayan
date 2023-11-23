@@ -68,7 +68,7 @@ class _JoinBrgyScreenState extends State<JoinBrgyScreen> {
           // hide loading screen and navigate to the dashboard
           if (context.mounted) {
             loadingScreen.hide(context);
-            Navigator.of(context).pushReplacement(createRoute(route: '/dashboard'));
+            Navigator.of(context).pushReplacement(createRoute(route: Routes.dashboard));
             return;
           }
         } else {

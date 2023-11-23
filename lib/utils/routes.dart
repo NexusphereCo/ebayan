@@ -25,7 +25,7 @@ class Routes {
   // Dashboard related
   static const String dashboard = '/dashboard';
   static const String joinBrgy = '/dashboard/join_brgy';
-  static const String announcementList = '/dashboard/announcement_list';
+  static const String announcements = '/dashboard/announcements';
   static const String createAnnouncement = '/dashboard/create_announcement';
 
   /// NOTE(Gene): when adding routes here, make sure to modify both variables
@@ -40,7 +40,7 @@ class Routes {
     registerResident: () => const RegisterResidentScreen(),
     dashboard: () => const DashboardScreen(),
     joinBrgy: () => const JoinBrgyScreen(),
-    announcementList: () => const AnnouncementListScreen(),
+    announcements: () => const AnnouncementListScreen(),
     createAnnouncement: () => const CreateAnnouncementScreen(),
   };
 
@@ -53,7 +53,7 @@ class Routes {
     registerResident: (BuildContext context) => const RegisterResidentScreen(),
     dashboard: (BuildContext context) => const DashboardScreen(),
     joinBrgy: (BuildContext context) => const JoinBrgyScreen(),
-    announcementList: (BuildContext context) => const AnnouncementListScreen(),
+    announcements: (BuildContext context) => const AnnouncementListScreen(),
     createAnnouncement: (BuildContext context) => const CreateAnnouncementScreen(),
   };
 }

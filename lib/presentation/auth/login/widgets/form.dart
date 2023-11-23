@@ -93,7 +93,7 @@ Widget buildForm({
           ),
           TextButton(
             onPressed: () {
-              Navigator.of(context).push(createRoute(route: '/register'));
+              Navigator.of(context).push(createRoute(route: Routes.register));
             },
             style: ButtonStyle(padding: MaterialStateProperty.all(const EdgeInsets.all(0))),
             child: EBTypography.text(

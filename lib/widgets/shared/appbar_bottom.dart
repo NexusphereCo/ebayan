@@ -24,7 +24,7 @@ class EBAppBarBottom extends StatelessWidget {
         children: [
           InkResponse(
             onTap: () {
-              Navigator.of(context).push(createRoute(route: '/dashboard'));
+              Navigator.of(context).push(createRoute(route: Routes.dashboard));
             },
             child: GestureDetector(
               child: Wrap(
@@ -92,7 +92,9 @@ class EBAppBarBottom extends StatelessWidget {
           ),
           InkResponse(
             onTap: () {
-              Navigator.of(context).push(createRoute(route: '/account/info'));
+              if (ModalRoute.of(context)?.settings.name != Routes.accountInfo) {
+                Navigator.of(context).push(createRoute(route: Routes.accountInfo));
+              }
             },
             child: GestureDetector(
               child: Wrap(

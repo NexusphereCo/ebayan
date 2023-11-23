@@ -173,7 +173,7 @@ class _JoinedDashboardLoadingViewState extends State<JoinedDashboardLoadingView>
           ),
           floatingActionButton: FloatingActionButton(
             onPressed: () {
-              Navigator.of(context).push(createRoute(route: '/dashboard/join_brgy'));
+              Navigator.of(context).push(createRoute(route: Routes.joinBrgy));
             },
             child: const Icon(FeatherIcons.plus),
           ),

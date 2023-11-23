@@ -59,7 +59,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 child: EBButton(
                   onPressed: () async {
                     if (await isConnected() && context.mounted) {
-                      Navigator.of(context).push(createRoute(route: '/register/as_resident'));
+                      Navigator.of(context).push(createRoute(route: Routes.registerResident));
                     } else {
                       ScaffoldMessenger.of(context).showSnackBar(EBSnackBar.info(text: Validation.networkFail));
                     }
@@ -74,7 +74,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 child: EBButton(
                   onPressed: () async {
                     if (await isConnected() && context.mounted) {
-                      Navigator.of(context).push(createRoute(route: '/register/as_official'));
+                      Navigator.of(context).push(createRoute(route: Routes.registerOfficial));
                     } else {
                       ScaffoldMessenger.of(context).showSnackBar(EBSnackBar.info(text: Validation.networkFail));
                     }

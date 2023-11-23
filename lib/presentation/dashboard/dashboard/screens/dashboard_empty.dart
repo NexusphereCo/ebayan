@@ -58,7 +58,7 @@ class _EmptyDashboardViewState extends State<EmptyDashboardView> {
                     width: double.infinity,
                     child: EBButton(
                       onPressed: () {
-                        Navigator.of(context).push(createRoute(route: '/dashboard/join_brgy'));
+                        Navigator.of(context).push(createRoute(route: Routes.joinBrgy));
                       },
                       text: 'Get Started!',
                       theme: EBButtonTheme.primary,
@@ -74,7 +74,7 @@ class _EmptyDashboardViewState extends State<EmptyDashboardView> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.of(context).push(createRoute(route: '/dashboard/join_brgy'));
+          Navigator.of(context).push(createRoute(route: Routes.joinBrgy));
         },
         child: const Icon(FeatherIcons.plus),
       ),

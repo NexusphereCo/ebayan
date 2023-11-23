@@ -102,7 +102,7 @@ class _EBDrawerState extends State<EBDrawer> {
 
     if (context.mounted) {
       _loadingScreen.hide(context);
-      Navigator.of(context).push(createRoute(route: '/login'));
+      Navigator.of(context).push(createRoute(route: Routes.login));
     }
   }
 

@@ -48,7 +48,7 @@ class _AnnouncementListScreenState extends State<AnnouncementListScreen> {
         appBar: const EBAppBar(),
         drawer: const EBDrawer(),
         floatingActionButton: FloatingActionButton(
-          onPressed: () => Navigator.of(context).push(createRoute(route: '/dashboard/create_announcement')),
+          onPressed: () => Navigator.of(context).push(createRoute(route: Routes.createAnnouncement)),
           child: const Icon(Icons.add),
         ),
         body: ListView.builder(

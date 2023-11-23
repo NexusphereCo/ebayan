@@ -152,7 +152,7 @@ class _RegisterOfficialScreenState extends State<RegisterOfficialScreen> with Si
 
         if (context.mounted) {
           loadingScreen.hide(context);
-          Navigator.of(context).pushReplacement(createRoute(route: '/dashboard'));
+          Navigator.of(context).pushReplacement(createRoute(route: Routes.dashboard));
         }
       } catch (err) {
         if (context.mounted) {
