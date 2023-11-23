@@ -117,7 +117,7 @@ class _AccountScreenState extends State<AccountScreen> {
               children: [
                 const SizedBox(height: Spacing.md),
                 EBTypography.h1(text: 'Account Information', textAlign: TextAlign.center),
-                const SizedBox(height: Spacing.xl),
+                const SizedBox(height: Spacing.md),
                 FutureBuilder(
                   future: _fetchUserData(),
                   builder: (context, snapshot) {

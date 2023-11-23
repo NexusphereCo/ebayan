@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:ebayan/constants/validation.dart';
 import 'package:ebayan/data/model/user_model.dart';
 import 'package:ebayan/data/viewmodel/user_view_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -14,8 +15,20 @@ class UserController {
   }
 
   Future<void> updateInfo(UserUpdateModel data) async {
-    await _dbFirestore.collection('users').doc(_dbAuth.currentUser?.uid).update(data.toJson());
-    await _dbAuth.currentUser?.updateDisplayName(data.firstName);
+    try {
+      await _dbFirestore.collection('users').doc(_dbAuth.currentUser?.uid).update(data.toJson());
+      await _dbAuth.currentUser?.updateDisplayName(data.firstName);
+      await _dbAuth.currentUser?.updateEmail(data.email);
+    } on FirebaseAuthException catch (err) {
+      final errorMessages = {
+        'invalid-email': Validation.invalidEmail,
+        'email-already-in-use': Validation.emailAlreadyInUse,
+        'network-request-failed': Validation.networkFail,
+      };
+
+      log.e('${err.code}: $err');
+      throw errorMessages[err.code.toLowerCase()].toString();
+    }
   }
 
   Future<void> changePassword(String newPassword) async {

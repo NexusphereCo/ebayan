@@ -1,7 +1,6 @@
 import 'package:bottom_picker/bottom_picker.dart';
 import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/constants/typography.dart';
-import 'package:ebayan/constants/validation.dart';
 import 'package:ebayan/data/viewmodel/user_view_model.dart';
 import 'package:ebayan/utils/style.dart';
 import 'package:ebayan/widgets/components/buttons.dart';
@@ -50,8 +49,14 @@ Widget buildForm({
             Container(
               decoration: BoxDecoration(
                 color: EBColor.light,
-                border: Border.all(color: EBColor.green),
                 borderRadius: BorderRadius.circular(EBBorderRadius.lg),
+                boxShadow: [
+                  BoxShadow(
+                    offset: const Offset(0, 4),
+                    blurRadius: 30,
+                    color: EBColor.primary.withOpacity(0.25),
+                  ),
+                ],
               ),
               child: Padding(
                 padding: const EdgeInsets.all(Spacing.lg),
@@ -61,13 +66,13 @@ Widget buildForm({
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            const Icon(FeatherIcons.user, size: EBFontSize.h2),
-                            const SizedBox(width: Spacing.sm),
-                            EBTypography.h4(text: 'Personal Information'),
-                          ],
+                        Container(
+                          padding: const EdgeInsets.symmetric(horizontal: EBBorderRadius.md, vertical: EBBorderRadius.sm),
+                          decoration: BoxDecoration(
+                            color: EBColor.green,
+                            borderRadius: const BorderRadius.all(Radius.circular(EBBorderRadius.lg)),
+                          ),
+                          child: EBTypography.label(text: userData.userType, color: EBColor.light),
                         ),
                         TextButton(
                           onPressed: onEditHandler,
@@ -89,6 +94,20 @@ Widget buildForm({
                         ),
                       ],
                     ),
+                    const SizedBox(height: Spacing.sm),
+                    Row(
+                      children: [
+                        Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            const Icon(FeatherIcons.user, size: EBFontSize.h2),
+                            const SizedBox(width: Spacing.sm),
+                            EBTypography.h4(text: 'Personal Information'),
+                          ],
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: Spacing.md),
                     Row(
                       children: [
                         EBTypography.text(text: 'First Name:', muted: true),
