@@ -140,7 +140,11 @@ class _EBDrawerState extends State<EBDrawer> {
           ),
           ListTile(
             title: EBTypography.text(text: 'Dashboard'),
-            onTap: () {},
+            onTap: () {
+              if (ModalRoute.of(context)?.settings.name != Routes.dashboard) {
+                Navigator.of(context).push(createRoute(route: Routes.dashboard));
+              }
+            },
           ),
           ListTile(
             title: EBTypography.text(text: 'File Complaints'),
@@ -152,7 +156,11 @@ class _EBDrawerState extends State<EBDrawer> {
           ),
           ListTile(
             title: EBTypography.text(text: 'Account Settings'),
-            onTap: () {},
+            onTap: () {
+              if (ModalRoute.of(context)?.settings.name != Routes.accountInfo) {
+                Navigator.of(context).push(createRoute(route: Routes.accountInfo));
+              }
+            },
           ),
           ListTile(
             title: EBTypography.text(text: 'Logout', color: EBColor.red),
