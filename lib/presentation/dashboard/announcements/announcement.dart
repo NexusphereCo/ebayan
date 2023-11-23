@@ -2,6 +2,7 @@ import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/constants/typography.dart';
 import 'package:ebayan/controller/anct_controller.dart';
 import 'package:ebayan/data/model/announcement_model.dart';
+import 'package:ebayan/presentation/dashboard/announcements/widgets/comment_section.dart';
 import 'package:ebayan/utils/style.dart';
 import 'package:ebayan/widgets/shared/appbar_top.dart';
 import 'package:feather_icons/feather_icons.dart';
@@ -55,10 +56,11 @@ class _AnnouncementScreenState extends State<AnnouncementScreen> {
         } else {
           AnnouncementModel announcement = snapshot.data!;
           return Scaffold(
-            appBar: const EBAppBar(
+            appBar: EBAppBar(
               enablePop: true,
               noTitle: true,
               more: true,
+              annId: widget.annId,
             ),
             body: Padding(
               padding: const EdgeInsets.all(Global.paddingBody),
@@ -88,7 +90,7 @@ class _AnnouncementScreenState extends State<AnnouncementScreen> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      EBTypography.small(
+                      EBTypography.text(
                         text: announcement.body,
                         textAlign: TextAlign.justify,
                       ),
@@ -127,7 +129,17 @@ class _AnnouncementScreenState extends State<AnnouncementScreen> {
               child: Padding(
                 padding: const EdgeInsets.only(bottom: Global.paddingBody),
                 child: FloatingActionButton.extended(
-                  onPressed: () {},
+                  onPressed: () {
+                    showModalBottomSheet(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return const CommentSection();
+                      },
+                      shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.vertical(top: Radius.circular(20.0)),
+                      ),
+                    );
+                  },
                   label: const Text('View Comment'), // Text label
                   icon: const Icon(FeatherIcons.messageCircle), // Icon
                   backgroundColor: EBColor.light, // Background color
