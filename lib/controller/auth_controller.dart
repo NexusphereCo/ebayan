@@ -37,12 +37,12 @@ class LoginController {
   }
 }
 
-class RegisterOfficialController {
+class RegisterController {
   final FirebaseAuth _dbAuth = FirebaseAuth.instance;
   final FirebaseFirestore _dbFirestore = FirebaseFirestore.instance;
   final Logger log = Logger();
 
-  Future<void> register(UserModel docData) async {
+  Future<void> registerAsOfficial(UserModel docData) async {
     try {
       log.i(docData.toJson());
 
@@ -65,14 +65,8 @@ class RegisterOfficialController {
       throw 'An error occurred during registration.';
     }
   }
-}
 
-class RegisterResidentController {
-  final FirebaseAuth _dbAuth = FirebaseAuth.instance;
-  final FirebaseFirestore _dbFirestore = FirebaseFirestore.instance;
-  final Logger log = Logger();
-
-  Future<void> register(UserModel docData) async {
+  Future<void> registerAsResident(UserModel docData) async {
     try {
       log.i(docData.toJson());
 

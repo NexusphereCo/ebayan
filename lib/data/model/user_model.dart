@@ -41,7 +41,7 @@ class UserModel {
   /// returns a [Map] json.
   Map<String, dynamic> toJson() {
     switch (userType) {
-      case UserType.official:
+      case UserType.resident:
         return {
           'userType': 'OFFICIAL',
           'firstName': firstName,
@@ -53,7 +53,7 @@ class UserModel {
           'barangayAssociated': barangayAssociated,
           'username': email,
         };
-      case UserType.resident:
+      case UserType.official:
         String docFileName = 'DOC_${lastName.toUpperCase()}_${DateTime.timestamp()}.pdf';
         return {
           'userType': 'RESIDENT',

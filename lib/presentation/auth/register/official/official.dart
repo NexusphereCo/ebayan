@@ -34,7 +34,7 @@ class RegisterOfficialScreen extends StatefulWidget {
 }
 
 class _RegisterOfficialScreenState extends State<RegisterOfficialScreen> with SingleTickerProviderStateMixin {
-  final RegisterOfficialController _registerController = RegisterOfficialController();
+  final RegisterController _registerController = RegisterController();
   final BarangayController _brgyController = BarangayController();
   final EBLoadingScreen loadingScreen = const EBLoadingScreen();
 
@@ -148,7 +148,7 @@ class _RegisterOfficialScreenState extends State<RegisterOfficialScreen> with Si
         );
 
         // call the controller register function
-        await _registerController.register(model);
+        await _registerController.registerAsOfficial(model);
 
         if (context.mounted) {
           loadingScreen.hide(context);
