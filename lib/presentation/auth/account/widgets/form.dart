@@ -1,12 +1,14 @@
 import 'package:bottom_picker/bottom_picker.dart';
 import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/constants/typography.dart';
+import 'package:ebayan/constants/validation.dart';
 import 'package:ebayan/data/viewmodel/user_view_model.dart';
 import 'package:ebayan/utils/style.dart';
 import 'package:ebayan/widgets/components/buttons.dart';
 import 'package:ebayan/widgets/utils/fade_in.dart';
 import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 
 import 'large_button.dart';
@@ -33,6 +35,8 @@ Widget buildForm({
     contentPadding: EdgeInsets.zero,
     enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: EBColor.dark[50]!)),
     focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: EBColor.primary)),
+    errorStyle: const TextStyle(height: 0),
+    counterText: '',
     isDense: true,
   );
   return FadeIn(
@@ -96,6 +100,11 @@ Widget buildForm({
                                   keyboardType: TextInputType.name,
                                   style: const TextStyle(fontSize: EBFontSize.normal),
                                   decoration: inputDecoration,
+                                  validator: (value) {
+                                    value = value?.trim();
+                                    if (value == null || value.isEmpty) return '';
+                                    return null;
+                                  },
                                 ),
                               )
                             : EBTypography.text(text: userData.firstName, muted: true),
@@ -113,6 +122,11 @@ Widget buildForm({
                                   keyboardType: TextInputType.name,
                                   style: const TextStyle(fontSize: EBFontSize.normal),
                                   decoration: inputDecoration,
+                                  validator: (value) {
+                                    value = value?.trim();
+                                    if (value == null || value.isEmpty) return '';
+                                    return null;
+                                  },
                                 ),
                               )
                             : EBTypography.text(text: userData.lastName, muted: true),
@@ -163,8 +177,20 @@ Widget buildForm({
                                 child: TextFormField(
                                   controller: contactNumberController,
                                   keyboardType: TextInputType.phone,
+                                  inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                                  maxLength: 11,
                                   style: const TextStyle(fontSize: EBFontSize.normal),
                                   decoration: inputDecoration,
+                                  validator: (value) {
+                                    value = value?.trim();
+                                    final phoneRegExp = RegExp(r'^\d{11}$');
+                                    if (value == null || value.isEmpty) {
+                                      return '';
+                                    } else if (!phoneRegExp.hasMatch(value)) {
+                                      return '';
+                                    }
+                                    return null;
+                                  },
                                 ),
                               )
                             : EBTypography.text(text: userData.contactNumber, muted: true),
@@ -182,6 +208,11 @@ Widget buildForm({
                                   keyboardType: TextInputType.emailAddress,
                                   style: const TextStyle(fontSize: EBFontSize.normal),
                                   decoration: inputDecoration,
+                                  validator: (value) {
+                                    value = value?.trim();
+                                    if (value == null || value.isEmpty) return '';
+                                    return null;
+                                  },
                                 ),
                               )
                             : EBTypography.text(text: userData.email, muted: true),
@@ -203,6 +234,11 @@ Widget buildForm({
                             decoration: inputDecoration,
                             keyboardType: TextInputType.multiline,
                             maxLines: null,
+                            validator: (value) {
+                              value = value?.trim();
+                              if (value == null || value.isEmpty) return '';
+                              return null;
+                            },
                           )
                         : EBTypography.text(
                             text: userData.address,

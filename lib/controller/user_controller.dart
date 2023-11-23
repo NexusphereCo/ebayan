@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:ebayan/data/model/user_model.dart';
 import 'package:ebayan/data/viewmodel/user_view_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:logger/logger.dart';
@@ -10,6 +11,15 @@ class UserController {
 
   Future<String?> getCurrentUserName() async {
     return _dbAuth.currentUser?.displayName;
+  }
+
+  Future<void> updateInfo(UserUpdateModel data) async {
+    await _dbFirestore.collection('users').doc(_dbAuth.currentUser?.uid).update(data.toJson());
+    await _dbAuth.currentUser?.updateDisplayName(data.firstName);
+  }
+
+  Future<void> changePassword(String newPassword) async {
+    await _dbAuth.currentUser?.updatePassword(newPassword);
   }
 
   Future<UserViewModel> getCurrentUserInfo() async {
