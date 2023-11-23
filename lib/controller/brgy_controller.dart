@@ -53,7 +53,7 @@ class BarangayController {
     }
   }
 
-  Future<BarangayViewModel> fetchBarangay(String brgyId) async {
+  Future<BarangayViewModel> fetchBarangayWithLatestAnnouncement(String brgyId) async {
     // Find the barangay
     var barangaysRef = _db.collectionGroup('barangays');
     var barangaySnapshot = await barangaysRef.where('code', isEqualTo: int.parse(brgyId)).get();
