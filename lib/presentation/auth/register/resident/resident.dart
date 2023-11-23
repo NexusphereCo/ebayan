@@ -10,6 +10,7 @@ import 'package:ebayan/widgets/components/loading.dart';
 import 'package:ebayan/widgets/components/progress_indicator.dart';
 import 'package:ebayan/widgets/components/snackbar.dart';
 import 'package:ebayan/widgets/shared/appbar_top.dart';
+import 'package:ebayan/widgets/utils/keep_alive.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:intl/intl.dart';
@@ -30,7 +31,8 @@ class _RegisterResidentScreenState extends State<RegisterResidentScreen> with Si
   final RegisterController _registerController = RegisterController();
   final EBLoadingScreen loadingScreen = const EBLoadingScreen();
 
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _formKey1 = GlobalKey<FormState>();
+  final GlobalKey<FormState> _formKey2 = GlobalKey<FormState>();
 
   late TabController _tabController;
 
@@ -78,12 +80,16 @@ class _RegisterResidentScreenState extends State<RegisterResidentScreen> with Si
   }
 
   void _nextTab(GlobalKey<FormState> formKey) {
-    _formKey.currentState?.validate();
+    bool isFormValid = formKey.currentState?.validate() == true;
 
-    if (_tabController.index < _tabController.length - 1) {
-      _tabController.animateTo(_tabController.index + 1);
-      if (_tabController.index == _tabController.length - 1) {
-        _usernameController.text = _emailController.text;
+    if (isFormValid) {
+      if (_tabController.index < _tabController.length - 1) {
+        _tabController.animateTo(_tabController.index + 1);
+
+        // this just sets the username disabled textfield on the last page
+        if (_tabController.index == _tabController.length - 1) {
+          _usernameController.text = _emailController.text;
+        }
       }
     }
   }
@@ -91,7 +97,10 @@ class _RegisterResidentScreenState extends State<RegisterResidentScreen> with Si
   void _register() async {
     loadingScreen.show(context);
 
-    if (_formKey.currentState?.validate() == true) {
+    bool isForm1Valid = _formKey1.currentState?.validate() == true;
+    bool isForm2Valid = _formKey2.currentState?.validate() == true;
+
+    if (isForm1Valid && isForm2Valid) {
       try {
         UserModel model = UserModel(
           userType: UserType.resident,
@@ -146,36 +155,43 @@ class _RegisterResidentScreenState extends State<RegisterResidentScreen> with Si
             const SizedBox(height: Spacing.lg),
             buildHeading(),
             const SizedBox(height: Spacing.md),
-            Form(
-              key: _formKey,
-              child: Expanded(
-                child: TabBarView(
-                  physics: const NeverScrollableScrollPhysics(),
-                  controller: _tabController,
-                  children: [
-                    buildPersonalInfo(
-                      context: context,
-                      firstNameController: _firstNameController,
-                      lastNameController: _lastNameController,
-                      emailController: _emailController,
-                      contactNumberController: _contactNumberController,
-                      addressController: _addressController,
-                      birthDateController: _birthDateController,
-                      birthDateOnTapHandler: (date) => _setBirthDate(date),
-                      nextTabHandler: () => _nextTab(_formKey),
+            Expanded(
+              child: TabBarView(
+                physics: const NeverScrollableScrollPhysics(),
+                controller: _tabController,
+                children: [
+                  KeepAliveWrapper(
+                    child: Form(
+                      key: _formKey1,
+                      child: buildPersonalInfo(
+                        context: context,
+                        firstNameController: _firstNameController,
+                        lastNameController: _lastNameController,
+                        emailController: _emailController,
+                        contactNumberController: _contactNumberController,
+                        addressController: _addressController,
+                        birthDateController: _birthDateController,
+                        birthDateOnTapHandler: (date) => _setBirthDate(date),
+                        nextTabHandler: () => _nextTab(_formKey1),
+                      ),
                     ),
-                    buildLoginCred(
-                      context: context,
-                      tabController: _tabController,
-                      usernameController: _usernameController,
-                      passwordController: _passwordController,
-                      confirmPasswordController: _confirmPasswordController,
-                      showPassword: _showPassword,
-                      togglePassIconHandler: () => _setTogglePassword(),
-                      onRegisterHandler: _register,
+                  ),
+                  KeepAliveWrapper(
+                    child: Form(
+                      key: _formKey2,
+                      child: buildLoginCred(
+                        context: context,
+                        tabController: _tabController,
+                        usernameController: _usernameController,
+                        passwordController: _passwordController,
+                        confirmPasswordController: _confirmPasswordController,
+                        showPassword: _showPassword,
+                        togglePassIconHandler: () => _setTogglePassword(),
+                        onRegisterHandler: _register,
+                      ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           ],

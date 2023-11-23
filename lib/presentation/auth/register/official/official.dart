@@ -16,6 +16,7 @@ import 'package:ebayan/widgets/components/loading.dart';
 import 'package:ebayan/widgets/components/progress_indicator.dart';
 import 'package:ebayan/widgets/components/snackbar.dart';
 import 'package:ebayan/widgets/shared/appbar_top.dart';
+import 'package:ebayan/widgets/utils/keep_alive.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:intl/intl.dart';
@@ -38,7 +39,9 @@ class _RegisterOfficialScreenState extends State<RegisterOfficialScreen> with Si
   final BarangayController _brgyController = BarangayController();
   final EBLoadingScreen loadingScreen = const EBLoadingScreen();
 
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _formKey1 = GlobalKey<FormState>();
+  final GlobalKey<FormState> _formKey2 = GlobalKey<FormState>();
+  final GlobalKey<FormState> _formKey3 = GlobalKey<FormState>();
 
   late TabController _tabController;
 
@@ -101,12 +104,16 @@ class _RegisterOfficialScreenState extends State<RegisterOfficialScreen> with Si
   }
 
   void _nextTab(GlobalKey<FormState> formKey) {
-    _formKey.currentState?.validate();
+    bool isFormValid = formKey.currentState?.validate() == true;
 
-    if (_tabController.index < _tabController.length - 1) {
-      _tabController.animateTo(_tabController.index + 1);
-      if (_tabController.index == _tabController.length - 1) {
-        _usernameController.text = _emailController.text;
+    if (isFormValid) {
+      if (_tabController.index < _tabController.length - 1) {
+        _tabController.animateTo(_tabController.index + 1);
+
+        // this just sets the username disabled textfield on the last page
+        if (_tabController.index == _tabController.length - 1) {
+          _usernameController.text = _emailController.text;
+        }
       }
     }
   }
@@ -130,7 +137,11 @@ class _RegisterOfficialScreenState extends State<RegisterOfficialScreen> with Si
   void _register() async {
     loadingScreen.show(context);
 
-    if (_formKey.currentState?.validate() == true) {
+    bool isForm1Valid = _formKey1.currentState?.validate() == true;
+    bool isForm2Valid = _formKey2.currentState?.validate() == true;
+    bool isForm3Valid = _formKey3.currentState?.validate() == true;
+
+    if (isForm1Valid && isForm2Valid && isForm3Valid) {
       try {
         UserModel model = UserModel(
           userType: UserType.official,
@@ -187,49 +198,61 @@ class _RegisterOfficialScreenState extends State<RegisterOfficialScreen> with Si
             const SizedBox(height: Spacing.lg),
             buildHeading(),
             const SizedBox(height: Spacing.md),
-            Form(
-              key: _formKey,
-              child: Expanded(
-                child: TabBarView(
-                  physics: const NeverScrollableScrollPhysics(),
-                  controller: _tabController,
-                  children: [
-                    buildPersonalInfo(
-                      context: context,
-                      firstNameController: _firstNameController,
-                      lastNameController: _lastNameController,
-                      emailController: _emailController,
-                      contactNumberController: _contactNumberController,
-                      addressController: _addressController,
-                      birthDateController: _birthDateController,
-                      birthDateOnTapHandler: (date) => _setBirthDate(date),
-                      nextTabHandler: () => _nextTab(_formKey),
+            Expanded(
+              child: TabBarView(
+                physics: const NeverScrollableScrollPhysics(),
+                controller: _tabController,
+                children: [
+                  KeepAliveWrapper(
+                    child: Form(
+                      key: _formKey1,
+                      child: buildPersonalInfo(
+                        context: context,
+                        firstNameController: _firstNameController,
+                        lastNameController: _lastNameController,
+                        emailController: _emailController,
+                        contactNumberController: _contactNumberController,
+                        addressController: _addressController,
+                        birthDateController: _birthDateController,
+                        birthDateOnTapHandler: (date) => _setBirthDate(date),
+                        nextTabHandler: () => _nextTab(_formKey1),
+                      ),
                     ),
-                    buildBarangayAssociation(
-                      context: context,
-                      isBrgyFieldEnabled: _isBrgyFieldEnabled,
-                      tabController: _tabController,
-                      municipalityController: _municipalityController,
-                      barangayController: _barangayController,
-                      proofDocController: _proofDocController,
-                      setFilePath: (result) => _setDocFilePath(result),
-                      municipalityOnTapHandler: () => _showMunicipalityPicker(),
-                      barangayOnTapHandler: () => _showBarangayPicker(),
-                      onClearFieldsHandler: _clearFormStep2Fields,
-                      nextTabHandler: () => _nextTab(_formKey),
+                  ),
+                  KeepAliveWrapper(
+                    child: Form(
+                      key: _formKey2,
+                      child: buildBarangayAssociation(
+                        context: context,
+                        isBrgyFieldEnabled: _isBrgyFieldEnabled,
+                        tabController: _tabController,
+                        municipalityController: _municipalityController,
+                        barangayController: _barangayController,
+                        proofDocController: _proofDocController,
+                        setFilePath: (result) => _setDocFilePath(result),
+                        municipalityOnTapHandler: () => _showMunicipalityPicker(),
+                        barangayOnTapHandler: () => _showBarangayPicker(),
+                        onClearFieldsHandler: _clearFormStep2Fields,
+                        nextTabHandler: () => _nextTab(_formKey2),
+                      ),
                     ),
-                    buildLoginCred(
-                      context: context,
-                      tabController: _tabController,
-                      usernameController: _usernameController,
-                      passwordController: _passwordController,
-                      confirmPasswordController: _confirmPasswordController,
-                      showPassword: _showPassword,
-                      togglePassIconHandler: () => _setTogglePassword(),
-                      onRegisterHandler: _register,
+                  ),
+                  KeepAliveWrapper(
+                    child: Form(
+                      key: _formKey3,
+                      child: buildLoginCred(
+                        context: context,
+                        tabController: _tabController,
+                        usernameController: _usernameController,
+                        passwordController: _passwordController,
+                        confirmPasswordController: _confirmPasswordController,
+                        showPassword: _showPassword,
+                        togglePassIconHandler: () => _setTogglePassword(),
+                        onRegisterHandler: _register,
+                      ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           ],
