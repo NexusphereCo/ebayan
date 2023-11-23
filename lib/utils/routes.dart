@@ -5,6 +5,7 @@ import 'package:ebayan/presentation/auth/register/resident/resident.dart';
 import 'package:ebayan/presentation/dashboard/announcements/announcement.dart';
 import 'package:ebayan/presentation/dashboard/announcements/announcement_list.dart';
 import 'package:ebayan/presentation/dashboard/announcements/create_announcement.dart';
+import 'package:ebayan/presentation/dashboard/announcements/edit_announcement.dart';
 import 'package:ebayan/presentation/dashboard/dashboard/dashboard.dart';
 import 'package:ebayan/presentation/dashboard/join/join_brgy.dart';
 import 'package:flutter/material.dart';
@@ -27,6 +28,7 @@ class Routes {
   static const String announcementList = '/dashboard/announcement_list';
   static const String createAnnouncement = '/dashboard/create_announcement';
   static const String announcement = '/dashboard/announcement';
+  static const String editAnnouncement = '/dashboard/edit_announcement';
 
   /// NOTE(Gene): when adding routes here, make sure to modify both variables
   /// Routes.routesMap and Routes.routes.
@@ -46,6 +48,9 @@ class Routes {
         ),
     createAnnouncement: () => CreateAnnouncementScreen(),
     announcement: () => const AnnouncementScreen(annId: 'default'),
+    editAnnouncement: () => const EditAnnouncementScreen(
+          annId: 'default',
+        ),
   };
 
   // Map that associates route names with their corresponding builder functions.
@@ -67,6 +72,14 @@ class Routes {
       final args = ModalRoute.of(context)?.settings.arguments;
       if (args is String) {
         return AnnouncementScreen(annId: args);
+      } else {
+        throw Exception("Invalid arguments for AnnouncementScreen");
+      }
+    },
+    editAnnouncement: (BuildContext context) {
+      final args = ModalRoute.of(context)?.settings.arguments;
+      if (args is String) {
+        return EditAnnouncementScreen(annId: args);
       } else {
         throw Exception("Invalid arguments for AnnouncementScreen");
       }
