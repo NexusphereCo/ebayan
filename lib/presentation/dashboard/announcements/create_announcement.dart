@@ -7,7 +7,6 @@ import 'package:ebayan/widgets/components/buttons.dart';
 import 'package:ebayan/utils/style.dart';
 import 'package:ebayan/controller/anct_controller.dart';
 import 'package:ebayan/presentation/dashboard/announcements/widgets/switch_button.dart';
-import 'package:intl/intl.dart';
 import 'package:logger/logger.dart';
 
 class CreateAnnouncementScreen extends StatefulWidget {
@@ -22,27 +21,7 @@ class _CreateAnnouncementScreenState extends State<CreateAnnouncementScreen> {
   final AnnouncementController _announcementController = AnnouncementController();
   final TextEditingController _headingController = TextEditingController();
   final TextEditingController _bodyController = TextEditingController();
-  late DateTime _selectedDate;
-
-  @override
-  void initState() {
-    super.initState();
-    _selectedDate = DateTime.now();
-  }
-
-  Future<void> _selectDate(BuildContext context) async {
-    final DateTime? picked = await showDatePicker(
-      context: context,
-      initialDate: _selectedDate,
-      firstDate: DateTime.now(),
-      lastDate: DateTime(2101),
-    );
-    if (picked != null && picked != _selectedDate) {
-      setState(() {
-        _selectedDate = picked;
-      });
-    }
-  }
+  CardOptions? selectedMenu;
 
   @override
   Widget build(BuildContext context) {
@@ -90,13 +69,14 @@ class _CreateAnnouncementScreenState extends State<CreateAnnouncementScreen> {
                   TextField(
                     controller: _headingController,
                     decoration: const InputDecoration(
+                      labelStyle: TextStyle(fontSize: EBFontSize.normal),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(
                           Radius.circular(8.0),
                         ),
                       ),
                       hintText: "Subject",
-                      contentPadding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 15.0),
+                      contentPadding: EdgeInsets.symmetric(horizontal: 14.0, vertical: 15.0),
                     ),
                   ),
                   const SizedBox(height: Spacing.md),
@@ -105,13 +85,14 @@ class _CreateAnnouncementScreenState extends State<CreateAnnouncementScreen> {
                     textAlign: TextAlign.start,
                     maxLines: 13,
                     decoration: const InputDecoration(
+                      labelStyle: TextStyle(fontSize: EBFontSize.normal),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(
                           Radius.circular(8.0),
                         ),
                       ),
                       hintText: "Announce something to your Sphere",
-                      contentPadding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 15.0),
+                      contentPadding: EdgeInsets.symmetric(horizontal: 14.0, vertical: 15.0),
                     ),
                   )
                 ],
@@ -122,20 +103,55 @@ class _CreateAnnouncementScreenState extends State<CreateAnnouncementScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      IconButton(
-                        padding: const EdgeInsets.only(right: 5.0),
+                      PopupMenuButton<CardOptions>(
+                        offset: const Offset(0, -90),
                         icon: Icon(
                           FeatherIcons.plusCircle,
                           color: EBColor.primary,
                         ),
-                        onPressed: () => _selectDate(context),
+                        initialValue: selectedMenu,
+                        onSelected: (CardOptions item) {
+                          setState(() {
+                            selectedMenu = item;
+                          });
+                        },
+                        itemBuilder: (BuildContext context) => <PopupMenuEntry<CardOptions>>[
+                          const PopupMenuItem<CardOptions>(
+                              value: CardOptions.itemOne,
+                              height: 30,
+                              child: Row(
+                                children: [
+                                  Icon(FeatherIcons.paperclip, size: EBFontSize.h4),
+                                  SizedBox(width: 5),
+                                  Text(
+                                    'Add Attachment(s)',
+                                    style: TextStyle(fontSize: 12),
+                                  ),
+                                ],
+                              )),
+                          const PopupMenuItem<CardOptions>(
+                              value: CardOptions.itemTwo,
+                              height: 30,
+                              child: Row(
+                                children: [
+                                  Icon(FeatherIcons.image, size: EBFontSize.h4),
+                                  SizedBox(width: 5),
+                                  Text(
+                                    'Add Photo',
+                                    style: TextStyle(fontSize: 12),
+                                  ),
+                                ],
+                              )),
+                        ],
                       ),
                       Row(
                         children: [
                           EBButton(
                             text: 'Cancel',
                             theme: EBButtonTheme.primaryOutlined,
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
                           ),
                           const SizedBox(width: Spacing.sm),
                           EBButton(
@@ -147,13 +163,9 @@ class _CreateAnnouncementScreenState extends State<CreateAnnouncementScreen> {
                                 String heading = _headingController.text;
                                 String body = _bodyController.text;
 
-                                // Format the selected date as a string with only date and time
-                                String formattedDate = DateFormat('yyyy-MM-dd HH:mm:ss').format(_selectedDate);
-
                                 await _announcementController.createAnnouncement({
                                   'heading': heading,
                                   'body': body,
-                                  'timeCreated': formattedDate,
                                 });
 
                                 // Navigate to a success screen or perform other actions upon successful creation
