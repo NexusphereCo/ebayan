@@ -5,7 +5,6 @@ import 'package:ebayan/controller/brgy_controller.dart';
 import 'package:ebayan/controller/user_controller.dart';
 import 'package:ebayan/data/viewmodel/announcement_view_model.dart';
 import 'package:ebayan/utils/global.dart';
-import 'package:ebayan/utils/routes.dart';
 import 'package:ebayan/utils/style.dart';
 import 'package:ebayan/presentation/dashboard/dashboard/widgets/card_sphere.dart';
 import 'package:ebayan/widgets/components/snackbar.dart';
@@ -14,8 +13,6 @@ import 'package:ebayan/widgets/shared/appbar_top.dart';
 import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:logger/logger.dart';
-
 import 'announcement_card.dart';
 import 'heading.dart';
 
@@ -44,7 +41,7 @@ class _JoinedDashboardViewState extends State<JoinedDashboardView> {
     setState(() => isLoadingBrgyInfo = true);
     try {
       final user = await _userController.getCurrentUserInfo();
-      final barangay = await _brgyController.fetchBarangay(user.barangayAssociated as String);
+      final barangay = await _brgyController.fetchBarangayWithLatestAnnouncement(user.barangayAssociated as String);
 
       setState(() {
         barangayName = barangay.name;
