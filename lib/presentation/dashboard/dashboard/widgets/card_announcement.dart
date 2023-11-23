@@ -106,7 +106,7 @@ ListView _buildListOfAnnouncements(List<AnnouncementViewModel> announcements) =>
                       children: [
                         Icon(FeatherIcons.user, color: EBColor.dark),
                         const SizedBox(width: Spacing.sm),
-                        EBTypography.h4(text: 'John Doe'),
+                        EBTypography.h4(text: 'Author'),
                       ],
                     ),
                     const SizedBox(height: Spacing.sm),

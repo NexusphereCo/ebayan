@@ -21,6 +21,7 @@ class SphereCard extends StatefulWidget {
   final int? numOfPeople;
 
   final bool? isLoading;
+  final bool? disableButtons;
 
   const SphereCard({
     super.key,
@@ -29,6 +30,7 @@ class SphereCard extends StatefulWidget {
     this.hasNewAnnouncements,
     this.numOfPeople,
     this.isLoading,
+    this.disableButtons,
   });
 
   @override
@@ -124,6 +126,7 @@ class _SphereCardState extends State<SphereCard> {
                 },
                 text: 'View',
                 theme: EBButtonTheme.primary,
+                disabled: widget.disableButtons ?? false,
               ),
             ],
           ),

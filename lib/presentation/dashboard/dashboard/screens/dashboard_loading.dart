@@ -166,7 +166,7 @@ class _JoinedDashboardLoadingViewState extends State<JoinedDashboardLoadingView>
                     padding: const EdgeInsets.symmetric(horizontal: Global.paddingBody),
                     child: EBTypography.h3(text: 'Barangay Sphere'),
                   ),
-                  const SphereCard(isLoading: true),
+                  const SphereCard(isLoading: true, disableButtons: true),
                 ],
               )
             ],
