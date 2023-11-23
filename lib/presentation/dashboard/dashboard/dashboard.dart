@@ -34,11 +34,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
             return const EBLoadingScreen(solid: true);
           } else {
             // If the Future is complete, show the appropriate view based on the result.
-            return snapshot.data == true
-                ? (startTutorial)
-                    ? const OnBoardingView()
-                    : const JoinedDashboardView()
-                : const EmptyDashboardView();
+            if (snapshot.data == true) {
+              return (startTutorial) ? const OnBoardingView() : const JoinedDashboardView();
+            } else {
+              return const EmptyDashboardView();
+            }
           }
         },
       ),

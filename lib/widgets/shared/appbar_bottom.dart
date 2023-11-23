@@ -24,7 +24,11 @@ class EBAppBarBottom extends StatelessWidget {
         children: [
           InkResponse(
             onTap: () {
-              Navigator.of(context).push(createRoute(route: Routes.dashboard));
+              if (ModalRoute.of(context)?.settings.name != Routes.dashboard) {
+                Navigator.of(context).push(
+                  createRoute(route: Routes.dashboard),
+                );
+              }
             },
             child: GestureDetector(
               child: Wrap(
