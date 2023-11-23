@@ -2,20 +2,20 @@ import 'package:ebayan/constants/assets.dart';
 import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/constants/icons.dart';
 import 'package:ebayan/constants/typography.dart';
-import 'package:ebayan/presentation/dashboard/announcements/widgets/menu_button.dart';
+import 'package:ebayan/presentation/dashboard/announcements/widgets/dialog_box.dart';
 import 'package:ebayan/utils/routes.dart';
 import 'package:feather_icons/feather_icons.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:logger/logger.dart';
-import 'package:popover/popover.dart';
 
 class EBAppBar extends StatefulWidget implements PreferredSizeWidget {
   final Widget? title;
   final bool? noTitle;
   final bool? enablePop;
   final bool? more;
+  final String? annId;
 
   const EBAppBar({
     Key? key,
@@ -23,6 +23,7 @@ class EBAppBar extends StatefulWidget implements PreferredSizeWidget {
     this.title,
     this.noTitle,
     this.more,
+    this.annId,
   }) : super(key: key);
 
   @override
@@ -46,6 +47,7 @@ class _EBAppBarState extends State<EBAppBar> {
     /// AppBar(enablePop: true) => returns a back button instead of drawer with title heading and logo.
     /// AppBar(enablePop: true, noTitle: true) => returns a back button only with no content.
     /// AppBar(enablePop: true, title: Widget..) => returns a back button with a custom title.
+    /// AppBar(enablePop: true, more: true)
     /// ```
     return AppBar(
       iconTheme: IconThemeData(color: EBColor.primary),
@@ -103,6 +105,22 @@ class _EBAppBarState extends State<EBAppBar> {
                     setState(() {
                       selectedMenu = item;
                     });
+                    if (item == CardOptions.itemOne) {
+                      Navigator.pushNamed(
+                        context,
+                        Routes.editAnnouncement,
+                        arguments: widget.annId,
+                      );
+                    } else if (item == CardOptions.itemTwo) {
+                      showDialog(
+                        context: context,
+                        builder: (context) {
+                          return DeleteAnnouncementBox(
+                            annId: widget.annId.toString(),
+                          );
+                        },
+                      );
+                    }
                   },
                   itemBuilder: (BuildContext context) => <PopupMenuEntry<CardOptions>>[
                     const PopupMenuItem<CardOptions>(
@@ -110,7 +128,7 @@ class _EBAppBarState extends State<EBAppBar> {
                       height: 30,
                       child: Text(
                         'Edit Announcement',
-                        style: TextStyle(fontSize: 12),
+                        style: TextStyle(fontSize: 13),
                       ),
                     ),
                     const PopupMenuItem<CardOptions>(
@@ -118,7 +136,7 @@ class _EBAppBarState extends State<EBAppBar> {
                       height: 30,
                       child: Text(
                         'Delete Announcement',
-                        style: TextStyle(fontSize: 12),
+                        style: TextStyle(fontSize: 13),
                       ),
                     ),
                   ],
