@@ -163,10 +163,7 @@ class _CreateAnnouncementScreenState extends State<CreateAnnouncementScreen> {
                                 String heading = _headingController.text;
                                 String body = _bodyController.text;
 
-                                await _announcementController.createAnnouncement({
-                                  'heading': heading,
-                                  'body': body,
-                                });
+                                /*  await _announcementController.createAnnouncement();*/
 
                                 // Navigate to a success screen or perform other actions upon successful creation
                               } catch (e) {
