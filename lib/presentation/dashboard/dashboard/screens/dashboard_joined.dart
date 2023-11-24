@@ -32,7 +32,7 @@ class _JoinedDashboardViewState extends State<JoinedDashboardView> {
 
   Future<BarangayViewModel> _fetchBarangayInfo() async {
     final user = await _userController.getCurrentUserInfo();
-    final barangay = await _brgyController.fetchBarangay(user.barangayAssociated as String);
+    final barangay = await _brgyController.fetchBarangayWithLatestAnnouncement(user.barangayAssociated as String);
 
     return barangay;
   }

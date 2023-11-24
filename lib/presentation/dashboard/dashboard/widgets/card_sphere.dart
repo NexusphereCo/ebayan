@@ -122,7 +122,7 @@ class _SphereCardState extends State<SphereCard> {
             children: [
               EBButton(
                 onPressed: () {
-                  Navigator.of(context).push(createRoute(route: Routes.announcements));
+                  Navigator.of(context).push(createRoute(route: Routes.announcements, args: {}));
                 },
                 text: 'View',
                 theme: EBButtonTheme.primary,

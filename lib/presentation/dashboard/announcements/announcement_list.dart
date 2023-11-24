@@ -16,14 +16,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:logger/logger.dart';
 
 class AnnouncementListScreen extends StatefulWidget {
-  final Logger log = Logger();
-  final String brgyName;
-  final String brgyCode;
-
-  AnnouncementListScreen({
+  const AnnouncementListScreen({
     Key? key,
-    required this.brgyName,
-    required this.brgyCode,
   }) : super(key: key);
 
   @override
@@ -31,9 +25,9 @@ class AnnouncementListScreen extends StatefulWidget {
 }
 
 class _AnnouncementListScreenState extends State<AnnouncementListScreen> {
+  final Logger log = Logger();
   final AnnouncementController _announcementController = AnnouncementController();
   List<AnnouncementModel> announcements = [];
-  final Logger log = Logger();
 
   @override
   void initState() {
@@ -88,10 +82,10 @@ class _AnnouncementListScreenState extends State<AnnouncementListScreen> {
                 ),
                 const SizedBox(height: Spacing.md),
                 // Use _cardHeader method from SphereCard
-                CardHeader(
-                  barangayName: widget.brgyName,
-                  barangayCode: widget.brgyCode,
-                ),
+                // CardHeader(
+                //   // barangayName: widget.brgyName,
+                //   // barangayCode: widget.brgyCode,
+                // ),
                 const SizedBox(height: Spacing.md),
               ],
             );
