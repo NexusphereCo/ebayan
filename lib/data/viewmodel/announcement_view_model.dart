@@ -1,17 +1,25 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:intl/intl.dart';
 
 class AnnouncementViewModel {
   final String id;
+  final String body;
   final String heading;
-  final String? body;
-  final DateTime? timeCreated;
-  final CollectionReference? comments;
+  final DateTime timeCreated;
+  final String formattedTime; // Formatted time field
 
   AnnouncementViewModel({
     required this.id,
+    required this.body,
     required this.heading,
-    this.body,
-    this.timeCreated,
-    this.comments,
-  });
+    required this.timeCreated,
+  }) : formattedTime = DateFormat('MMMM dd, yyyy').format(timeCreated);
+
+  factory AnnouncementViewModel.map(String annId, Map<String, dynamic> data) {
+    return AnnouncementViewModel(
+      id: annId,
+      body: data['body'],
+      heading: data['heading'],
+      timeCreated: data['timeCreated'].toDate(), // Assuming 'timeCreated' is a Firestore Timestamp
+    );
+  }
 }
