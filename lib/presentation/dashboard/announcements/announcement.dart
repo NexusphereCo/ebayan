@@ -2,6 +2,7 @@ import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/constants/typography.dart';
 import 'package:ebayan/controller/anct_controller.dart';
 import 'package:ebayan/data/model/announcement_model.dart';
+import 'package:ebayan/data/viewmodel/announcement_view_model.dart';
 import 'package:ebayan/presentation/dashboard/announcements/widgets/comment_section.dart';
 import 'package:ebayan/utils/style.dart';
 import 'package:ebayan/widgets/shared/appbar_top.dart';
@@ -22,17 +23,17 @@ class AnnouncementScreen extends StatefulWidget {
 
 class _AnnouncementScreenState extends State<AnnouncementScreen> {
   final AnnouncementController _announcementController = AnnouncementController();
-  late Future<AnnouncementModel> _announcementFuture;
+  late Future<AnnouncementViewModel> _announcementFuture;
 
   @override
   void initState() {
     super.initState();
-    _announcementFuture = _announcementController.viewAnnouncement(widget.annId);
+    _announcementFuture = _announcementController.fetchAnnouncementDetails(widget.annId);
   }
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<AnnouncementModel>(
+    return FutureBuilder<AnnouncementViewModel>(
       future: _announcementFuture,
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
@@ -54,7 +55,7 @@ class _AnnouncementScreenState extends State<AnnouncementScreen> {
             ),
           );
         } else {
-          AnnouncementModel announcement = snapshot.data!;
+          AnnouncementViewModel announcement = snapshot.data!;
           return Scaffold(
             appBar: EBAppBar(
               enablePop: true,
@@ -82,7 +83,7 @@ class _AnnouncementScreenState extends State<AnnouncementScreen> {
                           EBTypography.small(text: 'John Doe', muted: true), // authorName
                         ],
                       ),
-                      EBTypography.small(text: announcement.formattedTime, muted: true), // timeCreated
+                      EBTypography.small(text: announcement.timeCreated.toString(), muted: true), // timeCreated
                     ],
                   ),
                   const SizedBox(height: Spacing.md),
@@ -91,7 +92,7 @@ class _AnnouncementScreenState extends State<AnnouncementScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       EBTypography.text(
-                        text: announcement.body,
+                        text: announcement.body.toString(),
                         textAlign: TextAlign.justify,
                       ),
                       const SizedBox(height: Spacing.lg),
