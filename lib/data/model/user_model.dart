@@ -43,7 +43,7 @@ class UserModel {
     switch (userType) {
       case UserType.resident:
         return {
-          'userType': 'OFFICIAL',
+          'userType': 'RESIDENT',
           'firstName': firstName,
           'lastName': lastName,
           'email': email,
@@ -56,7 +56,7 @@ class UserModel {
       case UserType.official:
         String docFileName = 'DOC_${lastName.toUpperCase()}_${DateTime.timestamp()}.pdf';
         return {
-          'userType': 'RESIDENT',
+          'userType': 'OFFICIAL',
           'firstName': firstName,
           'lastName': lastName,
           'email': email,
