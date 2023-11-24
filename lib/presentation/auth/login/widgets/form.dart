@@ -37,6 +37,7 @@ Widget buildForm({
             }
             return null;
           },
+          maxLines: 1,
         ),
       ),
       const SizedBox(height: Spacing.md),
@@ -47,12 +48,15 @@ Widget buildForm({
           type: TextInputType.text,
           controller: passwordController,
           obscureText: !showPassword,
-          suffixIconButton: IconButton(
-            icon: showPassword ? const Icon(FeatherIcons.eye) : const Icon(FeatherIcons.eyeOff),
-            onPressed: onTogglePasswordHandler,
+          suffixIconButton: Padding(
+            padding: const EdgeInsets.only(right: 10.0),
+            child: IconButton(
+              icon: showPassword ? const Icon(FeatherIcons.eye) : const Icon(FeatherIcons.eyeOff),
+              onPressed: onTogglePasswordHandler,
+            ),
           ),
+          maxLines: 1,
           validator: (value) {
-            value = value?.trim();
             value = value?.trim();
             if (value == null || value.isEmpty) return Validation.missingField;
             if (value.length < 6) return Validation.requiredMinPassword;
@@ -89,7 +93,7 @@ Widget buildForm({
           ),
           TextButton(
             onPressed: () {
-              Navigator.of(context).push(createRoute(route: '/register'));
+              Navigator.of(context).push(createRoute(route: Routes.register));
             },
             style: ButtonStyle(padding: MaterialStateProperty.all(const EdgeInsets.all(0))),
             child: EBTypography.text(

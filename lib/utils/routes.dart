@@ -1,3 +1,4 @@
+import 'package:ebayan/presentation/auth/account/info.dart';
 import 'package:ebayan/presentation/auth/login/login.dart';
 import 'package:ebayan/presentation/auth/register/register.dart';
 import 'package:ebayan/presentation/auth/register/official/official.dart';
@@ -19,13 +20,14 @@ class Routes {
   // Authentication related
   static const String login = '/login';
   static const String register = '/register';
+  static const String accountInfo = '/account/info';
   static const String registerOfficial = '/register/as_official';
   static const String registerResident = '/register/as_resident';
 
   // Dashboard related
   static const String dashboard = '/dashboard';
   static const String joinBrgy = '/dashboard/join_brgy';
-  static const String announcementList = '/dashboard/announcement_list';
+  static const String announcements = '/dashboard/announcements';
   static const String createAnnouncement = '/dashboard/create_announcement';
   static const String announcement = '/dashboard/announcement';
   static const String editAnnouncement = '/dashboard/edit_announcement';
@@ -38,52 +40,26 @@ class Routes {
   static final Map<String, Widget Function()> routesMap = {
     login: () => const LoginScreen(),
     register: () => const RegisterScreen(),
+    accountInfo: () => const AccountScreen(),
     registerOfficial: () => const RegisterOfficialScreen(),
     registerResident: () => const RegisterResidentScreen(),
     dashboard: () => const DashboardScreen(),
     joinBrgy: () => const JoinBrgyScreen(),
-    announcementList: () => AnnouncementListScreen(
-          brgyName: 'default',
-          brgyCode: 'default',
-        ),
-    createAnnouncement: () => CreateAnnouncementScreen(),
-    announcement: () => const AnnouncementScreen(annId: 'default'),
-    editAnnouncement: () => const EditAnnouncementScreen(
-          annId: 'default',
-        ),
+    announcements: () => const AnnouncementListScreen(),
+    createAnnouncement: () => const CreateAnnouncementScreen(),
   };
 
   // Map that associates route names with their corresponding builder functions.
   static final routes = <String, WidgetBuilder>{
     login: (BuildContext context) => const LoginScreen(),
     register: (BuildContext context) => const RegisterScreen(),
+    accountInfo: (BuildContext context) => const AccountScreen(),
     registerOfficial: (BuildContext context) => const RegisterOfficialScreen(),
     registerResident: (BuildContext context) => const RegisterResidentScreen(),
     dashboard: (BuildContext context) => const DashboardScreen(),
     joinBrgy: (BuildContext context) => const JoinBrgyScreen(),
-    announcementList: (BuildContext context) {
-      final args = ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>;
-      final brgyName = args['brgyName'];
-      final brgyCode = args['brgyCode'];
-      return AnnouncementListScreen(brgyName: brgyName, brgyCode: brgyCode);
-    },
-    createAnnouncement: (BuildContext context) => CreateAnnouncementScreen(),
-    announcement: (BuildContext context) {
-      final args = ModalRoute.of(context)?.settings.arguments;
-      if (args is String) {
-        return AnnouncementScreen(annId: args);
-      } else {
-        throw Exception("Invalid arguments for AnnouncementScreen");
-      }
-    },
-    editAnnouncement: (BuildContext context) {
-      final args = ModalRoute.of(context)?.settings.arguments;
-      if (args is String) {
-        return EditAnnouncementScreen(annId: args);
-      } else {
-        throw Exception("Invalid arguments for AnnouncementScreen");
-      }
-    },
+    announcements: (BuildContext context) => const AnnouncementListScreen(),
+    createAnnouncement: (BuildContext context) => const CreateAnnouncementScreen(),
   };
 }
 

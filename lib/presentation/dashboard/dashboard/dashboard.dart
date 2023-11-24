@@ -3,8 +3,8 @@ import 'package:ebayan/presentation/dashboard/onboarding/onboarding.dart';
 import 'package:ebayan/widgets/components/loading.dart';
 import 'package:flutter/material.dart';
 
-import 'widgets/dashboard_empty.dart';
-import 'widgets/dashboard_joined.dart';
+import 'screens/dashboard_empty.dart';
+import 'screens/dashboard_joined.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
@@ -34,11 +34,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
             return const EBLoadingScreen(solid: true);
           } else {
             // If the Future is complete, show the appropriate view based on the result.
-            return snapshot.data == true
-                ? (startTutorial)
-                    ? const OnBoardingView()
-                    : const JoinedDashboardView()
-                : const EmptyDashboardView();
+            if (snapshot.data == true) {
+              return (startTutorial) ? const OnBoardingView() : const JoinedDashboardView();
+            } else {
+              return const EmptyDashboardView();
+            }
           }
         },
       ),

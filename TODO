@@ -1,16 +1,22 @@
 PRIORITY:
 
+    [] weird sidebar bug is reloading the website (probable solution is because it's calling a setState that reloads all the app, try to use a stateful builder)
+    [] fix the spam issue in clicking the bottom appbar from stacking on the stack
+    [] email address should be changed on prop. username, email, and firebase_auth.email
+    [] catch errors on update email
+
 ---
 
 TODO:
 
     [] ui fix on floating label staying floated even unfocus
-    [] implement network catch screen
 
 ---
 
 DONE:
 
+    [X] change the address textfield in register to isDense and maxLines => add this to the form.dart
+    [X] implement network catch screen
     [X] fix the appbar_top config
     [x] Create Announcement [ListView.Builder]
     [x] finish register on official

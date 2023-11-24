@@ -52,6 +52,7 @@ Widget buildPersonalInfo({
                             if (value == null || value.isEmpty) return Validation.missingField;
                             return null;
                           },
+                          maxLines: 1,
                         ),
                       ),
                       const SizedBox(width: Spacing.sm),
@@ -65,6 +66,7 @@ Widget buildPersonalInfo({
                             if (value == null || value.isEmpty) return Validation.missingField;
                             return null;
                           },
+                          maxLines: 1,
                         ),
                       ),
                     ],
@@ -87,6 +89,7 @@ Widget buildPersonalInfo({
                         }
                         return null;
                       },
+                      maxLines: 1,
                     ),
                   ),
                   const SizedBox(height: Spacing.md),
@@ -108,6 +111,7 @@ Widget buildPersonalInfo({
                         }
                         return null;
                       },
+                      maxLines: 1,
                     ),
                   ),
                   const SizedBox(height: Spacing.md),
@@ -116,12 +120,13 @@ Widget buildPersonalInfo({
                     textField: EBTextField(
                       controller: addressController,
                       label: 'Address',
-                      type: TextInputType.text,
+                      type: TextInputType.multiline,
                       validator: (value) {
                         value = value?.trim();
                         if (value == null || value.isEmpty) return Validation.missingField;
                         return null;
                       },
+                      maxLines: null,
                     ),
                   ),
                   const SizedBox(height: Spacing.md),
@@ -132,6 +137,7 @@ Widget buildPersonalInfo({
                       readOnly: true,
                       label: 'Birth Date',
                       type: TextInputType.datetime,
+                      maxLines: 1,
                       onTap: () {
                         BottomPicker.date(
                           onSubmit: birthDateOnTapHandler,

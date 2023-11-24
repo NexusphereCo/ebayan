@@ -10,7 +10,7 @@ import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import 'heading.dart';
+import '../widgets/heading.dart';
 
 class EmptyDashboardView extends StatefulWidget {
   const EmptyDashboardView({
@@ -58,7 +58,7 @@ class _EmptyDashboardViewState extends State<EmptyDashboardView> {
                     width: double.infinity,
                     child: EBButton(
                       onPressed: () {
-                        Navigator.of(context).push(createRoute(route: '/dashboard/join_brgy'));
+                        Navigator.of(context).push(createRoute(route: Routes.joinBrgy));
                       },
                       text: 'Get Started!',
                       theme: EBButtonTheme.primary,
@@ -74,12 +74,12 @@ class _EmptyDashboardViewState extends State<EmptyDashboardView> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.of(context).push(createRoute(route: '/dashboard/join_brgy'));
+          Navigator.of(context).push(createRoute(route: Routes.joinBrgy));
         },
         child: const Icon(FeatherIcons.plus),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      bottomNavigationBar: const EBAppBarBottom(),
+      bottomNavigationBar: const EBAppBarBottom(activeIndex: 1),
     );
   }
 }

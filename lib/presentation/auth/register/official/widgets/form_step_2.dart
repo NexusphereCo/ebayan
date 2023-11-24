@@ -56,6 +56,7 @@ Widget buildBarangayAssociation({
                         if (value == null || value.isEmpty) return Validation.missingField;
                         return null;
                       },
+                      maxLines: 1,
                     ),
                   ),
                   const SizedBox(height: Spacing.md),
@@ -77,6 +78,7 @@ Widget buildBarangayAssociation({
                         if (value == null || value.isEmpty) return Validation.missingField;
                         return null;
                       },
+                      maxLines: 1,
                     ),
                   ),
                   const SizedBox(height: Spacing.md),
@@ -106,6 +108,7 @@ Widget buildBarangayAssociation({
                           setFilePath(result);
                         }
                       },
+                      maxLines: 1,
                     ),
                   ),
                   Row(

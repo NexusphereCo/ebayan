@@ -7,6 +7,8 @@ enum EBButtonTheme {
   primary,
   primaryOutlined,
   secondary,
+  success,
+  successOutlined,
   secondaryOutlined,
   warning,
   warningOutlined,
@@ -50,11 +52,13 @@ class EBButton extends StatelessWidget {
 
   final Icon? icon;
   final EBButtonSize? size;
+  final bool? disabled;
 
   // Array of themes in their categories
   final defaultThemes = {
     EBButtonTheme.primary,
     EBButtonTheme.secondary,
+    EBButtonTheme.success,
     EBButtonTheme.warning,
     EBButtonTheme.danger,
     EBButtonTheme.light,
@@ -63,6 +67,7 @@ class EBButton extends StatelessWidget {
   final outlineThemes = {
     EBButtonTheme.primaryOutlined,
     EBButtonTheme.secondaryOutlined,
+    EBButtonTheme.successOutlined,
     EBButtonTheme.warningOutlined,
     EBButtonTheme.dangerOutlined,
     EBButtonTheme.lightOutlined,
@@ -79,6 +84,7 @@ class EBButton extends StatelessWidget {
     required this.theme,
     this.icon,
     this.size,
+    this.disabled,
   }) : super(key: key);
 
   @override
@@ -111,12 +117,13 @@ class EBButton extends StatelessWidget {
     if (defaultThemes.contains(theme)) {
       // apply the default styles
       button = ElevatedButton(
-        onPressed: onPressed,
+        onPressed: !(disabled ?? false) ? onPressed : null,
         style: ElevatedButton.styleFrom(
           shape: btnShape,
           padding: btnPadding,
           elevation: 0,
           backgroundColor: _setColor(theme),
+          disabledBackgroundColor: _setColor(theme).withOpacity(0.5),
         ),
         child: Wrap(
           crossAxisAlignment: WrapCrossAlignment.center,
@@ -146,12 +153,13 @@ class EBButton extends StatelessWidget {
     else {
       // apply the outline button styles
       button = OutlinedButton(
-        onPressed: onPressed,
+        onPressed: !(disabled ?? false) ? onPressed : null,
         style: OutlinedButton.styleFrom(
           side: BorderSide(color: _setColor(theme)),
           shape: btnShape,
           foregroundColor: _setColor(theme),
           backgroundColor: Colors.transparent,
+          disabledBackgroundColor: _setColor(theme).withOpacity(0.5),
           padding: btnPadding,
           elevation: 0,
         ),
@@ -190,6 +198,8 @@ class EBButton extends StatelessWidget {
         return EBColor.dark;
       case EBButtonTheme.light || EBButtonTheme.lightOutlined:
         return EBColor.light;
+      case EBButtonTheme.success || EBButtonTheme.successOutlined:
+        return EBColor.green;
       case EBButtonTheme.warning || EBButtonTheme.warningOutlined:
         return EBColor.yellow;
       case EBButtonTheme.danger || EBButtonTheme.dangerOutlined:

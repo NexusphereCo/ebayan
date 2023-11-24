@@ -60,10 +60,14 @@ Widget buildLoginCred({
                       label: 'Password',
                       type: TextInputType.text,
                       obscureText: showPassword ? false : true,
-                      suffixIconButton: IconButton(
-                        icon: showPassword ? const Icon(FeatherIcons.eye) : const Icon(FeatherIcons.eyeOff),
-                        onPressed: togglePassIconHandler,
+                      suffixIconButton: Padding(
+                        padding: const EdgeInsets.only(right: 10.0),
+                        child: IconButton(
+                          icon: showPassword ? const Icon(FeatherIcons.eye) : const Icon(FeatherIcons.eyeOff),
+                          onPressed: togglePassIconHandler,
+                        ),
                       ),
+                      maxLines: 1,
                       validator: (value) {
                         value = value?.trim();
                         if (value == null || value.isEmpty) return Validation.missingField;
@@ -81,10 +85,14 @@ Widget buildLoginCred({
                       label: 'Confirm Password',
                       type: TextInputType.text,
                       obscureText: showPassword ? false : true,
-                      suffixIconButton: IconButton(
-                        icon: showPassword ? const Icon(FeatherIcons.eye) : const Icon(FeatherIcons.eyeOff),
-                        onPressed: togglePassIconHandler,
+                      suffixIconButton: Padding(
+                        padding: const EdgeInsets.only(right: 10.0),
+                        child: IconButton(
+                          icon: showPassword ? const Icon(FeatherIcons.eye) : const Icon(FeatherIcons.eyeOff),
+                          onPressed: togglePassIconHandler,
+                        ),
                       ),
+                      maxLines: 1,
                       validator: (value) {
                         value = value?.trim();
                         if (value == null || value.isEmpty) return Validation.missingField;
@@ -150,7 +158,7 @@ Widget buildLoginCred({
                     child: TextButton(
                       style: ButtonStyle(padding: MaterialStateProperty.all(EdgeInsets.zero)),
                       onPressed: () {
-                        Navigator.of(context).push(createRoute(route: '/login'));
+                        Navigator.of(context).push(createRoute(route: Routes.login));
                       },
                       child: EBTypography.text(
                         text: 'login.',

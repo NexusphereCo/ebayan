@@ -3,12 +3,12 @@ import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/constants/icons.dart';
 import 'package:ebayan/constants/typography.dart';
 import 'package:ebayan/presentation/dashboard/announcements/widgets/dialog_box.dart';
+import 'package:ebayan/controller/user_controller.dart';
 import 'package:ebayan/utils/routes.dart';
+import 'package:ebayan/widgets/components/loading.dart';
 import 'package:feather_icons/feather_icons.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:logger/logger.dart';
 
 class EBAppBar extends StatefulWidget implements PreferredSizeWidget {
   final Widget? title;
@@ -156,17 +156,17 @@ class EBDrawer extends StatefulWidget {
 }
 
 class _EBDrawerState extends State<EBDrawer> {
-  final Logger log = Logger();
+  final UserController _userController = UserController();
+  final EBLoadingScreen _loadingScreen = const EBLoadingScreen();
 
   Future<void> _logOut() async {
-    try {
-      await FirebaseAuth.instance.signOut();
+    _loadingScreen.show(context);
 
-      if (context.mounted) {
-        Navigator.of(context).push(createRoute(route: '/login'));
-      }
-    } catch (e) {
-      log.e('Sign-out failed: $e');
+    await _userController.logOut();
+
+    if (context.mounted) {
+      _loadingScreen.hide(context);
+      Navigator.of(context).push(createRoute(route: Routes.login));
     }
   }
 
@@ -204,7 +204,11 @@ class _EBDrawerState extends State<EBDrawer> {
           ),
           ListTile(
             title: EBTypography.text(text: 'Dashboard'),
-            onTap: () {},
+            onTap: () {
+              if (ModalRoute.of(context)?.settings.name != Routes.dashboard) {
+                Navigator.of(context).push(createRoute(route: Routes.dashboard));
+              }
+            },
           ),
           ListTile(
             title: EBTypography.text(text: 'File Complaints'),
@@ -216,7 +220,11 @@ class _EBDrawerState extends State<EBDrawer> {
           ),
           ListTile(
             title: EBTypography.text(text: 'Account Settings'),
-            onTap: () {},
+            onTap: () {
+              if (ModalRoute.of(context)?.settings.name != Routes.accountInfo) {
+                Navigator.of(context).push(createRoute(route: Routes.accountInfo));
+              }
+            },
           ),
           ListTile(
             title: EBTypography.text(text: 'Logout', color: EBColor.red),

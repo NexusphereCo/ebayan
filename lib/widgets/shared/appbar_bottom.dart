@@ -1,28 +1,19 @@
 import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/constants/icons.dart';
 import 'package:ebayan/constants/typography.dart';
+import 'package:ebayan/utils/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:feather_icons/feather_icons.dart';
 
 class EBAppBarBottom extends StatelessWidget {
-  const EBAppBarBottom({super.key});
+  final int activeIndex;
 
-  @override
-  Widget build(BuildContext context) {
-    return const BottomAppBar(
-      shape: CircularNotchedRectangle(),
-      notchMargin: 8.0,
-      color: Colors.white,
-      child: EBAppBarBottomContents(),
-    );
-  }
-}
+  const EBAppBarBottom({
+    super.key,
+    required this.activeIndex,
+  });
 
-class EBAppBarBottomContents extends StatelessWidget {
-  const EBAppBarBottomContents({super.key});
-
-  @override
-  Widget build(BuildContext context) {
+  Widget buildContents(BuildContext context) {
     double paddingY = 15.0;
     double iconSize = 20.0;
 
@@ -32,7 +23,11 @@ class EBAppBarBottomContents extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           InkResponse(
-            onTap: () {},
+            onTap: () {
+              if (ModalRoute.of(context)?.settings.name != Routes.dashboard) {
+                Navigator.of(context).push(createRoute(route: Routes.dashboard));
+              }
+            },
             child: GestureDetector(
               child: Wrap(
                 crossAxisAlignment: WrapCrossAlignment.center,
@@ -41,13 +36,13 @@ class EBAppBarBottomContents extends StatelessWidget {
                 children: [
                   Icon(
                     EBIcons.home,
-                    size: iconSize + 3, // since it's custom the frame is diff.
-                    color: EBColor.primary,
+                    size: iconSize + 3,
+                    color: (activeIndex == 1) ? EBColor.primary : EBColor.dark.withOpacity(0.5),
                   ),
                   EBTypography.small(
                     text: 'Sphere',
-                    color: EBColor.primary,
-                    fontWeight: EBFontWeight.bold,
+                    color: (activeIndex == 1) ? EBColor.primary : EBColor.dark.withOpacity(0.5),
+                    muted: (activeIndex == 1) ? false : true,
                   ),
                 ],
               ),
@@ -64,9 +59,13 @@ class EBAppBarBottomContents extends StatelessWidget {
                   Icon(
                     FeatherIcons.users,
                     size: iconSize,
-                    color: EBColor.dark.withOpacity(0.5),
+                    color: (activeIndex == 2) ? EBColor.primary : EBColor.dark.withOpacity(0.5),
                   ),
-                  EBTypography.small(text: 'People', muted: true),
+                  EBTypography.small(
+                    text: 'People',
+                    color: (activeIndex == 2) ? EBColor.primary : EBColor.dark.withOpacity(0.5),
+                    muted: (activeIndex == 2) ? false : true,
+                  ),
                 ],
               ),
             ),
@@ -82,15 +81,23 @@ class EBAppBarBottomContents extends StatelessWidget {
                   Icon(
                     FeatherIcons.bookmark,
                     size: iconSize,
-                    color: EBColor.dark.withOpacity(0.5),
+                    color: (activeIndex == 3) ? EBColor.primary : EBColor.dark.withOpacity(0.5),
                   ),
-                  EBTypography.small(text: 'Saved', muted: true),
+                  EBTypography.small(
+                    text: 'Saved',
+                    color: (activeIndex == 3) ? EBColor.primary : EBColor.dark.withOpacity(0.5),
+                    muted: (activeIndex == 3) ? false : true,
+                  ),
                 ],
               ),
             ),
           ),
           InkResponse(
-            onTap: () {},
+            onTap: () {
+              if (ModalRoute.of(context)?.settings.name != Routes.accountInfo) {
+                Navigator.of(context).push(createRoute(route: Routes.accountInfo));
+              }
+            },
             child: GestureDetector(
               child: Wrap(
                 crossAxisAlignment: WrapCrossAlignment.center,
@@ -100,15 +107,29 @@ class EBAppBarBottomContents extends StatelessWidget {
                   Icon(
                     FeatherIcons.settings,
                     size: iconSize,
-                    color: EBColor.dark.withOpacity(0.5),
+                    color: (activeIndex == 4) ? EBColor.primary : EBColor.dark.withOpacity(0.5),
                   ),
-                  EBTypography.small(text: 'Account', muted: true),
+                  EBTypography.small(
+                    text: 'Account',
+                    color: (activeIndex == 4) ? EBColor.primary : EBColor.dark.withOpacity(0.5),
+                    muted: (activeIndex == 4) ? false : true,
+                  ),
                 ],
               ),
             ),
           ),
         ],
       ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return BottomAppBar(
+      shape: const CircularNotchedRectangle(),
+      notchMargin: 8.0,
+      color: Colors.white,
+      child: buildContents(context),
     );
   }
 }

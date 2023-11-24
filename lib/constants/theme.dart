@@ -39,6 +39,17 @@ class EBTheme {
     return ThemeData(
       primarySwatch: EBColor.primary,
       textTheme: buildTextTheme(),
+      bottomSheetTheme: BottomSheetThemeData(
+        modalBarrierColor: EBColor.green[700]!.withOpacity(0.5),
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(EBBorderRadius.lg),
+            topRight: Radius.circular(EBBorderRadius.lg),
+          ),
+        ),
+        elevation: 0,
+        backgroundColor: EBColor.light,
+      ),
       popupMenuTheme: PopupMenuThemeData(
         textStyle: TextStyle(
           fontFamily: EBTypography.fontFamily,

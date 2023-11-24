@@ -75,6 +75,9 @@ class EBColor {
       200: Color(0xFF6ADFB5),
       300: Color(0xFF4CBF96),
       400: Color(0xFF3E8F72),
+      500: Color(0xFF2F6D55),
+      600: Color(0xFF154935),
+      700: Color(0xFF0C2E21),
     },
   );
 

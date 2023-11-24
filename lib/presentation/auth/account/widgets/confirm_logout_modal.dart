@@ -5,9 +5,9 @@ import 'package:ebayan/widgets/components/buttons.dart';
 import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
 
-Future<void> showConfirmJoinModal({
+Future<void> showConfirmLogoutModal({
   required BuildContext context,
-  required void Function() onJoinHandler,
+  required void Function() onProceedHandler,
 }) =>
     showModalBottomSheet<void>(
       context: context,
@@ -31,10 +31,10 @@ Future<void> showConfirmJoinModal({
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-                EBTypography.h3(text: 'Note!'),
+                EBTypography.h3(text: 'Leaving so soon?'),
                 const SizedBox(height: Spacing.xs),
                 EBTypography.text(
-                  text: 'This action will transfer your account from your current barangay to the selected one. \n\nAre you sure you want to proceed?',
+                  text: 'Logging out will end your current session, requiring you to sign in again. \n\nAre you sure you want to proceed?',
                   muted: true,
                 ),
                 const SizedBox(height: Spacing.md),
@@ -47,7 +47,7 @@ Future<void> showConfirmJoinModal({
                     ),
                     const SizedBox(width: Spacing.md),
                     EBButton(
-                      onPressed: () => onJoinHandler(),
+                      onPressed: () => onProceedHandler(),
                       text: 'Proceed',
                       theme: EBButtonTheme.primaryOutlined,
                       icon: const Icon(

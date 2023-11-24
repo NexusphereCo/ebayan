@@ -1,4 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:ebayan/constants/validation.dart';
+import 'package:ebayan/data/model/user_model.dart';
 import 'package:ebayan/data/viewmodel/user_view_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:logger/logger.dart';
@@ -10,6 +12,24 @@ class UserController {
 
   Future<String?> getCurrentUserName() async {
     return _dbAuth.currentUser?.displayName;
+  }
+
+  Future<void> updateInfo(UserUpdateModel data) async {
+    await _dbAuth.currentUser?.updateDisplayName(data.firstName);
+    await _dbFirestore.collection('users').doc(_dbAuth.currentUser?.uid).update(data.toJson());
+  }
+
+  Future<void> changePassword(String newPassword) async {
+    try {
+      await _dbAuth.currentUser?.updatePassword(newPassword);
+    } on FirebaseAuthException catch (err) {
+      final errorMessages = {
+        'requires-recent-login': Validation.requiresRecentLogin,
+      };
+
+      log.e('${err.code}: $err');
+      throw errorMessages[err.code.toLowerCase()].toString();
+    }
   }
 
   Future<UserViewModel> getCurrentUserInfo() async {
@@ -32,5 +52,10 @@ class UserController {
     } else {
       throw 'Document is not found!';
     }
+  }
+
+  Future<void> logOut() async {
+    await FirebaseAuth.instance.signOut();
+    log.i('User has been logged out.');
   }
 }
