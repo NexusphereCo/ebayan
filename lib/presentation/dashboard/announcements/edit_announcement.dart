@@ -1,5 +1,5 @@
 import 'package:ebayan/constants/typography.dart';
-import 'package:ebayan/data/model/announcement_model.dart';
+import 'package:ebayan/data/viewmodel/announcement_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:feather_icons/feather_icons.dart';
 import 'package:ebayan/widgets/shared/appbar_top.dart';
@@ -23,19 +23,19 @@ class _EditAnnouncementScreenState extends State<EditAnnouncementScreen> {
   final AnnouncementController _announcementController = AnnouncementController();
   final TextEditingController _headingController = TextEditingController();
   final TextEditingController _bodyController = TextEditingController();
-  late Future<AnnouncementModel> _announcementFuture;
+  late Future<AnnouncementViewModel> _announcementFuture;
 
   CardOptions? selectedMenu;
 
   @override
   void initState() {
     super.initState();
-    _announcementFuture = _announcementController.viewAnnouncement(widget.annId);
+    _announcementFuture = _announcementController.fetchAnnouncementDetails(widget.annId);
   }
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<AnnouncementModel>(
+    return FutureBuilder<AnnouncementViewModel>(
       future: _announcementFuture,
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
@@ -57,7 +57,7 @@ class _EditAnnouncementScreenState extends State<EditAnnouncementScreen> {
             ),
           );
         } else {
-          AnnouncementModel announcement = snapshot.data!;
+          AnnouncementViewModel announcement = snapshot.data!;
           _headingController.text = announcement.heading;
           _bodyController.text = announcement.body;
           return Scaffold(
