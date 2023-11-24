@@ -4,6 +4,7 @@ import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/constants/typography.dart';
 import 'package:ebayan/controller/anct_controller.dart';
 import 'package:ebayan/data/model/announcement_model.dart';
+import 'package:ebayan/data/viewmodel/announcement_view_model.dart';
 import 'package:ebayan/utils/routes.dart';
 import 'package:ebayan/utils/style.dart';
 import 'package:ebayan/widgets/components/buttons.dart';
@@ -31,24 +32,24 @@ class AnnouncementListScreen extends StatefulWidget {
 
 class _AnnouncementListScreenState extends State<AnnouncementListScreen> {
   final AnnouncementController _announcementController = AnnouncementController();
-  List<String> announcementIDs = [];
+  List<AnnouncementModel> announcements = [];
   final Logger log = Logger();
 
   @override
   void initState() {
     super.initState();
-    _fetchAnnouncementIDs();
+    _fetchAnnouncements();
   }
 
-  Future<void> _fetchAnnouncementIDs() async {
+  Future<void> _fetchAnnouncements() async {
     try {
-      final List<String> ids = await _announcementController.fetchAnnouncementIDs();
+      final List<AnnouncementModel> fetchedAnnouncements = await _announcementController.fetchAnnouncements();
       setState(() {
-        announcementIDs = ids;
+        announcements = fetchedAnnouncements;
       });
     } catch (e) {
       // Handle error
-      throw 'An error occurred while fetching announcement IDs.';
+      throw 'An error occurred while fetching announcements.';
     }
   }
 
@@ -63,7 +64,7 @@ class _AnnouncementListScreenState extends State<AnnouncementListScreen> {
       ),
       body: ListView.builder(
         padding: const EdgeInsets.all(24.0),
-        itemCount: announcementIDs.length + 1,
+        itemCount: announcements.length + 1,
         itemBuilder: (context, index) {
           final dataIndex = index - 1;
 
@@ -96,7 +97,7 @@ class _AnnouncementListScreenState extends State<AnnouncementListScreen> {
             );
           } else {
             return AnnouncementCard(
-              annId: announcementIDs[dataIndex],
+              announcement: announcements[dataIndex],
             );
           }
         },
@@ -106,84 +107,64 @@ class _AnnouncementListScreenState extends State<AnnouncementListScreen> {
 }
 
 class AnnouncementCard extends StatelessWidget {
-  final String annId;
+  final AnnouncementModel announcement;
 
   const AnnouncementCard({
     Key? key,
-    required this.annId,
+    required this.announcement,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<AnnouncementModel>(
-      future: AnnouncementController().viewAnnouncement(annId),
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Center(
-            child: CircularProgressIndicator(),
-          ); // Show loading indicator while fetching data
-        } else if (snapshot.hasError) {
-          return Center(
-            child: Text('Error: ${snapshot.error}'),
-          );
-        } else if (!snapshot.hasData) {
-          return const Center(
-            child: Text('Announcement not found.'),
-          );
-        } else {
-          final AnnouncementModel announcement = snapshot.data!;
-          return Container(
-            width: double.infinity,
-            height: 125,
-            margin: const EdgeInsets.only(bottom: 10.0),
-            decoration: BoxDecoration(
-              color: EBColor.primary.shade200,
-              borderRadius: BorderRadius.circular(15.0),
-            ),
-            child: Expanded(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 15.0),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return Container(
+      width: double.infinity,
+      height: 125,
+      margin: const EdgeInsets.only(bottom: 10.0),
+      decoration: BoxDecoration(
+        color: EBColor.primary.shade200,
+        borderRadius: BorderRadius.circular(15.0),
+      ),
+      child: Expanded(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 15.0),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          EBTypography.h4(
-                            text: announcement.heading,
-                            color: EBColor.primary,
-                            fontWeight: FontWeight.bold,
-                            cutOverflow: true,
-                            maxLines: 3,
-                          ),
-                          EBTypography.small(text: announcement.formattedTime, color: EBColor.dark, fontWeight: EBFontWeight.regular),
-                        ],
-                      ),
+                    EBTypography.h4(
+                      text: announcement.heading,
+                      color: EBColor.primary,
+                      fontWeight: FontWeight.bold,
+                      cutOverflow: true,
+                      maxLines: 3,
                     ),
-                    const SizedBox(width: Spacing.lg),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        EBButton(
-                          onPressed: () {
-                            Navigator.pushNamed(context, Routes.announcement, arguments: annId);
-                          },
-                          text: 'View',
-                          theme: EBButtonTheme.primary,
-                          size: EBButtonSize.md,
-                        ),
-                      ],
-                    ),
+                    EBTypography.small(text: announcement.timeCreated.toString(), color: EBColor.dark, fontWeight: EBFontWeight.regular),
                   ],
                 ),
               ),
-            ),
-          );
-        }
-      },
+              const SizedBox(width: Spacing.lg),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  EBButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, Routes.announcement, arguments: announcement.id);
+                    },
+                    text: 'View',
+                    theme: EBButtonTheme.primary,
+                    size: EBButtonSize.md,
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
