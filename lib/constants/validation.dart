@@ -14,4 +14,5 @@ class Validation {
   static const String invalidBrgyCode = 'This code is invalid. Try a different code.';
   static const String networkFail = 'Unable to perform this request due to a network issue. Try again later.';
   static const String emailAlreadyInUse = 'This email address is already in use.';
+  static const String requiresRecentLogin = 'For security reasons, please sign in again to continue.';
 }

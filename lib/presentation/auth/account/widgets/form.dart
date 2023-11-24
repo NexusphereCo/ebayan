@@ -27,6 +27,7 @@ Widget buildForm({
   // variables
   required bool isEditing,
   required void Function() onEditHandler,
+  required void Function() onChangePasswordHandler,
   required void Function() onLogoutHandler,
   required void Function() onSaveHandler,
 }) {
@@ -220,21 +221,7 @@ Widget buildForm({
                       children: [
                         EBTypography.text(text: 'Email Address:', muted: true),
                         const SizedBox(width: Spacing.sm),
-                        (isEditing)
-                            ? Expanded(
-                                child: TextFormField(
-                                  controller: emailController,
-                                  keyboardType: TextInputType.emailAddress,
-                                  style: const TextStyle(fontSize: EBFontSize.normal),
-                                  decoration: inputDecoration,
-                                  validator: (value) {
-                                    value = value?.trim();
-                                    if (value == null || value.isEmpty) return '';
-                                    return null;
-                                  },
-                                ),
-                              )
-                            : EBTypography.text(text: userData.email, muted: true),
+                        EBTypography.text(text: userData.email, muted: true),
                       ],
                     ),
                     const SizedBox(height: Spacing.lg),
@@ -290,7 +277,7 @@ Widget buildForm({
               heading: 'Change Password',
               lead: 'Manage your login credentials',
               icon: Icon(FeatherIcons.lock, color: EBColor.light),
-              onTap: () {},
+              onTap: onChangePasswordHandler,
             ),
             const SizedBox(height: Spacing.sm),
             LargeCustomButton(
@@ -298,6 +285,13 @@ Widget buildForm({
               lead: 'Sign-out and come back for news later!',
               icon: Icon(FeatherIcons.logOut, color: EBColor.light),
               onTap: onLogoutHandler,
+            ),
+            const SizedBox(height: Spacing.sm),
+            LargeCustomButton(
+              heading: 'Delete Account',
+              lead: 'This cannot be undone.',
+              icon: Icon(FeatherIcons.trash, color: EBColor.light),
+              onTap: () {},
             ),
           ],
         ),

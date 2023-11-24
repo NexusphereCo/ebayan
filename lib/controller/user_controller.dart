@@ -15,24 +15,21 @@ class UserController {
   }
 
   Future<void> updateInfo(UserUpdateModel data) async {
+    await _dbAuth.currentUser?.updateDisplayName(data.firstName);
+    await _dbFirestore.collection('users').doc(_dbAuth.currentUser?.uid).update(data.toJson());
+  }
+
+  Future<void> changePassword(String newPassword) async {
     try {
-      await _dbFirestore.collection('users').doc(_dbAuth.currentUser?.uid).update(data.toJson());
-      await _dbAuth.currentUser?.updateDisplayName(data.firstName);
-      await _dbAuth.currentUser?.updateEmail(data.email);
+      await _dbAuth.currentUser?.updatePassword(newPassword);
     } on FirebaseAuthException catch (err) {
       final errorMessages = {
-        'invalid-email': Validation.invalidEmail,
-        'email-already-in-use': Validation.emailAlreadyInUse,
-        'network-request-failed': Validation.networkFail,
+        'requires-recent-login': Validation.requiresRecentLogin,
       };
 
       log.e('${err.code}: $err');
       throw errorMessages[err.code.toLowerCase()].toString();
     }
-  }
-
-  Future<void> changePassword(String newPassword) async {
-    await _dbAuth.currentUser?.updatePassword(newPassword);
   }
 
   Future<UserViewModel> getCurrentUserInfo() async {

@@ -81,13 +81,11 @@ class UserUpdateModel {
   final String lastName;
   final String birthDate;
   final String contactNumber;
-  final String email;
   final String address;
 
   UserUpdateModel({
     required this.firstName,
     required this.lastName,
-    required this.email,
     required this.contactNumber,
     required this.address,
     required this.birthDate,
@@ -99,7 +97,6 @@ class UserUpdateModel {
       'lastName': lastName,
       'birthDate': birthDate,
       'contactNumber': contactNumber,
-      'email': email,
       'address': address,
     };
   }

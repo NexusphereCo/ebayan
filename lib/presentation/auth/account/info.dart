@@ -14,6 +14,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
 
+import 'widgets/change_password_modal.dart';
 import 'widgets/confirm_logout_modal.dart';
 import 'widgets/form.dart';
 
@@ -27,6 +28,7 @@ class AccountScreen extends StatefulWidget {
 class _AccountScreenState extends State<AccountScreen> {
   final UserController _userController = UserController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _changePasswordFormKey = GlobalKey<FormState>();
 
   final EBLoadingScreen _loadingScreen = const EBLoadingScreen();
 
@@ -38,8 +40,13 @@ class _AccountScreenState extends State<AccountScreen> {
   final TextEditingController _addressController = TextEditingController();
   final TextEditingController _birthDateController = TextEditingController();
 
+  // Change password variables
+  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _confirmPasswordController = TextEditingController();
+
   // variables
   bool _isEditing = false;
+  bool _showPassword = false;
 
   Future<UserViewModel> _fetchUserData() async {
     return await _userController.getCurrentUserInfo();
@@ -57,7 +64,6 @@ class _AccountScreenState extends State<AccountScreen> {
           lastName: _lastNameController.text,
           birthDate: _birthDateController.text,
           contactNumber: _contactNumberController.text,
-          email: _emailController.text,
           address: _addressController.text,
         );
 
@@ -126,12 +132,7 @@ class _AccountScreenState extends State<AccountScreen> {
                     } else {
                       final UserViewModel user = snapshot.data!;
 
-                      _firstNameController.text = user.firstName;
-                      _lastNameController.text = user.lastName;
-                      _birthDateController.text = user.birthDate;
-                      _contactNumberController.text = user.contactNumber;
-                      _emailController.text = user.email;
-                      _addressController.text = user.address;
+                      _setDataToController(user);
 
                       return StatefulBuilder(
                         builder: (BuildContext context, StateSetter setState) {
@@ -154,7 +155,36 @@ class _AccountScreenState extends State<AccountScreen> {
                             onEditHandler: () => setState(() {
                               _isEditing = !_isEditing;
                             }),
-                            onLogoutHandler: () => showConfirmLogoutModal(context: context, onProceedHandler: _logOut),
+                            onChangePasswordHandler: () => showChangePasswordModal(
+                              context: context,
+                              formKey: _changePasswordFormKey,
+                              passwordController: _passwordController,
+                              confirmPasswordController: _confirmPasswordController,
+                              showPassword: _showPassword,
+                              onSubmitHandler: () async {
+                                _loadingScreen.show(context);
+                                bool isFormValid = _changePasswordFormKey.currentState?.validate() == true;
+                                if (isFormValid) {
+                                  await _userController.changePassword(_passwordController.text);
+
+                                  if (context.mounted) {
+                                    _loadingScreen.hide(context);
+                                    Navigator.of(context).pop();
+                                  }
+                                } else {
+                                  if (context.mounted) _loadingScreen.hide(context);
+                                }
+                              },
+                              togglePassIconHandler: () {
+                                setState(() {
+                                  _showPassword = !_showPassword;
+                                });
+                              },
+                            ),
+                            onLogoutHandler: () => showConfirmLogoutModal(
+                              context: context,
+                              onProceedHandler: _logOut,
+                            ),
                             onSaveHandler: () => _saveInfo(),
                           );
                         },
@@ -169,6 +199,15 @@ class _AccountScreenState extends State<AccountScreen> {
       ),
       bottomNavigationBar: const EBAppBarBottom(activeIndex: 4),
     );
+  }
+
+  void _setDataToController(UserViewModel user) {
+    _firstNameController.text = user.firstName;
+    _lastNameController.text = user.lastName;
+    _birthDateController.text = user.birthDate;
+    _contactNumberController.text = user.contactNumber;
+    _emailController.text = user.email;
+    _addressController.text = user.address;
   }
 
   Widget _buildLoadingIndicator(BuildContext context) {
