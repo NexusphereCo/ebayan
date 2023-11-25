@@ -1,4 +1,5 @@
 import 'package:ebayan/constants/typography.dart';
+import 'package:ebayan/widgets/components/form.dart';
 import 'package:flutter/material.dart';
 import 'package:feather_icons/feather_icons.dart';
 import 'package:ebayan/widgets/shared/appbar_top.dart';
@@ -66,35 +67,9 @@ class _CreateAnnouncementScreenState extends State<CreateAnnouncementScreen> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  TextField(
-                    controller: _headingController,
-                    decoration: const InputDecoration(
-                      labelStyle: TextStyle(fontSize: EBFontSize.normal),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(8.0),
-                        ),
-                      ),
-                      hintText: "Subject",
-                      contentPadding: EdgeInsets.symmetric(horizontal: 14.0, vertical: 15.0),
-                    ),
-                  ),
+                  EBTextField(label: 'Heading', type: TextInputType.text, controller: _headingController),
                   const SizedBox(height: Spacing.md),
-                  TextField(
-                    controller: _bodyController,
-                    textAlign: TextAlign.start,
-                    maxLines: 13,
-                    decoration: const InputDecoration(
-                      labelStyle: TextStyle(fontSize: EBFontSize.normal),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(8.0),
-                        ),
-                      ),
-                      hintText: "Announce something to your Sphere",
-                      contentPadding: EdgeInsets.symmetric(horizontal: 14.0, vertical: 15.0),
-                    ),
-                  )
+                  EBTextField(label: 'Body', type: TextInputType.text, controller: _bodyController, maxLines: 13),
                 ],
               ),
               const SizedBox(height: Spacing.md),
