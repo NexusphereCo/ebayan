@@ -10,12 +10,7 @@ import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
 
 class AnnouncementScreen extends StatefulWidget {
-  final String annId;
-
-  const AnnouncementScreen({
-    Key? key,
-    required this.annId,
-  }) : super(key: key);
+  const AnnouncementScreen({super.key});
 
   @override
   _AnnouncementScreenState createState() => _AnnouncementScreenState();
@@ -23,16 +18,12 @@ class AnnouncementScreen extends StatefulWidget {
 
 class _AnnouncementScreenState extends State<AnnouncementScreen> {
   final AnnouncementController _announcementController = AnnouncementController();
-  late Future<AnnouncementViewModel> _announcementFuture;
-
-  @override
-  void initState() {
-    super.initState();
-    _announcementFuture = _announcementController.fetchAnnouncementDetails(widget.annId);
-  }
 
   @override
   Widget build(BuildContext context) {
+    String annId = ModalRoute.of(context)?.settings.arguments as String;
+    Future<AnnouncementViewModel> _announcementFuture = _announcementController.fetchAnnouncementDetails(annId);
+
     return FutureBuilder<AnnouncementViewModel>(
       future: _announcementFuture,
       builder: (context, snapshot) {
@@ -61,7 +52,7 @@ class _AnnouncementScreenState extends State<AnnouncementScreen> {
               enablePop: true,
               noTitle: true,
               more: true,
-              annId: widget.annId,
+              annId: announcement.id,
             ),
             body: Padding(
               padding: const EdgeInsets.all(Global.paddingBody),
@@ -83,7 +74,7 @@ class _AnnouncementScreenState extends State<AnnouncementScreen> {
                           EBTypography.small(text: 'John Doe', muted: true), // authorName
                         ],
                       ),
-                      EBTypography.small(text: announcement.timeCreated.toString(), muted: true), // timeCreated
+                      EBTypography.small(text: announcement.formattedTime, muted: true), // timeCreated
                     ],
                   ),
                   const SizedBox(height: Spacing.md),
