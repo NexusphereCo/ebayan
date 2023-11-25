@@ -27,7 +27,7 @@ class Routes {
   // Dashboard related
   static const String dashboard = '/dashboard';
   static const String joinBrgy = '/dashboard/join_brgy';
-  static const String announcements = '/dashboard/announcements';
+  static const String announcements = '/dashboard/announcement_list';
   static const String createAnnouncement = '/dashboard/create_announcement';
   static const String announcement = '/dashboard/announcement';
   static const String editAnnouncement = '/dashboard/edit_announcement';
@@ -47,6 +47,8 @@ class Routes {
     joinBrgy: () => const JoinBrgyScreen(),
     announcements: () => const AnnouncementListScreen(),
     createAnnouncement: () => const CreateAnnouncementScreen(),
+    announcement: () => const AnnouncementScreen(),
+    editAnnouncement: () => const EditAnnouncementScreen(),
   };
 
   // Map that associates route names with their corresponding builder functions.
@@ -60,6 +62,8 @@ class Routes {
     joinBrgy: (BuildContext context) => const JoinBrgyScreen(),
     announcements: (BuildContext context) => const AnnouncementListScreen(),
     createAnnouncement: (BuildContext context) => const CreateAnnouncementScreen(),
+    announcement: (BuildContext context) => const AnnouncementScreen(),
+    editAnnouncement: (BuildContext context) => const EditAnnouncementScreen(),
   };
 }
 
