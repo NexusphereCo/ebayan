@@ -11,8 +11,7 @@ import 'package:ebayan/presentation/dashboard/announcements/widgets/switch_butto
 import 'package:logger/logger.dart';
 
 class EditAnnouncementScreen extends StatefulWidget {
-  final String annId;
-  const EditAnnouncementScreen({Key? key, required this.annId}) : super(key: key);
+  const EditAnnouncementScreen({super.key});
 
   @override
   _EditAnnouncementScreenState createState() => _EditAnnouncementScreenState();
@@ -23,18 +22,13 @@ class _EditAnnouncementScreenState extends State<EditAnnouncementScreen> {
   final AnnouncementController _announcementController = AnnouncementController();
   final TextEditingController _headingController = TextEditingController();
   final TextEditingController _bodyController = TextEditingController();
-  late Future<AnnouncementViewModel> _announcementFuture;
 
   CardOptions? selectedMenu;
 
   @override
-  void initState() {
-    super.initState();
-    _announcementFuture = _announcementController.fetchAnnouncementDetails(widget.annId);
-  }
-
-  @override
   Widget build(BuildContext context) {
+    String annId = ModalRoute.of(context)?.settings.arguments as String;
+    Future<AnnouncementViewModel> _announcementFuture = _announcementController.fetchAnnouncementDetails(annId);
     return FutureBuilder<AnnouncementViewModel>(
       future: _announcementFuture,
       builder: (context, snapshot) {
