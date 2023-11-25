@@ -106,11 +106,7 @@ class _EBAppBarState extends State<EBAppBar> {
                       selectedMenu = item;
                     });
                     if (item == CardOptions.itemOne) {
-                      Navigator.pushNamed(
-                        context,
-                        Routes.editAnnouncement,
-                        arguments: widget.annId,
-                      );
+                      Navigator.of(context).push(createRoute(route: Routes.editAnnouncement, args: widget.annId));
                     } else if (item == CardOptions.itemTwo) {
                       showDialog(
                         context: context,
