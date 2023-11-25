@@ -22,6 +22,7 @@ class EBTextField extends StatelessWidget {
   final String? Function(String?)? validator;
   final bool? isDense;
   final int? maxLines;
+  final String? placeholder;
 
   const EBTextField({
     super.key,
@@ -41,6 +42,7 @@ class EBTextField extends StatelessWidget {
     this.focusNode,
     this.isDense,
     this.maxLines,
+    this.placeholder,
   });
 
   @override
@@ -57,6 +59,7 @@ class EBTextField extends StatelessWidget {
       inputFormatters: inputFormatters,
       focusNode: focusNode,
       decoration: InputDecoration(
+        hintText: placeholder,
         filled: true,
         fillColor: (!(enabled ?? true)) ? EBColor.primary[50] : Colors.transparent,
         border: const OutlineInputBorder(
@@ -71,6 +74,7 @@ class EBTextField extends StatelessWidget {
           label,
           style: const TextStyle(fontSize: EBFontSize.normal),
         ),
+        floatingLabelBehavior: (placeholder != null) ? FloatingLabelBehavior.always : FloatingLabelBehavior.auto,
         counterText: '',
         suffixIcon: suffixIcon ?? suffixIconButton,
         isDense: isDense,
@@ -78,6 +82,17 @@ class EBTextField extends StatelessWidget {
       maxLength: maxLength,
       maxLines: maxLines,
       validator: validator,
+
+      /// This is to modify the text to make it so that they are
+      /// all uppercase...
+
+      /* onChanged: (value) {
+       *   controller?.value = TextEditingValue(
+       *     text: value.toLowerCase(),
+       *     selection: controller!.selection,
+       *   );
+       * },
+       */
     );
   }
 }
