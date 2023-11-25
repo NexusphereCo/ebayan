@@ -1,6 +1,7 @@
 import 'package:ebayan/constants/assets.dart';
 import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/constants/typography.dart';
+import 'package:ebayan/data/model/barangay_model.dart';
 import 'package:ebayan/presentation/dashboard/dashboard/widgets/loading_bar.dart';
 import 'package:ebayan/utils/routes.dart';
 import 'package:ebayan/utils/style.dart';
@@ -88,6 +89,9 @@ class _SphereCardState extends State<SphereCard> {
   }
 
   Widget _cardFooter() {
+    String barangayName = widget.brgyName.toString();
+    int barangayCode = int.parse(widget.brgyCode!);
+
     return Container(
       width: double.infinity,
       height: 75,
@@ -122,7 +126,7 @@ class _SphereCardState extends State<SphereCard> {
             children: [
               EBButton(
                 onPressed: () {
-                  Navigator.of(context).push(createRoute(route: Routes.announcements, args: {}));
+                  Navigator.of(context).push(createRoute(route: Routes.announcements, args: BarangayModel(name: barangayName, code: barangayCode)));
                 },
                 text: 'View',
                 theme: EBButtonTheme.primary,
