@@ -50,6 +50,7 @@ class EBTextField extends StatelessWidget {
     const borderRadius = 8.0;
 
     return TextFormField(
+      style: const TextStyle(fontSize: EBFontSize.normal),
       onTap: onTap,
       enabled: enabled,
       keyboardType: type,

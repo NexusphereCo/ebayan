@@ -25,7 +25,7 @@ class CommentSection extends StatelessWidget {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                SizedBox(height: Spacing.md),
+                const SizedBox(height: Spacing.md),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -47,11 +47,9 @@ class CommentSection extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: Spacing.md),
-                // Add your comment section content here
-                // For example, a ListView.builder for displaying comments
                 ListView.builder(
                   shrinkWrap: true,
-                  itemCount: 5, // Replace with your actual comment count
+                  itemCount: 5,
                   itemBuilder: (context, index) {
                     return ListTile(
                       title: Text('Comment $index'),
@@ -63,26 +61,26 @@ class CommentSection extends StatelessWidget {
           ),
         ),
         Positioned(
-          top: -20, // Adjust this value to move the button up
+          top: -20,
           right: 0,
           left: 0,
           child: GestureDetector(
             onTap: () {
-              Navigator.of(context).pop(); // Close the bottom sheet
+              Navigator.of(context).pop();
             },
             child: Container(
               width: 50,
               height: 50,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: EBColor.green, // Adjust the color as needed
+                color: EBColor.primary,
               ),
               child: Center(
                 child: Transform.rotate(
                   angle: 90 * pi / 180,
                   child: Icon(
                     Icons.arrow_forward_ios_rounded,
-                    color: EBColor.light, // Adjust the color as needed
+                    color: EBColor.light,
                   ),
                 ),
               ),
