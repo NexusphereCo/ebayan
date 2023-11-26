@@ -67,9 +67,9 @@ class _CreateAnnouncementScreenState extends State<CreateAnnouncementScreen> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  EBTextField(label: 'Heading', type: TextInputType.text, controller: _headingController),
+                  EBTextField(label: 'Heading', type: TextInputType.text, controller: _headingController, placeholder: 'Subject'),
                   const SizedBox(height: Spacing.md),
-                  EBTextField(label: 'Body', type: TextInputType.text, controller: _bodyController, maxLines: 13),
+                  EBTextField(label: 'Body', type: TextInputType.text, controller: _bodyController, maxLines: 13, placeholder: 'Announce something to your Barangay Sphere'),
                 ],
               ),
               const SizedBox(height: Spacing.md),
