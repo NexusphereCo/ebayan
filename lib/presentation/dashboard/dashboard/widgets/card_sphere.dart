@@ -89,9 +89,6 @@ class _SphereCardState extends State<SphereCard> {
   }
 
   Widget _cardFooter() {
-    String barangayName = widget.brgyName.toString();
-    int barangayCode = int.parse(widget.brgyCode!);
-
     return Container(
       width: double.infinity,
       height: 75,
@@ -126,7 +123,7 @@ class _SphereCardState extends State<SphereCard> {
             children: [
               EBButton(
                 onPressed: () {
-                  Navigator.of(context).push(createRoute(route: Routes.announcements, args: BarangayModel(name: barangayName, code: barangayCode)));
+                  Navigator.of(context).push(createRoute(route: Routes.announcements, args: BarangayModel(name: widget.brgyName!, code: int.parse(widget.brgyCode!))));
                 },
                 text: 'View',
                 theme: EBButtonTheme.primary,
