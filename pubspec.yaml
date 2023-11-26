@@ -51,6 +51,7 @@ dependencies:
   logger: ^2.0.2+1
   lottie: ^2.7.0
   pin_code_fields: ^8.0.1
+  tutorial_coach_mark: ^1.2.11
 
 flutter_native_splash:
   color: '#3336AB'
