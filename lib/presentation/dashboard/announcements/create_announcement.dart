@@ -1,4 +1,5 @@
 import 'package:ebayan/constants/typography.dart';
+import 'package:ebayan/data/model/post_announcement_model.dart';
 import 'package:ebayan/widgets/components/form.dart';
 import 'package:flutter/material.dart';
 import 'package:feather_icons/feather_icons.dart';
@@ -11,7 +12,7 @@ import 'package:ebayan/presentation/dashboard/announcements/widgets/switch_butto
 import 'package:logger/logger.dart';
 
 class CreateAnnouncementScreen extends StatefulWidget {
-  const CreateAnnouncementScreen({Key? key}) : super(key: key);
+  const CreateAnnouncementScreen({super.key});
 
   @override
   _CreateAnnouncementScreenState createState() => _CreateAnnouncementScreenState();
@@ -135,12 +136,13 @@ class _CreateAnnouncementScreenState extends State<CreateAnnouncementScreen> {
                             icon: Icon(FeatherIcons.send, color: EBColor.light, size: EBFontSize.h4),
                             onPressed: () async {
                               try {
-                                String heading = _headingController.text;
-                                String body = _bodyController.text;
-
-                                /*  await _announcementController.createAnnouncement();*/
-
-                                // Navigate to a success screen or perform other actions upon successful creation
+                                await _announcementController.createAnnouncement(
+                                  PostAnnouncementModel(
+                                    heading: _headingController.text,
+                                    body: _bodyController.text,
+                                  ),
+                                );
+                                Navigator.of(context).pop();
                               } catch (e) {
                                 log.e('An error occurred: $e');
                                 throw 'An error occurred while creating the announcement.';
