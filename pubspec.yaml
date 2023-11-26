@@ -89,6 +89,7 @@ flutter:
     - assets/svgs/ebayan/
     - assets/svgs/illustration/
     - assets/svgs/loading/
+    - assets/svgs/misc/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

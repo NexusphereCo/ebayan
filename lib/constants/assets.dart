@@ -18,5 +18,8 @@ class Asset {
   static const String illustAccInfoBackg = 'assets/svgs/illustration/acc-info-backg.svg';
   static const String illustWait = 'assets/svgs/illustration/wait.svg';
 
+  static const String tailUp = 'assets/svgs/misc/tail-up.svg';
+  static const String tailDown = 'assets/svgs/misc/tail-down.svg';
+
   static const String lottieLoadingLogo = 'assets/svgs/loading/loading-logo.json';
 }

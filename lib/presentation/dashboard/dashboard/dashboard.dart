@@ -22,8 +22,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final args = ModalRoute.of(context)?.settings.arguments;
-    final startTutorial = (args != null && args is Map && args['startTutorial'] == true);
+    final param = ModalRoute.of(context)?.settings.arguments as Map? ?? {};
+    final startTutorial = param['startTutorial'] as bool? ?? false;
 
     return WillPopScope(
       onWillPop: () async => false,
@@ -34,11 +34,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
             return const EBLoadingScreen(solid: true);
           } else {
             // If the Future is complete, show the appropriate view based on the result.
-            if (snapshot.data == true) {
-              return (startTutorial) ? const OnBoardingView() : const JoinedDashboardView();
-            } else {
-              return const EmptyDashboardView();
-            }
+            if (startTutorial) return const OnBoardingView();
+            return (snapshot.data == true) ? const JoinedDashboardView() : const EmptyDashboardView();
           }
         },
       ),
