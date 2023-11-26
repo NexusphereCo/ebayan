@@ -6,6 +6,7 @@ class AnnouncementModel {
   final String heading;
   final String? body;
   final DateTime? timeCreated;
+  final String? author;
   final CollectionReference? comments;
   final String formattedTime;
 
@@ -14,6 +15,7 @@ class AnnouncementModel {
     required this.heading,
     this.body,
     this.timeCreated,
+    this.author,
     this.comments,
   }) : formattedTime = DateFormat('MMMM dd, yyyy').format(timeCreated!);
 }
