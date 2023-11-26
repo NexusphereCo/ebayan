@@ -1,8 +1,6 @@
 PRIORITY:
 
     [] weird sidebar bug is reloading the website (probable solution is because it's calling a setState that reloads all the app, try to use a stateful builder)
-    [] fix the spam issue in clicking the bottom appbar from stacking on the stack
-    [] email address should be changed on prop. username, email, and firebase_auth.email
     [] catch errors on update email
 
 ---
@@ -15,6 +13,8 @@ TODO:
 
 DONE:
 
+    [X] email address should be changed on prop. username, email, and firebase_auth.email
+    [X] fix the spam issue in clicking the bottom appbar from stacking on the stack
     [X] use class for modal bottom sheet in info.dart
     [X] change the address textfield in register to isDense and maxLines => add this to the form.dart
     [X] implement network catch screen
