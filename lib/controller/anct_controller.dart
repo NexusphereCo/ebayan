@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ebayan/data/model/announcement_model.dart';
+import 'package:ebayan/data/model/post_announcement_model.dart';
 import 'package:ebayan/data/viewmodel/announcement_view_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:logger/logger.dart';
@@ -9,79 +10,83 @@ class AnnouncementController {
   final FirebaseFirestore _db = FirebaseFirestore.instance;
   final User? user = FirebaseAuth.instance.currentUser;
 
-  Future<void> createAnnouncement(String annId, Map<String, dynamic> data) async {
+  Future<void> createAnnouncement(PostAnnouncementModel newAnnouncement) async {
     try {
-      _validateUser();
+      final userDoc = await _db.collection('users').doc(user!.uid).get();
+      final announcementDoc = (await _db.collectionGroup('barangays').where('code', isEqualTo: int.parse(userDoc['barangayAssociated'])).get()).docs.first;
+      final String authorName = '${userDoc['firstName']} ${userDoc['lastName']}';
 
-      // Reference the specific collection path
-//  /*   CollectionReference<Map<String, dynamic>> announcements = _db.collectionGroup('announcements').where('id' isEqualTo: annId);*/
+      final announcementRef = await announcementDoc.reference.collection('announcements').add({
+        'heading': newAnnouncement.heading,
+        'body': newAnnouncement.body,
+        'timeCreated': DateTime.now(),
+        'author': authorName,
+      });
 
-      // Add the announcement to the specific collection using the provided annId
-      /*  await announcements.doc(annId).set(data);*/
+      await announcementRef.update({'id': announcementRef.id});
 
-      log.i('Announcement created successfully.');
-    } catch (e) {
-      log.e('An error occurred: $e');
+      log.d('Successfully created announcement.');
+    } catch (err) {
+      log.e('An error occurred: $err');
       throw 'An error occurred while creating the announcement.';
     }
   }
 
-  Future<void> updateAnnouncement(String annId, Map<String, dynamic> data) async {
+  Future<void> updateAnnouncement(PostAnnouncementModel updatedAnnouncement) async {
     try {
-      _validateUser();
+      final announcementsRef = _db.collectionGroup('announcements');
+      final announcementSnapshot = await announcementsRef.where('id', isEqualTo: updatedAnnouncement.id).get();
 
-      final DocumentSnapshot userDoc = await _db.collection('users').doc(user!.uid).get();
-      // Reference the specific document in the announcements collection
+      final announcementDoc = announcementSnapshot.docs.first;
 
-      DocumentReference<Map<String, dynamic>> announcement = _db.collection('municipalities').doc(userDoc['muniId']).collection('barangays').doc(userDoc['barangayAssociated']).collection('announcements').doc(annId);
+      await announcementDoc.reference.update({
+        'heading': updatedAnnouncement.heading,
+        'body': updatedAnnouncement.body,
+        'timeCreated': DateTime.now(),
+      });
 
-      // Update the document with the new data
-      await announcement.update(data);
-
-      log.i('Announcement updated successfully.');
-    } catch (e) {
-      log.e('An error occurred: $e');
+      log.d('Successfully updated announcement.');
+    } catch (err) {
+      log.e('An error occurred: $err');
       throw 'An error occurred while updating the announcement.';
     }
   }
 
   Future<void> deleteAnnouncement(String annId) async {
     try {
-      _validateUser();
+      final announcementsRef = _db.collectionGroup('announcements');
+      final announcementSnapshot = await announcementsRef.where('id', isEqualTo: annId).get();
 
-      final DocumentSnapshot userDoc = await _db.collection('users').doc(user!.uid).get();
-      // Reference the specific document in the announcements collection
+      if (announcementSnapshot.docs.isEmpty) {
+        throw 'Announcement not found.';
+      }
 
-      DocumentReference<Map<String, dynamic>> announcement = _db.collection('municipalities').doc(userDoc['muniId']).collection('barangays').doc(userDoc['barangayAssociated']).collection('announcements').doc(annId);
+      final announcementDoc = announcementSnapshot.docs.first;
+      await announcementDoc.reference.delete();
 
-      // Delete the document
-      await announcement.delete();
-
-      log.i('Announcement deleted successfully.');
-    } catch (e) {
-      log.e('An error occurred: $e');
+      log.d('Successfully deleted announcement.');
+    } catch (err) {
+      log.e('An error occurred: $err');
       throw 'An error occurred while deleting the announcement.';
     }
   }
 
   Future<List<AnnouncementModel>> fetchAnnouncements() async {
     try {
-      _validateUser();
-
       final DocumentSnapshot userDoc = await _db.collection('users').doc(user!.uid).get();
       var barangaysRef = _db.collectionGroup('barangays');
       var barangaySnapshot = await barangaysRef.where('code', isEqualTo: int.parse(userDoc['barangayAssociated'])).get();
 
-      var doc = barangaySnapshot.docs.first;
+      var announcementDoc = barangaySnapshot.docs.first;
 
-      final announcementsSnapshot = await doc.reference.collection('announcements').orderBy('timeCreated', descending: true).get();
+      final announcementsSnapshot = await announcementDoc.reference.collection('announcements').orderBy('timeCreated', descending: true).get();
 
-      final List<AnnouncementModel> announcementsList = announcementsSnapshot.docs.map((doc) {
+      final List<AnnouncementModel> announcementsList = announcementsSnapshot.docs.map((announcementDoc) {
         return AnnouncementModel(
-          id: doc.id,
-          heading: doc['heading'],
-          body: doc['body'],
-          timeCreated: (doc['timeCreated'] as Timestamp).toDate(),
+          id: announcementDoc.id,
+          heading: announcementDoc['heading'],
+          body: announcementDoc['body'],
+          timeCreated: (announcementDoc['timeCreated']).toDate(),
         );
       }).toList();
 
@@ -95,8 +100,6 @@ class AnnouncementController {
 
   Future<AnnouncementViewModel> fetchAnnouncementDetails(String annId) async {
     try {
-      _validateUser();
-
       final announcementsSnapshot = await _db.collectionGroup('announcements').where('id', isEqualTo: annId).get();
 
       if (announcementsSnapshot.docs.isEmpty) {
@@ -109,7 +112,8 @@ class AnnouncementController {
         id: announcementDoc.id,
         heading: announcementDoc['heading'],
         body: announcementDoc['body'],
-        timeCreated: (announcementDoc['timeCreated'] as Timestamp).toDate(),
+        timeCreated: announcementDoc['timeCreated'].toDate(),
+        author: announcementDoc['author'],
       );
 
       log.d('Successfully fetched announcement details.');
@@ -117,12 +121,6 @@ class AnnouncementController {
     } catch (err) {
       log.e('An error occurred: $err');
       throw 'An error occurred while fetching announcement details.';
-    }
-  }
-
-  void _validateUser() {
-    if (user == null) {
-      throw 'User not authenticated.';
     }
   }
 }
