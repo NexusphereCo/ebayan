@@ -59,7 +59,9 @@ class RegisterController {
       // set the display name
       await userCredentials.user?.updateDisplayName(docData.firstName);
 
-      log.i('Successfully registered official! Navigating to dashboard');
+      await FirebaseAuth.instance.signOut();
+
+      log.i('Successfully registered official! Navigating to waitlist');
     } catch (e) {
       log.e('An error occurred: $e');
       throw 'An error occurred during registration.';

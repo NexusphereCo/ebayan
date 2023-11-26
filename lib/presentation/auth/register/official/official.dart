@@ -163,7 +163,7 @@ class _RegisterOfficialScreenState extends State<RegisterOfficialScreen> with Si
 
         if (context.mounted) {
           loadingScreen.hide(context);
-          Navigator.of(context).pushReplacement(createRoute(route: Routes.dashboard));
+          Navigator.of(context).pushReplacement(createRoute(route: Routes.registerOfficialWaitlist, args: {'email': model.email}));
         }
       } catch (err) {
         if (context.mounted) {

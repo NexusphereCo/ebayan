@@ -1,5 +1,6 @@
 import 'package:ebayan/presentation/auth/account/info.dart';
 import 'package:ebayan/presentation/auth/login/login.dart';
+import 'package:ebayan/presentation/auth/register/official/screens/wait.dart';
 import 'package:ebayan/presentation/auth/register/register.dart';
 import 'package:ebayan/presentation/auth/register/official/official.dart';
 import 'package:ebayan/presentation/auth/register/resident/resident.dart';
@@ -20,6 +21,7 @@ class Routes {
   static const String register = '/register';
   static const String accountInfo = '/account/info';
   static const String registerOfficial = '/register/as_official';
+  static const String registerOfficialWaitlist = '/register/as_official/wait';
   static const String registerResident = '/register/as_resident';
 
   // Dashboard related
@@ -40,6 +42,7 @@ class Routes {
     register: () => const RegisterScreen(),
     accountInfo: () => const AccountScreen(),
     registerOfficial: () => const RegisterOfficialScreen(),
+    registerOfficialWaitlist: () => const WaitScreen(),
     registerResident: () => const RegisterResidentScreen(),
     dashboard: () => const DashboardScreen(),
     joinBrgy: () => const JoinBrgyScreen(),
@@ -53,6 +56,7 @@ class Routes {
     register: (BuildContext context) => const RegisterScreen(),
     accountInfo: (BuildContext context) => const AccountScreen(),
     registerOfficial: (BuildContext context) => const RegisterOfficialScreen(),
+    registerOfficialWaitlist: (BuildContext context) => const WaitScreen(),
     registerResident: (BuildContext context) => const RegisterResidentScreen(),
     dashboard: (BuildContext context) => const DashboardScreen(),
     joinBrgy: (BuildContext context) => const JoinBrgyScreen(),
