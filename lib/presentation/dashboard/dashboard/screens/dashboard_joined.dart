@@ -11,7 +11,6 @@ import 'package:ebayan/widgets/shared/appbar_bottom.dart';
 import 'package:ebayan/widgets/shared/appbar_top.dart';
 import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
-
 import '../widgets/card_announcement.dart';
 import '../widgets/card_sphere.dart';
 import '../widgets/heading.dart';

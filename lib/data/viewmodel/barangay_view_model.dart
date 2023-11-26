@@ -1,10 +1,10 @@
-import 'package:ebayan/data/viewmodel/announcement_view_model.dart';
+import 'package:ebayan/data/model/announcement_model.dart';
 
 class BarangayViewModel {
   final String? adminId;
   final int code;
   final String name;
-  final List<AnnouncementViewModel>? announcements;
+  final List<AnnouncementModel>? announcements;
   final int? numOfPeople;
 
   BarangayViewModel({
