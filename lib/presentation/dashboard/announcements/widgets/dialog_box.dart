@@ -1,4 +1,6 @@
 import 'package:ebayan/constants/typography.dart';
+import 'package:ebayan/controller/anct_controller.dart';
+import 'package:ebayan/utils/routes.dart';
 import 'package:ebayan/utils/style.dart';
 import 'package:ebayan/widgets/components/buttons.dart';
 import 'package:flutter/material.dart';
@@ -6,10 +8,11 @@ import 'package:flutter/material.dart';
 class DeleteAnnouncementBox extends StatelessWidget {
   final String annId;
 
-  const DeleteAnnouncementBox({Key? key, required this.annId}) : super(key: key);
+  const DeleteAnnouncementBox({super.key, required this.annId});
 
   @override
   Widget build(BuildContext context) {
+    final AnnouncementController _announcementController = AnnouncementController();
     return Dialog(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(16.0),
@@ -33,7 +36,13 @@ class DeleteAnnouncementBox extends StatelessWidget {
                 theme: EBButtonTheme.primaryOutlined,
               ),
               const SizedBox(width: Spacing.sm),
-              EBButton(onPressed: () {}, text: 'Yes', theme: EBButtonTheme.primary),
+              EBButton(
+                  onPressed: () async {
+                    await _announcementController.deleteAnnouncement(annId);
+                    Navigator.of(context).push(createRoute(route: Routes.announcements));
+                  },
+                  text: 'Yes',
+                  theme: EBButtonTheme.primary),
             ],
           )
         ]),
