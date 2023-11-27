@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ebayan/data/model/announcement_model.dart';
 import 'package:ebayan/data/model/post_announcement_model.dart';
 import 'package:ebayan/data/viewmodel/announcement_view_model.dart';
+import 'package:ebayan/data/viewmodel/comment_view_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:logger/logger.dart';
 
@@ -121,6 +122,37 @@ class AnnouncementController {
     } catch (err) {
       log.e('An error occurred: $err');
       throw 'An error occurred while fetching announcement details.';
+    }
+  }
+
+  Future<List<CommentViewModel>> fetchComments(String annId) async {
+    try {
+      final announcementsSnapshot = await _db.collectionGroup('announcements').where('id', isEqualTo: annId).get();
+
+      if (announcementsSnapshot.docs.isEmpty) {
+        throw 'Announcement not found.';
+      }
+
+      final doc = announcementsSnapshot.docs.first;
+
+      final commentsSnapshot = await doc.reference.collection('comments').orderBy('timeCreated', descending: true).get();
+      List<CommentViewModel> comments = [];
+
+      if (commentsSnapshot.docs.isNotEmpty) {
+        comments = commentsSnapshot.docs
+            .map((doc) => CommentViewModel(
+                  username: doc['username'],
+                  text: doc['text'],
+                  timeCreated: doc['timeCreated'].toDate(),
+                ))
+            .toList();
+      }
+
+      log.d('Successfully fetched comments: $comments');
+      return comments;
+    } catch (err) {
+      log.e('An error occurred: $err');
+      throw 'An error occurred while fetching comments.';
     }
   }
 }
