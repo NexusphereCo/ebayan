@@ -6,7 +6,6 @@ import 'package:ebayan/data/viewmodel/barangay_view_model.dart';
 import 'package:ebayan/utils/global.dart';
 import 'package:ebayan/utils/routes.dart';
 import 'package:ebayan/utils/style.dart';
-import 'package:ebayan/widgets/components/loading.dart';
 import 'package:ebayan/widgets/shared/appbar_bottom.dart';
 import 'package:ebayan/widgets/shared/appbar_top.dart';
 import 'package:feather_icons/feather_icons.dart';
@@ -26,8 +25,6 @@ class JoinedDashboardView extends StatefulWidget {
 class _JoinedDashboardViewState extends State<JoinedDashboardView> {
   final BarangayController _brgyController = BarangayController();
   final UserController _userController = UserController();
-
-  final EBLoadingScreen loadingScreen = const EBLoadingScreen();
 
   Future<BarangayViewModel> _fetchBarangayInfo() async {
     final user = await _userController.getCurrentUserInfo();
