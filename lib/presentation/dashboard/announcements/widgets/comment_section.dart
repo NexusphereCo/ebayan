@@ -1,13 +1,18 @@
 import 'dart:math';
-
 import 'package:ebayan/constants/colors.dart';
-import 'package:ebayan/constants/typography.dart';
+import 'package:ebayan/controller/anct_controller.dart';
+import 'package:ebayan/data/viewmodel/comment_view_model.dart';
+import 'package:ebayan/presentation/dashboard/announcements/widgets/comment_heading.dart';
+import 'package:ebayan/presentation/dashboard/announcements/widgets/comments_list.dart';
 import 'package:ebayan/utils/style.dart';
-import 'package:feather_icons/feather_icons.dart';
+import 'package:ebayan/widgets/components/loading.dart';
 import 'package:flutter/material.dart';
 
 class CommentSection extends StatelessWidget {
-  const CommentSection({Key? key}) : super(key: key);
+  final AnnouncementController _announcementController = AnnouncementController();
+  final String annId;
+
+  CommentSection({Key? key, required this.annId}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,44 +25,33 @@ class CommentSection extends StatelessWidget {
             color: Colors.white,
           ),
           height: 500,
-          child: Padding(
-            padding: const EdgeInsets.all(Global.paddingBody),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                const SizedBox(height: Spacing.md),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          child: FutureBuilder<List<CommentViewModel>>(
+            future: _announcementController.fetchComments(annId),
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                // Return a loading indicator or placeholder
+                return EBLoadingScreen();
+              } else if (snapshot.hasError) {
+                // Handle the error
+                return SnackBar(content: Text('Error: ${snapshot.error}'));
+              } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
+                // Handle the case when there is no data
+                return Text('No comments available.');
+              } else {
+                final List<CommentViewModel> comments = snapshot.data!; // Build your ListView with the data
+                return ListView(
+                  padding: const EdgeInsets.all(Global.paddingBody),
                   children: [
-                    EBTypography.h4(text: 'Comments'),
-                    Row(
+                    Column(
                       children: [
-                        Icon(
-                          FeatherIcons.feather,
-                          size: EBFontSize.normal,
-                          color: EBColor.green,
-                        ),
-                        const SizedBox(width: 3),
-                        EBTypography.text(
-                          text: 'Post a comment',
-                          color: EBColor.green,
-                        ),
+                        commentHeading(),
+                        buildComments(comments: comments),
                       ],
-                    )
+                    ),
                   ],
-                ),
-                const SizedBox(height: Spacing.md),
-                ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: 5,
-                  itemBuilder: (context, index) {
-                    return ListTile(
-                      title: Text('Comment $index'),
-                    );
-                  },
-                ),
-              ],
-            ),
+                );
+              }
+            },
           ),
         ),
         Positioned(
