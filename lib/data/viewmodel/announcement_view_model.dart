@@ -21,7 +21,7 @@ class AnnouncementViewModel {
       id: annId,
       body: data['body'],
       heading: data['heading'],
-      timeCreated: data['timeCreated'].toDate(),
+      timeCreated: (data['timeCreated']).toDate(),
       author: data['author'],
     );
   }
