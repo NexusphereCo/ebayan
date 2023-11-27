@@ -1,6 +1,7 @@
 import 'package:ebayan/constants/typography.dart';
 import 'package:ebayan/data/model/post_announcement_model.dart';
 import 'package:ebayan/data/viewmodel/announcement_view_model.dart';
+import 'package:ebayan/utils/routes.dart';
 import 'package:ebayan/widgets/components/form.dart';
 import 'package:flutter/material.dart';
 import 'package:feather_icons/feather_icons.dart';
@@ -172,6 +173,7 @@ class _EditAnnouncementScreenState extends State<EditAnnouncementScreen> {
                                           body: _bodyController.text,
                                         ),
                                       );
+                                      Navigator.of(context).push(createRoute(route: Routes.announcements));
                                     } catch (e) {
                                       log.e('An error occurred: $e');
                                       throw 'An error occurred while creating the announcement.';
