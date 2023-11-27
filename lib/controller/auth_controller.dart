@@ -51,11 +51,11 @@ class LoginController {
       final errorMessages = {
         'invalid-email': Validation.invalidEmail,
         'wrong-password': Validation.wrongPassword,
+        'user-disabled': Validation.userDisabled,
         'user-not-found': Validation.userNotFound,
         'invalid-login-credentials': Validation.invalidLoginCred,
-        'invalid_login_credentials': Validation.invalidLoginCred,
-        'too_many_requests': Validation.tooManyReq,
         'network-request-failed': Validation.networkFail,
+        'too_many_requests': Validation.tooManyReq,
       };
 
       log.e('${err.code}: $err');
@@ -92,6 +92,17 @@ class RegisterController {
       await FirebaseAuth.instance.signOut();
 
       log.i('Successfully registered official! Navigating to waitlist');
+    } on FirebaseAuthException catch (err) {
+      final errorMessages = {
+        'email-already-in-use': Validation.emailAlreadyInUse,
+        'invalid-email': Validation.invalidEmail,
+        'user-not-found': Validation.userNotFound,
+        'operation-not-allowed': Validation.invalidLoginCred,
+        'weak-password': Validation.weakPassword,
+      };
+
+      log.e('${err.code}: $err');
+      throw errorMessages[err.code.toLowerCase()].toString();
     } catch (e) {
       log.e('An error occurred: $e');
       throw 'An error occurred during registration.';
@@ -112,6 +123,17 @@ class RegisterController {
       await userCredentials.user?.updateDisplayName(docData.firstName);
 
       log.i('Successfully registered resident! Navigating to dashboard');
+    } on FirebaseAuthException catch (err) {
+      final errorMessages = {
+        'email-already-in-use': Validation.emailAlreadyInUse,
+        'invalid-email': Validation.invalidEmail,
+        'user-not-found': Validation.userNotFound,
+        'operation-not-allowed': Validation.invalidLoginCred,
+        'weak-password': Validation.weakPassword,
+      };
+
+      log.e('${err.code}: $err');
+      throw errorMessages[err.code.toLowerCase()].toString();
     } catch (e) {
       log.e('An error occurred: $e');
       throw 'An error occurred during registration.';
