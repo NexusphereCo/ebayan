@@ -4,6 +4,7 @@ import 'package:ebayan/controller/anct_controller.dart';
 import 'package:ebayan/data/viewmodel/announcement_view_model.dart';
 import 'package:ebayan/presentation/dashboard/announcements/widgets/comment_section.dart';
 import 'package:ebayan/utils/style.dart';
+import 'package:ebayan/widgets/components/loading.dart';
 import 'package:ebayan/widgets/shared/appbar_top.dart';
 import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
@@ -29,7 +30,7 @@ class _AnnouncementScreenState extends State<AnnouncementScreen> {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Scaffold(
             body: Center(
-              child: CircularProgressIndicator(),
+              child: EBLoadingScreen(),
             ),
           );
         } else if (snapshot.hasError) {
