@@ -17,7 +17,7 @@ Widget buildEmptyDashboard() => Padding(
                 alignment: WrapAlignment.center,
                 children: [
                   EBTypography.h1(text: 'Welcome Back, '),
-                  EBTypography.h1(text: 'John Smith', color: EBColor.green),
+                  EBTypography.h1(text: 'User', color: EBColor.green),
                   EBTypography.h1(text: '!', color: EBColor.green),
                 ],
               ),
