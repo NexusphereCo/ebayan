@@ -33,14 +33,7 @@ class SphereCard extends StatefulWidget {
     this.disableButtons,
   });
 
-  @override
-  State<SphereCard> createState() => _SphereCardState();
-}
-
-class _SphereCardState extends State<SphereCard> {
-  CardOptions? selectedMenu;
-
-  Widget _cardHeader() {
+  Widget cardHeader() {
     return Container(
       width: double.infinity,
       height: 110,
@@ -55,18 +48,18 @@ class _SphereCardState extends State<SphereCard> {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                (widget.isLoading ?? false)
+                (isLoading ?? false)
                     ? buildLoadingContainer(width: 150, colors: [EBColor.primary[800]!, EBColor.primary[700]!.withOpacity(0.5)])
                     : EBTypography.h4(
-                        text: widget.brgyName!,
+                        text: brgyName!,
                         color: EBColor.light,
                         maxLines: 2,
                       ),
                 const SizedBox(height: Spacing.sm),
-                (widget.isLoading ?? false)
+                (isLoading ?? false)
                     ? buildLoadingContainer(width: 75, colors: [EBColor.primary[800]!, EBColor.primary[700]!.withOpacity(0.5)])
                     : EBTypography.small(
-                        text: widget.brgyCode!,
+                        text: brgyCode!,
                         color: EBColor.light,
                       ),
                 const SizedBox(height: Spacing.md),
@@ -86,6 +79,13 @@ class _SphereCardState extends State<SphereCard> {
       ),
     );
   }
+
+  @override
+  State<SphereCard> createState() => _SphereCardState();
+}
+
+class _SphereCardState extends State<SphereCard> {
+  CardOptions? selectedMenu;
 
   Widget _cardFooter() {
     return Container(
@@ -201,7 +201,7 @@ class _SphereCardState extends State<SphereCard> {
           children: [
             Column(
               children: [
-                _cardHeader(),
+                widget.cardHeader(),
                 _cardFooter(),
               ],
             ),

@@ -49,7 +49,11 @@ class EBAppBarBottom extends StatelessWidget {
             ),
           ),
           InkResponse(
-            onTap: () {},
+            onTap: () {
+              if (ModalRoute.of(context)?.settings.name != Routes.people) {
+                Navigator.of(context).push(createRoute(route: Routes.people));
+              }
+            },
             child: GestureDetector(
               child: Wrap(
                 crossAxisAlignment: WrapCrossAlignment.center,

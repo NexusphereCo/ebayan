@@ -8,6 +8,7 @@ import 'package:ebayan/presentation/dashboard/announcements/announcement_list.da
 import 'package:ebayan/presentation/dashboard/announcements/create_announcement.dart';
 import 'package:ebayan/presentation/dashboard/dashboard/dashboard.dart';
 import 'package:ebayan/presentation/dashboard/join/join_brgy.dart';
+import 'package:ebayan/presentation/dashboard/people/people.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 
@@ -26,6 +27,7 @@ class Routes {
 
   // Dashboard related
   static const String dashboard = '/dashboard';
+  static const String people = '/dashboard/people';
   static const String joinBrgy = '/dashboard/join_brgy';
   static const String announcements = '/dashboard/announcements';
   static const String createAnnouncement = '/dashboard/create_announcement';
@@ -45,6 +47,7 @@ class Routes {
     registerOfficialWaitlist: () => const WaitScreen(),
     registerResident: () => const RegisterResidentScreen(),
     dashboard: () => const DashboardScreen(),
+    people: () => const PeopleScreen(),
     joinBrgy: () => const JoinBrgyScreen(),
     announcements: () => const AnnouncementListScreen(),
     createAnnouncement: () => const CreateAnnouncementScreen(),
@@ -59,6 +62,7 @@ class Routes {
     registerOfficialWaitlist: (BuildContext context) => const WaitScreen(),
     registerResident: (BuildContext context) => const RegisterResidentScreen(),
     dashboard: (BuildContext context) => const DashboardScreen(),
+    people: (BuildContext context) => const PeopleScreen(),
     joinBrgy: (BuildContext context) => const JoinBrgyScreen(),
     announcements: (BuildContext context) => const AnnouncementListScreen(),
     createAnnouncement: (BuildContext context) => const CreateAnnouncementScreen(),
