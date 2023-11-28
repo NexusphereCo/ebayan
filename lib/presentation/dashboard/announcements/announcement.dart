@@ -4,6 +4,7 @@ import 'package:ebayan/controller/anct_controller.dart';
 import 'package:ebayan/data/viewmodel/announcement_view_model.dart';
 import 'package:ebayan/presentation/dashboard/announcements/widgets/comment_section.dart';
 import 'package:ebayan/utils/style.dart';
+import 'package:ebayan/widgets/components/buttons.dart';
 import 'package:ebayan/widgets/components/loading.dart';
 import 'package:ebayan/widgets/shared/appbar_top.dart';
 import 'package:feather_icons/feather_icons.dart';
@@ -54,97 +55,91 @@ class _AnnouncementScreenState extends State<AnnouncementScreen> {
               more: true,
               annId: announcement.id,
             ),
-            body: Padding(
-              padding: const EdgeInsets.all(Global.paddingBody),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+            body: ListView(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(Global.paddingBody),
+                  child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      EBTypography.h2(
-                        text: announcement.heading,
-                        color: EBColor.primary,
-                      ),
-                      const SizedBox(height: Spacing.sm),
-                      Row(
-                        children: [
-                          const Icon(FeatherIcons.feather, size: 13, color: Colors.black45),
-                          EBTypography.small(text: 'John Doe', muted: true), // authorName
-                        ],
-                      ),
-                      EBTypography.small(text: announcement.formattedTime, muted: true), // timeCreated
-                    ],
-                  ),
-                  const SizedBox(height: Spacing.md),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      EBTypography.text(
-                        text: announcement.body.toString(),
-                        textAlign: TextAlign.justify,
-                      ),
-                      const SizedBox(height: Spacing.lg),
-                      const SizedBox(height: Spacing.md),
-                      EBTypography.small(text: 'What do you think about this post?', fontWeight: FontWeight.bold),
-                      const SizedBox(height: Spacing.sm),
-                      Row(
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
+                          EBTypography.h2(
+                            text: announcement.heading,
+                            color: EBColor.primary,
+                          ),
+                          const SizedBox(height: Spacing.sm),
                           Row(
                             children: [
-                              Icon(FeatherIcons.thumbsUp, size: 13, color: EBColor.primary),
-                              const SizedBox(width: 3),
-                              EBTypography.small(text: 'Like', color: EBColor.primary),
+                              const Icon(FeatherIcons.feather, size: 13, color: Colors.black45),
+                              EBTypography.small(text: 'John Doe', muted: true), // authorName
                             ],
                           ),
-                          const SizedBox(width: Spacing.lg),
-                          Row(
-                            children: [
-                              Icon(FeatherIcons.thumbsDown, size: 13, color: EBColor.primary),
-                              const SizedBox(width: 3),
-                              EBTypography.small(text: 'Dislike', color: EBColor.primary),
-                            ],
-                          ),
+                          EBTypography.small(text: announcement.formattedTime, muted: true), // timeCreated
                         ],
-                      )
-                    ],
-                  ), // Position at the bottom center
-                ],
-              ),
-            ),
-            floatingActionButton: Align(
-              alignment: Alignment.bottomCenter,
-              child: Padding(
-                padding: const EdgeInsets.only(bottom: Global.paddingBody),
-                child: FloatingActionButton.extended(
-                  onPressed: () {
-                    showModalBottomSheet(
-                      context: context,
-                      builder: (BuildContext context) {
-                        return CommentSection(annId: annId);
-                      },
-                      shape: const RoundedRectangleBorder(
-                        borderRadius: BorderRadius.vertical(top: Radius.circular(20.0)),
                       ),
-                    );
-                  },
-                  label: const Text('View Comment'), // Text label
-                  icon: const Icon(FeatherIcons.messageCircle), // Icon
-                  backgroundColor: EBColor.light, // Background color
-                  foregroundColor: EBColor.primary, // Text and icon color
-                  shape: RoundedRectangleBorder(
-                    // Customize the shape
-                    borderRadius: BorderRadius.circular(50.0),
-                    side: BorderSide(
-                      color: EBColor.primary,
-                    ),
+                      const SizedBox(height: Spacing.md),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          EBTypography.text(
+                            text: announcement.body.toString(),
+                            textAlign: TextAlign.justify,
+                          ),
+                          const SizedBox(height: Spacing.xl),
+                          EBTypography.small(text: 'What do you think about this post?', fontWeight: FontWeight.bold),
+                          const SizedBox(height: Spacing.sm),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Row(
+                                children: [
+                                  Icon(FeatherIcons.thumbsUp, size: 13, color: EBColor.primary),
+                                  const SizedBox(width: 3),
+                                  EBTypography.small(text: 'Like', color: EBColor.primary),
+                                ],
+                              ),
+                              const SizedBox(width: Spacing.lg),
+                              Row(
+                                children: [
+                                  Icon(FeatherIcons.thumbsDown, size: 13, color: EBColor.primary),
+                                  const SizedBox(width: 3),
+                                  EBTypography.small(text: 'Dislike', color: EBColor.primary),
+                                ],
+                              ),
+                            ],
+                          )
+                        ],
+                      ),
+                      const SizedBox(height: Spacing.xl),
+                      EBButton(
+                        onPressed: () {
+                          showModalBottomSheet(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return CommentSection(annId: annId);
+                            },
+                            shape: const RoundedRectangleBorder(
+                              borderRadius: BorderRadius.vertical(top: Radius.circular(20.0)),
+                            ),
+                          );
+                        },
+                        text: 'View Comment',
+                        theme: EBButtonTheme.primaryOutlined,
+                        icon: const Icon(
+                          FeatherIcons.messageCircle,
+                          size: EBFontSize.h2,
+                        ),
+                      ),
+                      const SizedBox(height: Spacing.md), // Position at the bottom center
+                    ],
                   ),
                 ),
-              ),
+              ],
             ),
           );
         }
