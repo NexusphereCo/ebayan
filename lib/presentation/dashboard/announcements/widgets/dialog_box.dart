@@ -19,30 +19,30 @@ class DeleteAnnouncementBox extends StatelessWidget {
       ),
       child: Container(
         width: 200,
-        height: 160,
+        height: 170,
         padding: const EdgeInsets.all(Global.paddingBody),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
           EBTypography.h4(text: 'Are  you sure you want to delete this announcement?', fontWeight: EBFontWeight.bold),
           EBTypography.small(text: 'This action cannot be undone,'),
           const SizedBox(height: Spacing.md),
           Row(
-            mainAxisAlignment: MainAxisAlignment.end,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               EBButton(
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
-                text: 'No',
+                text: 'Cancel',
                 theme: EBButtonTheme.primaryOutlined,
               ),
-              const SizedBox(width: Spacing.sm),
               EBButton(
-                  onPressed: () async {
-                    await _announcementController.deleteAnnouncement(annId);
-                    Navigator.of(context).push(createRoute(route: Routes.announcements));
-                  },
-                  text: 'Yes',
-                  theme: EBButtonTheme.primary),
+                onPressed: () async {
+                  await _announcementController.deleteAnnouncement(annId);
+                  Navigator.of(context).push(createRoute(route: Routes.announcements));
+                },
+                text: 'Delete',
+                theme: EBButtonTheme.primary,
+              ),
             ],
           )
         ]),
