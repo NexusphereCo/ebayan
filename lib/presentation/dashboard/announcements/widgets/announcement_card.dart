@@ -10,10 +10,7 @@ import 'package:flutter/material.dart';
 class AnnouncementCard extends StatelessWidget {
   final AnnouncementModel announcement;
 
-  const AnnouncementCard({
-    Key? key,
-    required this.announcement,
-  }) : super(key: key);
+  const AnnouncementCard({super.key, required this.announcement});
 
   @override
   Widget build(BuildContext context) {
