@@ -46,22 +46,18 @@ class _CreateAnnouncementScreenState extends State<CreateAnnouncementScreen> {
                 ],
               ),
               const SizedBox(height: Spacing.md),
-              Row(
+              Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      EBTypography.h4(
-                        text: "Send SMS",
-                        muted: true,
-                      ),
-                      const SwitchButton(),
-                      EBTypography.small(
-                        text: 'This will send a group text a message to all people within the barangay.',
-                        muted: true,
-                      ),
-                    ],
+                  EBTypography.h4(
+                    text: "Send SMS",
+                    muted: true,
+                  ),
+                  const SwitchButton(),
+                  EBTypography.small(
+                    maxLines: 2,
+                    text: 'This will send a group text a message to all people within the barangay.',
+                    muted: true,
                   ),
                 ],
               ),
