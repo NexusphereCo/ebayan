@@ -12,7 +12,7 @@ class CommentSection extends StatelessWidget {
   final AnnouncementController _announcementController = AnnouncementController();
   final String annId;
 
-  CommentSection({Key? key, required this.annId}) : super(key: key);
+  CommentSection({super.key, required this.annId});
 
   @override
   Widget build(BuildContext context) {

@@ -19,7 +19,7 @@ class AnnouncementCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      height: 125,
+      height: 110,
       margin: const EdgeInsets.only(bottom: 10.0),
       decoration: BoxDecoration(
         color: EBColor.primary.shade200,
@@ -35,8 +35,9 @@ class AnnouncementCard extends StatelessWidget {
               bottom: 0,
               child: Container(
                 width: 10, // Adjust the width of the vertical bar as needed
-                decoration: BoxDecoration(color: EBColor.dullGreen.shade600 // Adjust the color of the vertical bar as needed
-                    ),
+                decoration: BoxDecoration(
+                  color: EBColor.dullGreen[600]!.withOpacity(0.5), // Adjust the color of the vertical bar as needed
+                ),
               ),
             ),
             Padding(
@@ -71,7 +72,7 @@ class AnnouncementCard extends StatelessWidget {
                         },
                         text: 'View',
                         theme: EBButtonTheme.primary,
-                        size: EBButtonSize.md,
+                        size: EBButtonSize.sm,
                       ),
                     ],
                   ),
