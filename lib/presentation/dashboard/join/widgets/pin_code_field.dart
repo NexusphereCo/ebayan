@@ -25,7 +25,7 @@ Widget buildPinCodeTextField({
     inactiveBorderWidth: 1,
     activeBorderWidth: 1,
     selectedBorderWidth: 2,
-    fieldHeight: 55.0,
+    fieldHeight: 50.0,
     fieldWidth: (fieldWidth >= fieldWidthMax) ? fieldWidthMax : fieldWidth,
   );
 

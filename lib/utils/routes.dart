@@ -1,14 +1,14 @@
 import 'package:ebayan/presentation/auth/account/info.dart';
 import 'package:ebayan/presentation/auth/login/login.dart';
+import 'package:ebayan/presentation/auth/register/official/screens/wait.dart';
 import 'package:ebayan/presentation/auth/register/register.dart';
 import 'package:ebayan/presentation/auth/register/official/official.dart';
 import 'package:ebayan/presentation/auth/register/resident/resident.dart';
-import 'package:ebayan/presentation/dashboard/announcements/announcement.dart';
 import 'package:ebayan/presentation/dashboard/announcements/announcement_list.dart';
 import 'package:ebayan/presentation/dashboard/announcements/create_announcement.dart';
-import 'package:ebayan/presentation/dashboard/announcements/edit_announcement.dart';
 import 'package:ebayan/presentation/dashboard/dashboard/dashboard.dart';
 import 'package:ebayan/presentation/dashboard/join/join_brgy.dart';
+import 'package:ebayan/presentation/dashboard/people/people.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 
@@ -22,10 +22,12 @@ class Routes {
   static const String register = '/register';
   static const String accountInfo = '/account/info';
   static const String registerOfficial = '/register/as_official';
+  static const String registerOfficialWaitlist = '/register/as_official/wait';
   static const String registerResident = '/register/as_resident';
 
   // Dashboard related
   static const String dashboard = '/dashboard';
+  static const String people = '/dashboard/people';
   static const String joinBrgy = '/dashboard/join_brgy';
   static const String announcements = '/dashboard/announcement_list';
   static const String createAnnouncement = '/dashboard/create_announcement';
@@ -42,8 +44,10 @@ class Routes {
     register: () => const RegisterScreen(),
     accountInfo: () => const AccountScreen(),
     registerOfficial: () => const RegisterOfficialScreen(),
+    registerOfficialWaitlist: () => const WaitScreen(),
     registerResident: () => const RegisterResidentScreen(),
     dashboard: () => const DashboardScreen(),
+    people: () => const PeopleScreen(),
     joinBrgy: () => const JoinBrgyScreen(),
     announcements: () => const AnnouncementListScreen(),
     createAnnouncement: () => const CreateAnnouncementScreen(),
@@ -57,8 +61,10 @@ class Routes {
     register: (BuildContext context) => const RegisterScreen(),
     accountInfo: (BuildContext context) => const AccountScreen(),
     registerOfficial: (BuildContext context) => const RegisterOfficialScreen(),
+    registerOfficialWaitlist: (BuildContext context) => const WaitScreen(),
     registerResident: (BuildContext context) => const RegisterResidentScreen(),
     dashboard: (BuildContext context) => const DashboardScreen(),
+    people: (BuildContext context) => const PeopleScreen(),
     joinBrgy: (BuildContext context) => const JoinBrgyScreen(),
     announcements: (BuildContext context) => const AnnouncementListScreen(),
     createAnnouncement: (BuildContext context) => const CreateAnnouncementScreen(),

@@ -17,6 +17,9 @@ class EBAppBar extends StatefulWidget implements PreferredSizeWidget {
   final bool? more;
   final String? annId;
 
+  // this is used for the onboarding, to set the target
+  final GlobalKey? drawerKey;
+
   const EBAppBar({
     Key? key,
     this.enablePop,
@@ -24,6 +27,7 @@ class EBAppBar extends StatefulWidget implements PreferredSizeWidget {
     this.noTitle,
     this.more,
     this.annId,
+    this.drawerKey,
   }) : super(key: key);
 
   @override
@@ -84,6 +88,7 @@ class _EBAppBarState extends State<EBAppBar> {
                   Scaffold.of(context).openDrawer();
                 },
                 child: Icon(
+                  key: widget.drawerKey,
                   EBIcons.menu,
                   size: iconSize,
                   color: EBColor.dark,

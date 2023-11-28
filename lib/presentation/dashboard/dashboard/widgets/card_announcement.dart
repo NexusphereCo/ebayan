@@ -98,7 +98,7 @@ ListView _buildListOfAnnouncements(List<AnnouncementViewModel> announcements) =>
                           ),
                           child: EBTypography.label(text: 'Important', color: EBColor.light),
                         ),
-                        EBTypography.small(text: DateFormat('MMM d').format(announcements[index].timeCreated!)),
+                        EBTypography.small(text: DateFormat('MMM d').format(announcements[index].timeCreated)),
                       ],
                     ),
                     const SizedBox(height: Spacing.md),
