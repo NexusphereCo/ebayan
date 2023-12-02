@@ -37,7 +37,7 @@ Widget guideCard({
                 (onSkip != null)
                     ? TextButton(
                         onPressed: onSkip,
-                        child: EBTypography.text(text: 'Skip Tutorial', color: EBColor.red),
+                        child: EBTypography.text(text: 'Skip Tutorial', color: EBColor.green),
                       )
                     : Container(),
               ],

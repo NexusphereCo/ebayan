@@ -181,7 +181,7 @@ Widget buildPersonalInfo({
                         },
                         child: EBTypography.text(
                           text: 'Clear Information',
-                          color: EBColor.red,
+                          color: EBColor.green,
                           fontWeight: EBFontWeight.bold,
                           textAlign: TextAlign.end,
                         ),
