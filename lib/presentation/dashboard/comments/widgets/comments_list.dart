@@ -23,7 +23,7 @@ ListView _buildListofComments(List<CommentViewModel> comments) => ListView.build
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             EBTypography.h4(text: comment.username, fontWeight: EBFontWeight.semiBold),
-            EBTypography.text(text: comment.text, maxLines: 3),
+            EBTypography.label(text: comment.text, maxLines: 3, fontWeight: EBFontWeight.regular),
             const SizedBox(height: Spacing.sm),
           ],
         );

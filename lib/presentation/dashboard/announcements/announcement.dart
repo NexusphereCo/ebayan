@@ -2,7 +2,7 @@ import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/constants/typography.dart';
 import 'package:ebayan/controller/anct_controller.dart';
 import 'package:ebayan/data/viewmodel/announcement_view_model.dart';
-import 'package:ebayan/presentation/dashboard/announcements/widgets/comment_section.dart';
+import 'package:ebayan/presentation/dashboard/comments/comment_section.dart';
 import 'package:ebayan/utils/style.dart';
 import 'package:ebayan/widgets/components/buttons.dart';
 import 'package:ebayan/widgets/components/loading.dart';
