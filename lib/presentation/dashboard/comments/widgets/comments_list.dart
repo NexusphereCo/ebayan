@@ -1,18 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:ebayan/constants/typography.dart';
-import 'package:ebayan/controller/user_controller.dart';
 import 'package:ebayan/data/viewmodel/comment_view_model.dart';
 import 'package:ebayan/utils/style.dart';
 
 class CommentsList extends StatelessWidget {
   final List<CommentViewModel> comments;
 
-  CommentsList({required this.comments});
+  const CommentsList({super.key, required this.comments});
 
   @override
   Widget build(BuildContext context) {
-    final UserController _userController = UserController();
-
     return SliverList(
       delegate: SliverChildBuilderDelegate(
         (context, index) {

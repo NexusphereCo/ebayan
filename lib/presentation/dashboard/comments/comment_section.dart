@@ -56,7 +56,7 @@ class _CommentSectionState extends State<CommentSection> {
                       SliverToBoxAdapter(
                         child: buildLoadingIndicator(),
                       )
-                    else if (comments == null || comments.isEmpty)
+                    else if (comments.isEmpty)
                       SliverToBoxAdapter(
                         child: buildNoComments(),
                       )
