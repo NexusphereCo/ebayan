@@ -1,6 +1,7 @@
 import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/constants/typography.dart';
 import 'package:ebayan/controller/anct_controller.dart';
+import 'package:ebayan/controller/user_controller.dart';
 import 'package:ebayan/data/viewmodel/announcement_view_model.dart';
 import 'package:ebayan/presentation/dashboard/comments/comment_section.dart';
 import 'package:ebayan/utils/style.dart';
@@ -8,6 +9,7 @@ import 'package:ebayan/widgets/components/buttons.dart';
 import 'package:ebayan/widgets/components/loading.dart';
 import 'package:ebayan/widgets/shared/appbar_top.dart';
 import 'package:feather_icons/feather_icons.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class AnnouncementScreen extends StatefulWidget {
@@ -19,6 +21,13 @@ class AnnouncementScreen extends StatefulWidget {
 
 class _AnnouncementScreenState extends State<AnnouncementScreen> {
   final AnnouncementController _announcementController = AnnouncementController();
+  late String userType; // Declare userType
+
+  @override
+  void initState() {
+    super.initState();
+    _fetchUserType(); // Fetch userType when the screen initializes
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +61,7 @@ class _AnnouncementScreenState extends State<AnnouncementScreen> {
             appBar: EBAppBar(
               enablePop: true,
               noTitle: true,
-              more: true,
+              more: userType == "RESIDENT" ? false : true,
               annId: announcement.id,
             ),
             body: ListView(
@@ -144,5 +153,19 @@ class _AnnouncementScreenState extends State<AnnouncementScreen> {
         }
       },
     );
+  }
+
+  Future<void> _fetchUserType() async {
+    final userController = UserController();
+
+    // Use Firebase Authentication to get the currently authenticated user
+    final user = FirebaseAuth.instance.currentUser;
+
+    if (user != null) {
+      final currentUserType = await userController.getUserType(user.uid);
+      setState(() {
+        userType = currentUserType;
+      });
+    }
   }
 }
