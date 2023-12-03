@@ -1,7 +1,6 @@
 import 'package:ebayan/constants/assets.dart';
 import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/constants/typography.dart';
-import 'package:ebayan/data/model/announcement_model.dart';
 import 'package:ebayan/data/viewmodel/announcement_view_model.dart';
 import 'package:ebayan/utils/routes.dart';
 import 'package:ebayan/utils/style.dart';
@@ -73,7 +72,7 @@ ListView _buildListOfAnnouncements(List<AnnouncementViewModel> announcements) =>
           ],
         ),
         child: ClipRRect(
-          borderRadius: BorderRadius.circular(EBBorderRadius.lg),
+          borderRadius: BorderRadius.circular(18.0),
           child: Stack(
             children: [
               Positioned.fill(
@@ -124,9 +123,12 @@ ListView _buildListOfAnnouncements(List<AnnouncementViewModel> announcements) =>
                 right: 0,
                 child: IconButton(
                   onPressed: () {
-                    Navigator.of(context).push(createRoute(route: '/announcement/${announcements[index].id}'));
+                    Navigator.of(context).push(createRoute(route: Routes.announcement, args: announcements[index].id.toString()));
                   },
-                  icon: const Icon(FeatherIcons.arrowRight),
+                  icon: Icon(
+                    FeatherIcons.arrowRight,
+                    color: EBColor.light,
+                  ),
                 ),
               )
             ],
