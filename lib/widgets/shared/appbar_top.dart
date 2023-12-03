@@ -2,7 +2,7 @@ import 'package:ebayan/constants/assets.dart';
 import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/constants/icons.dart';
 import 'package:ebayan/constants/typography.dart';
-import 'package:ebayan/presentation/dashboard/announcements/widgets/dialog_box.dart';
+import 'package:ebayan/presentation/dashboard/announcements/widgets/delete_announcement_modal.dart';
 import 'package:ebayan/controller/user_controller.dart';
 import 'package:ebayan/utils/routes.dart';
 import 'package:ebayan/widgets/components/loading.dart';
@@ -16,8 +16,6 @@ class EBAppBar extends StatefulWidget implements PreferredSizeWidget {
   final bool? enablePop;
   final bool? more;
   final String? annId;
-
-  // this is used for the onboarding, to set the target
   final GlobalKey? drawerKey;
 
   const EBAppBar({
@@ -44,8 +42,6 @@ class _EBAppBarState extends State<EBAppBar> {
 
   @override
   Widget build(BuildContext context) {
-    const iconSize = 20.0;
-
     /// ```dart
     /// AppBar() => default; returns a drawer with title heading and logo.
     /// AppBar(enablePop: true) => returns a back button instead of drawer with title heading and logo.
@@ -53,99 +49,112 @@ class _EBAppBarState extends State<EBAppBar> {
     /// AppBar(enablePop: true, title: Widget..) => returns a back button with a custom title.
     /// AppBar(enablePop: true, more: true)
     /// ```
+    // Build the AppBar
     return AppBar(
       iconTheme: IconThemeData(color: EBColor.primary),
       backgroundColor: EBColor.light,
       elevation: 1,
-      title: !(widget.noTitle ?? false)
-          ? widget.title ??
-              Row(
-                children: [
-                  EBTypography.h3(
-                    text: 'eBayan',
-                    color: EBColor.primary,
-                  ),
-                  const SizedBox(width: 8),
-                  SvgPicture.asset(Asset.logoColorPath),
-                ],
-              )
-          : null,
-      leading: Container(
-        // moves the drawer icon to the right more
-        margin: const EdgeInsets.fromLTRB(8.0, 0, 0, 0),
-        child: (widget.enablePop ?? false)
-            ? IconButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-                icon: Icon(
-                  FeatherIcons.arrowLeft,
-                  color: EBColor.primary,
-                ),
-              )
-            : InkResponse(
-                onTap: () {
-                  Scaffold.of(context).openDrawer();
-                },
-                child: Icon(
-                  key: widget.drawerKey,
-                  EBIcons.menu,
-                  size: iconSize,
-                  color: EBColor.dark,
-                ),
-              ),
-      ),
+      title: _buildTitle(),
+      leading: _buildLeading(),
       actions: [
-        Container(
-          margin: const EdgeInsets.fromLTRB(0, 0, 8.0, 0),
-          child: (widget.more ?? false)
-              ? PopupMenuButton<CardOptions>(
-                  offset: const Offset(-18, 35),
-                  icon: Icon(
-                    FeatherIcons.moreVertical,
-                    color: EBColor.primary,
-                  ),
-                  initialValue: selectedMenu,
-                  onSelected: (CardOptions item) {
-                    setState(() {
-                      selectedMenu = item;
-                    });
-                    if (item == CardOptions.itemOne) {
-                      Navigator.of(context).push(createRoute(route: Routes.editAnnouncement, args: widget.annId));
-                    } else if (item == CardOptions.itemTwo) {
-                      showDialog(
-                        context: context,
-                        builder: (context) {
-                          return DeleteAnnouncementBox(
-                            annId: widget.annId.toString(),
-                          );
-                        },
-                      );
-                    }
-                  },
-                  itemBuilder: (BuildContext context) => <PopupMenuEntry<CardOptions>>[
-                    const PopupMenuItem<CardOptions>(
-                      value: CardOptions.itemOne,
-                      height: 30,
-                      child: Text(
-                        'Edit Announcement',
-                        style: TextStyle(fontSize: 13),
-                      ),
-                    ),
-                    const PopupMenuItem<CardOptions>(
-                      value: CardOptions.itemTwo,
-                      height: 30,
-                      child: Text(
-                        'Delete Announcement',
-                        style: TextStyle(fontSize: 13),
-                      ),
-                    ),
-                  ],
-                )
-              : null, // Add this line to handle the case when more is false
-        ),
+        _buildMoreAction(),
       ],
     );
+  }
+
+  Widget? _buildTitle() {
+    if (!(widget.noTitle ?? false)) {
+      return widget.title ??
+          Row(
+            children: [
+              EBTypography.h3(
+                text: 'eBayan',
+                color: EBColor.primary,
+              ),
+              const SizedBox(width: 8),
+              SvgPicture.asset(Asset.logoColorPath),
+            ],
+          );
+    }
+    return null;
+  }
+
+  Widget _buildLeading() {
+    const iconSize = 20.0;
+    return Container(
+      margin: const EdgeInsets.fromLTRB(8.0, 0, 0, 0),
+      child: (widget.enablePop ?? false)
+          ? IconButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              icon: Icon(
+                FeatherIcons.arrowLeft,
+                color: EBColor.primary,
+              ),
+            )
+          : InkResponse(
+              onTap: () {
+                Scaffold.of(context).openDrawer();
+              },
+              child: Icon(
+                key: widget.drawerKey,
+                EBIcons.menu,
+                size: iconSize,
+                color: EBColor.dark,
+              ),
+            ),
+    );
+  }
+
+  Widget _buildMoreAction() {
+    return Container(
+        margin: const EdgeInsets.fromLTRB(0, 0, 8.0, 0),
+        child: (widget.more ?? false)
+            ? PopupMenuButton<CardOptions>(
+                offset: const Offset(-18, 35),
+                icon: Icon(
+                  FeatherIcons.moreVertical,
+                  color: EBColor.primary,
+                ),
+                initialValue: selectedMenu,
+                onSelected: (CardOptions item) {
+                  setState(() {
+                    selectedMenu = item;
+                  });
+                  if (item == CardOptions.itemOne) {
+                    Navigator.of(context).pushReplacement(createRoute(route: Routes.editAnnouncement, args: widget.annId));
+                  } else if (item == CardOptions.itemTwo) {
+                    showModalBottomSheet<void>(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return DeleteAnnouncement(
+                          annId: widget.annId.toString(),
+                        );
+                      },
+                    );
+                  }
+                },
+                itemBuilder: (BuildContext context) => <PopupMenuEntry<CardOptions>>[
+                  const PopupMenuItem<CardOptions>(
+                    value: CardOptions.itemOne,
+                    height: 30,
+                    child: Text(
+                      'Edit Announcement',
+                      style: TextStyle(fontSize: 13),
+                    ),
+                  ),
+                  const PopupMenuItem<CardOptions>(
+                    value: CardOptions.itemTwo,
+                    height: 30,
+                    child: Text(
+                      'Delete Announcement',
+                      style: TextStyle(fontSize: 13),
+                    ),
+                  ),
+                ],
+              )
+            : null);
   }
 }
 
