@@ -132,8 +132,9 @@ class _CreateAnnouncementScreenState extends State<CreateAnnouncementScreen> {
                             icon: Icon(FeatherIcons.send, color: EBColor.light, size: EBFontSize.h4),
                             onPressed: () async {
                               try {
-                                await _announcementController.createAnnouncement(_headingController.text, _bodyController.text);
-                                Navigator.of(context).push(createRoute(route: Routes.announcements));
+                                Navigator.of(context).pushReplacement(createRoute(
+                                    route: Routes.announcement, //
+                                    args: await _announcementController.createAnnouncement(_headingController.text, _bodyController.text)));
                               } catch (e) {
                                 log.e('An error occurred: $e');
                                 throw 'An error occurred while creating the announcement.';

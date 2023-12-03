@@ -10,7 +10,7 @@ class AnnouncementController {
   final FirebaseFirestore _db = FirebaseFirestore.instance;
   final User? user = FirebaseAuth.instance.currentUser;
 
-  Future<void> createAnnouncement(heading, body) async {
+  Future<String> createAnnouncement(heading, body) async {
     try {
       final userDoc = await _db.collection('users').doc(user!.uid).get();
       final announcementDoc = (await _db.collectionGroup('barangays').where('code', isEqualTo: int.parse(userDoc['barangayAssociated'])).get()).docs.first;
@@ -23,15 +23,15 @@ class AnnouncementController {
       });
 
       await announcementRef.update({'id': announcementRef.id});
-
       log.d('Successfully created announcement.');
+      return announcementRef.id.toString();
     } catch (err) {
       log.e('An error occurred: $err');
       throw 'An error occurred while creating the announcement.';
     }
   }
 
-  Future<void> updateAnnouncement(annId, heading, body) async {
+  Future<String> updateAnnouncement(annId, heading, body) async {
     try {
       final announcementsRef = _db.collectionGroup('announcements');
       final announcementSnapshot = await announcementsRef.where('id', isEqualTo: annId).get();
@@ -45,6 +45,7 @@ class AnnouncementController {
       });
 
       log.d('Successfully updated announcement.');
+      return annId;
     } catch (err) {
       log.e('An error occurred: $err');
       throw 'An error occurred while updating the announcement.';
