@@ -74,7 +74,7 @@ class _AnnouncementScreenState extends State<AnnouncementScreen> {
                           Row(
                             children: [
                               const Icon(FeatherIcons.feather, size: 13, color: Colors.black45),
-                              EBTypography.small(text: 'John Doe', muted: true), // authorName
+                              EBTypography.small(text: announcement.author, muted: true), // authorName
                             ],
                           ),
                           EBTypography.small(text: announcement.formattedTime, muted: true), // timeCreated

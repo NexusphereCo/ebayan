@@ -73,15 +73,19 @@ class BarangayController {
     List<AnnouncementViewModel> announcements = [];
 
     if (announcementsSnapshot.docs.isNotEmpty) {
-      announcements = announcementsSnapshot.docs
-          .map((doc) => AnnouncementViewModel(
-                id: doc.id,
-                heading: doc['heading'],
-                body: doc['body'],
-                timeCreated: (doc['timeCreated'] as Timestamp).toDate(),
-                author: doc['author'],
-              ))
-          .toList();
+      announcements = await Future.wait(announcementsSnapshot.docs.map((doc) async {
+        final authorId = doc['authorId'];
+        final author = await fetchAuthorName(authorId);
+
+        return AnnouncementViewModel(
+          id: doc.id,
+          heading: doc['heading'],
+          body: doc['body'],
+          timeCreated: (doc['timeCreated'] as Timestamp).toDate(),
+          author: author,
+          authorId: authorId,
+        );
+      }));
     }
 
     // Get the total users joined in my barangay
@@ -96,6 +100,18 @@ class BarangayController {
       announcements: announcements,
       numOfPeople: numOfPeople,
     );
+  }
+
+  Future<String> fetchAuthorName(String authorId) async {
+    try {
+      final userDoc = await _db.collection('users').doc(authorId).get();
+      final String name = '${userDoc['firstName']} ${userDoc['lastName']}';
+      return name;
+    } catch (err) {
+      _log.e('An error occurred while fetching author name: $err');
+      _log.e('An error occurred while fetching author name: $authorId');
+      throw 'An error occurred while fetching author name.';
+    }
   }
 
   Future<bool> hasJoinedBrgy() async {

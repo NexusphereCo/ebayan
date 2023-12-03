@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ebayan/data/model/announcement_model.dart';
-import 'package:ebayan/data/model/post_announcement_model.dart';
 import 'package:ebayan/data/viewmodel/announcement_view_model.dart';
 import 'package:ebayan/data/viewmodel/comment_view_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -11,15 +10,15 @@ class AnnouncementController {
   final FirebaseFirestore _db = FirebaseFirestore.instance;
   final User? user = FirebaseAuth.instance.currentUser;
 
-  Future<void> createAnnouncement(PostAnnouncementModel newAnnouncement) async {
+  Future<void> createAnnouncement(heading, body) async {
     try {
       final userDoc = await _db.collection('users').doc(user!.uid).get();
       final announcementDoc = (await _db.collectionGroup('barangays').where('code', isEqualTo: int.parse(userDoc['barangayAssociated'])).get()).docs.first;
       final String authorName = '${userDoc['firstName']} ${userDoc['lastName']}';
 
       final announcementRef = await announcementDoc.reference.collection('announcements').add({
-        'heading': newAnnouncement.heading,
-        'body': newAnnouncement.body,
+        'heading': heading,
+        'body': body,
         'timeCreated': DateTime.now(),
         'author': authorName,
       });
@@ -33,16 +32,16 @@ class AnnouncementController {
     }
   }
 
-  Future<void> updateAnnouncement(PostAnnouncementModel updatedAnnouncement) async {
+  Future<void> updateAnnouncement(annId, heading, body) async {
     try {
       final announcementsRef = _db.collectionGroup('announcements');
-      final announcementSnapshot = await announcementsRef.where('id', isEqualTo: updatedAnnouncement.id).get();
+      final announcementSnapshot = await announcementsRef.where('id', isEqualTo: annId).get();
 
       final announcementDoc = announcementSnapshot.docs.first;
 
       await announcementDoc.reference.update({
-        'heading': updatedAnnouncement.heading,
-        'body': updatedAnnouncement.body,
+        'heading': heading,
+        'body': body,
         'timeCreated': DateTime.now(),
       });
 
@@ -108,13 +107,16 @@ class AnnouncementController {
       }
 
       final announcementDoc = announcementsSnapshot.docs.first;
+      final authorId = announcementDoc['authorId'];
+      final author = await fetchAuthorName(authorId);
 
       final AnnouncementViewModel announcementDetails = AnnouncementViewModel(
         id: announcementDoc.id,
         heading: announcementDoc['heading'],
         body: announcementDoc['body'],
         timeCreated: announcementDoc['timeCreated'].toDate(),
-        author: announcementDoc['author'],
+        author: author,
+        authorId: authorId,
       );
 
       log.d('Successfully fetched announcement details.');
@@ -122,6 +124,18 @@ class AnnouncementController {
     } catch (err) {
       log.e('An error occurred: $err');
       throw 'An error occurred while fetching announcement details.';
+    }
+  }
+
+  Future<String> fetchAuthorName(String authorId) async {
+    try {
+      final userDoc = await _db.collection('users').doc(authorId).get();
+      final String name = '${userDoc['firstName']} ${userDoc['lastName']}';
+      return name;
+    } catch (err) {
+      log.e('An error occurred while fetching author name: $err');
+      log.e('An error occurred while fetching author name: $authorId');
+      throw 'An error occurred while fetching author name.';
     }
   }
 
@@ -144,6 +158,7 @@ class AnnouncementController {
                   username: doc['username'],
                   text: doc['text'],
                   timeCreated: doc['timeCreated'].toDate(),
+                  userId: doc['userId'],
                 ))
             .toList();
       }
