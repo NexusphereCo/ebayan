@@ -1,5 +1,4 @@
 import 'package:ebayan/constants/colors.dart';
-import 'package:ebayan/constants/theme.dart';
 import 'package:ebayan/constants/typography.dart';
 import 'package:ebayan/utils/style.dart';
 import 'package:feather_icons/feather_icons.dart';
@@ -53,7 +52,6 @@ class _CommentHeadingState extends State<CommentHeading> {
             ),
           ],
         ),
-        const SizedBox(height: Spacing.sm),
         if (_isEditing) buildCommentInput(),
         const SizedBox(height: Spacing.md),
       ],

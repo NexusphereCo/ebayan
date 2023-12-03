@@ -41,9 +41,12 @@ class _CommentSectionState extends State<CommentSection> {
                 padding: const EdgeInsets.all(Global.paddingBody),
                 children: [
                   const CommentHeading(),
-                  if (snapshot.connectionState == ConnectionState.waiting) buildLoadingIndicator(),
-                  if (comments == null || comments.isEmpty) buildNoComments(),
-                  if (comments.isNotEmpty) buildComments(comments: comments),
+                  if (snapshot.connectionState == ConnectionState.waiting)
+                    buildLoadingIndicator() //
+                  else if (comments == null || comments.isEmpty)
+                    buildNoComments() //
+                  else
+                    buildComments(comments: comments),
                 ],
               );
             },
