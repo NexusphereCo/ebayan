@@ -120,9 +120,8 @@ class _AnnouncementScreenState extends State<AnnouncementScreen> {
                         onPressed: () {
                           showModalBottomSheet(
                             context: context,
-                            builder: (BuildContext context) {
-                              return CommentSection(annId: annId);
-                            },
+                            isScrollControlled: true,
+                            builder: (context) => CommentSection(annId: annId),
                             shape: const RoundedRectangleBorder(
                               borderRadius: BorderRadius.vertical(top: Radius.circular(20.0)),
                             ),

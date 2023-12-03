@@ -1,6 +1,6 @@
 import 'dart:math';
 import 'package:ebayan/constants/colors.dart';
-import 'package:ebayan/controller/anct_controller.dart';
+import 'package:ebayan/controller/cmnt_contoller.dart';
 import 'package:ebayan/data/viewmodel/comment_view_model.dart';
 import 'package:ebayan/presentation/dashboard/comments/widgets/comment_handling.dart';
 import 'package:ebayan/presentation/dashboard/comments/widgets/comment_heading.dart';
@@ -11,75 +11,91 @@ import 'package:flutter/material.dart';
 class CommentSection extends StatefulWidget {
   final String annId;
 
-  const CommentSection({Key? key, required this.annId}) : super(key: key);
+  const CommentSection({super.key, required this.annId});
 
   @override
   _CommentSectionState createState() => _CommentSectionState();
 }
 
 class _CommentSectionState extends State<CommentSection> {
-  final AnnouncementController _announcementController = AnnouncementController();
-  bool isCommentInputVisible = false;
+  final CommentController _commentController = CommentController();
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      clipBehavior: Clip.none,
-      children: List<Widget>.from([
-        Container(
-          decoration: const BoxDecoration(
-            borderRadius: BorderRadius.vertical(top: Radius.circular(20.0)),
-            color: Colors.white,
-          ),
-          height: 500,
-          child: FutureBuilder<List<CommentViewModel>>(
-            future: _announcementController.fetchComments(widget.annId),
-            builder: (context, snapshot) {
-              final List<CommentViewModel> comments = snapshot.data ?? [];
+    return Padding(
+      padding: MediaQuery.of(context).viewInsets * 0.3,
+      child: Stack(
+        clipBehavior: Clip.none,
+        children: [
+          Container(
+            decoration: const BoxDecoration(
+              borderRadius: BorderRadius.vertical(top: Radius.circular(20.0)),
+              color: Colors.white,
+            ),
+            height: 400,
+            child: FutureBuilder<List<CommentViewModel>>(
+              future: _commentController.fetchComments(widget.annId),
+              builder: (context, snapshot) {
+                final List<CommentViewModel> comments = snapshot.data ?? [];
 
-              return ListView(
-                padding: const EdgeInsets.all(Global.paddingBody),
-                children: [
-                  const CommentHeading(),
-                  if (snapshot.connectionState == ConnectionState.waiting)
-                    buildLoadingIndicator() //
-                  else if (comments == null || comments.isEmpty)
-                    buildNoComments() //
-                  else
-                    buildComments(comments: comments),
-                ],
-              );
-            },
+                return CustomScrollView(
+                  slivers: [
+                    SliverToBoxAdapter(
+                      child: Padding(
+                        padding: const EdgeInsets.all(Global.paddingBody),
+                        child: CommentHeading(
+                          annId: widget.annId,
+                          onCommentAdded: () {
+                            // Refresh the comments when a new comment is added
+                            setState(() {});
+                          },
+                        ),
+                      ),
+                    ),
+                    if (snapshot.connectionState == ConnectionState.waiting)
+                      SliverToBoxAdapter(
+                        child: buildLoadingIndicator(),
+                      )
+                    else if (comments == null || comments.isEmpty)
+                      SliverToBoxAdapter(
+                        child: buildNoComments(),
+                      )
+                    else
+                      CommentsList(comments: comments),
+                  ],
+                );
+              },
+            ),
           ),
-        ),
-        Positioned(
-          top: -20,
-          right: 0,
-          left: 0,
-          child: GestureDetector(
-            onTap: () {
-              Navigator.of(context).pop();
-            },
-            child: Container(
-              width: 50,
-              height: 50,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: EBColor.primary,
-              ),
-              child: Center(
-                child: Transform.rotate(
-                  angle: 90 * pi / 180,
-                  child: Icon(
-                    Icons.arrow_forward_ios_rounded,
-                    color: EBColor.light,
+          Positioned(
+            top: -20,
+            right: 0,
+            left: 0,
+            child: GestureDetector(
+              onTap: () {
+                Navigator.of(context).pop();
+              },
+              child: Container(
+                width: 50,
+                height: 50,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: EBColor.primary,
+                ),
+                child: Center(
+                  child: Transform.rotate(
+                    angle: 90 * pi / 180,
+                    child: Icon(
+                      Icons.arrow_forward_ios_rounded,
+                      color: EBColor.light,
+                    ),
                   ),
                 ),
               ),
             ),
           ),
-        ),
-      ]),
+        ],
+      ),
     );
   }
 }
