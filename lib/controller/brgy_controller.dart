@@ -73,19 +73,23 @@ class BarangayController {
     List<AnnouncementViewModel> announcements = [];
 
     if (announcementsSnapshot.docs.isNotEmpty) {
-      announcements = await Future.wait(announcementsSnapshot.docs.map((doc) async {
-        final authorId = doc['authorId'];
-        final author = await fetchAuthorName(authorId);
+      announcements = await Future.wait(
+        announcementsSnapshot.docs.map(
+          (doc) async {
+            final authorId = doc['authorId'];
+            final author = await fetchAuthorName(authorId);
 
-        return AnnouncementViewModel(
-          id: doc.id,
-          heading: doc['heading'],
-          body: doc['body'],
-          timeCreated: (doc['timeCreated'] as Timestamp).toDate(),
-          author: author,
-          authorId: authorId,
-        );
-      }));
+            return AnnouncementViewModel(
+              id: doc.id,
+              heading: doc['heading'],
+              body: doc['body'],
+              timeCreated: (doc['timeCreated'] as Timestamp).toDate(),
+              author: author,
+              authorId: authorId,
+            );
+          },
+        ),
+      );
     }
 
     // Get the total users joined in my barangay

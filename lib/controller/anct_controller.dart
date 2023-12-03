@@ -14,13 +14,12 @@ class AnnouncementController {
     try {
       final userDoc = await _db.collection('users').doc(user!.uid).get();
       final announcementDoc = (await _db.collectionGroup('barangays').where('code', isEqualTo: int.parse(userDoc['barangayAssociated'])).get()).docs.first;
-      final String authorName = '${userDoc['firstName']} ${userDoc['lastName']}';
 
       final announcementRef = await announcementDoc.reference.collection('announcements').add({
         'heading': heading,
         'body': body,
         'timeCreated': DateTime.now(),
-        'author': authorName,
+        'authorId': userDoc.id,
       });
 
       await announcementRef.update({'id': announcementRef.id});
