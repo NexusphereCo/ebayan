@@ -1,5 +1,4 @@
 import 'package:ebayan/constants/typography.dart';
-import 'package:ebayan/data/model/post_announcement_model.dart';
 import 'package:ebayan/data/viewmodel/announcement_view_model.dart';
 import 'package:ebayan/utils/routes.dart';
 import 'package:ebayan/widgets/components/form.dart';
@@ -162,13 +161,7 @@ class _EditAnnouncementScreenState extends State<EditAnnouncementScreen> {
                                   icon: Icon(FeatherIcons.send, color: EBColor.light, size: EBFontSize.h4),
                                   onPressed: () async {
                                     try {
-                                      await _announcementController.updateAnnouncement(
-                                        PostAnnouncementModel(
-                                          id: annId,
-                                          heading: _headingController.text,
-                                          body: _bodyController.text,
-                                        ),
-                                      );
+                                      await _announcementController.updateAnnouncement(annId, _headingController.text, _bodyController.text);
                                       Navigator.of(context).push(createRoute(route: Routes.announcements));
                                     } catch (e) {
                                       log.e('An error occurred: $e');
