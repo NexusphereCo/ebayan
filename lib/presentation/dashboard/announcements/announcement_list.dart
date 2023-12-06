@@ -7,7 +7,7 @@ import 'package:ebayan/controller/user_controller.dart';
 import 'package:ebayan/data/model/announcement_model.dart';
 import 'package:ebayan/data/viewmodel/barangay_view_model.dart';
 import 'package:ebayan/presentation/dashboard/announcements/widgets/announcement_card.dart';
-import 'package:ebayan/presentation/dashboard/announcements/widgets/card_header.dart';
+import 'package:ebayan/presentation/dashboard/dashboard/widgets/card_sphere.dart';
 import 'package:ebayan/utils/global.dart';
 import 'package:ebayan/utils/routes.dart';
 import 'package:ebayan/utils/style.dart';
@@ -105,10 +105,10 @@ class _AnnouncementListScreenState extends State<AnnouncementListScreen> {
                           ],
                         ),
                         const SizedBox(height: Spacing.md),
-                        CardHeader(
-                          barangayName: barangay.name,
-                          barangayCode: barangay.code.toString(),
-                        ),
+                        SphereCard(
+                          brgyName: barangay.name,
+                          brgyCode: barangay.code.toString(),
+                        ).cardHeader(),
                         const SizedBox(height: Spacing.md),
                       ],
                     );

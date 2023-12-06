@@ -75,8 +75,8 @@ class _AnnouncementScreenState extends State<AnnouncementScreen> {
           return Scaffold(
             appBar: EBAppBar(
               enablePop: true,
-              noTitle: true,
               more: userType == "RESIDENT" ? false : true,
+              noTitle: true,
               annId: announcement.id,
             ),
             body: ListView(
@@ -122,17 +122,25 @@ class _AnnouncementScreenState extends State<AnnouncementScreen> {
                             children: [
                               Row(
                                 children: [
-                                  Icon(FeatherIcons.thumbsUp, size: 13, color: EBColor.primary),
+                                  Icon(
+                                    FeatherIcons.thumbsUp,
+                                    size: EBFontSize.h3,
+                                    color: EBColor.primary,
+                                  ),
                                   const SizedBox(width: 3),
-                                  EBTypography.small(text: 'Like', color: EBColor.primary),
+                                  EBTypography.text(text: 'Like', color: EBColor.primary),
                                 ],
                               ),
                               const SizedBox(width: Spacing.lg),
                               Row(
                                 children: [
-                                  Icon(FeatherIcons.thumbsDown, size: 13, color: EBColor.primary),
+                                  Icon(
+                                    FeatherIcons.thumbsDown,
+                                    size: EBFontSize.h3,
+                                    color: EBColor.primary,
+                                  ),
                                   const SizedBox(width: 3),
-                                  EBTypography.small(text: 'Dislike', color: EBColor.primary),
+                                  EBTypography.text(text: 'Dislike', color: EBColor.primary),
                                 ],
                               ),
                             ],
@@ -158,7 +166,7 @@ class _AnnouncementScreenState extends State<AnnouncementScreen> {
                           size: EBFontSize.h2,
                         ),
                       ),
-                      const SizedBox(height: Spacing.lg), // Position at the bottom center
+                      // const SizedBox(height: Spacing.lg),
                     ],
                   ),
                 ),
