@@ -105,10 +105,16 @@ class _AnnouncementListScreenState extends State<AnnouncementListScreen> {
                           ],
                         ),
                         const SizedBox(height: Spacing.md),
-                        SphereCard(
-                          brgyName: barangay.name,
-                          brgyCode: barangay.code.toString(),
-                        ).cardHeader(),
+                        ClipRRect(
+                          borderRadius: const BorderRadius.only(
+                            topLeft: Radius.circular(20.0),
+                            topRight: Radius.circular(20.0),
+                          ),
+                          child: SphereCard(
+                            brgyName: barangay.name,
+                            brgyCode: barangay.code.toString(),
+                          ).cardHeader(),
+                        ),
                         const SizedBox(height: Spacing.md),
                       ],
                     );
