@@ -4,6 +4,7 @@ import 'package:ebayan/data/model/barangay_model.dart';
 import 'package:ebayan/data/model/municipality_model.dart';
 import 'package:ebayan/data/viewmodel/announcement_view_model.dart';
 import 'package:ebayan/data/viewmodel/barangay_view_model.dart';
+import 'package:ebayan/data/viewmodel/user_view_model.dart';
 import 'package:logger/logger.dart';
 
 class BarangayController {
@@ -51,6 +52,54 @@ class BarangayController {
       _log.e('No barangays found!');
       throw 'No barangays found!';
     }
+  }
+
+  Future<BarangayViewModel> fetchBarangay(String brgyId) async {
+    // Find the barangay
+    final barangaysRef = _db.collectionGroup('barangays');
+    final barangaySnapshot = await barangaysRef.where('code', isEqualTo: int.parse(brgyId)).get();
+
+    // Check if there is no document
+    if (barangaySnapshot.docs.isEmpty) {
+      _log.e('Barangay: $brgyId not found');
+      throw 'Barangay not found!';
+    }
+
+    // Take the first document assuming there's only one match
+    final doc = barangaySnapshot.docs.first;
+
+    // Get the total users joined in my barangay
+    final usersJoinedBrgySnapshot = await _db.collection('users').where('barangayAssociated', isEqualTo: brgyId).get();
+    int numOfPeople = usersJoinedBrgySnapshot.size;
+
+    // Return the BarangayViewModel with the mapped announcements
+    return BarangayViewModel(
+      code: doc['code'],
+      name: doc['name'],
+      adminId: doc['adminId'],
+      numOfPeople: numOfPeople,
+    );
+  }
+
+  Future<List<UserViewModel>> fetchUsersByBarangayId(String brgyId) async {
+    final usersRef = _db.collection('users');
+    final usersSnapshot = await usersRef.where('barangayAssociated', isEqualTo: brgyId).get();
+
+    List<UserViewModel> users = usersSnapshot.docs
+        .map((doc) => UserViewModel(
+              id: doc.id,
+              firstName: doc['firstName'],
+              lastName: doc['lastName'],
+              userType: doc['userType'],
+              email: doc['email'],
+              contactNumber: doc['contactNumber'],
+              address: doc['address'],
+              birthDate: doc['birthDate'],
+              username: doc['username'],
+            ))
+        .toList();
+
+    return users;
   }
 
   Future<BarangayViewModel> fetchBarangayWithLatestAnnouncement(String brgyId) async {

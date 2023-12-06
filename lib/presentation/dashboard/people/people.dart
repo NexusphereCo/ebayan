@@ -1,11 +1,22 @@
 import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/constants/typography.dart';
+import 'package:ebayan/controller/brgy_controller.dart';
+import 'package:ebayan/controller/user_controller.dart';
+import 'package:ebayan/data/viewmodel/barangay_view_model.dart';
+import 'package:ebayan/data/viewmodel/user_view_model.dart';
 import 'package:ebayan/presentation/dashboard/dashboard/widgets/card_sphere.dart';
 import 'package:ebayan/utils/style.dart';
+import 'package:ebayan/widgets/components/snackbar.dart';
 import 'package:ebayan/widgets/shared/appbar_bottom.dart';
 import 'package:ebayan/widgets/shared/appbar_top.dart';
 import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+
+import 'widgets/heading.dart';
+import 'widgets/loading.dart';
+
+enum CardOptions { itemOne }
 
 class PeopleScreen extends StatefulWidget {
   const PeopleScreen({super.key});
@@ -15,6 +26,42 @@ class PeopleScreen extends StatefulWidget {
 }
 
 class _PeopleScreenState extends State<PeopleScreen> {
+  final BarangayController brgyController = BarangayController();
+  final UserController userController = UserController();
+
+  bool isLoading = true;
+  late int numOfPeople = 0;
+
+  List<UserViewModel> users = [];
+
+  Future<void> fetchCurrNumOfPeople() async {
+    UserViewModel user = await userController.getCurrentUserInfo();
+    String brgyCode = user.barangayAssociated!;
+    BarangayViewModel brgy = await brgyController.fetchBarangay(brgyCode);
+
+    setState(() {
+      numOfPeople = brgy.numOfPeople!;
+    });
+  }
+
+  Future<List<UserViewModel>> fetchPeople() async {
+    UserViewModel user = await userController.getCurrentUserInfo();
+    String brgyCode = user.barangayAssociated!;
+    return await brgyController.fetchUsersByBarangayId(brgyCode);
+  }
+
+  Future<BarangayViewModel> fetchBarangayInfo() async {
+    UserViewModel user = await userController.getCurrentUserInfo();
+    String brgyCode = user.barangayAssociated!;
+    return await brgyController.fetchBarangay(brgyCode);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    fetchCurrNumOfPeople();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,44 +78,49 @@ class _PeopleScreenState extends State<PeopleScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  EBTypography.h1(text: 'People'),
-                  const SizedBox(height: Spacing.sm),
-                  EBTypography.text(text: '42 people are connected in this barangay sphere'),
+                  buildHeading(numOfPeople: numOfPeople),
                   const SizedBox(height: Spacing.md),
                   ClipRRect(
                     borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(20.0),
                       topRight: Radius.circular(20.0),
                     ),
-                    child: const SphereCard(
-                      isLoading: true,
-                    ).cardHeader(),
+                    child: FutureBuilder(
+                      future: fetchBarangayInfo(),
+                      builder: (context, snapshot) {
+                        if (snapshot.connectionState == ConnectionState.waiting) {
+                          return const SphereCard(isLoading: true).cardHeader();
+                        } else {
+                          BarangayViewModel data = snapshot.data!;
+                          return SphereCard(
+                            brgyName: data.name,
+                            brgyCode: data.code.toString(),
+                          ).cardHeader();
+                        }
+                      },
+                    ),
                   ),
                   const SizedBox(height: Spacing.md),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          const Icon(FeatherIcons.user),
-                          const SizedBox(width: Spacing.md),
-                          Column(
-                            mainAxisSize: MainAxisSize.min,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              EBTypography.text(text: 'Johcel Gene T. Bitara'),
-                              EBTypography.small(text: '0912344810', muted: true),
-                            ],
+                  FutureBuilder(
+                    future: fetchPeople(),
+                    builder: (context, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return buildLoadingIndicator(context);
+                      } else {
+                        final users = snapshot.data!;
+
+                        return SizedBox(
+                          width: double.infinity,
+                          height: MediaQuery.of(context).size.height * 0.5,
+                          child: ListView.builder(
+                            itemCount: users.length,
+                            itemBuilder: (context, index) {
+                              return buildUserRowInfo(users[index]);
+                            },
                           ),
-                        ],
-                      ),
-                      IconButton(
-                        onPressed: () {},
-                        icon: const Icon(FeatherIcons.moreHorizontal),
-                      ),
-                    ],
+                        );
+                      }
+                    },
                   ),
                 ],
               ),
@@ -77,6 +129,60 @@ class _PeopleScreenState extends State<PeopleScreen> {
         ),
       ),
       bottomNavigationBar: const EBAppBarBottom(activeIndex: 2),
+    );
+  }
+
+  Row buildUserRowInfo(UserViewModel model) {
+    CardOptions? selectedMenu;
+
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const Icon(FeatherIcons.user),
+            const SizedBox(width: Spacing.md),
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                EBTypography.text(text: '${model.firstName} ${model.lastName}'),
+                EBTypography.small(text: model.contactNumber, muted: true),
+              ],
+            ),
+          ],
+        ),
+        Column(
+          children: [
+            PopupMenuButton<CardOptions>(
+              offset: const Offset(0, 40),
+              icon: Icon(
+                FeatherIcons.moreHorizontal,
+                color: EBColor.dark,
+              ),
+              initialValue: selectedMenu,
+              onSelected: (CardOptions item) {
+                setState(() => selectedMenu = item);
+                if (item == CardOptions.itemOne) {
+                  Clipboard.setData(ClipboardData(text: model.contactNumber));
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    EBSnackBar.info(text: '${model.firstName} ${model.lastName}\'s phone number has been copied to clipboard.'),
+                  );
+                }
+              },
+              itemBuilder: (BuildContext context) => <PopupMenuEntry<CardOptions>>[
+                PopupMenuItem<CardOptions>(
+                  value: CardOptions.itemOne,
+                  height: 40,
+                  child: Text('Copy ${model.lastName}\'s phone no.'),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ],
     );
   }
 }

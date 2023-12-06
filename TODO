@@ -1,7 +1,6 @@
 PRIORITY:
 
-    [] weird sidebar bug is reloading the website (probable solution is because it's calling a setState that reloads all the app, try to use a stateful builder)
-    [] catch errors on update email
+    [] weird sidebar bug is reloading the website (probable solution is because it's calling a setState that reloads all the app, try to use a stateful builder) (probable solution is due to push() to stack try pushReplacement instead)
 
 ---
 
