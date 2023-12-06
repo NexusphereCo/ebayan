@@ -60,7 +60,6 @@ ListView _buildListOfAnnouncements(List<AnnouncementViewModel> announcements) =>
         margin: const EdgeInsets.all(10.0),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(EBBorderRadius.lg),
-          border: Border.all(color: EBColor.dullGreen),
           color: EBColor.light,
           boxShadow: [
             BoxShadow(
