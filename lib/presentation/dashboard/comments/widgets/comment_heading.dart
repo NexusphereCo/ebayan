@@ -1,5 +1,8 @@
+import 'dart:math';
+
 import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/constants/typography.dart';
+import 'package:ebayan/constants/validation.dart';
 import 'package:ebayan/controller/cmnt_contoller.dart';
 import 'package:ebayan/utils/style.dart';
 import 'package:feather_icons/feather_icons.dart';
@@ -16,6 +19,7 @@ class CommentHeading extends StatefulWidget {
 }
 
 class _CommentHeadingState extends State<CommentHeading> {
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final CommentController _commentController = CommentController();
   final TextEditingController _textController = TextEditingController();
   bool _isEditing = false;
@@ -64,36 +68,50 @@ class _CommentHeadingState extends State<CommentHeading> {
   }
 
   Widget buildCommentInput() {
-    return Container(
+    return SizedBox(
       width: double.infinity,
-      child: Row(
-        children: [
-          Expanded(
-            child: TextFormField(
-              controller: _textController,
-              decoration: InputDecoration(
-                hintText: 'Write your comment...',
-                contentPadding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 10.0),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(50.0), // Adjust the radius as needed
+      child: Form(
+        key: _formKey,
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Expanded(
+              child: TextFormField(
+                controller: _textController,
+                decoration: InputDecoration(
+                  hintText: 'Write your comment...',
+                  contentPadding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 10.0),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(50.0), // Adjust the radius as needed
+                  ),
                 ),
+                validator: (value) {
+                  value = value?.trim();
+                  if (value == null || value.isEmpty) return Validation.missingField;
+                  return null;
+                },
               ),
             ),
-          ),
-          const SizedBox(width: Spacing.sm),
-          IconButton(
-              onPressed: () async {
-                try {
-                  await _commentController.createComment(widget.annId, _textController.text);
-                  _textController.clear();
-                  _toggleEditing();
-                  widget.onCommentAdded();
-                } catch (e) {
-                  throw 'An error occurred while creating the announcement.';
-                }
-              },
-              icon: const Icon(FeatherIcons.send)),
-        ],
+            Transform.rotate(
+              angle: 45 * pi / 180,
+              child: IconButton(
+                onPressed: () async {
+                  if (_formKey.currentState?.validate() == true) {
+                    try {
+                      await _commentController.createComment(widget.annId, _textController.text);
+                      _textController.clear();
+                      _toggleEditing();
+                      widget.onCommentAdded();
+                    } catch (e) {
+                      throw 'An error occurred while creating the comment.';
+                    }
+                  }
+                },
+                icon: Icon(FeatherIcons.send, color: EBColor.primary),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

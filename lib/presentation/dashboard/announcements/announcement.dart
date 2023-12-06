@@ -143,7 +143,7 @@ class _AnnouncementScreenState extends State<AnnouncementScreen> {
                           size: EBFontSize.h2,
                         ),
                       ),
-                      const SizedBox(height: Spacing.md), // Position at the bottom center
+                      const SizedBox(height: Spacing.lg), // Position at the bottom center
                     ],
                   ),
                 ),
