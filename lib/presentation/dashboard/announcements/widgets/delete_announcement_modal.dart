@@ -12,7 +12,7 @@ class DeleteAnnouncement extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final AnnouncementController _announcementController = AnnouncementController();
+    final AnnouncementController announcementController = AnnouncementController();
     return Container(
       decoration: BoxDecoration(
         color: EBColor.light,
@@ -49,8 +49,11 @@ class DeleteAnnouncement extends StatelessWidget {
                 const SizedBox(width: Spacing.md),
                 EBButton(
                   onPressed: () async {
-                    await _announcementController.deleteAnnouncement(annId);
-                    Navigator.of(context).pushReplacement(createRoute(route: Routes.announcements));
+                    await announcementController.deleteAnnouncement(annId);
+
+                    if (context.mounted) {
+                      Navigator.of(context).pushReplacement(createRoute(route: Routes.announcements));
+                    }
                   },
                   text: 'Delete',
                   theme: EBButtonTheme.primaryOutlined,

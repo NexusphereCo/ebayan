@@ -1,3 +1,7 @@
+import 'dart:math';
+
+import 'package:flutter/material.dart';
+
 class Spacing {
   Spacing._();
 
@@ -40,4 +44,9 @@ class EBBorderRadius {
   static const double xxl = 60.0;
   // Triple Extra Large
   static const double xxxl = 100.0;
+}
+
+// ignore: non_constant_identifier_names
+Widget RotateWidget({required int degree, required Widget child}) {
+  return Transform.rotate(angle: degree * pi / 180, child: child);
 }

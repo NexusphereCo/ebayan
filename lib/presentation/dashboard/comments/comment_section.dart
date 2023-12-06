@@ -14,7 +14,7 @@ class CommentSection extends StatefulWidget {
   const CommentSection({super.key, required this.annId});
 
   @override
-  _CommentSectionState createState() => _CommentSectionState();
+  State<CommentSection> createState() => _CommentSectionState();
 }
 
 class _CommentSectionState extends State<CommentSection> {

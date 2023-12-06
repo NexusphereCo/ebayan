@@ -16,26 +16,41 @@ class AnnouncementScreen extends StatefulWidget {
   const AnnouncementScreen({super.key});
 
   @override
-  _AnnouncementScreenState createState() => _AnnouncementScreenState();
+  State<AnnouncementScreen> createState() => _AnnouncementScreenState();
 }
 
 class _AnnouncementScreenState extends State<AnnouncementScreen> {
   final AnnouncementController _announcementController = AnnouncementController();
-  late String userType; // Declare userType
+  late String userType;
 
   @override
   void initState() {
     super.initState();
-    _fetchUserType(); // Fetch userType when the screen initializes
+    // Fetch userType when the screen initializes
+    _fetchUserType();
+  }
+
+  Future<void> _fetchUserType() async {
+    final userController = UserController();
+
+    // Use Firebase Authentication to get the currently authenticated user
+    final user = FirebaseAuth.instance.currentUser;
+
+    if (user != null) {
+      final currentUserType = await userController.getUserType(user.uid);
+      setState(() {
+        userType = currentUserType;
+      });
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     String annId = ModalRoute.of(context)?.settings.arguments as String;
-    Future<AnnouncementViewModel> _announcementFuture = _announcementController.fetchAnnouncementDetails(annId);
+    Future<AnnouncementViewModel> announcementFuture = _announcementController.fetchAnnouncementDetails(annId);
 
     return FutureBuilder<AnnouncementViewModel>(
-      future: _announcementFuture,
+      future: announcementFuture,
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Scaffold(
@@ -153,19 +168,5 @@ class _AnnouncementScreenState extends State<AnnouncementScreen> {
         }
       },
     );
-  }
-
-  Future<void> _fetchUserType() async {
-    final userController = UserController();
-
-    // Use Firebase Authentication to get the currently authenticated user
-    final user = FirebaseAuth.instance.currentUser;
-
-    if (user != null) {
-      final currentUserType = await userController.getUserType(user.uid);
-      setState(() {
-        userType = currentUserType;
-      });
-    }
   }
 }
