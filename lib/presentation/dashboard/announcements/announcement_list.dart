@@ -73,7 +73,7 @@ class _AnnouncementListScreenState extends State<AnnouncementListScreen> {
           final BarangayViewModel barangay = snapshot.data!;
 
           return Scaffold(
-            appBar: const EBAppBar(),
+            appBar: const EBAppBar(enablePop: true),
             drawer: const EBDrawer(),
             floatingActionButton: FloatingActionButton(
               onPressed: () => Navigator.of(context).push(createRoute(route: Routes.createAnnouncement)),
