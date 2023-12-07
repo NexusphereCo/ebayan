@@ -1,10 +1,9 @@
-import 'dart:math';
-
 import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/constants/typography.dart';
 import 'package:ebayan/constants/validation.dart';
 import 'package:ebayan/controller/cmnt_contoller.dart';
 import 'package:ebayan/utils/style.dart';
+import 'package:ebayan/widgets/utils/fade_in.dart';
 import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
 
@@ -12,10 +11,14 @@ class CommentHeading extends StatefulWidget {
   final String annId;
   final Function() onCommentAdded;
 
-  const CommentHeading({super.key, required this.annId, required this.onCommentAdded});
+  const CommentHeading({
+    super.key,
+    required this.annId,
+    required this.onCommentAdded,
+  });
 
   @override
-  _CommentHeadingState createState() => _CommentHeadingState();
+  State<CommentHeading> createState() => _CommentHeadingState();
 }
 
 class _CommentHeadingState extends State<CommentHeading> {
@@ -68,8 +71,7 @@ class _CommentHeadingState extends State<CommentHeading> {
   }
 
   Widget buildCommentInput() {
-    return SizedBox(
-      width: double.infinity,
+    return FadeIn(
       child: Form(
         key: _formKey,
         child: Row(
@@ -80,10 +82,10 @@ class _CommentHeadingState extends State<CommentHeading> {
                 controller: _textController,
                 decoration: InputDecoration(
                   hintText: 'Write your comment...',
-                  contentPadding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 10.0),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(50.0), // Adjust the radius as needed
-                  ),
+                  contentPadding: EdgeInsets.zero,
+                  enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: EBColor.dark)),
+                  focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: EBColor.primary)),
+                  hintStyle: const TextStyle(fontSize: EBFontSize.normal),
                 ),
                 validator: (value) {
                   value = value?.trim();
@@ -92,8 +94,8 @@ class _CommentHeadingState extends State<CommentHeading> {
                 },
               ),
             ),
-            Transform.rotate(
-              angle: 45 * pi / 180,
+            RotateWidget(
+              degree: 45,
               child: IconButton(
                 onPressed: () async {
                   if (_formKey.currentState?.validate() == true) {

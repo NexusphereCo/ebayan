@@ -7,7 +7,7 @@ import 'package:ebayan/controller/user_controller.dart';
 import 'package:ebayan/data/model/announcement_model.dart';
 import 'package:ebayan/data/viewmodel/barangay_view_model.dart';
 import 'package:ebayan/presentation/dashboard/announcements/widgets/announcement_card.dart';
-import 'package:ebayan/presentation/dashboard/announcements/widgets/card_header.dart';
+import 'package:ebayan/presentation/dashboard/dashboard/widgets/card_sphere.dart';
 import 'package:ebayan/utils/global.dart';
 import 'package:ebayan/utils/routes.dart';
 import 'package:ebayan/utils/style.dart';
@@ -73,7 +73,7 @@ class _AnnouncementListScreenState extends State<AnnouncementListScreen> {
           final BarangayViewModel barangay = snapshot.data!;
 
           return Scaffold(
-            appBar: const EBAppBar(),
+            appBar: const EBAppBar(enablePop: true),
             drawer: const EBDrawer(),
             floatingActionButton: FloatingActionButton(
               onPressed: () => Navigator.of(context).push(createRoute(route: Routes.createAnnouncement)),
@@ -105,9 +105,15 @@ class _AnnouncementListScreenState extends State<AnnouncementListScreen> {
                           ],
                         ),
                         const SizedBox(height: Spacing.md),
-                        CardHeader(
-                          barangayName: barangay.name,
-                          barangayCode: barangay.code.toString(),
+                        ClipRRect(
+                          borderRadius: const BorderRadius.only(
+                            topLeft: Radius.circular(20.0),
+                            topRight: Radius.circular(20.0),
+                          ),
+                          child: SphereCard(
+                            brgyName: barangay.name,
+                            brgyCode: barangay.code.toString(),
+                          ).cardHeader(),
                         ),
                         const SizedBox(height: Spacing.md),
                       ],

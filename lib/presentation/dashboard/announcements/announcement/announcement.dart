@@ -19,7 +19,7 @@ class AnnouncementScreen extends StatefulWidget {
   const AnnouncementScreen({super.key});
 
   @override
-  _AnnouncementScreenState createState() => _AnnouncementScreenState();
+  State<AnnouncementScreen> createState() => _AnnouncementScreenState();
 }
 
 class _AnnouncementScreenState extends State<AnnouncementScreen> {
@@ -30,15 +30,31 @@ class _AnnouncementScreenState extends State<AnnouncementScreen> {
   @override
   void initState() {
     super.initState();
-    _fetchUserType(); // Fetch userType when the screen initializes
+    // Fetch userType when the screen initializes
+    _fetchUserType();
+  }
+
+  Future<void> _fetchUserType() async {
+    final userController = UserController();
+
+    // Use Firebase Authentication to get the currently authenticated user
+    final user = FirebaseAuth.instance.currentUser;
+
+    if (user != null) {
+      final currentUserType = await userController.getUserType(user.uid);
+      setState(() {
+        userType = currentUserType;
+      });
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     String annId = ModalRoute.of(context)?.settings.arguments as String;
-    Future<AnnouncementViewModel> _announcementFuture = _announcementController.fetchAnnouncementDetails(annId);
+    Future<AnnouncementViewModel> announcementFuture = _announcementController.fetchAnnouncementDetails(annId);
+
     return FutureBuilder<AnnouncementViewModel>(
-      future: _announcementFuture,
+      future: announcementFuture,
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Scaffold(
@@ -65,8 +81,8 @@ class _AnnouncementScreenState extends State<AnnouncementScreen> {
           return Scaffold(
             appBar: EBAppBar(
               enablePop: true,
-              noTitle: true,
               more: userType == "RESIDENT" ? false : true,
+              noTitle: true,
               annId: announcement.id,
             ),
             body: ListView(
@@ -124,17 +140,25 @@ class _AnnouncementScreenState extends State<AnnouncementScreen> {
                             children: [
                               Row(
                                 children: [
-                                  Icon(FeatherIcons.thumbsUp, size: 13, color: EBColor.primary),
+                                  Icon(
+                                    FeatherIcons.thumbsUp,
+                                    size: EBFontSize.h3,
+                                    color: EBColor.primary,
+                                  ),
                                   const SizedBox(width: 3),
-                                  EBTypography.small(text: 'Like', color: EBColor.primary),
+                                  EBTypography.text(text: 'Like', color: EBColor.primary),
                                 ],
                               ),
                               const SizedBox(width: Spacing.lg),
                               Row(
                                 children: [
-                                  Icon(FeatherIcons.thumbsDown, size: 13, color: EBColor.primary),
+                                  Icon(
+                                    FeatherIcons.thumbsDown,
+                                    size: EBFontSize.h3,
+                                    color: EBColor.primary,
+                                  ),
                                   const SizedBox(width: 3),
-                                  EBTypography.small(text: 'Dislike', color: EBColor.primary),
+                                  EBTypography.text(text: 'Dislike', color: EBColor.primary),
                                 ],
                               ),
                             ],
@@ -160,7 +184,7 @@ class _AnnouncementScreenState extends State<AnnouncementScreen> {
                           size: EBFontSize.h2,
                         ),
                       ),
-                      const SizedBox(height: Spacing.lg), // Position at the bottom center
+                      // const SizedBox(height: Spacing.lg),
                     ],
                   ),
                 ),
@@ -170,19 +194,5 @@ class _AnnouncementScreenState extends State<AnnouncementScreen> {
         }
       },
     );
-  }
-
-  Future<void> _fetchUserType() async {
-    final userController = UserController();
-
-    // Use Firebase Authentication to get the currently authenticated user
-    final user = FirebaseAuth.instance.currentUser;
-
-    if (user != null) {
-      final currentUserType = await userController.getUserType(user.uid);
-      setState(() {
-        userType = currentUserType;
-      });
-    }
   }
 }

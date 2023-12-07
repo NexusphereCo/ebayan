@@ -18,7 +18,7 @@ class CreateAnnouncementScreen extends StatefulWidget {
   const CreateAnnouncementScreen({super.key});
 
   @override
-  _CreateAnnouncementScreenState createState() => _CreateAnnouncementScreenState();
+  State<CreateAnnouncementScreen> createState() => _CreateAnnouncementScreenState();
 }
 
 class _CreateAnnouncementScreenState extends State<CreateAnnouncementScreen> {

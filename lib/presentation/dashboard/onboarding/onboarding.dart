@@ -1,3 +1,4 @@
+import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/utils/routes.dart';
 import 'package:ebayan/widgets/shared/appbar_bottom.dart';
 import 'package:ebayan/widgets/shared/appbar_top.dart';
@@ -157,6 +158,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
       tutorialCoachMark = TutorialCoachMark(
         targets: _targets,
         hideSkip: true,
+        colorShadow: EBColor.green[700]!.withOpacity(0.5),
       )..show(context: context);
     });
     super.initState();
