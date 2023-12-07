@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:ebayan/constants/typography.dart';
 import 'package:ebayan/constants/validation.dart';
 import 'package:ebayan/data/viewmodel/announcement_view_model.dart';
@@ -11,7 +13,7 @@ import 'package:ebayan/widgets/components/buttons.dart';
 import 'package:ebayan/utils/style.dart';
 import 'package:ebayan/controller/anct_controller.dart';
 import 'package:ebayan/presentation/dashboard/announcements/widgets/switch_button.dart';
-import 'package:logger/logger.dart';
+import 'package:flutter_quill/flutter_quill.dart';
 
 class EditAnnouncementScreen extends StatefulWidget {
   const EditAnnouncementScreen({super.key});
@@ -22,18 +24,17 @@ class EditAnnouncementScreen extends StatefulWidget {
 
 class _EditAnnouncementScreenState extends State<EditAnnouncementScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  final Logger log = Logger();
   final AnnouncementController _announcementController = AnnouncementController();
   final TextEditingController _headingController = TextEditingController();
-  final TextEditingController _bodyController = TextEditingController();
+  QuillController bodyController = QuillController.basic();
   CardOptions? selectedMenu;
 
   @override
   Widget build(BuildContext context) {
     String annId = ModalRoute.of(context)?.settings.arguments as String;
-    Future<AnnouncementViewModel> _announcementFuture = _announcementController.fetchAnnouncementDetails(annId);
+    Future<AnnouncementViewModel> announcementFuture = _announcementController.fetchAnnouncementDetails(annId);
     return FutureBuilder<AnnouncementViewModel>(
-      future: _announcementFuture,
+      future: announcementFuture,
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Scaffold(
@@ -56,7 +57,8 @@ class _EditAnnouncementScreenState extends State<EditAnnouncementScreen> {
         } else {
           AnnouncementViewModel announcement = snapshot.data!;
           _headingController.text = announcement.heading;
-          _bodyController.text = announcement.body;
+          final json = jsonDecode(announcement.body);
+          bodyController.document = Document.fromJson(json);
           return Scaffold(
             appBar: const EBAppBar(enablePop: true, noTitle: true),
             body: SingleChildScrollView(
@@ -108,17 +110,84 @@ class _EditAnnouncementScreenState extends State<EditAnnouncementScreen> {
                             },
                           ),
                           const SizedBox(height: Spacing.md),
-                          EBTextField(
-                            label: 'Body',
-                            type: TextInputType.text,
-                            controller: _bodyController,
-                            maxLines: 12,
-                            placeholder: 'Announce something to your Barangay Sphere',
-                            validator: (value) {
-                              value = value?.trim();
-                              if (value == null || value.isEmpty) return Validation.missingField;
-                              return null;
-                            },
+                          QuillProvider(
+                            configurations: QuillConfigurations(
+                              controller: bodyController,
+                              sharedConfigurations: const QuillSharedConfigurations(
+                                locale: Locale('de'),
+                              ),
+                            ),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                  color: EBColor.dark, // Set your desired border color
+                                  width: 1.0, // Set your desired border width
+                                ),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  QuillEditor.basic(
+                                    configurations: QuillEditorConfigurations(
+                                      customStyles: DefaultStyles(
+                                          placeHolder: DefaultTextBlockStyle(
+                                              const TextStyle(
+                                                fontSize: 13,
+                                                fontWeight: EBFontWeight.regular,
+                                                color: Color.fromRGBO(2, 4, 21, 0.5),
+                                              ),
+                                              const VerticalSpacing(0.0, 0.0),
+                                              const VerticalSpacing(1.0, 1.0),
+                                              BoxDecoration(border: Border.all(width: 3.0)))),
+                                      minHeight: 250,
+                                      readOnly: false,
+                                      maxHeight: 500,
+                                      padding: const EdgeInsets.all(Global.paddingBody),
+                                      placeholder: 'Announce something to your barangay sphere',
+                                      textCapitalization: TextCapitalization.sentences,
+                                    ),
+                                  ),
+                                  const QuillToolbar(
+                                    configurations: QuillToolbarConfigurations(
+                                      showBoldButton: true,
+                                      showItalicButton: true,
+                                      showUnderLineButton: true,
+                                      showListBullets: true,
+                                      showUndo: true,
+                                      showRedo: true,
+                                      toolbarIconCrossAlignment: WrapCrossAlignment.start,
+                                      // ----------
+                                      showDividers: false,
+                                      showFontFamily: false,
+                                      showFontSize: false,
+                                      showSmallButton: false,
+                                      showStrikeThrough: false,
+                                      showInlineCode: false,
+                                      showColorButton: false,
+                                      showBackgroundColorButton: false,
+                                      showClearFormat: false,
+                                      showAlignmentButtons: false,
+                                      showLeftAlignment: false,
+                                      showCenterAlignment: false,
+                                      showRightAlignment: false,
+                                      showJustifyAlignment: false,
+                                      showHeaderStyle: false,
+                                      showListNumbers: false,
+                                      showListCheck: false,
+                                      showCodeBlock: false,
+                                      showQuote: false,
+                                      showIndent: false,
+                                      showLink: false,
+                                      showDirection: false,
+                                      showSearchButton: false,
+                                      showSubscript: false,
+                                      showSuperscript: false,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
                           ),
                         ],
                       ),
@@ -142,31 +211,33 @@ class _EditAnnouncementScreenState extends State<EditAnnouncementScreen> {
                                 },
                                 itemBuilder: (BuildContext context) => <PopupMenuEntry<CardOptions>>[
                                   const PopupMenuItem<CardOptions>(
-                                      value: CardOptions.itemOne,
-                                      height: 30,
-                                      child: Row(
-                                        children: [
-                                          Icon(FeatherIcons.paperclip, size: EBFontSize.h4),
-                                          SizedBox(width: 5),
-                                          Text(
-                                            'Add Attachment(s)',
-                                            style: TextStyle(fontSize: 12),
-                                          ),
-                                        ],
-                                      )),
+                                    value: CardOptions.itemOne,
+                                    height: 30,
+                                    child: Row(
+                                      children: [
+                                        Icon(FeatherIcons.paperclip, size: EBFontSize.h4),
+                                        SizedBox(width: 5),
+                                        Text(
+                                          'Add Attachment(s)',
+                                          style: TextStyle(fontSize: 12),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
                                   const PopupMenuItem<CardOptions>(
-                                      value: CardOptions.itemTwo,
-                                      height: 30,
-                                      child: Row(
-                                        children: [
-                                          Icon(FeatherIcons.image, size: EBFontSize.h4),
-                                          SizedBox(width: 5),
-                                          Text(
-                                            'Add Photo',
-                                            style: TextStyle(fontSize: 12),
-                                          ),
-                                        ],
-                                      )),
+                                    value: CardOptions.itemTwo,
+                                    height: 30,
+                                    child: Row(
+                                      children: [
+                                        Icon(FeatherIcons.image, size: EBFontSize.h4),
+                                        SizedBox(width: 5),
+                                        Text(
+                                          'Add Photo',
+                                          style: TextStyle(fontSize: 12),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
                                 ],
                               ),
                               Row(
@@ -186,10 +257,11 @@ class _EditAnnouncementScreenState extends State<EditAnnouncementScreen> {
                                     onPressed: () async {
                                       if (_formKey.currentState?.validate() == true) {
                                         try {
+                                          final json = jsonEncode(bodyController.document.toDelta().toJson());
                                           String data = await _announcementController.updateAnnouncement(
                                             annId,
                                             _headingController.text,
-                                            _bodyController.text,
+                                            json.toString(),
                                           );
                                           if (context.mounted) {
                                             Navigator.of(context).pushReplacement(
@@ -200,7 +272,6 @@ class _EditAnnouncementScreenState extends State<EditAnnouncementScreen> {
                                             );
                                           }
                                         } catch (e) {
-                                          log.e('An error occurred: $e');
                                           throw 'An error occurred while updating the announcement.';
                                         }
                                       }

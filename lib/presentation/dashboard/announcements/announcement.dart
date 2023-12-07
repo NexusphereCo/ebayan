@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/constants/typography.dart';
 import 'package:ebayan/controller/anct_controller.dart';
@@ -11,6 +13,7 @@ import 'package:ebayan/widgets/shared/appbar_top.dart';
 import 'package:feather_icons/feather_icons.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_quill/flutter_quill.dart';
 
 class AnnouncementScreen extends StatefulWidget {
   const AnnouncementScreen({super.key});
@@ -21,6 +24,7 @@ class AnnouncementScreen extends StatefulWidget {
 
 class _AnnouncementScreenState extends State<AnnouncementScreen> {
   final AnnouncementController _announcementController = AnnouncementController();
+  QuillController bodyController = QuillController.basic();
   late String userType; // Declare userType
 
   @override
@@ -33,7 +37,6 @@ class _AnnouncementScreenState extends State<AnnouncementScreen> {
   Widget build(BuildContext context) {
     String annId = ModalRoute.of(context)?.settings.arguments as String;
     Future<AnnouncementViewModel> _announcementFuture = _announcementController.fetchAnnouncementDetails(annId);
-
     return FutureBuilder<AnnouncementViewModel>(
       future: _announcementFuture,
       builder: (context, snapshot) {
@@ -57,6 +60,8 @@ class _AnnouncementScreenState extends State<AnnouncementScreen> {
           );
         } else {
           AnnouncementViewModel announcement = snapshot.data!;
+          final json = jsonDecode(announcement.body);
+          bodyController.document = Document.fromJson(json);
           return Scaffold(
             appBar: EBAppBar(
               enablePop: true,
@@ -90,13 +95,25 @@ class _AnnouncementScreenState extends State<AnnouncementScreen> {
                         ],
                       ),
                       const SizedBox(height: Spacing.md),
+
                       Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          EBTypography.text(
-                            text: announcement.body.toString(),
-                            textAlign: TextAlign.justify,
+                          QuillProvider(
+                            configurations: QuillConfigurations(
+                              controller: bodyController,
+                            ),
+                            child: Column(
+                              children: [
+                                QuillEditor.basic(
+                                  configurations: const QuillEditorConfigurations(
+                                    minHeight: 50,
+                                    readOnly: true,
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                           const SizedBox(height: Spacing.xl),
                           EBTypography.small(text: 'What do you think about this post?', fontWeight: FontWeight.bold),
