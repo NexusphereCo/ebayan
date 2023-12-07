@@ -52,7 +52,7 @@ class DeleteAnnouncement extends StatelessWidget {
                     await announcementController.deleteAnnouncement(annId);
 
                     if (context.mounted) {
-                      Navigator.of(context).pushReplacement(createRoute(route: Routes.announcements));
+                      Navigator.of(context).popUntil(ModalRoute.withName(Routes.announcements));
                     }
                   },
                   text: 'Delete',
