@@ -9,6 +9,8 @@ import 'package:ebayan/presentation/dashboard/announcements/announcement_list.da
 import 'package:ebayan/presentation/dashboard/announcements/announcement/create/create.dart';
 import 'package:ebayan/presentation/dashboard/announcements/announcement/edit/edit.dart';
 import 'package:ebayan/presentation/dashboard/dashboard/dashboard.dart';
+import 'package:ebayan/presentation/dashboard/dashboard/screens/dashboard_empty.dart';
+import 'package:ebayan/presentation/dashboard/dashboard/screens/dashboard_joined.dart';
 import 'package:ebayan/presentation/dashboard/join/join_brgy.dart';
 import 'package:ebayan/presentation/dashboard/people/people.dart';
 import 'package:flutter/material.dart';
@@ -16,41 +18,56 @@ import 'package:logger/logger.dart';
 
 class Routes {
   Routes._();
-  // Screens
+  // Splash screen
   static const String splash = '/splash';
-
+  // --------------------------------------------------------------------------------------
   // Authentication related
+  // --------------------------------------------------------------------------------------
   static const String login = '/login';
   static const String register = '/register';
   static const String accountInfo = '/account/info';
   static const String registerOfficial = '/register/as_official';
   static const String registerOfficialWaitlist = '/register/as_official/wait';
   static const String registerResident = '/register/as_resident';
-
+  // --------------------------------------------------------------------------------------
   // Dashboard related
+  // --------------------------------------------------------------------------------------
   static const String dashboard = '/dashboard';
+  static const String dashboardJoined = '/dashboard/joined';
+  static const String dashboardEmpty = '/dashboard/empty';
   static const String people = '/dashboard/people';
   static const String joinBrgy = '/dashboard/join_brgy';
+  // --------------------------------------------------------------------------------------
+  // Announcement related
+  // --------------------------------------------------------------------------------------
   static const String announcements = '/dashboard/announcement_list';
   static const String createAnnouncement = '/dashboard/create_announcement';
   static const String announcement = '/dashboard/announcement';
   static const String editAnnouncement = '/dashboard/edit_announcement';
 
-  /// NOTE(Gene): when adding routes here, make sure to modify both variables
-  /// Routes.routesMap and Routes.routes.
+  // Misc.
   static final Logger log = Logger();
 
+  /// NOTE(Gene) IMPORTANT: when adding routes here, make sure to modify both variables
+  /// Routes.routesMap and Routes.routes.
+
   // Map that associates route names with their corresponding screen widgets.
+  // This is only used for createRoutes function
   static final Map<String, Widget Function()> routesMap = {
+    // Authentication related
     login: () => const LoginScreen(),
     register: () => const RegisterScreen(),
     accountInfo: () => const AccountScreen(),
     registerOfficial: () => const RegisterOfficialScreen(),
     registerOfficialWaitlist: () => const WaitScreen(),
     registerResident: () => const RegisterResidentScreen(),
+    // Dashboard related
     dashboard: () => const DashboardScreen(),
+    dashboardJoined: () => const JoinedDashboardView(),
+    dashboardEmpty: () => const EmptyDashboardView(),
     people: () => const PeopleScreen(),
     joinBrgy: () => const JoinBrgyScreen(),
+    // Announcements related
     announcements: () => const AnnouncementListScreen(),
     createAnnouncement: () => const CreateAnnouncementScreen(),
     announcement: () => const AnnouncementScreen(),
@@ -59,15 +76,20 @@ class Routes {
 
   // Map that associates route names with their corresponding builder functions.
   static final routes = <String, WidgetBuilder>{
+    // Authentication related
     login: (BuildContext context) => const LoginScreen(),
     register: (BuildContext context) => const RegisterScreen(),
     accountInfo: (BuildContext context) => const AccountScreen(),
     registerOfficial: (BuildContext context) => const RegisterOfficialScreen(),
     registerOfficialWaitlist: (BuildContext context) => const WaitScreen(),
     registerResident: (BuildContext context) => const RegisterResidentScreen(),
+    // Dashboard related
     dashboard: (BuildContext context) => const DashboardScreen(),
+    dashboardJoined: (BuildContext context) => const JoinedDashboardView(),
+    dashboardEmpty: (BuildContext context) => const EmptyDashboardView(),
     people: (BuildContext context) => const PeopleScreen(),
     joinBrgy: (BuildContext context) => const JoinBrgyScreen(),
+    // Announcement related
     announcements: (BuildContext context) => const AnnouncementListScreen(),
     createAnnouncement: (BuildContext context) => const CreateAnnouncementScreen(),
     announcement: (BuildContext context) => const AnnouncementScreen(),
