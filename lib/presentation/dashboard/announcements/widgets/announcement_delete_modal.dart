@@ -8,11 +8,12 @@ import 'package:flutter/material.dart';
 
 class DeleteAnnouncement extends StatelessWidget {
   final String annId;
-  const DeleteAnnouncement({super.key, required this.annId});
+  final AnnouncementController announcementController = AnnouncementController();
+
+  DeleteAnnouncement({super.key, required this.annId});
 
   @override
   Widget build(BuildContext context) {
-    final AnnouncementController announcementController = AnnouncementController();
     return Container(
       decoration: BoxDecoration(
         color: EBColor.light,

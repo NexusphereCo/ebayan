@@ -21,7 +21,7 @@ import 'widgets/heading.dart';
 import 'widgets/tab_bar.dart';
 
 class RegisterResidentScreen extends StatefulWidget {
-  const RegisterResidentScreen({Key? key}) : super(key: key);
+  const RegisterResidentScreen({super.key});
 
   @override
   State<RegisterResidentScreen> createState() => _RegisterResidentScreenState();

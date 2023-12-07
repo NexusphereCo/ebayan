@@ -23,29 +23,29 @@ class EditAnnouncementScreen extends StatefulWidget {
 }
 
 class _EditAnnouncementScreenState extends State<EditAnnouncementScreen> {
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  final AnnouncementController _announcementController = AnnouncementController();
-  final TextEditingController _headingController = TextEditingController();
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  final AnnouncementController announcementController = AnnouncementController();
+  // Controllers
+  final TextEditingController headingController = TextEditingController();
   QuillController bodyController = QuillController.basic();
+  // Variables
   CardOptions? selectedMenu;
+
+  Future<AnnouncementViewModel> fetchAnnouncement(String annId) async {
+    return await announcementController.fetchAnnouncementDetails(annId);
+  }
 
   @override
   Widget build(BuildContext context) {
     String annId = ModalRoute.of(context)?.settings.arguments as String;
-    Future<AnnouncementViewModel> announcementFuture = _announcementController.fetchAnnouncementDetails(annId);
-    return FutureBuilder<AnnouncementViewModel>(
-      future: announcementFuture,
+
+    return FutureBuilder(
+      future: fetchAnnouncement(annId),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Scaffold(
             body: Center(
               child: CircularProgressIndicator(),
-            ),
-          );
-        } else if (snapshot.hasError) {
-          return Scaffold(
-            body: Center(
-              child: Text('Error: ${snapshot.error}'),
             ),
           );
         } else if (!snapshot.hasData) {
@@ -56,16 +56,17 @@ class _EditAnnouncementScreenState extends State<EditAnnouncementScreen> {
           );
         } else {
           AnnouncementViewModel announcement = snapshot.data!;
-          _headingController.text = announcement.heading;
+          headingController.text = announcement.heading;
           final json = jsonDecode(announcement.body);
           bodyController.document = Document.fromJson(json);
+
           return Scaffold(
             appBar: const EBAppBar(enablePop: true, noTitle: true),
             body: SingleChildScrollView(
               child: Padding(
                 padding: const EdgeInsets.all(Global.paddingBody),
                 child: Form(
-                  key: _formKey,
+                  key: formKey,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
@@ -101,7 +102,7 @@ class _EditAnnouncementScreenState extends State<EditAnnouncementScreen> {
                           EBTextField(
                             label: 'Heading',
                             type: TextInputType.text,
-                            controller: _headingController,
+                            controller: headingController,
                             placeholder: 'Subject',
                             validator: (value) {
                               value = value?.trim();
@@ -255,12 +256,12 @@ class _EditAnnouncementScreenState extends State<EditAnnouncementScreen> {
                                     theme: EBButtonTheme.primary,
                                     icon: Icon(FeatherIcons.send, color: EBColor.light, size: EBFontSize.h4),
                                     onPressed: () async {
-                                      if (_formKey.currentState?.validate() == true) {
+                                      if (formKey.currentState?.validate() == true) {
                                         try {
                                           final json = jsonEncode(bodyController.document.toDelta().toJson());
-                                          String data = await _announcementController.updateAnnouncement(
+                                          String data = await announcementController.updateAnnouncement(
                                             annId,
-                                            _headingController.text,
+                                            headingController.text,
                                             json.toString(),
                                           );
                                           if (context.mounted) {

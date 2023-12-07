@@ -6,7 +6,6 @@ import 'package:ebayan/constants/size.dart';
 import 'package:ebayan/widgets/components/buttons.dart';
 import 'package:flutter/material.dart';
 
-//turn into Widget
 class AnnouncementCard extends StatelessWidget {
   final AnnouncementModel announcement;
 
@@ -31,9 +30,9 @@ class AnnouncementCard extends StatelessWidget {
               top: 0,
               bottom: 0,
               child: Container(
-                width: 10, // Adjust the width of the vertical bar as needed
+                width: 10,
                 decoration: BoxDecoration(
-                  color: EBColor.dullGreen[600]!.withOpacity(0.5), // Adjust the color of the vertical bar as needed
+                  color: EBColor.dullGreen[600]!.withOpacity(0.5),
                 ),
               ),
             ),

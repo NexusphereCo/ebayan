@@ -11,9 +11,9 @@ class EBLoadingScreen extends StatefulWidget {
   final bool? solid;
 
   const EBLoadingScreen({
-    Key? key,
+    super.key,
     this.solid,
-  }) : super(key: key);
+  });
 
   @override
   State<EBLoadingScreen> createState() => _EBLoadingScreenState();

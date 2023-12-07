@@ -78,14 +78,14 @@ class EBButton extends StatelessWidget {
   final double _borderRadius = 50.0;
 
   EBButton({
-    Key? key,
+    super.key,
     required this.onPressed,
     required this.text,
     required this.theme,
     this.icon,
     this.size,
     this.disabled,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

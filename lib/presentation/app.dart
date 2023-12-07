@@ -5,7 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class MyApp extends StatefulWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
   @override
   State<MyApp> createState() => _MyAppState();
@@ -28,7 +28,7 @@ class _MyAppState extends State<MyApp> {
 /// logged in or not. it redirects them to which screen they should
 /// be redirected based on their state: login (guest) or dashboard (authenticated)
 class RouteGuard extends StatefulWidget {
-  const RouteGuard({Key? key}) : super(key: key);
+  const RouteGuard({super.key});
 
   @override
   State<RouteGuard> createState() => _RouteGuardState();

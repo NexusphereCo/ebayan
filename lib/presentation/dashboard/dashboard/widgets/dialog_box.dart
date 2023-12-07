@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 class DeleteBrgySphereBox extends StatelessWidget {
   final String annId;
 
-  const DeleteBrgySphereBox({Key? key, required this.annId}) : super(key: key);
+  const DeleteBrgySphereBox({super.key, required this.annId});
 
   @override
   Widget build(BuildContext context) {

@@ -6,10 +6,10 @@ class EBProgressIndicator extends StatelessWidget {
   final int length;
 
   const EBProgressIndicator({
-    Key? key,
+    super.key,
     required this.currentIndex,
     required this.length,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

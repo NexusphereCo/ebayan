@@ -1,11 +1,15 @@
+import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/constants/typography.dart';
 import 'package:flutter/material.dart';
 
 Widget buildLoadingIndicator() {
-  return const SizedBox(
+  return SizedBox(
     height: 300,
     child: Center(
-      child: CircularProgressIndicator(),
+      child: CircularProgressIndicator(
+        color: EBColor.primary,
+        strokeCap: StrokeCap.round,
+      ),
     ),
   );
 }

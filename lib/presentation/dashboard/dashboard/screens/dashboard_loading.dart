@@ -15,9 +15,7 @@ import '../widgets/heading.dart';
 import '../widgets/loading_bar.dart';
 
 class JoinedDashboardLoadingView extends StatefulWidget {
-  const JoinedDashboardLoadingView({
-    Key? key,
-  }) : super(key: key);
+  const JoinedDashboardLoadingView({super.key});
 
   @override
   State<JoinedDashboardLoadingView> createState() => _JoinedDashboardLoadingViewState();
