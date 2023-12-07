@@ -7,6 +7,7 @@ IgnorePointer buildTabBar(TabController tabController) => IgnorePointer(
         controller: tabController,
         labelStyle: const TextStyle(fontWeight: FontWeight.bold),
         unselectedLabelStyle: const TextStyle(fontWeight: FontWeight.normal),
+        indicatorSize: TabBarIndicatorSize.tab,
         indicator: BoxDecoration(
           color: EBColor.primary[50],
           border: Border(bottom: BorderSide(color: EBColor.primary, width: 2.0)),
