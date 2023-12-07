@@ -36,6 +36,11 @@ class EBTheme {
     return ThemeData(
       primarySwatch: EBColor.primary,
       textTheme: buildTextTheme(),
+      floatingActionButtonTheme: FloatingActionButtonThemeData(
+        backgroundColor: EBColor.primary,
+        foregroundColor: EBColor.light,
+        shape: const CircleBorder(),
+      ),
       bottomSheetTheme: BottomSheetThemeData(
         modalBarrierColor: EBColor.green[700]!.withOpacity(0.5),
         shape: const RoundedRectangleBorder(

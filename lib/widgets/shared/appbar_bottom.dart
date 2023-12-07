@@ -1,5 +1,6 @@
 import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/constants/icons.dart';
+import 'package:ebayan/constants/size.dart';
 import 'package:ebayan/constants/typography.dart';
 import 'package:ebayan/utils/routes.dart';
 import 'package:flutter/material.dart';
@@ -14,116 +15,108 @@ class EBAppBarBottom extends StatelessWidget {
   });
 
   Widget buildContents(BuildContext context) {
-    double paddingY = 15.0;
     double iconSize = 20.0;
 
-    return Padding(
-      padding: EdgeInsets.symmetric(vertical: paddingY),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          InkResponse(
-            onTap: () {
-              if (ModalRoute.of(context)?.settings.name != Routes.dashboard) {
-                Navigator.of(context).push(createRoute(route: Routes.dashboard));
-              }
-            },
-            child: GestureDetector(
-              child: Wrap(
-                crossAxisAlignment: WrapCrossAlignment.center,
-                direction: Axis.vertical,
-                spacing: 10.0,
-                children: [
-                  Icon(
-                    EBIcons.home,
-                    size: iconSize + 3,
-                    color: (activeIndex == 1) ? EBColor.primary : EBColor.dark.withOpacity(0.5),
-                  ),
-                  EBTypography.small(
-                    text: 'Sphere',
-                    color: (activeIndex == 1) ? EBColor.primary : EBColor.dark.withOpacity(0.5),
-                    muted: (activeIndex == 1) ? false : true,
-                  ),
-                ],
-              ),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      children: [
+        InkResponse(
+          onTap: () {
+            if (ModalRoute.of(context)?.settings.name != Routes.dashboard) {
+              Navigator.of(context).push(createRoute(route: Routes.dashboard));
+            }
+          },
+          child: GestureDetector(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(
+                  EBIcons.home,
+                  size: iconSize + 3,
+                  color: (activeIndex == 1) ? EBColor.primary : EBColor.dark.withOpacity(0.5),
+                ),
+                const SizedBox(height: Spacing.sm),
+                EBTypography.small(
+                  text: 'Sphere',
+                  color: (activeIndex == 1) ? EBColor.primary : EBColor.dark.withOpacity(0.5),
+                  muted: (activeIndex == 1) ? false : true,
+                ),
+              ],
             ),
           ),
-          InkResponse(
-            onTap: () {
-              if (ModalRoute.of(context)?.settings.name != Routes.people) {
-                Navigator.of(context).push(createRoute(route: Routes.people));
-              }
-            },
-            child: GestureDetector(
-              child: Wrap(
-                crossAxisAlignment: WrapCrossAlignment.center,
-                direction: Axis.vertical,
-                spacing: 10.0,
-                children: [
-                  Icon(
-                    FeatherIcons.users,
-                    size: iconSize,
-                    color: (activeIndex == 2) ? EBColor.primary : EBColor.dark.withOpacity(0.5),
-                  ),
-                  EBTypography.small(
-                    text: 'People',
-                    color: (activeIndex == 2) ? EBColor.primary : EBColor.dark.withOpacity(0.5),
-                    muted: (activeIndex == 2) ? false : true,
-                  ),
-                ],
-              ),
+        ),
+        InkResponse(
+          onTap: () {
+            if (ModalRoute.of(context)?.settings.name != Routes.people) {
+              Navigator.of(context).push(createRoute(route: Routes.people));
+            }
+          },
+          child: GestureDetector(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(
+                  FeatherIcons.users,
+                  size: iconSize,
+                  color: (activeIndex == 2) ? EBColor.primary : EBColor.dark.withOpacity(0.5),
+                ),
+                const SizedBox(height: Spacing.sm),
+                EBTypography.small(
+                  text: 'People',
+                  color: (activeIndex == 2) ? EBColor.primary : EBColor.dark.withOpacity(0.5),
+                  muted: (activeIndex == 2) ? false : true,
+                ),
+              ],
             ),
           ),
-          InkResponse(
-            onTap: () {},
-            child: GestureDetector(
-              child: Wrap(
-                crossAxisAlignment: WrapCrossAlignment.center,
-                direction: Axis.vertical,
-                spacing: 10.0,
-                children: [
-                  Icon(
-                    FeatherIcons.bookmark,
-                    size: iconSize,
-                    color: (activeIndex == 3) ? EBColor.primary : EBColor.dark.withOpacity(0.5),
-                  ),
-                  EBTypography.small(
-                    text: 'Saved',
-                    color: (activeIndex == 3) ? EBColor.primary : EBColor.dark.withOpacity(0.5),
-                    muted: (activeIndex == 3) ? false : true,
-                  ),
-                ],
-              ),
+        ),
+        InkResponse(
+          onTap: () {},
+          child: GestureDetector(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(
+                  FeatherIcons.bookmark,
+                  size: iconSize,
+                  color: (activeIndex == 3) ? EBColor.primary : EBColor.dark.withOpacity(0.5),
+                ),
+                const SizedBox(height: Spacing.sm),
+                EBTypography.small(
+                  text: 'Saved',
+                  color: (activeIndex == 3) ? EBColor.primary : EBColor.dark.withOpacity(0.5),
+                  muted: (activeIndex == 3) ? false : true,
+                ),
+              ],
             ),
           ),
-          InkResponse(
-            onTap: () {
-              if (ModalRoute.of(context)?.settings.name != Routes.accountInfo) {
-                Navigator.of(context).push(createRoute(route: Routes.accountInfo));
-              }
-            },
-            child: GestureDetector(
-              child: Wrap(
-                crossAxisAlignment: WrapCrossAlignment.center,
-                direction: Axis.vertical,
-                spacing: 10.0,
-                children: [
-                  Icon(
-                    FeatherIcons.settings,
-                    size: iconSize,
-                    color: (activeIndex == 4) ? EBColor.primary : EBColor.dark.withOpacity(0.5),
-                  ),
-                  EBTypography.small(
-                    text: 'Account',
-                    color: (activeIndex == 4) ? EBColor.primary : EBColor.dark.withOpacity(0.5),
-                    muted: (activeIndex == 4) ? false : true,
-                  ),
-                ],
-              ),
+        ),
+        InkResponse(
+          onTap: () {
+            if (ModalRoute.of(context)?.settings.name != Routes.accountInfo) {
+              Navigator.of(context).push(createRoute(route: Routes.accountInfo));
+            }
+          },
+          child: GestureDetector(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(
+                  FeatherIcons.settings,
+                  size: iconSize,
+                  color: (activeIndex == 4) ? EBColor.primary : EBColor.dark.withOpacity(0.5),
+                ),
+                const SizedBox(height: Spacing.sm),
+                EBTypography.small(
+                  text: 'Account',
+                  color: (activeIndex == 4) ? EBColor.primary : EBColor.dark.withOpacity(0.5),
+                  muted: (activeIndex == 4) ? false : true,
+                ),
+              ],
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 
