@@ -33,26 +33,54 @@ dependencies:
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
+  # A
   auto_size_text: ^3.0.0
+  # B
   bottom_picker: ^2.2.1
+  # C
   cloud_firestore: ^4.11.0
   connectivity_plus: ^5.0.1
   cupertino_icons: ^1.0.2
+  # D
   dropdown_button2: ^2.3.9
+  # E
+  # F
   feather_icons: ^1.2.0
   file_picker: ^6.1.1
   firebase_auth: ^4.10.1
   firebase_core: ^2.17.0
   firebase_storage: ^11.4.1
   flutter_native_splash: ^2.3.2
+  flutter_quill: ^8.6.4
   flutter_svg: ^2.0.7
   font_awesome_flutter: ^10.5.0
+  # G
+  # H
+  # I
   intl: ^0.18.1
+  # J
+  # K
+  # L
   logger: ^2.0.2+1
   lottie: ^2.7.0
+  # M
+  # N
+  # O
+  # P
   pin_code_fields: ^8.0.1
+  # Q
+  # R
+  # S
+  # T
   tutorial_coach_mark: ^1.2.11
-  flutter_quill: ^8.6.4
+  # U
+  # V
+  # W
+  # X
+  # Y
+  # Z
+
+# Flutter native splash screen configrations
 flutter_native_splash:
   color: '#3336AB'
   image: assets/imgs/logo-white.png
@@ -60,6 +88,7 @@ flutter_native_splash:
   ios: true
   fullscreen: true
 
+  # To solve fix the view for android 12
   android_12:
     image: assets/imgs/logo-white.png
 
@@ -74,10 +103,6 @@ dev_dependencies:
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
 
-# For information on the generic Dart part of this file, see the
-# following page: https://dart.dev/tools/pub/pubspec
-
-# The following section is specific to Flutter packages.
 flutter:
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
@@ -91,17 +116,6 @@ flutter:
     - assets/svgs/loading/
     - assets/svgs/misc/
 
-  # An image asset can refer to one or more resolution-specific "variants", see
-  # https://flutter.dev/assets-and-images/#resolution-aware
-
-  # For details regarding adding assets from package dependencies, see
-  # https://flutter.dev/assets-and-images/#from-packages
-
-  # To add custom fonts to your application, add a fonts section here,
-  # in this "flutter" section. Each entry in this list should have a
-  # "family" key with the font family name, and a "fonts" key with a
-  # list giving the asset and other descriptors for the font. For
-  # example:
   fonts:
     - family: EBIcons
       fonts:
@@ -117,6 +131,3 @@ flutter:
         - asset: assets/fonts/outfit/Outfit-Regular.ttf
         - asset: assets/fonts/outfit/Outfit-SemiBold.ttf
         - asset: assets/fonts/outfit/Outfit-Thin.ttf
-  # #
-  # For details regarding fonts from package dependencies,
-  # see https://flutter.dev/custom-fonts/#from-packages
