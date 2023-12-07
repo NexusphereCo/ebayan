@@ -44,7 +44,7 @@ class _EmptyDashboardViewState extends State<EmptyDashboardView> {
                 children: [
                   Column(
                     children: [
-                      SvgPicture.asset(Asset.illustHouseEmptyPath),
+                      SvgPicture.asset(Asset.houseEmpty),
                       const SizedBox(height: Spacing.lg),
                       EBTypography.text(
                         text: "You currently aren't joined to any barangay spheres. Let's change that!",

@@ -28,7 +28,7 @@ Widget buildLatestAnnouncements({required List<AnnouncementViewModel> announceme
                 bottom: 0,
                 right: 0,
                 child: SvgPicture.asset(
-                  Asset.illustRecentAnnCircleBackg,
+                  Asset.recentAnnCircle,
                   fit: BoxFit.cover,
                 ),
               ),
@@ -76,7 +76,7 @@ ListView _buildListOfAnnouncements(List<AnnouncementViewModel> announcements) =>
             children: [
               Positioned.fill(
                 child: SvgPicture.asset(
-                  Asset.illustRecentAnnCardWaveBackg,
+                  Asset.recentAnnWave,
                   fit: BoxFit.cover,
                 ),
               ),
@@ -153,7 +153,7 @@ Widget _buildEmptyAnnouncements() => Container(
               bottom: 0,
               right: 0,
               child: SvgPicture.asset(
-                Asset.illustRecentAnnNone,
+                Asset.recentAnnEmpty,
                 fit: BoxFit.cover,
               ),
             ),

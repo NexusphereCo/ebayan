@@ -54,7 +54,7 @@ class _JoinedDashboardLoadingViewState extends State<JoinedDashboardLoadingView>
                             bottom: 0,
                             right: 0,
                             child: SvgPicture.asset(
-                              Asset.illustRecentAnnCircleBackg,
+                              Asset.recentAnnCircle,
                               fit: BoxFit.cover,
                             ),
                           ),
@@ -94,7 +94,7 @@ class _JoinedDashboardLoadingViewState extends State<JoinedDashboardLoadingView>
                                               children: [
                                                 Positioned.fill(
                                                   child: SvgPicture.asset(
-                                                    Asset.illustRecentAnnCardWaveBackg,
+                                                    Asset.recentAnnWave,
                                                     fit: BoxFit.cover,
                                                   ),
                                                 ),

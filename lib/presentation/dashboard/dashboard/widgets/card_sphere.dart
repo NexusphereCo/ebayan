@@ -72,7 +72,7 @@ class SphereCard extends StatefulWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                SvgPicture.asset(Asset.illustHousePath, fit: BoxFit.fitHeight),
+                SvgPicture.asset(Asset.house, fit: BoxFit.fitHeight),
               ],
             ),
           ),

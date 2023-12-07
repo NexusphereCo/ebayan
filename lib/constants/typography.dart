@@ -56,12 +56,12 @@ class EBTypography {
 
   /// typography headings and texts with parameters.
   /// @param [Text] text - required; the text message
-  /// @param [Color] color
-  /// @param [FontWeight] fontWeight
-  /// @param [bool] muted
-  /// @param [TextAlign] textAlign
-  /// @param [int] maxLines
-  /// @param [bool] cutOverflow
+  ///        [Color] color - nullable;
+  ///        [FontWeight] fontWeight - nullable;
+  ///        [bool] muted - nullable;
+  ///        [TextAlign] textAlign - nullable;
+  ///        [int] maxLines - nullable;
+  ///        [bool] cutOverflow - nullable;
   /// @returns [AutoSizeText]
   static Widget h1({required String text, Color? color, FontWeight? fontWeight, bool muted = false, TextAlign? textAlign, int? maxLines, bool? cutOverflow}) => _textStyle(text, EBFontSize.h1, color, muted, fontWeight ?? EBFontWeight.extraBold, textAlign, maxLines, cutOverflow);
   static Widget h2({required String text, Color? color, FontWeight? fontWeight, bool muted = false, TextAlign? textAlign, int? maxLines, bool? cutOverflow}) => _textStyle(text, EBFontSize.h2, color, muted, fontWeight ?? EBFontWeight.extraBold, textAlign, maxLines, cutOverflow);

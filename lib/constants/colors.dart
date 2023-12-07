@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
 
-/// defines the application colors.
-///
-/// each variable returns a [String]
-/// sample invocation: EBColor.primary, EBColor.primary[200], ...
 class EBColor {
   EBColor._();
 

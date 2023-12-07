@@ -72,7 +72,7 @@ class _EBAppBarState extends State<EBAppBar> {
                 color: EBColor.primary,
               ),
               const SizedBox(width: 8),
-              SvgPicture.asset(Asset.logoColorPath),
+              SvgPicture.asset(Asset.logoWColor),
             ],
           );
     }
@@ -208,7 +208,7 @@ class _EBDrawerState extends State<EBDrawer> {
                   color: EBColor.primary,
                 ),
                 const SizedBox(width: 8),
-                SvgPicture.asset(Asset.logoColorPath),
+                SvgPicture.asset(Asset.logoWColor),
               ],
             ),
           ),

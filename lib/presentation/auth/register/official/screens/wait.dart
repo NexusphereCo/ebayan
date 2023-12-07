@@ -28,7 +28,7 @@ class WaitScreen extends StatelessWidget {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  SvgPicture.asset(Asset.illustWait),
+                  SvgPicture.asset(Asset.officialProcessing),
                   const SizedBox(height: Spacing.md),
                   EBTypography.h1(text: 'Account Approval in Progress'),
                   const SizedBox(height: Spacing.md),

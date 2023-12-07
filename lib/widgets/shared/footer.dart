@@ -31,7 +31,7 @@ class EBFooter extends StatelessWidget {
             children: [
               Column(
                 children: [
-                  SvgPicture.asset(Asset.companyPath),
+                  SvgPicture.asset(Asset.logoCompany),
                   EBTypography.small(
                     text: 'Copyright © ${DateTime.now().year}',
                     muted: true,
@@ -40,7 +40,7 @@ class EBFooter extends StatelessWidget {
               ),
               Column(
                 children: [
-                  SvgPicture.asset(Asset.logoColorPath),
+                  SvgPicture.asset(Asset.logoWColor),
                 ],
               ),
             ],

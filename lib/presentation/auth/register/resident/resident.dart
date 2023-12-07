@@ -145,7 +145,7 @@ class _RegisterResidentScreenState extends State<RegisterResidentScreen> with Si
             crossAxisAlignment: WrapCrossAlignment.center,
             children: [
               EBTypography.h3(text: 'Register', color: EBColor.primary),
-              SvgPicture.asset(Asset.logoColorPath),
+              SvgPicture.asset(Asset.logoWColor),
             ],
           ),
         ),

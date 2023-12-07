@@ -3,9 +3,6 @@ import 'package:ebayan/constants/typography.dart';
 import 'package:ebayan/constants/size.dart';
 import 'package:flutter/material.dart';
 
-/// defines the custom themes.
-///
-/// customizes theme for [Colors], [TextTheme], [PopupMenuThemeData]
 class EBTheme {
   EBTheme._();
 

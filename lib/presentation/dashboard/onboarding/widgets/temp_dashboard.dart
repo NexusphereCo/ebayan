@@ -49,7 +49,7 @@ Widget buildDashboard({
                       bottom: 0,
                       right: 0,
                       child: SvgPicture.asset(
-                        Asset.illustRecentAnnCircleBackg,
+                        Asset.recentAnnCircle,
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -89,7 +89,7 @@ Widget buildDashboard({
                                       children: [
                                         Positioned.fill(
                                           child: SvgPicture.asset(
-                                            Asset.illustRecentAnnCardWaveBackg,
+                                            Asset.recentAnnWave,
                                             fit: BoxFit.cover,
                                           ),
                                         ),

@@ -117,13 +117,13 @@ Widget guideCard({
       ),
       // set the position for the tail
       switch (tailPosition) {
-        TailPosition.topLeft => Positioned(top: -10, left: 10, child: SvgPicture.asset(Asset.tailUp)),
-        TailPosition.topCenter => Positioned(top: -10, left: 10, right: 10, child: SvgPicture.asset(Asset.tailUp)),
-        TailPosition.topRight => Positioned(top: -10, right: 10, child: SvgPicture.asset(Asset.tailUp)),
+        TailPosition.topLeft => Positioned(top: -10, left: 10, child: SvgPicture.asset(Asset.cardTailUp)),
+        TailPosition.topCenter => Positioned(top: -10, left: 10, right: 10, child: SvgPicture.asset(Asset.cardTailUp)),
+        TailPosition.topRight => Positioned(top: -10, right: 10, child: SvgPicture.asset(Asset.cardTailUp)),
         // bottom
-        TailPosition.bottomLeft => Positioned(bottom: -10, left: 10, child: SvgPicture.asset(Asset.tailDown)),
-        TailPosition.bottomCenter => Positioned(bottom: -10, left: 10, right: 10, child: SvgPicture.asset(Asset.tailDown)),
-        TailPosition.bottomRight => Positioned(bottom: -10, right: 10, child: SvgPicture.asset(Asset.tailDown)),
+        TailPosition.bottomLeft => Positioned(bottom: -10, left: 10, child: SvgPicture.asset(Asset.cardTailDown)),
+        TailPosition.bottomCenter => Positioned(bottom: -10, left: 10, right: 10, child: SvgPicture.asset(Asset.cardTailDown)),
+        TailPosition.bottomRight => Positioned(bottom: -10, right: 10, child: SvgPicture.asset(Asset.cardTailDown)),
       }
     ],
   );

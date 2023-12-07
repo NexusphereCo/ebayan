@@ -1,9 +1,5 @@
 import 'package:flutter/widgets.dart';
 
-/// defines the custom icons.
-///
-/// each variable returns [IconData]
-/// sample call: [EBIcons.clip], etc.
 class EBIcons {
   EBIcons._();
 

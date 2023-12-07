@@ -36,7 +36,7 @@ class AccountScreenState extends State<AccountScreen> {
           Positioned.fill(
             bottom: 0,
             child: SvgPicture.asset(
-              Asset.illustAccInfoBackg,
+              Asset.accInfoBackdrop,
               fit: BoxFit.fill,
             ),
           ),

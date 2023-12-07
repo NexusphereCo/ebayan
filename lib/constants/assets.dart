@@ -1,25 +1,26 @@
-/// defines the asset's path.
-///
-/// each variable returns [String]
-/// sample invocation: Asset.logoColorPath
 class Asset {
   Asset._();
 
-  static const String logoColorPath = 'assets/svgs/ebayan/logo-color.svg';
-  static const String logoWhitePath = 'assets/svgs/ebayan/logo-white.svg';
-  static const String companyPath = 'assets/svgs/ebayan/company.svg';
-
-  static const String illustHousePath = 'assets/svgs/illustration/card-house.svg';
-  static const String illustHousesPath = 'assets/svgs/illustration/join-brgy.svg';
-  static const String illustHouseEmptyPath = 'assets/svgs/illustration/empty-state.svg';
-  static const String illustRecentAnnCircleBackg = 'assets/svgs/illustration/card-recent-ann-circle.svg';
-  static const String illustRecentAnnNone = 'assets/svgs/illustration/card-recent-ann-circle-empty.svg';
-  static const String illustRecentAnnCardWaveBackg = 'assets/svgs/illustration/card-recent-ann-wave.svg';
-  static const String illustAccInfoBackg = 'assets/svgs/illustration/acc-info-backg.svg';
-  static const String illustWait = 'assets/svgs/illustration/wait.svg';
-
-  static const String tailUp = 'assets/svgs/misc/tail-up.svg';
-  static const String tailDown = 'assets/svgs/misc/tail-down.svg';
-
+  // --------------------------------------------------------------------------------------
+  // Brands
+  // --------------------------------------------------------------------------------------
+  static const String logoWColor = 'assets/svgs/brand/logo-color.svg';
+  static const String logoCompany = 'assets/svgs/brand/company.svg';
+  // --------------------------------------------------------------------------------------
+  // Illustrations
+  // --------------------------------------------------------------------------------------
+  static const String house = 'assets/svgs/illust/house.svg';
+  static const String houseEmpty = 'assets/svgs/illust/empty-barangay.svg';
+  static const String housesCommunity = 'assets/svgs/illust/join-brgy.svg';
+  static const String recentAnnCircle = 'assets/svgs/illust/card-recent-ann-circle.svg';
+  static const String recentAnnEmpty = 'assets/svgs/illust/card-recent-ann-circle-empty.svg';
+  static const String recentAnnWave = 'assets/svgs/illust/card-recent-ann-wave.svg';
+  static const String accInfoBackdrop = 'assets/svgs/illust/acc-info-backg.svg';
+  static const String officialProcessing = 'assets/svgs/illust/official-processing.svg';
+  // --------------------------------------------------------------------------------------
+  // Misc.
+  // --------------------------------------------------------------------------------------
+  static const String cardTailUp = 'assets/svgs/misc/tail-up.svg';
+  static const String cardTailDown = 'assets/svgs/misc/tail-down.svg';
   static const String lottieLoadingLogo = 'assets/svgs/loading/loading-logo.json';
 }

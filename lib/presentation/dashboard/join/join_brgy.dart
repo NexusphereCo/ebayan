@@ -103,7 +103,7 @@ class _JoinBrgyScreenState extends State<JoinBrgyScreen> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SvgPicture.asset(Asset.illustHousesPath),
+                    SvgPicture.asset(Asset.housesCommunity),
                     const SizedBox(height: Spacing.lg),
                     EBTypography.h3(
                       text: 'Enter Barangay Sphere Code',
