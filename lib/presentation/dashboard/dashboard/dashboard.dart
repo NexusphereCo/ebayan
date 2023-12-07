@@ -25,8 +25,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
     final param = ModalRoute.of(context)?.settings.arguments as Map? ?? {};
     final startTutorial = param['startTutorial'] as bool? ?? false;
 
-    return WillPopScope(
-      onWillPop: () async => false,
+    return PopScope(
+      canPop: false,
       child: FutureBuilder<bool>(
         future: _checkForJoinedBrgy(),
         builder: (context, snapshot) {

@@ -17,8 +17,8 @@ class WaitScreen extends StatelessWidget {
     final param = ModalRoute.of(context)?.settings.arguments as Map;
     final email = param['email'];
 
-    return WillPopScope(
-      onWillPop: () async => false,
+    return PopScope(
+      canPop: false,
       child: Scaffold(
         backgroundColor: EBColor.light,
         body: Padding(
