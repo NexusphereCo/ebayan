@@ -35,20 +35,20 @@ class AccountInfoForm extends StatefulWidget {
 }
 
 class _AccountInfoFormState extends State<AccountInfoForm> {
-  final GlobalKey<FormState> _formKey = GlobalKey();
-  final EBLoadingScreen _loadingScreen = const EBLoadingScreen();
-  final UserController _userController = UserController();
+  final GlobalKey<FormState> formKey = GlobalKey();
+  final EBLoadingScreen loadingScreen = const EBLoadingScreen();
+  final UserController userController = UserController();
 
-  // controllers
-  final TextEditingController _firstNameController = TextEditingController();
-  final TextEditingController _lastNameController = TextEditingController();
-  final TextEditingController _contactNumberController = TextEditingController();
-  final TextEditingController _birthDateController = TextEditingController();
-  final TextEditingController _addressController = TextEditingController();
+  // Controllers
+  final TextEditingController firstNameController = TextEditingController();
+  final TextEditingController lastNameController = TextEditingController();
+  final TextEditingController contactNumberController = TextEditingController();
+  final TextEditingController birthDateController = TextEditingController();
+  final TextEditingController addressController = TextEditingController();
 
-  // variables
-  bool _isEditing = false;
-  final _inputDecoration = InputDecoration(
+  // Variables
+  bool isEditing = false;
+  final inputDecoration = InputDecoration(
     contentPadding: EdgeInsets.zero,
     enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: EBColor.dark[50]!)),
     focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: EBColor.primary)),
@@ -60,60 +60,60 @@ class _AccountInfoFormState extends State<AccountInfoForm> {
   @override
   void initState() {
     super.initState();
-    _firstNameController.text = widget.userData.firstName;
-    _lastNameController.text = widget.userData.lastName;
-    _contactNumberController.text = widget.userData.contactNumber;
-    _birthDateController.text = widget.userData.birthDate;
-    _addressController.text = widget.userData.address;
+    firstNameController.text = widget.userData.firstName;
+    lastNameController.text = widget.userData.lastName;
+    contactNumberController.text = widget.userData.contactNumber;
+    birthDateController.text = widget.userData.birthDate;
+    addressController.text = widget.userData.address;
   }
 
   @override
   void dispose() {
     super.dispose();
-    _firstNameController.dispose();
-    _lastNameController.dispose();
-    _contactNumberController.dispose();
-    _addressController.dispose();
-    _birthDateController.dispose();
+    firstNameController.dispose();
+    lastNameController.dispose();
+    contactNumberController.dispose();
+    addressController.dispose();
+    birthDateController.dispose();
   }
 
   Future<void> _saveInfo() async {
-    _loadingScreen.show(context);
-    bool isFormValid = _formKey.currentState?.validate() == true;
+    loadingScreen.show(context);
+    bool isFormValid = formKey.currentState?.validate() == true;
 
     if (isFormValid) {
-      // map to the [UserModel]
+      // Map to the [UserModel]
       UserUpdateModel data = UserUpdateModel(
-        firstName: _firstNameController.text,
-        lastName: _lastNameController.text,
-        birthDate: _birthDateController.text,
-        contactNumber: _contactNumberController.text,
-        address: _addressController.text,
+        firstName: firstNameController.text,
+        lastName: lastNameController.text,
+        birthDate: birthDateController.text,
+        contactNumber: contactNumberController.text,
+        address: addressController.text,
       );
 
-      // call the usercontroller's updateInfo
-      await _userController.updateInfo(data).then(
+      // Call the usercontroller's updateInfo
+      await userController.updateInfo(data).then(
         (value) {
-          // return to this page and prompt a successful snackbar message
-          setState(() => _isEditing = false);
+          // Return to this page and prompt a successful snackbar message
+          setState(() => isEditing = false);
 
           widget.parent.refresh();
 
-          _loadingScreen.hide(context);
+          loadingScreen.hide(context);
           ScaffoldMessenger.of(context).showSnackBar(
             EBSnackBar.info(text: 'Successfully updated user.'),
           );
         },
       ).catchError(
         (err) {
-          _loadingScreen.hide(context);
+          loadingScreen.hide(context);
           ScaffoldMessenger.of(context).showSnackBar(
             EBSnackBar.info(text: Validation.requiresRecentLogin),
           );
         },
       );
     } else {
-      _loadingScreen.hide(context);
+      loadingScreen.hide(context);
       ScaffoldMessenger.of(context).showSnackBar(
         EBSnackBar.info(text: 'Invalid form! Please make sure to fill in the required fields.'),
       );
@@ -122,7 +122,7 @@ class _AccountInfoFormState extends State<AccountInfoForm> {
 
   void _toggleEditing() {
     return setState(() {
-      _isEditing = !_isEditing;
+      isEditing = !isEditing;
     });
   }
 
@@ -132,7 +132,7 @@ class _AccountInfoFormState extends State<AccountInfoForm> {
       child: Padding(
         padding: const EdgeInsets.all(Global.paddingBody),
         child: Form(
-          key: _formKey,
+          key: formKey,
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -170,13 +170,13 @@ class _AccountInfoFormState extends State<AccountInfoForm> {
                               mainAxisSize: MainAxisSize.min,
                               children: [
                                 EBTypography.label(
-                                  text: (_isEditing) ? 'Discard' : 'Edit',
-                                  color: (_isEditing) ? EBColor.red : EBColor.green,
+                                  text: (isEditing) ? 'Discard' : 'Edit',
+                                  color: (isEditing) ? EBColor.red : EBColor.green,
                                 ),
                                 const SizedBox(width: Spacing.sm),
                                 Icon(
                                   FeatherIcons.edit,
-                                  color: (_isEditing) ? EBColor.red : EBColor.green,
+                                  color: (isEditing) ? EBColor.red : EBColor.green,
                                   size: EBFontSize.h4,
                                 ),
                               ],
@@ -191,13 +191,13 @@ class _AccountInfoFormState extends State<AccountInfoForm> {
                         children: [
                           EBTypography.text(text: 'First Name:', muted: true),
                           const SizedBox(width: Spacing.sm),
-                          (_isEditing)
+                          (isEditing)
                               ? Expanded(
                                   child: TextFormField(
-                                    controller: _firstNameController,
+                                    controller: firstNameController,
                                     keyboardType: TextInputType.name,
                                     style: const TextStyle(fontSize: EBFontSize.normal),
-                                    decoration: _inputDecoration,
+                                    decoration: inputDecoration,
                                     validator: (value) {
                                       value = value?.trim();
                                       if (value == null || value.isEmpty) return '';
@@ -213,13 +213,13 @@ class _AccountInfoFormState extends State<AccountInfoForm> {
                         children: [
                           EBTypography.text(text: 'Last Name:', muted: true),
                           const SizedBox(width: Spacing.sm),
-                          (_isEditing)
+                          (isEditing)
                               ? Expanded(
                                   child: TextFormField(
-                                    controller: _lastNameController,
+                                    controller: lastNameController,
                                     keyboardType: TextInputType.name,
                                     style: const TextStyle(fontSize: EBFontSize.normal),
-                                    decoration: _inputDecoration,
+                                    decoration: inputDecoration,
                                     validator: (value) {
                                       value = value?.trim();
                                       if (value == null || value.isEmpty) return '';
@@ -235,12 +235,12 @@ class _AccountInfoFormState extends State<AccountInfoForm> {
                         children: [
                           EBTypography.text(text: 'Birth Date:', muted: true),
                           const SizedBox(width: Spacing.sm),
-                          (_isEditing)
+                          (isEditing)
                               ? Expanded(
                                   child: TextFormField(
-                                    controller: _birthDateController,
+                                    controller: birthDateController,
                                     style: const TextStyle(fontSize: EBFontSize.normal),
-                                    decoration: _inputDecoration,
+                                    decoration: inputDecoration,
                                     readOnly: true,
                                     onTap: () => _showDatePicker().show(context),
                                   ),
@@ -255,15 +255,15 @@ class _AccountInfoFormState extends State<AccountInfoForm> {
                         children: [
                           EBTypography.text(text: 'Phone No.:', muted: true),
                           const SizedBox(width: Spacing.sm),
-                          (_isEditing)
+                          (isEditing)
                               ? Expanded(
                                   child: TextFormField(
-                                    controller: _contactNumberController,
+                                    controller: contactNumberController,
                                     keyboardType: TextInputType.phone,
                                     inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                                     maxLength: 11,
                                     style: const TextStyle(fontSize: EBFontSize.normal),
-                                    decoration: _inputDecoration,
+                                    decoration: inputDecoration,
                                     validator: (value) {
                                       value = value?.trim();
                                       final phoneRegExp = RegExp(r'^\d{11}$');
@@ -290,11 +290,11 @@ class _AccountInfoFormState extends State<AccountInfoForm> {
                       const SizedBox(height: Spacing.lg),
                       _buildHeading(icon: FeatherIcons.mapPin, heading: 'Address'),
                       const SizedBox(height: Spacing.md),
-                      (_isEditing)
+                      (isEditing)
                           ? TextFormField(
-                              controller: _addressController,
+                              controller: addressController,
                               style: const TextStyle(fontSize: EBFontSize.normal),
-                              decoration: _inputDecoration,
+                              decoration: inputDecoration,
                               keyboardType: TextInputType.multiline,
                               maxLines: null,
                               validator: (value) {
@@ -309,7 +309,7 @@ class _AccountInfoFormState extends State<AccountInfoForm> {
                               textAlign: TextAlign.start,
                             ),
                       const SizedBox(height: Spacing.md),
-                      (_isEditing)
+                      (isEditing)
                           ? FadeIn(
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.end,
@@ -376,7 +376,7 @@ class _AccountInfoFormState extends State<AccountInfoForm> {
   BottomPicker _showDatePicker() {
     return BottomPicker.date(
       onSubmit: (date) => setState(() {
-        _birthDateController.text = DateFormat('yyyy-MM-dd').format(date);
+        birthDateController.text = DateFormat('yyyy-MM-dd').format(date);
       }),
       title: '',
       maxDateTime: DateTime.now(),

@@ -18,25 +18,25 @@ class ChangePasswordModalForm extends StatefulWidget {
 }
 
 class _ChangePasswordModalFormState extends State<ChangePasswordModalForm> {
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  final EBLoadingScreen _loadingScreen = const EBLoadingScreen();
-  final UserController _userController = UserController();
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  final EBLoadingScreen loadingScreen = const EBLoadingScreen();
+  final UserController userController = UserController();
   // controllers
-  final TextEditingController _passwordController = TextEditingController();
-  final TextEditingController _confirmPasswordController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController confirmPasswordController = TextEditingController();
   // variables
-  bool _showPassword = false;
+  bool showPassword = false;
 
-  Future<void> _changePassword() async {
-    _loadingScreen.show(context);
-    bool isFormValid = _formKey.currentState?.validate() == true;
+  Future<void> changePassword() async {
+    loadingScreen.show(context);
+    bool isFormValid = formKey.currentState?.validate() == true;
 
     if (isFormValid) {
-      final passw = _passwordController.text;
+      final passw = passwordController.text;
 
-      await _userController.changePassword(passw).then(
+      await userController.changePassword(passw).then(
         (value) {
-          _loadingScreen.hide(context);
+          loadingScreen.hide(context);
           Navigator.of(context).pop();
         },
       ).catchError(
@@ -47,12 +47,12 @@ class _ChangePasswordModalFormState extends State<ChangePasswordModalForm> {
       );
     }
 
-    if (context.mounted) _loadingScreen.hide(context);
+    if (context.mounted) loadingScreen.hide(context);
   }
 
-  Form _buildForm(BuildContext context) {
+  Form buildForm(BuildContext context) {
     return Form(
-      key: _formKey,
+      key: formKey,
       child: Padding(
         padding: const EdgeInsets.all(Global.paddingBody),
         child: Column(
@@ -70,16 +70,16 @@ class _ChangePasswordModalFormState extends State<ChangePasswordModalForm> {
             EBTextBox(
               icon: FeatherIcons.lock,
               textField: EBTextField(
-                controller: _passwordController,
+                controller: passwordController,
                 label: 'Password',
                 type: TextInputType.text,
-                obscureText: _showPassword ? false : true,
+                obscureText: showPassword ? false : true,
                 suffixIconButton: Padding(
                   padding: const EdgeInsets.only(right: 10.0),
                   child: IconButton(
-                    icon: _showPassword ? const Icon(FeatherIcons.eye) : const Icon(FeatherIcons.eyeOff),
+                    icon: showPassword ? const Icon(FeatherIcons.eye) : const Icon(FeatherIcons.eyeOff),
                     onPressed: () => setState(() {
-                      _showPassword = !_showPassword;
+                      showPassword = !showPassword;
                     }),
                   ),
                 ),
@@ -97,16 +97,16 @@ class _ChangePasswordModalFormState extends State<ChangePasswordModalForm> {
             EBTextBox(
               icon: FeatherIcons.lock,
               textField: EBTextField(
-                controller: _confirmPasswordController,
+                controller: confirmPasswordController,
                 label: 'Confirm Password',
                 type: TextInputType.text,
-                obscureText: _showPassword ? false : true,
+                obscureText: showPassword ? false : true,
                 suffixIconButton: Padding(
                   padding: const EdgeInsets.only(right: 10.0),
                   child: IconButton(
-                    icon: _showPassword ? const Icon(FeatherIcons.eye) : const Icon(FeatherIcons.eyeOff),
+                    icon: showPassword ? const Icon(FeatherIcons.eye) : const Icon(FeatherIcons.eyeOff),
                     onPressed: () => setState(() {
-                      _showPassword = !_showPassword;
+                      showPassword = !showPassword;
                     }),
                   ),
                 ),
@@ -114,7 +114,7 @@ class _ChangePasswordModalFormState extends State<ChangePasswordModalForm> {
                 validator: (value) {
                   value = value?.trim();
                   if (value == null || value.isEmpty) return Validation.missingField;
-                  if (value != _passwordController.text) return Validation.mismatchPassword;
+                  if (value != passwordController.text) return Validation.mismatchPassword;
                   if (value.length < 6) return Validation.requiredMinPassword;
 
                   return null;
@@ -131,7 +131,7 @@ class _ChangePasswordModalFormState extends State<ChangePasswordModalForm> {
                 ),
                 const SizedBox(width: Spacing.md),
                 EBButton(
-                  onPressed: () => _changePassword(),
+                  onPressed: () => changePassword(),
                   text: 'Change Password',
                   theme: EBButtonTheme.primary,
                 ),
@@ -159,7 +159,7 @@ class _ChangePasswordModalFormState extends State<ChangePasswordModalForm> {
       ),
       child: Padding(
         padding: MediaQuery.of(context).viewInsets,
-        child: _buildForm(context),
+        child: buildForm(context),
       ),
     );
   }

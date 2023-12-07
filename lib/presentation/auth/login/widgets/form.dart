@@ -20,14 +20,14 @@ class LoginForm extends StatefulWidget {
 }
 
 class _LoginFormState extends State<LoginForm> {
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  final EBLoadingScreen _loadingScreen = const EBLoadingScreen();
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  final EBLoadingScreen loadingScreen = const EBLoadingScreen();
 
-  final LoginController _loginController = LoginController();
+  final LoginController loginController = LoginController();
 
   // controllers
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
 
   // variables
   bool _showPassword = false;
@@ -35,26 +35,26 @@ class _LoginFormState extends State<LoginForm> {
   @override
   void dispose() {
     super.dispose();
-    _emailController.dispose();
-    _passwordController.dispose();
+    emailController.dispose();
+    passwordController.dispose();
   }
 
-  Future<void> _signIn() async {
-    bool isFormValid = _formKey.currentState?.validate() == true;
+  Future<void> signIn() async {
+    bool isFormValid = formKey.currentState?.validate() == true;
     if (isFormValid) {
-      final model = LoginModel(email: _emailController.text, password: _passwordController.text);
+      final model = LoginModel(email: emailController.text, password: passwordController.text);
 
-      _loadingScreen.show(context);
+      loadingScreen.show(context);
 
       // login the user
-      _loginController.signIn(model).then(
+      loginController.signIn(model).then(
         (data) {
-          _loadingScreen.hide(context);
+          loadingScreen.hide(context);
           Navigator.of(context).push(createRoute(route: Routes.dashboard));
         },
       ).catchError(
         (err) {
-          _loadingScreen.hide(context);
+          loadingScreen.hide(context);
           ScaffoldMessenger.of(context).showSnackBar(EBSnackBar.info(text: err));
         },
       );
@@ -64,7 +64,7 @@ class _LoginFormState extends State<LoginForm> {
   @override
   Widget build(BuildContext context) {
     return Form(
-      key: _formKey,
+      key: formKey,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
@@ -73,7 +73,7 @@ class _LoginFormState extends State<LoginForm> {
             textField: EBTextField(
               label: 'Username',
               type: TextInputType.text,
-              controller: _emailController,
+              controller: emailController,
               validator: (value) {
                 value = value?.trim();
                 final emailRegExp = RegExp(r'^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$');
@@ -94,7 +94,7 @@ class _LoginFormState extends State<LoginForm> {
             textField: EBTextField(
               label: 'Password',
               type: TextInputType.text,
-              controller: _passwordController,
+              controller: passwordController,
               obscureText: !_showPassword,
               suffixIconButton: Padding(
                 padding: const EdgeInsets.only(right: 10.0),
@@ -130,7 +130,7 @@ class _LoginFormState extends State<LoginForm> {
             child: EBButton(
               text: 'Login',
               theme: EBButtonTheme.primary,
-              onPressed: () => _signIn(),
+              onPressed: () => signIn(),
             ),
           ),
           const SizedBox(height: Spacing.sm),

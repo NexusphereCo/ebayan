@@ -27,11 +27,11 @@ class JoinBrgyScreen extends StatefulWidget {
 }
 
 class _JoinBrgyScreenState extends State<JoinBrgyScreen> {
-  final BarangayController _brgyController = BarangayController();
+  final BarangayController brgyController = BarangayController();
 
   final EBLoadingScreen loadingScreen = const EBLoadingScreen();
   TextEditingController textEditingController = TextEditingController();
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   StreamController<ErrorAnimationType>? errorController;
 
@@ -53,16 +53,16 @@ class _JoinBrgyScreenState extends State<JoinBrgyScreen> {
   Future<void> _join() async {
     try {
       // validate the form
-      bool isFormValid = _formKey.currentState?.validate() == true;
+      bool isFormValid = formKey.currentState?.validate() == true;
       if (isFormValid) {
         if (context.mounted) loadingScreen.show(context);
 
         // check if the code is valid
-        bool isCodeValid = await _brgyController.isCodeValid(code);
+        bool isCodeValid = await brgyController.isCodeValid(code);
 
         if (isCodeValid) {
           // join them to a barangay
-          await _brgyController.joinBrgy(code);
+          await brgyController.joinBrgy(code);
 
           // successfully joined a barangay...
           // hide loading screen and navigate to the dashboard
@@ -96,7 +96,7 @@ class _JoinBrgyScreenState extends State<JoinBrgyScreen> {
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: Global.paddingBody),
         child: Form(
-          key: _formKey,
+          key: formKey,
           child: Column(
             children: [
               Expanded(

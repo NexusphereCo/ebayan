@@ -28,26 +28,26 @@ class RegisterResidentScreen extends StatefulWidget {
 }
 
 class _RegisterResidentScreenState extends State<RegisterResidentScreen> with SingleTickerProviderStateMixin {
-  final RegisterController _registerController = RegisterController();
+  final RegisterController registerController = RegisterController();
   final EBLoadingScreen loadingScreen = const EBLoadingScreen();
 
-  final GlobalKey<FormState> _formKey1 = GlobalKey<FormState>();
-  final GlobalKey<FormState> _formKey2 = GlobalKey<FormState>();
+  final GlobalKey<FormState> formKey1 = GlobalKey<FormState>();
+  final GlobalKey<FormState> formKey2 = GlobalKey<FormState>();
 
-  late TabController _tabController;
+  late TabController tabController;
 
-  final TextEditingController _firstNameController = TextEditingController();
-  final TextEditingController _lastNameController = TextEditingController();
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _contactNumberController = TextEditingController();
-  final TextEditingController _addressController = TextEditingController();
-  final TextEditingController _birthDateController = TextEditingController();
+  final TextEditingController firstNameController = TextEditingController();
+  final TextEditingController lastNameController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController contactNumberController = TextEditingController();
+  final TextEditingController addressController = TextEditingController();
+  final TextEditingController birthDateController = TextEditingController();
 
-  final TextEditingController _usernameController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
-  final TextEditingController _confirmPasswordController = TextEditingController();
+  final TextEditingController usernameController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController confirmPasswordController = TextEditingController();
 
-  bool _showPassword = false;
+  bool showPassword = false;
 
   int progressCurrentIndex = 1;
   int tabLength = 2;
@@ -57,25 +57,25 @@ class _RegisterResidentScreenState extends State<RegisterResidentScreen> with Si
     connectionHandler(context);
     super.initState();
 
-    _tabController = TabController(length: tabLength, vsync: this);
-    _tabController.addListener(() {
+    tabController = TabController(length: tabLength, vsync: this);
+    tabController.addListener(() {
       setState(() {
-        progressCurrentIndex = _tabController.index + 1;
+        progressCurrentIndex = tabController.index + 1;
       });
     });
   }
 
   @override
   void dispose() {
-    _tabController.dispose();
-    _firstNameController.dispose();
-    _lastNameController.dispose();
-    _emailController.dispose();
-    _contactNumberController.dispose();
-    _addressController.dispose();
-    _birthDateController.dispose();
-    _passwordController.dispose();
-    _confirmPasswordController.dispose();
+    tabController.dispose();
+    firstNameController.dispose();
+    lastNameController.dispose();
+    emailController.dispose();
+    contactNumberController.dispose();
+    addressController.dispose();
+    birthDateController.dispose();
+    passwordController.dispose();
+    confirmPasswordController.dispose();
     super.dispose();
   }
 
@@ -83,12 +83,12 @@ class _RegisterResidentScreenState extends State<RegisterResidentScreen> with Si
     bool isFormValid = formKey.currentState?.validate() == true;
 
     if (isFormValid) {
-      if (_tabController.index < _tabController.length - 1) {
-        _tabController.animateTo(_tabController.index + 1);
+      if (tabController.index < tabController.length - 1) {
+        tabController.animateTo(tabController.index + 1);
 
         // this just sets the username disabled textfield on the last page
-        if (_tabController.index == _tabController.length - 1) {
-          _usernameController.text = _emailController.text;
+        if (tabController.index == tabController.length - 1) {
+          usernameController.text = emailController.text;
         }
       }
     }
@@ -97,26 +97,26 @@ class _RegisterResidentScreenState extends State<RegisterResidentScreen> with Si
   void _register() async {
     loadingScreen.show(context);
 
-    bool isForm1Valid = _formKey1.currentState?.validate() == true;
-    bool isForm2Valid = _formKey2.currentState?.validate() == true;
+    bool isForm1Valid = formKey1.currentState?.validate() == true;
+    bool isForm2Valid = formKey2.currentState?.validate() == true;
 
     if (isForm1Valid && isForm2Valid) {
       try {
         UserModel model = UserModel(
           userType: UserType.resident,
-          firstName: _firstNameController.text,
-          lastName: _lastNameController.text,
-          email: _emailController.text,
-          contactNumber: _contactNumberController.text,
-          address: _addressController.text,
-          birthDate: _birthDateController.text,
-          username: _emailController.text,
-          password: _passwordController.text,
+          firstName: firstNameController.text,
+          lastName: lastNameController.text,
+          email: emailController.text,
+          contactNumber: contactNumberController.text,
+          address: addressController.text,
+          birthDate: birthDateController.text,
+          username: emailController.text,
+          password: passwordController.text,
           barangayAssociated: null,
         );
 
         // call the controller register function
-        await _registerController.registerAsResident(model);
+        await registerController.registerAsResident(model);
 
         if (context.mounted) {
           loadingScreen.hide(context);
@@ -151,41 +151,41 @@ class _RegisterResidentScreenState extends State<RegisterResidentScreen> with Si
         ),
         body: Column(
           children: [
-            buildTabBar(_tabController),
+            buildTabBar(tabController),
             const SizedBox(height: Spacing.lg),
             buildHeading(),
             const SizedBox(height: Spacing.md),
             Expanded(
               child: TabBarView(
                 physics: const NeverScrollableScrollPhysics(),
-                controller: _tabController,
+                controller: tabController,
                 children: [
                   KeepAliveWrapper(
                     child: Form(
-                      key: _formKey1,
+                      key: formKey1,
                       child: buildPersonalInfo(
                         context: context,
-                        firstNameController: _firstNameController,
-                        lastNameController: _lastNameController,
-                        emailController: _emailController,
-                        contactNumberController: _contactNumberController,
-                        addressController: _addressController,
-                        birthDateController: _birthDateController,
+                        firstNameController: firstNameController,
+                        lastNameController: lastNameController,
+                        emailController: emailController,
+                        contactNumberController: contactNumberController,
+                        addressController: addressController,
+                        birthDateController: birthDateController,
                         birthDateOnTapHandler: (date) => _setBirthDate(date),
-                        nextTabHandler: () => _nextTab(_formKey1),
+                        nextTabHandler: () => _nextTab(formKey1),
                       ),
                     ),
                   ),
                   KeepAliveWrapper(
                     child: Form(
-                      key: _formKey2,
+                      key: formKey2,
                       child: buildLoginCred(
                         context: context,
-                        tabController: _tabController,
-                        usernameController: _usernameController,
-                        passwordController: _passwordController,
-                        confirmPasswordController: _confirmPasswordController,
-                        showPassword: _showPassword,
+                        tabController: tabController,
+                        usernameController: usernameController,
+                        passwordController: passwordController,
+                        confirmPasswordController: confirmPasswordController,
+                        showPassword: showPassword,
                         togglePassIconHandler: () => _setTogglePassword(),
                         onRegisterHandler: _register,
                       ),
@@ -206,10 +206,10 @@ class _RegisterResidentScreenState extends State<RegisterResidentScreen> with Si
 
   // Frontend scripts
   void _setTogglePassword() => setState(() {
-        _showPassword = !_showPassword;
+        showPassword = !showPassword;
       });
 
   void _setBirthDate(date) => setState(() {
-        _birthDateController.text = DateFormat('yyyy-MM-dd').format(date);
+        birthDateController.text = DateFormat('yyyy-MM-dd').format(date);
       });
 }

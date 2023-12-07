@@ -21,20 +21,20 @@ class OnBoardingView extends StatefulWidget {
 class _OnBoardingViewState extends State<OnBoardingView> {
   TutorialCoachMark? tutorialCoachMark;
 
-  final GlobalKey _joinBtnKey = GlobalKey();
-  final GlobalKey _drawerKey = GlobalKey();
-  final GlobalKey _cardAnnouncementsKey = GlobalKey();
-  final GlobalKey _cardSphereKey = GlobalKey();
+  final GlobalKey joinBtnKey = GlobalKey();
+  final GlobalKey drawerKey = GlobalKey();
+  final GlobalKey cardAnnouncementsKey = GlobalKey();
+  final GlobalKey cardSphereKey = GlobalKey();
 
   // variables
-  List<TargetFocus> _targets = [];
+  List<TargetFocus> targets = [];
   int currentStep = 1;
 
   void _initTarget() {
-    _targets = [
+    targets = [
       TargetFocus(
         identify: 'join-btn-key',
-        keyTarget: _joinBtnKey,
+        keyTarget: joinBtnKey,
         enableTargetTab: false,
         contents: [
           TargetContent(
@@ -60,7 +60,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
       ),
       TargetFocus(
         identify: 'drawer-key',
-        keyTarget: _drawerKey,
+        keyTarget: drawerKey,
         enableTargetTab: false,
         contents: [
           TargetContent(
@@ -90,7 +90,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
       ),
       TargetFocus(
         identify: 'card-announcement-key',
-        keyTarget: _cardAnnouncementsKey,
+        keyTarget: cardAnnouncementsKey,
         shape: ShapeLightFocus.RRect,
         enableTargetTab: false,
         radius: 20,
@@ -122,7 +122,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
       ),
       TargetFocus(
         identify: 'card-sphere-key',
-        keyTarget: _cardSphereKey,
+        keyTarget: cardSphereKey,
         shape: ShapeLightFocus.RRect,
         enableTargetTab: false,
         radius: 20,
@@ -156,7 +156,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
     Future.delayed(const Duration(seconds: 1), () {
       _initTarget();
       tutorialCoachMark = TutorialCoachMark(
-        targets: _targets,
+        targets: targets,
         hideSkip: true,
         colorShadow: EBColor.green[700]!.withOpacity(0.5),
       )..show(context: context);
@@ -167,7 +167,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: EBAppBar(drawerKey: _drawerKey),
+      appBar: EBAppBar(drawerKey: drawerKey),
       drawer: const EBDrawer(),
       body: (currentStep < 3)
           ? FadeIn(
@@ -175,11 +175,11 @@ class _OnBoardingViewState extends State<OnBoardingView> {
             )
           : FadeIn(
               child: buildDashboard(
-              cardAnnouncementsKey: _cardAnnouncementsKey,
-              cardSphereKey: _cardSphereKey,
+              cardAnnouncementsKey: cardAnnouncementsKey,
+              cardSphereKey: cardSphereKey,
             )),
       floatingActionButton: FloatingActionButton(
-        key: _joinBtnKey,
+        key: joinBtnKey,
         onPressed: () {},
         child: const Icon(FeatherIcons.plus),
       ),

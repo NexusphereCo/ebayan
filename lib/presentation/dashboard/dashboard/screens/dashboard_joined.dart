@@ -23,12 +23,12 @@ class JoinedDashboardView extends StatefulWidget {
 }
 
 class _JoinedDashboardViewState extends State<JoinedDashboardView> {
-  final BarangayController _brgyController = BarangayController();
-  final UserController _userController = UserController();
+  final BarangayController brgyController = BarangayController();
+  final UserController userController = UserController();
 
   Future<BarangayViewModel> _fetchBarangayInfo() async {
-    final user = await _userController.getCurrentUserInfo();
-    final barangay = await _brgyController.fetchBarangayWithLatestAnnouncement(user.barangayAssociated as String);
+    final user = await userController.getCurrentUserInfo();
+    final barangay = await brgyController.fetchBarangayWithLatestAnnouncement(user.barangayAssociated as String);
 
     return barangay;
   }
