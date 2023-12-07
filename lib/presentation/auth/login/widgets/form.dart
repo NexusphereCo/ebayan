@@ -4,7 +4,7 @@ import 'package:ebayan/constants/validation.dart';
 import 'package:ebayan/controller/auth_controller.dart';
 import 'package:ebayan/data/model/login_model.dart';
 import 'package:ebayan/utils/routes.dart';
-import 'package:ebayan/utils/style.dart';
+import 'package:ebayan/constants/size.dart';
 import 'package:ebayan/widgets/components/buttons.dart';
 import 'package:ebayan/widgets/components/form.dart';
 import 'package:ebayan/widgets/components/loading.dart';

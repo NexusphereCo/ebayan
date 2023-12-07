@@ -5,7 +5,7 @@ import 'package:ebayan/controller/user_controller.dart';
 import 'package:ebayan/data/viewmodel/barangay_view_model.dart';
 import 'package:ebayan/utils/global.dart';
 import 'package:ebayan/utils/routes.dart';
-import 'package:ebayan/utils/style.dart';
+import 'package:ebayan/constants/size.dart';
 import 'package:ebayan/widgets/shared/appbar_bottom.dart';
 import 'package:ebayan/widgets/shared/appbar_top.dart';
 import 'package:feather_icons/feather_icons.dart';

@@ -10,7 +10,7 @@ import 'package:ebayan/presentation/dashboard/announcements/widgets/announcement
 import 'package:ebayan/presentation/dashboard/dashboard/widgets/card_sphere.dart';
 import 'package:ebayan/utils/global.dart';
 import 'package:ebayan/utils/routes.dart';
-import 'package:ebayan/utils/style.dart';
+import 'package:ebayan/constants/size.dart';
 import 'package:ebayan/widgets/components/loading.dart';
 import 'package:ebayan/widgets/shared/appbar_top.dart';
 import 'package:flutter/material.dart';

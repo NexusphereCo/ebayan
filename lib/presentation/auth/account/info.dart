@@ -3,7 +3,7 @@ import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/constants/typography.dart';
 import 'package:ebayan/controller/user_controller.dart';
 import 'package:ebayan/data/viewmodel/user_view_model.dart';
-import 'package:ebayan/utils/style.dart';
+import 'package:ebayan/constants/size.dart';
 import 'package:ebayan/widgets/shared/appbar_bottom.dart';
 import 'package:ebayan/widgets/shared/appbar_top.dart';
 import 'package:flutter/material.dart';

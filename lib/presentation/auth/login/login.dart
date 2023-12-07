@@ -1,4 +1,4 @@
-import 'package:ebayan/utils/style.dart';
+import 'package:ebayan/constants/size.dart';
 import 'package:ebayan/widgets/shared/footer.dart';
 import 'package:flutter/material.dart';
 

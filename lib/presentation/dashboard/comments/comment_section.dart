@@ -5,7 +5,7 @@ import 'package:ebayan/data/viewmodel/comment_view_model.dart';
 import 'package:ebayan/presentation/dashboard/comments/widgets/comment_handling.dart';
 import 'package:ebayan/presentation/dashboard/comments/widgets/comment_heading.dart';
 import 'package:ebayan/presentation/dashboard/comments/widgets/comments_list.dart';
-import 'package:ebayan/utils/style.dart';
+import 'package:ebayan/constants/size.dart';
 import 'package:flutter/material.dart';
 
 class CommentSection extends StatefulWidget {

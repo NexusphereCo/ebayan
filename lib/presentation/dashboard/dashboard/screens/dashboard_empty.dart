@@ -2,7 +2,7 @@ import 'package:ebayan/constants/assets.dart';
 import 'package:ebayan/constants/typography.dart';
 import 'package:ebayan/utils/global.dart';
 import 'package:ebayan/utils/routes.dart';
-import 'package:ebayan/utils/style.dart';
+import 'package:ebayan/constants/size.dart';
 import 'package:ebayan/widgets/components/buttons.dart';
 import 'package:ebayan/widgets/shared/appbar_bottom.dart';
 import 'package:ebayan/widgets/shared/appbar_top.dart';

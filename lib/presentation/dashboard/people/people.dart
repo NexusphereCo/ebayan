@@ -5,7 +5,7 @@ import 'package:ebayan/controller/user_controller.dart';
 import 'package:ebayan/data/viewmodel/barangay_view_model.dart';
 import 'package:ebayan/data/viewmodel/user_view_model.dart';
 import 'package:ebayan/presentation/dashboard/dashboard/widgets/card_sphere.dart';
-import 'package:ebayan/utils/style.dart';
+import 'package:ebayan/constants/size.dart';
 import 'package:ebayan/widgets/components/snackbar.dart';
 import 'package:ebayan/widgets/shared/appbar_bottom.dart';
 import 'package:ebayan/widgets/shared/appbar_top.dart';

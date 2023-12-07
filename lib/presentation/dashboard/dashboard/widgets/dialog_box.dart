@@ -1,5 +1,5 @@
 import 'package:ebayan/constants/typography.dart';
-import 'package:ebayan/utils/style.dart';
+import 'package:ebayan/constants/size.dart';
 import 'package:ebayan/widgets/components/buttons.dart';
 import 'package:flutter/material.dart';
 

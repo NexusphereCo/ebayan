@@ -9,7 +9,7 @@ import 'package:feather_icons/feather_icons.dart';
 import 'package:ebayan/widgets/shared/appbar_top.dart';
 import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/widgets/components/buttons.dart';
-import 'package:ebayan/utils/style.dart';
+import 'package:ebayan/constants/size.dart';
 import 'package:ebayan/controller/anct_controller.dart';
 import 'package:ebayan/presentation/dashboard/announcements/widgets/switch_button.dart';
 import 'package:flutter_quill/flutter_quill.dart';

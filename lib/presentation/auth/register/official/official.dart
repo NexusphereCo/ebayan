@@ -11,7 +11,7 @@ import 'package:ebayan/data/model/municipality_model.dart';
 import 'package:ebayan/data/model/user_model.dart';
 import 'package:ebayan/utils/global.dart';
 import 'package:ebayan/utils/routes.dart';
-import 'package:ebayan/utils/style.dart';
+import 'package:ebayan/constants/size.dart';
 import 'package:ebayan/widgets/components/loading.dart';
 import 'package:ebayan/widgets/components/progress_indicator.dart';
 import 'package:ebayan/widgets/components/snackbar.dart';

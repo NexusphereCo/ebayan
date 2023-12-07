@@ -5,7 +5,7 @@ import 'package:ebayan/constants/validation.dart';
 import 'package:ebayan/controller/user_controller.dart';
 import 'package:ebayan/data/model/user_model.dart';
 import 'package:ebayan/data/viewmodel/user_view_model.dart';
-import 'package:ebayan/utils/style.dart';
+import 'package:ebayan/constants/size.dart';
 import 'package:ebayan/widgets/components/buttons.dart';
 import 'package:ebayan/widgets/components/loading.dart';
 import 'package:ebayan/widgets/components/snackbar.dart';
