@@ -165,7 +165,14 @@ class _SphereCardState extends State<SphereCard> {
           });
           if (item == CardOptions.itemOne) {
             Clipboard.setData(ClipboardData(text: widget.brgyCode!));
-            ScaffoldMessenger.of(context).showSnackBar(EBSnackBar.info(text: 'Brgy. sphere code has been copied to your clipboard.'));
+            ScaffoldMessenger.of(context).showSnackBar(
+              EBSnackBar.info(text: 'Brgy. sphere code has been copied to your clipboard.'),
+            );
+          }
+          if (item == CardOptions.itemThree) {
+            Navigator.of(context).push(
+              createRoute(route: Routes.people),
+            );
           }
         },
         itemBuilder: (BuildContext context) => <PopupMenuEntry<CardOptions>>[
