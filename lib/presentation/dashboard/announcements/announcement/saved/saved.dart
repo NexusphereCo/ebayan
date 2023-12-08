@@ -66,10 +66,6 @@ class _SavedAnnouncementScreenState extends State<SavedAnnouncementScreen> {
           return Scaffold(
             appBar: const EBAppBar(enablePop: true),
             drawer: const EBDrawer(),
-            floatingActionButton: FloatingActionButton(
-              onPressed: () => Navigator.of(context).push(createRoute(route: Routes.createAnnouncement)),
-              child: const Icon(Icons.add),
-            ),
             body: RefreshIndicator(
               onRefresh: _refresh,
               child: ListView.builder(

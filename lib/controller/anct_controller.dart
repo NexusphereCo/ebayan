@@ -187,7 +187,7 @@ class AnnouncementController {
 
       final List<AnnouncementModel> savedAnnouncements = [];
       for (final annId in savedAnnouncementIds) {
-        final announcement = await announcementController.fetchAnnouncementDetails(annId); // Use AnnouncementController to fetch announcement details
+        final announcement = await announcementController.fetchAnnouncementDetails(annId);
         savedAnnouncements.add(announcement as AnnouncementModel);
       }
 

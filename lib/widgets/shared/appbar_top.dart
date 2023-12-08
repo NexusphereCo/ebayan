@@ -70,8 +70,8 @@ class _EBAppBarState extends State<EBAppBar> {
     /// AppBar(enablePop: true) => returns a back button instead of drawer with title heading and logo.
     /// AppBar(enablePop: true, noTitle: true) => returns a back button only with no content.
     /// AppBar(enablePop: true, title: Widget..) => returns a back button with a custom title.
-    /// AppBar(enablePop: true, more: true)
-    /// Appbar(enablePop: true, save: true)
+    /// AppBar(enablePop: true, more: true) => returns a back button with a moreVertical icon.
+    /// Appbar(enablePop: true, save: true) => returns a back button with a bookmark icon.
     /// ```
     // Build the AppBar
     return AppBar(
