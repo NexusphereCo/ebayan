@@ -5,6 +5,7 @@ import 'package:ebayan/presentation/auth/register/register.dart';
 import 'package:ebayan/presentation/auth/register/official/official.dart';
 import 'package:ebayan/presentation/auth/register/resident/resident.dart';
 import 'package:ebayan/presentation/dashboard/announcements/announcement/announcement.dart';
+import 'package:ebayan/presentation/dashboard/announcements/announcement/saved/saved.dart';
 import 'package:ebayan/presentation/dashboard/announcements/announcement_list.dart';
 import 'package:ebayan/presentation/dashboard/announcements/announcement/create/create.dart';
 import 'package:ebayan/presentation/dashboard/announcements/announcement/edit/edit.dart';
@@ -44,6 +45,7 @@ class Routes {
   static const String createAnnouncement = '/dashboard/create_announcement';
   static const String announcement = '/dashboard/announcement';
   static const String editAnnouncement = '/dashboard/edit_announcement';
+  static const String savedAnnouncement = '/dashboard/saved_announcement';
 
   // Misc.
   static final Logger log = Logger();
@@ -72,6 +74,7 @@ class Routes {
     createAnnouncement: () => const CreateAnnouncementScreen(),
     announcement: () => const AnnouncementScreen(),
     editAnnouncement: () => const EditAnnouncementScreen(),
+    savedAnnouncement: () => const SavedAnnouncementScreen(),
   };
 
   // Map that associates route names with their corresponding builder functions.
@@ -94,6 +97,7 @@ class Routes {
     createAnnouncement: (BuildContext context) => const CreateAnnouncementScreen(),
     announcement: (BuildContext context) => const AnnouncementScreen(),
     editAnnouncement: (BuildContext context) => const EditAnnouncementScreen(),
+    savedAnnouncement: (BuildContext context) => const SavedAnnouncementScreen(),
   };
 }
 

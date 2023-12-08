@@ -58,4 +58,58 @@ class UserController {
     await FirebaseAuth.instance.signOut();
     log.i('User has been logged out.');
   }
+
+  Future<void> saveAnnouncement(String annId) async {
+    try {
+      final user = FirebaseAuth.instance.currentUser;
+      final userId = user?.uid;
+      final savedAnnouncementRef = _dbFirestore.collection('users').doc(userId).collection('savedAnnouncements').doc(annId);
+
+      // Check if the announcement is already saved to avoid duplicate entries
+      final savedAnnouncementDoc = await savedAnnouncementRef.get();
+      if (!savedAnnouncementDoc.exists) {
+        await savedAnnouncementRef.set({});
+        log.d('Successfully saved announcement.');
+      } else {
+        log.w('Announcement is already saved.');
+      }
+    } catch (err) {
+      log.e('An error occurred: $err');
+      throw 'An error occurred while saving announcement.';
+    }
+  }
+
+  Future<List<String>> getSavedAnnouncements() async {
+    try {
+      final user = FirebaseAuth.instance.currentUser;
+      final userId = user?.uid;
+      final snapshot = await _dbFirestore.collection('users').doc(userId).collection('savedAnnouncements').get();
+
+      log.d('Successfully fetched saved announcements');
+      return snapshot.docs.map((doc) => doc.id).toList(); // Assuming 'annId' is the document ID
+    } catch (err) {
+      log.e('An error occurred: $err');
+      throw 'An error occurred while fetching saved announcements.';
+    }
+  }
+
+  Future<void> deleteSavedAnnouncement(String annId) async {
+    try {
+      final user = FirebaseAuth.instance.currentUser;
+      final userId = user?.uid;
+      final savedAnnouncementRef = _dbFirestore.collection('users').doc(userId).collection('savedAnnouncements').doc(annId);
+
+      // Check if the announcement exists before deleting it
+      final savedAnnouncementDoc = await savedAnnouncementRef.get();
+      if (savedAnnouncementDoc.exists) {
+        await savedAnnouncementRef.delete();
+        log.d('Successfully deleted saved announcement.');
+      } else {
+        log.w('Announcement not found in saved list.');
+      }
+    } catch (err) {
+      log.e('An error occurred: $err');
+      throw 'An error occurred while deleting saved announcement.';
+    }
+  }
 }

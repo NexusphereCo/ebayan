@@ -9,12 +9,14 @@ import 'package:ebayan/widgets/components/loading.dart';
 import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class EBAppBar extends StatefulWidget implements PreferredSizeWidget {
   final Widget? title;
   final bool? noTitle;
   final bool? enablePop;
   final bool? more;
+  final bool? save;
   final String? annId;
   final GlobalKey? drawerKey;
 
@@ -24,6 +26,7 @@ class EBAppBar extends StatefulWidget implements PreferredSizeWidget {
     this.title,
     this.noTitle,
     this.more,
+    this.save,
     this.annId,
     this.drawerKey,
   });
@@ -35,10 +38,30 @@ class EBAppBar extends StatefulWidget implements PreferredSizeWidget {
   Size get preferredSize => const Size.fromHeight(65.0);
 }
 
-enum CardOptions { itemOne, itemTwo }
+enum CardOptions { itemOne, itemTwo, itemThree }
 
 class _EBAppBarState extends State<EBAppBar> {
+  final UserController userController = UserController();
   CardOptions? selectedMenu;
+
+  bool isSaved = false;
+
+  @override
+  void initState() {
+    super.initState();
+    checkIfSaved();
+  }
+
+  Future<void> checkIfSaved() async {
+    try {
+      final savedAnnouncements = await userController.getSavedAnnouncements();
+      setState(() {
+        isSaved = savedAnnouncements.contains(widget.annId.toString());
+      });
+    } catch (error) {
+      print('Error checking if saved: $error');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -48,6 +71,7 @@ class _EBAppBarState extends State<EBAppBar> {
     /// AppBar(enablePop: true, noTitle: true) => returns a back button only with no content.
     /// AppBar(enablePop: true, title: Widget..) => returns a back button with a custom title.
     /// AppBar(enablePop: true, more: true)
+    /// Appbar(enablePop: true, save: true)
     /// ```
     // Build the AppBar
     return AppBar(
@@ -58,6 +82,7 @@ class _EBAppBarState extends State<EBAppBar> {
       leading: _buildLeading(),
       actions: [
         _buildMoreAction(),
+        _buildSaveAction(),
       ],
     );
   }
@@ -109,50 +134,102 @@ class _EBAppBarState extends State<EBAppBar> {
 
   Widget _buildMoreAction() {
     return Container(
-        margin: const EdgeInsets.fromLTRB(0, 0, 8.0, 0),
-        child: (widget.more ?? false)
-            ? PopupMenuButton<CardOptions>(
-                offset: const Offset(-18, 35),
-                icon: Icon(
-                  FeatherIcons.moreVertical,
-                  color: EBColor.primary,
-                ),
-                initialValue: selectedMenu,
-                onSelected: (CardOptions item) {
+      margin: const EdgeInsets.fromLTRB(0, 0, 8.0, 0),
+      child: (widget.more ?? false)
+          ? PopupMenuButton<CardOptions>(
+              offset: const Offset(-23, 37),
+              icon: Icon(
+                FeatherIcons.moreVertical,
+                color: EBColor.primary,
+              ),
+              initialValue: selectedMenu,
+              onSelected: (CardOptions item) async {
+                setState(() {
+                  selectedMenu = item;
+                });
+
+                if (item == CardOptions.itemOne) {
                   setState(() {
-                    selectedMenu = item;
+                    isSaved = !isSaved;
                   });
-                  if (item == CardOptions.itemOne) {
-                    Navigator.of(context).pushReplacement(createRoute(route: Routes.editAnnouncement, args: widget.annId));
-                  } else if (item == CardOptions.itemTwo) {
-                    showModalBottomSheet<void>(
-                      context: context,
-                      builder: (BuildContext context) {
-                        return DeleteAnnouncement(
-                          annId: widget.annId.toString(),
-                        );
-                      },
-                    );
+
+                  switch (isSaved) {
+                    case true:
+                      await userController.saveAnnouncement(widget.annId.toString());
+                      break;
+                    case false:
+                      await userController.deleteSavedAnnouncement(widget.annId.toString());
+                      break;
+                  }
+                } else if (item == CardOptions.itemTwo) {
+                  Navigator.of(context).pushReplacement(
+                    createRoute(route: Routes.editAnnouncement, args: widget.annId),
+                  );
+                } else if (item == CardOptions.itemThree) {
+                  showModalBottomSheet<void>(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return DeleteAnnouncement(
+                        annId: widget.annId.toString(),
+                      );
+                    },
+                  );
+                }
+              },
+              itemBuilder: (BuildContext context) => <PopupMenuEntry<CardOptions>>[
+                PopupMenuItem<CardOptions>(
+                  value: CardOptions.itemOne,
+                  height: 30,
+                  child: Text(
+                    isSaved ? 'Unsave Announcement' : 'Save Announcement',
+                    style: const TextStyle(fontSize: 13),
+                  ),
+                ),
+                const PopupMenuItem<CardOptions>(
+                  value: CardOptions.itemTwo,
+                  height: 30,
+                  child: Text(
+                    'Edit Announcement',
+                    style: TextStyle(fontSize: 13),
+                  ),
+                ),
+                const PopupMenuItem<CardOptions>(
+                  value: CardOptions.itemThree,
+                  height: 30,
+                  child: Text(
+                    'Delete Announcement',
+                    style: TextStyle(fontSize: 13),
+                  ),
+                ),
+              ],
+            )
+          : null,
+    );
+  }
+
+  Widget _buildSaveAction() {
+    return Container(
+        margin: const EdgeInsets.fromLTRB(0, 0, 8.0, 0),
+        child: (widget.save ?? false)
+            ? IconButton(
+                onPressed: () async {
+                  setState(() {
+                    isSaved = !isSaved;
+                  });
+
+                  switch (isSaved) {
+                    case true:
+                      await userController.saveAnnouncement(widget.annId.toString());
+                      break;
+                    case false:
+                      await userController.deleteSavedAnnouncement(widget.annId.toString());
+                      break;
                   }
                 },
-                itemBuilder: (BuildContext context) => <PopupMenuEntry<CardOptions>>[
-                  const PopupMenuItem<CardOptions>(
-                    value: CardOptions.itemOne,
-                    height: 30,
-                    child: Text(
-                      'Edit Announcement',
-                      style: TextStyle(fontSize: 13),
-                    ),
-                  ),
-                  const PopupMenuItem<CardOptions>(
-                    value: CardOptions.itemTwo,
-                    height: 30,
-                    child: Text(
-                      'Delete Announcement',
-                      style: TextStyle(fontSize: 13),
-                    ),
-                  ),
-                ],
+                icon: Icon(
+                  isSaved ? FontAwesomeIcons.solidBookmark : FontAwesomeIcons.bookmark,
+                  color: EBColor.primary,
+                ),
               )
             : null);
   }

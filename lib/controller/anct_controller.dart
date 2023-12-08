@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:ebayan/controller/user_controller.dart';
 import 'package:ebayan/data/model/announcement_model.dart';
 import 'package:ebayan/data/viewmodel/announcement_view_model.dart';
 import 'package:ebayan/data/viewmodel/comment_view_model.dart';
@@ -168,6 +169,32 @@ class AnnouncementController {
     } catch (err) {
       log.e('An error occurred: $err');
       throw 'An error occurred while fetching comments.';
+    }
+  }
+
+  Future<List<AnnouncementModel>> fetchSavedAnnouncements() async {
+    try {
+      final user = FirebaseAuth.instance.currentUser;
+      final userId = user?.uid;
+      if (userId == null) {
+        throw 'User not authenticated.';
+      }
+
+      final userController = UserController();
+      final announcementController = AnnouncementController();
+
+      final savedAnnouncementIds = await userController.getSavedAnnouncements();
+
+      final List<AnnouncementModel> savedAnnouncements = [];
+      for (final annId in savedAnnouncementIds) {
+        final announcement = await announcementController.fetchAnnouncementDetails(annId); // Use AnnouncementController to fetch announcement details
+        savedAnnouncements.add(announcement as AnnouncementModel);
+      }
+
+      return savedAnnouncements;
+    } catch (err) {
+      log.e('An error occurred: $err');
+      throw 'An error occurred while fetching saved announcements.';
     }
   }
 }

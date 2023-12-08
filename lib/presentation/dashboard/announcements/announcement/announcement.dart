@@ -81,6 +81,7 @@ class _AnnouncementScreenState extends State<AnnouncementScreen> {
           return Scaffold(
             appBar: EBAppBar(
               enablePop: true,
+              save: userType == "OFFICIAL" ? false : true,
               more: userType == "RESIDENT" ? false : true,
               noTitle: true,
               annId: announcement.id,
