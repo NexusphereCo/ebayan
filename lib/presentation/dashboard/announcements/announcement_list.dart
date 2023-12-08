@@ -77,7 +77,7 @@ class _AnnouncementListScreenState extends State<AnnouncementListScreen> {
             drawer: const EBDrawer(),
             floatingActionButton: FloatingActionButton(
               onPressed: () => Navigator.of(context).push(createRoute(route: Routes.createAnnouncement)),
-              child: const Icon(Icons.add),
+              child: const Icon(FontAwesomeIcons.pencil),
             ),
             body: RefreshIndicator(
               onRefresh: _refresh,
