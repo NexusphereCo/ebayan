@@ -5,9 +5,9 @@ import 'package:ebayan/controller/user_controller.dart';
 import 'package:ebayan/data/model/announcement_model.dart';
 import 'package:ebayan/presentation/dashboard/announcements/widgets/announcement_card.dart';
 import 'package:ebayan/utils/global.dart';
-import 'package:ebayan/utils/routes.dart';
 import 'package:ebayan/constants/size.dart';
 import 'package:ebayan/widgets/components/loading.dart';
+import 'package:ebayan/widgets/shared/appbar_bottom.dart';
 import 'package:ebayan/widgets/shared/appbar_top.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -99,6 +99,7 @@ class _SavedAnnouncementScreenState extends State<SavedAnnouncementScreen> {
                 },
               ),
             ),
+            bottomNavigationBar: const EBAppBarBottom(activeIndex: 2),
           );
         }
       },
