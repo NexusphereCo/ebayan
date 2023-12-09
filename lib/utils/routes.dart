@@ -6,7 +6,7 @@ import 'package:ebayan/presentation/auth/register/official/official.dart';
 import 'package:ebayan/presentation/auth/register/resident/resident.dart';
 import 'package:ebayan/presentation/dashboard/announcements/announcement/announcement.dart';
 import 'package:ebayan/presentation/dashboard/announcements/announcement/saved/saved.dart';
-import 'package:ebayan/presentation/dashboard/announcements/announcement_list.dart';
+import 'package:ebayan/presentation/dashboard/announcements/announcements.dart';
 import 'package:ebayan/presentation/dashboard/announcements/announcement/create/create.dart';
 import 'package:ebayan/presentation/dashboard/announcements/announcement/edit/edit.dart';
 import 'package:ebayan/presentation/dashboard/dashboard/dashboard.dart';
