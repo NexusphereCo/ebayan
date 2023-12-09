@@ -5,10 +5,10 @@ import 'package:ebayan/presentation/auth/register/register.dart';
 import 'package:ebayan/presentation/auth/register/official/official.dart';
 import 'package:ebayan/presentation/auth/register/resident/resident.dart';
 import 'package:ebayan/presentation/dashboard/announcements/announcement/announcement.dart';
-import 'package:ebayan/presentation/dashboard/announcements/announcement/saved/saved.dart';
+import 'package:ebayan/presentation/dashboard/announcements/announcement/screens/create/create.dart';
+import 'package:ebayan/presentation/dashboard/announcements/announcement/screens/edit/edit.dart';
+import 'package:ebayan/presentation/dashboard/announcements/announcement/screens/saved/saved.dart';
 import 'package:ebayan/presentation/dashboard/announcements/announcement_list.dart';
-import 'package:ebayan/presentation/dashboard/announcements/announcement/create/create.dart';
-import 'package:ebayan/presentation/dashboard/announcements/announcement/edit/edit.dart';
 import 'package:ebayan/presentation/dashboard/dashboard/dashboard.dart';
 import 'package:ebayan/presentation/dashboard/dashboard/screens/dashboard_empty.dart';
 import 'package:ebayan/presentation/dashboard/dashboard/screens/dashboard_joined.dart';
@@ -41,11 +41,11 @@ class Routes {
   // --------------------------------------------------------------------------------------
   // Announcement related
   // --------------------------------------------------------------------------------------
-  static const String announcements = '/dashboard/announcement_list';
-  static const String createAnnouncement = '/dashboard/create_announcement';
   static const String announcement = '/dashboard/announcement';
-  static const String editAnnouncement = '/dashboard/edit_announcement';
-  static const String savedAnnouncement = '/dashboard/saved_announcement';
+  static const String announcements = '/dashboard/announcements';
+  static const String createAnnouncement = '/dashboard/announcements/create';
+  static const String editAnnouncement = '/dashboard/announcements/edit';
+  static const String savedAnnouncement = '/account/announcements/saved';
 
   // Misc.
   static final Logger log = Logger();
