@@ -99,7 +99,7 @@ class _SavedAnnouncementScreenState extends State<SavedAnnouncementScreen> {
                 },
               ),
             ),
-            bottomNavigationBar: const EBAppBarBottom(activeIndex: 2),
+            bottomNavigationBar: const EBAppBarBottom(activeIndex: 3),
           );
         }
       },
