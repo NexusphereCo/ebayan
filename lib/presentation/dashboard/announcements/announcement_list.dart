@@ -1,4 +1,3 @@
-import 'dart:math';
 import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/constants/typography.dart';
 import 'package:ebayan/controller/anct_controller.dart';
@@ -13,8 +12,11 @@ import 'package:ebayan/utils/routes.dart';
 import 'package:ebayan/constants/size.dart';
 import 'package:ebayan/widgets/components/loading.dart';
 import 'package:ebayan/widgets/shared/appbar_top.dart';
+import 'package:ebayan/widgets/utils/rotate_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+import 'widgets/heading.dart';
 
 class AnnouncementListScreen extends StatefulWidget {
   const AnnouncementListScreen({super.key});
@@ -24,30 +26,31 @@ class AnnouncementListScreen extends StatefulWidget {
 }
 
 class _AnnouncementListScreenState extends State<AnnouncementListScreen> {
-  final AnnouncementController _announcementController = AnnouncementController();
-  List<AnnouncementModel> announcements = [];
-  final BarangayController _brgyController = BarangayController();
-  final UserController _userController = UserController();
-
   final EBLoadingScreen loadingScreen = const EBLoadingScreen();
 
-  Future<BarangayViewModel> _fetchBarangayInfo() async {
-    final user = await _userController.getCurrentUserInfo();
-    final barangay = await _brgyController.fetchBarangayWithLatestAnnouncement(user.barangayAssociated as String);
+  // Controllers
+  final AnnouncementController announcementController = AnnouncementController();
+  final BarangayController brgyController = BarangayController();
+  final UserController userController = UserController();
 
-    return barangay;
-  }
+  // Variables
+  List<AnnouncementModel> announcements = [];
 
   @override
   void initState() {
     connectionHandler(context);
-    _refresh();
     super.initState();
+    fetchAnnouncements();
   }
 
-  Future<void> _fetchAnnouncements() async {
+  Future<BarangayViewModel> fetchBarangayInfo() async {
+    final user = await userController.getCurrentUserInfo();
+    return await brgyController.fetchBarangayWithLatestAnnouncement(user.barangayAssociated as String);
+  }
+
+  Future<void> fetchAnnouncements() async {
     try {
-      final List<AnnouncementModel> fetchedAnnouncements = await _announcementController.fetchAnnouncements();
+      final List<AnnouncementModel> fetchedAnnouncements = await announcementController.fetchAnnouncements();
       setState(() {
         announcements = fetchedAnnouncements;
       });
@@ -56,73 +59,45 @@ class _AnnouncementListScreenState extends State<AnnouncementListScreen> {
     }
   }
 
-  Future<void> _refresh() async {
-    await _fetchAnnouncements();
-  }
-
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<BarangayViewModel>(
-      future: _fetchBarangayInfo(),
+      future: fetchBarangayInfo(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return const EBLoadingScreen(
-            solid: true,
-          );
+          return const EBLoadingScreen(solid: true);
         } else {
           final BarangayViewModel barangay = snapshot.data!;
+
+          final floatingActionButton = SizedBox(
+            width: 70.0,
+            height: 70.0,
+            child: FittedBox(
+              child: FloatingActionButton(
+                backgroundColor: EBColor.green,
+                onPressed: () => Navigator.of(context).push(createRoute(route: Routes.createAnnouncement)),
+                child: Icon(FontAwesomeIcons.pencil, color: EBColor.light, size: EBFontSize.h3),
+              ),
+            ),
+          );
 
           return Scaffold(
             appBar: const EBAppBar(enablePop: true),
             drawer: const EBDrawer(),
-            floatingActionButton: FloatingActionButton(
-              onPressed: () => Navigator.of(context).push(createRoute(route: Routes.createAnnouncement)),
-              child: const Icon(FontAwesomeIcons.pencil),
-            ),
+            floatingActionButton: floatingActionButton,
             body: RefreshIndicator(
-              onRefresh: _refresh,
+              onRefresh: () async => setState(() {}),
               child: ListView.builder(
-                padding: const EdgeInsets.all(24.0),
-                itemCount: announcements.length + 1,
+                padding: const EdgeInsets.all(Global.paddingBody),
+                itemCount: announcements.length,
                 itemBuilder: (context, index) {
-                  final dataIndex = index - 1;
-                  if (index == 0) {
-                    return Column(
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            EBTypography.h1(text: 'Announcement'),
-                            const SizedBox(width: Spacing.sm),
-                            Transform.rotate(
-                              angle: -15 * pi / 180,
-                              child: FaIcon(
-                                FontAwesomeIcons.bullhorn,
-                                size: 30,
-                                color: EBColor.primary,
-                              ),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(height: Spacing.md),
-                        ClipRRect(
-                          borderRadius: const BorderRadius.only(
-                            topLeft: Radius.circular(20.0),
-                            topRight: Radius.circular(20.0),
-                          ),
-                          child: SphereCard(
-                            brgyName: barangay.name,
-                            brgyCode: barangay.code.toString(),
-                          ).cardHeader(),
-                        ),
-                        const SizedBox(height: Spacing.md),
-                      ],
-                    );
-                  } else {
-                    return AnnouncementCard(
-                      announcement: announcements[dataIndex],
-                    );
-                  }
+                  // Render out the announcement cards
+                  return Column(
+                    children: [
+                      if (index == 0) buildHeading(barangay: barangay),
+                      AnnouncementCard(announcement: announcements[index]),
+                    ],
+                  );
                 },
               ),
             ),
