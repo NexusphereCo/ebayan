@@ -4,6 +4,7 @@ import 'package:ebayan/constants/typography.dart';
 import 'package:ebayan/controller/user_controller.dart';
 import 'package:ebayan/data/viewmodel/user_view_model.dart';
 import 'package:ebayan/constants/size.dart';
+import 'package:ebayan/widgets/components/loading.dart';
 import 'package:ebayan/widgets/layout_components/appbar_bottom.dart';
 import 'package:ebayan/widgets/layout_components/appbar_top.dart';
 import 'package:flutter/material.dart';
@@ -54,7 +55,10 @@ class AccountScreenState extends State<AccountScreen> {
                   future: _fetchUserData(),
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
-                      return _buildLoadingIndicator(context);
+                      return EBCircularLoadingIndicator(
+                        height: MediaQuery.of(context).size.height / 2,
+                        strokeColor: EBColor.green,
+                      );
                     } else {
                       final UserViewModel user = snapshot.data!;
 
@@ -70,18 +74,6 @@ class AccountScreenState extends State<AccountScreen> {
         ],
       ),
       bottomNavigationBar: const EBAppBarBottom(activeIndex: 4),
-    );
-  }
-
-  Widget _buildLoadingIndicator(BuildContext context) {
-    return SizedBox(
-      height: MediaQuery.of(context).size.height / 2,
-      child: Center(
-        child: CircularProgressIndicator(
-          color: EBColor.green,
-          strokeCap: StrokeCap.round,
-        ),
-      ),
     );
   }
 }

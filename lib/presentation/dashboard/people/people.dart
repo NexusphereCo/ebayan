@@ -6,6 +6,7 @@ import 'package:ebayan/data/viewmodel/barangay_view_model.dart';
 import 'package:ebayan/data/viewmodel/user_view_model.dart';
 import 'package:ebayan/presentation/dashboard/dashboard/widgets/card_sphere.dart';
 import 'package:ebayan/constants/size.dart';
+import 'package:ebayan/widgets/components/loading.dart';
 import 'package:ebayan/widgets/components/snackbar.dart';
 import 'package:ebayan/widgets/layout_components/appbar_bottom.dart';
 import 'package:ebayan/widgets/layout_components/appbar_top.dart';
@@ -14,7 +15,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'widgets/heading.dart';
-import 'widgets/loading.dart';
 
 enum CardOptions { itemOne }
 
@@ -98,7 +98,7 @@ class _PeopleScreenState extends State<PeopleScreen> {
                           future: fetchPeople(),
                           builder: (context, snapshot) {
                             if (snapshot.connectionState == ConnectionState.waiting) {
-                              return buildLoadingIndicator(context);
+                              return const EBCircularLoadingIndicator();
                             } else {
                               final users = snapshot.data!;
 

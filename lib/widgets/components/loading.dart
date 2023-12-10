@@ -1,8 +1,54 @@
 import 'package:ebayan/constants/assets.dart';
 import 'package:ebayan/constants/colors.dart';
+import 'package:ebayan/constants/size.dart';
 import 'package:ebayan/constants/typography.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+
+class EBCircularLoadingIndicator extends StatelessWidget {
+  final double? height;
+  final bool? showText;
+
+  final Color? strokeColor;
+
+  const EBCircularLoadingIndicator({
+    super.key,
+    this.height,
+    this.showText,
+    this.strokeColor,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: height ?? MediaQuery.of(context).size.height * 0.5,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Center(
+            child: CircularProgressIndicator(
+              color: strokeColor ?? EBColor.primary,
+              strokeCap: StrokeCap.round,
+            ),
+          ),
+          (showText != null)
+              ? Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    const SizedBox(height: Spacing.md),
+                    EBTypography.text(
+                      text: 'Loading...',
+                      color: EBColor.primary,
+                    ),
+                  ],
+                )
+              : Container(),
+        ],
+      ),
+    );
+  }
+}
 
 class EBCustomLoadingScreen extends StatefulWidget {
   /// this refers to the opacity of the loading background

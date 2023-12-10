@@ -6,6 +6,7 @@ import 'package:ebayan/presentation/dashboard/comments/widgets/comment_handling.
 import 'package:ebayan/presentation/dashboard/comments/widgets/comment_heading.dart';
 import 'package:ebayan/presentation/dashboard/comments/widgets/comments_list.dart';
 import 'package:ebayan/constants/size.dart';
+import 'package:ebayan/widgets/components/loading.dart';
 import 'package:flutter/material.dart';
 
 class CommentSection extends StatefulWidget {
@@ -53,8 +54,10 @@ class _CommentSectionState extends State<CommentSection> {
                       ),
                     ),
                     if (snapshot.connectionState == ConnectionState.waiting)
-                      SliverToBoxAdapter(
-                        child: buildLoadingIndicator(),
+                      const SliverToBoxAdapter(
+                        child: EBCircularLoadingIndicator(
+                          height: 300,
+                        ),
                       )
                     else if (comments.isEmpty)
                       SliverToBoxAdapter(
