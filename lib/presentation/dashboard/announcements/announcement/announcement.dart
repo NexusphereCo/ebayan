@@ -6,6 +6,7 @@ import 'package:ebayan/controller/anct_controller.dart';
 import 'package:ebayan/controller/user_controller.dart';
 import 'package:ebayan/data/viewmodel/announcement_view_model.dart';
 import 'package:ebayan/data/viewmodel/user_view_model.dart';
+import 'package:ebayan/presentation/dashboard/announcements/announcement/widgets/reaction.dart';
 import 'package:ebayan/presentation/dashboard/comments/comment_section.dart';
 import 'package:ebayan/constants/size.dart';
 import 'package:ebayan/widgets/components/buttons.dart';
@@ -138,37 +139,7 @@ class RenderAnnouncement extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: Spacing.xl),
-                    EBTypography.small(text: 'What do you think about this post?', fontWeight: FontWeight.bold),
-                    const SizedBox(height: Spacing.sm),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Row(
-                          children: [
-                            Icon(
-                              FeatherIcons.thumbsUp,
-                              size: EBFontSize.h3,
-                              color: EBColor.primary,
-                            ),
-                            const SizedBox(width: 3),
-                            EBTypography.text(text: 'Like', color: EBColor.primary),
-                          ],
-                        ),
-                        const SizedBox(width: Spacing.lg),
-                        Row(
-                          children: [
-                            Icon(
-                              FeatherIcons.thumbsDown,
-                              size: EBFontSize.h3,
-                              color: EBColor.primary,
-                            ),
-                            const SizedBox(width: 3),
-                            EBTypography.text(text: 'Dislike', color: EBColor.primary),
-                          ],
-                        ),
-                      ],
-                    )
+                    RenderReaction(annId: annId),
                   ],
                 ),
                 const SizedBox(height: Spacing.xl),

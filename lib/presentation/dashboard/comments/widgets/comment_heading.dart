@@ -1,7 +1,7 @@
 import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/constants/typography.dart';
 import 'package:ebayan/constants/validation.dart';
-import 'package:ebayan/controller/cmnt_contoller.dart';
+import 'package:ebayan/controller/reaction_contoller.dart';
 import 'package:ebayan/constants/size.dart';
 import 'package:ebayan/widgets/utils/fade_in.dart';
 import 'package:ebayan/widgets/utils/rotate_widget.dart';
@@ -24,7 +24,7 @@ class CommentHeading extends StatefulWidget {
 
 class _CommentHeadingState extends State<CommentHeading> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-  final CommentController commentController = CommentController();
+  final ReactionController reactionController = ReactionController();
   final TextEditingController textController = TextEditingController();
   bool isEditing = false;
 
@@ -101,7 +101,7 @@ class _CommentHeadingState extends State<CommentHeading> {
                 onPressed: () async {
                   if (formKey.currentState?.validate() == true) {
                     try {
-                      await commentController.createComment(widget.annId, textController.text);
+                      await reactionController.createComment(widget.annId, textController.text);
                       textController.clear();
                       toggleEditing();
                       widget.onCommentAdded();

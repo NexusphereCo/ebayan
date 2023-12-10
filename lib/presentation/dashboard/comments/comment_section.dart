@@ -1,5 +1,5 @@
 import 'package:ebayan/constants/colors.dart';
-import 'package:ebayan/controller/cmnt_contoller.dart';
+import 'package:ebayan/controller/reaction_contoller.dart';
 import 'package:ebayan/data/viewmodel/comment_view_model.dart';
 import 'package:ebayan/presentation/dashboard/comments/widgets/comment_handling.dart';
 import 'package:ebayan/presentation/dashboard/comments/widgets/comment_heading.dart';
@@ -19,7 +19,7 @@ class CommentSection extends StatefulWidget {
 }
 
 class _CommentSectionState extends State<CommentSection> {
-  final CommentController commentController = CommentController();
+  final ReactionController reactionController = ReactionController();
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +35,7 @@ class _CommentSectionState extends State<CommentSection> {
             ),
             height: 400,
             child: FutureBuilder(
-              future: commentController.fetchComments(widget.annId),
+              future: reactionController.fetchComments(widget.annId),
               builder: (context, snapshot) {
                 final List<CommentViewModel> comments = snapshot.data ?? [];
 
