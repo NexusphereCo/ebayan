@@ -1,6 +1,6 @@
 import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/constants/typography.dart';
-import 'package:ebayan/widgets/shared/footer.dart';
+import 'package:ebayan/widgets/layout_components/footer.dart';
 import 'package:flutter/material.dart';
 
 class TabBarFooter extends StatelessWidget {

@@ -1,5 +1,5 @@
 import 'package:ebayan/constants/size.dart';
-import 'package:ebayan/widgets/shared/footer.dart';
+import 'package:ebayan/widgets/layout_components/footer.dart';
 import 'package:flutter/material.dart';
 
 import 'widgets/form.dart';

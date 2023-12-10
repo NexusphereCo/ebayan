@@ -15,7 +15,7 @@ import 'package:ebayan/constants/size.dart';
 import 'package:ebayan/widgets/components/loading.dart';
 import 'package:ebayan/widgets/components/progress_indicator.dart';
 import 'package:ebayan/widgets/components/snackbar.dart';
-import 'package:ebayan/widgets/shared/appbar_top.dart';
+import 'package:ebayan/widgets/layout_components/appbar_top.dart';
 import 'package:ebayan/widgets/utils/keep_alive.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';

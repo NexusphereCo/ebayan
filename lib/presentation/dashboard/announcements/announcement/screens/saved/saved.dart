@@ -7,8 +7,8 @@ import 'package:ebayan/presentation/dashboard/announcements/widgets/announcement
 import 'package:ebayan/utils/global.dart';
 import 'package:ebayan/constants/size.dart';
 import 'package:ebayan/widgets/components/loading.dart';
-import 'package:ebayan/widgets/shared/appbar_bottom.dart';
-import 'package:ebayan/widgets/shared/appbar_top.dart';
+import 'package:ebayan/widgets/layout_components/appbar_bottom.dart';
+import 'package:ebayan/widgets/layout_components/appbar_top.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 

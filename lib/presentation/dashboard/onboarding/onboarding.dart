@@ -1,7 +1,7 @@
 import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/utils/routes.dart';
-import 'package:ebayan/widgets/shared/appbar_bottom.dart';
-import 'package:ebayan/widgets/shared/appbar_top.dart';
+import 'package:ebayan/widgets/layout_components/appbar_bottom.dart';
+import 'package:ebayan/widgets/layout_components/appbar_top.dart';
 import 'package:ebayan/widgets/utils/fade_in.dart';
 import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';

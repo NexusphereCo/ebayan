@@ -10,7 +10,7 @@ import 'package:ebayan/presentation/dashboard/comments/comment_section.dart';
 import 'package:ebayan/constants/size.dart';
 import 'package:ebayan/widgets/components/buttons.dart';
 import 'package:ebayan/widgets/components/loading.dart';
-import 'package:ebayan/widgets/shared/appbar_top.dart';
+import 'package:ebayan/widgets/layout_components/appbar_top.dart';
 import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_quill/flutter_quill.dart';

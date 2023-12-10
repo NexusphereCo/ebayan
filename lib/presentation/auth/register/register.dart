@@ -6,8 +6,8 @@ import 'package:ebayan/utils/routes.dart';
 import 'package:ebayan/constants/size.dart';
 import 'package:ebayan/widgets/components/buttons.dart';
 import 'package:ebayan/widgets/components/snackbar.dart';
-import 'package:ebayan/widgets/shared/appbar_top.dart';
-import 'package:ebayan/widgets/shared/footer.dart';
+import 'package:ebayan/widgets/layout_components/appbar_top.dart';
+import 'package:ebayan/widgets/layout_components/footer.dart';
 import 'package:flutter/material.dart';
 
 class RegisterScreen extends StatefulWidget {
