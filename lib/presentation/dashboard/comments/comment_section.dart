@@ -1,4 +1,3 @@
-import 'dart:math';
 import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/controller/cmnt_contoller.dart';
 import 'package:ebayan/data/viewmodel/comment_view_model.dart';
@@ -7,6 +6,7 @@ import 'package:ebayan/presentation/dashboard/comments/widgets/comment_heading.d
 import 'package:ebayan/presentation/dashboard/comments/widgets/comments_list.dart';
 import 'package:ebayan/constants/size.dart';
 import 'package:ebayan/widgets/components/loading.dart';
+import 'package:ebayan/widgets/utils/rotate_widget.dart';
 import 'package:flutter/material.dart';
 
 class CommentSection extends StatefulWidget {
@@ -19,7 +19,7 @@ class CommentSection extends StatefulWidget {
 }
 
 class _CommentSectionState extends State<CommentSection> {
-  final CommentController _commentController = CommentController();
+  final CommentController commentController = CommentController();
 
   @override
   Widget build(BuildContext context) {
@@ -34,8 +34,8 @@ class _CommentSectionState extends State<CommentSection> {
               color: Colors.white,
             ),
             height: 400,
-            child: FutureBuilder<List<CommentViewModel>>(
-              future: _commentController.fetchComments(widget.annId),
+            child: FutureBuilder(
+              future: commentController.fetchComments(widget.annId),
               builder: (context, snapshot) {
                 final List<CommentViewModel> comments = snapshot.data ?? [];
 
@@ -86,8 +86,8 @@ class _CommentSectionState extends State<CommentSection> {
                   color: EBColor.primary,
                 ),
                 child: Center(
-                  child: Transform.rotate(
-                    angle: 90 * pi / 180,
+                  child: RotateWidget(
+                    degree: 90,
                     child: Icon(
                       Icons.arrow_forward_ios_rounded,
                       color: EBColor.light,

@@ -23,14 +23,14 @@ class CommentHeading extends StatefulWidget {
 }
 
 class _CommentHeadingState extends State<CommentHeading> {
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  final CommentController _commentController = CommentController();
-  final TextEditingController _textController = TextEditingController();
-  bool _isEditing = false;
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  final CommentController commentController = CommentController();
+  final TextEditingController textController = TextEditingController();
+  bool isEditing = false;
 
-  void _toggleEditing() {
+  void toggleEditing() {
     setState(() {
-      _isEditing = !_isEditing;
+      isEditing = !isEditing;
     });
   }
 
@@ -46,17 +46,17 @@ class _CommentHeadingState extends State<CommentHeading> {
               children: [
                 const SizedBox(width: 3),
                 TextButton(
-                  onPressed: () => _toggleEditing(),
+                  onPressed: () => toggleEditing(),
                   child: Row(
                     children: [
                       EBTypography.text(
-                        text: (_isEditing) ? 'Discard' : 'Post a comment',
-                        color: (_isEditing) ? EBColor.red : EBColor.green,
+                        text: (isEditing) ? 'Discard' : 'Post a comment',
+                        color: (isEditing) ? EBColor.red : EBColor.green,
                       ),
                       const SizedBox(width: Spacing.sm),
                       Icon(
                         FeatherIcons.feather,
-                        color: (_isEditing) ? EBColor.red : EBColor.green,
+                        color: (isEditing) ? EBColor.red : EBColor.green,
                         size: EBFontSize.normal,
                       ),
                     ],
@@ -66,7 +66,7 @@ class _CommentHeadingState extends State<CommentHeading> {
             ),
           ],
         ),
-        if (_isEditing) buildCommentInput(),
+        if (isEditing) buildCommentInput(),
       ],
     );
   }
@@ -74,13 +74,13 @@ class _CommentHeadingState extends State<CommentHeading> {
   Widget buildCommentInput() {
     return FadeIn(
       child: Form(
-        key: _formKey,
+        key: formKey,
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Expanded(
               child: TextFormField(
-                controller: _textController,
+                controller: textController,
                 decoration: InputDecoration(
                   hintText: 'Write your comment...',
                   contentPadding: EdgeInsets.zero,
@@ -99,11 +99,11 @@ class _CommentHeadingState extends State<CommentHeading> {
               degree: 45,
               child: IconButton(
                 onPressed: () async {
-                  if (_formKey.currentState?.validate() == true) {
+                  if (formKey.currentState?.validate() == true) {
                     try {
-                      await _commentController.createComment(widget.annId, _textController.text);
-                      _textController.clear();
-                      _toggleEditing();
+                      await commentController.createComment(widget.annId, textController.text);
+                      textController.clear();
+                      toggleEditing();
                       widget.onCommentAdded();
                     } catch (e) {
                       throw 'An error occurred while creating the comment.';

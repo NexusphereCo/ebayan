@@ -12,7 +12,7 @@ class DeleteBrgySphereBox extends StatelessWidget {
   Widget build(BuildContext context) {
     return Dialog(
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16.0),
+        borderRadius: BorderRadius.circular(EBBorderRadius.md),
       ),
       child: Container(
         width: 200,

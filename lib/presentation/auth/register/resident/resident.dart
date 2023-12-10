@@ -79,7 +79,7 @@ class _RegisterResidentScreenState extends State<RegisterResidentScreen> with Si
     super.dispose();
   }
 
-  void _nextTab(GlobalKey<FormState> formKey) {
+  void nextTab(GlobalKey<FormState> formKey) {
     bool isFormValid = formKey.currentState?.validate() == true;
 
     if (isFormValid) {
@@ -94,7 +94,7 @@ class _RegisterResidentScreenState extends State<RegisterResidentScreen> with Si
     }
   }
 
-  void _register() async {
+  void register() async {
     loadingScreen.show(context);
 
     bool isForm1Valid = formKey1.currentState?.validate() == true;
@@ -172,7 +172,7 @@ class _RegisterResidentScreenState extends State<RegisterResidentScreen> with Si
                         addressController: addressController,
                         birthDateController: birthDateController,
                         birthDateOnTapHandler: (date) => _setBirthDate(date),
-                        nextTabHandler: () => _nextTab(formKey1),
+                        nextTabHandler: () => nextTab(formKey1),
                       ),
                     ),
                   ),
@@ -187,7 +187,7 @@ class _RegisterResidentScreenState extends State<RegisterResidentScreen> with Si
                         confirmPasswordController: confirmPasswordController,
                         showPassword: showPassword,
                         togglePassIconHandler: () => _setTogglePassword(),
-                        onRegisterHandler: _register,
+                        onRegisterHandler: register,
                       ),
                     ),
                   ),

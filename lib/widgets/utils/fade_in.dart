@@ -13,8 +13,8 @@ class FadeIn extends StatefulWidget {
 }
 
 class _FadeInState extends State<FadeIn> with SingleTickerProviderStateMixin {
-  late AnimationController _animationController;
-  late Animation<double> _animation;
+  late AnimationController animationController;
+  late Animation<double> animation;
   final int durationMs = 300;
 
   @override
@@ -22,28 +22,28 @@ class _FadeInState extends State<FadeIn> with SingleTickerProviderStateMixin {
     super.initState();
 
     // Animation setup
-    _animationController = AnimationController(
+    animationController = AnimationController(
       vsync: this,
       duration: Duration(milliseconds: durationMs),
     );
 
-    _animation = Tween<double>(begin: 0.0, end: 1.0).animate(_animationController);
+    animation = Tween<double>(begin: 0.0, end: 1.0).animate(animationController);
 
     // Start the animation
-    _animationController.forward();
+    animationController.forward();
   }
 
   @override
   Widget build(BuildContext context) {
     return FadeTransition(
-      opacity: _animation,
+      opacity: animation,
       child: widget.child,
     );
   }
 
   @override
   void dispose() {
-    _animationController.dispose();
+    animationController.dispose();
     super.dispose();
   }
 }

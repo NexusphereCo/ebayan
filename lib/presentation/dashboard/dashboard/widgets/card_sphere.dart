@@ -89,7 +89,7 @@ class SphereCard extends StatefulWidget {
 class _SphereCardState extends State<SphereCard> {
   CardOptions? selectedMenu;
 
-  Widget _cardFooter() {
+  Widget cardFooter() {
     return Container(
       width: double.infinity,
       height: 75,
@@ -105,14 +105,14 @@ class _SphereCardState extends State<SphereCard> {
               children: [
                 (widget.isLoading ?? false)
                     ? EBLoadingBar(width: 100, colors: [EBColor.primary[400]!, EBColor.primary[300]!.withOpacity(0.5)])
-                    : _buildFooterRow(
+                    : buildFooterRow(
                         icon: const FaIcon(FontAwesomeIcons.bullhorn, size: EBFontSize.normal),
                         text: widget.hasNewAnnouncements! ? 'New announcements' : 'No recent announcements',
                       ),
                 const SizedBox(height: Spacing.sm),
                 (widget.isLoading ?? false)
                     ? EBLoadingBar(width: 50, colors: [EBColor.primary[400]!, EBColor.primary[300]!.withOpacity(0.5)])
-                    : _buildFooterRow(
+                    : buildFooterRow(
                         icon: const Icon(EBIcons.usersSolid, size: EBFontSize.h2),
                         text: '${widget.numOfPeople} people',
                       ),
@@ -124,7 +124,15 @@ class _SphereCardState extends State<SphereCard> {
             children: [
               EBButton(
                 onPressed: () {
-                  Navigator.of(context).push(createRoute(route: Routes.announcements, args: BarangayModel(name: widget.brgyName!, code: int.parse(widget.brgyCode!))));
+                  Navigator.of(context).push(
+                    createRoute(
+                      route: Routes.announcements,
+                      args: BarangayModel(
+                        name: widget.brgyName!,
+                        code: int.parse(widget.brgyCode!),
+                      ),
+                    ),
+                  );
                 },
                 text: 'View',
                 theme: EBButtonTheme.primary,
@@ -137,7 +145,7 @@ class _SphereCardState extends State<SphereCard> {
     );
   }
 
-  Widget _buildFooterRow({required Widget icon, required String text}) {
+  Widget buildFooterRow({required Widget icon, required String text}) {
     return Row(
       children: [
         icon,
@@ -149,7 +157,7 @@ class _SphereCardState extends State<SphereCard> {
     );
   }
 
-  Widget _cardOption() {
+  Widget cardOption() {
     return Positioned(
       top: 0,
       right: 10.0,
@@ -199,7 +207,7 @@ class _SphereCardState extends State<SphereCard> {
 
   @override
   Widget build(BuildContext context) {
-    const borderRadius = BorderRadius.all(Radius.circular(20));
+    const borderRadius = BorderRadius.all(Radius.circular(EBBorderRadius.lg));
 
     return Container(
       decoration: const BoxDecoration(borderRadius: borderRadius),
@@ -211,10 +219,10 @@ class _SphereCardState extends State<SphereCard> {
             Column(
               children: [
                 widget.cardHeader(),
-                _cardFooter(),
+                cardFooter(),
               ],
             ),
-            !(widget.isLoading ?? false) ? _cardOption() : Container(),
+            !(widget.isLoading ?? false) ? cardOption() : Container(),
           ],
         ),
       ),

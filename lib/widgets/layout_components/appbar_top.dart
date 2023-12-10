@@ -77,16 +77,16 @@ class _EBAppBarState extends State<EBAppBar> {
       iconTheme: IconThemeData(color: EBColor.primary),
       backgroundColor: EBColor.light,
       elevation: 1,
-      title: _buildTitle(),
-      leading: _buildLeading(),
+      title: buildTitle(),
+      leading: buildLeading(),
       actions: [
-        _buildMoreAction(),
-        _buildSaveAction(),
+        buildMoreAction(),
+        buildSaveAction(),
       ],
     );
   }
 
-  Widget? _buildTitle() {
+  Widget? buildTitle() {
     if (!(widget.noTitle ?? false)) {
       return widget.title ??
           Row(
@@ -103,7 +103,7 @@ class _EBAppBarState extends State<EBAppBar> {
     return null;
   }
 
-  Widget _buildLeading() {
+  Widget buildLeading() {
     const iconSize = 35.0;
     return Container(
       margin: const EdgeInsets.fromLTRB(8.0, 0, 0, 0),
@@ -131,7 +131,7 @@ class _EBAppBarState extends State<EBAppBar> {
     );
   }
 
-  Widget _buildMoreAction() {
+  Widget buildMoreAction() {
     return Container(
       margin: const EdgeInsets.fromLTRB(0, 0, 8.0, 0),
       child: (widget.more ?? false)
@@ -206,7 +206,7 @@ class _EBAppBarState extends State<EBAppBar> {
     );
   }
 
-  Widget _buildSaveAction() {
+  Widget buildSaveAction() {
     return Container(
         margin: const EdgeInsets.fromLTRB(0, 0, 8.0, 0),
         child: (widget.save ?? false)
@@ -243,16 +243,16 @@ class EBDrawer extends StatefulWidget {
 }
 
 class _EBDrawerState extends State<EBDrawer> {
-  final UserController _userController = UserController();
-  final EBCustomLoadingScreen _loadingScreen = const EBCustomLoadingScreen();
+  final UserController userController = UserController();
+  final EBCustomLoadingScreen loadingScreen = const EBCustomLoadingScreen();
 
-  Future<void> _logOut() async {
-    _loadingScreen.show(context);
+  Future<void> logOut() async {
+    loadingScreen.show(context);
 
-    await _userController.logOut();
+    await userController.logOut();
 
     if (context.mounted) {
-      _loadingScreen.hide(context);
+      loadingScreen.hide(context);
       Navigator.of(context).push(createRoute(route: Routes.login));
     }
   }
@@ -322,7 +322,7 @@ class _EBDrawerState extends State<EBDrawer> {
           ListTile(
             title: EBTypography.text(text: 'Logout', color: EBColor.red),
             onTap: () {
-              _logOut();
+              logOut();
             },
           ),
         ],

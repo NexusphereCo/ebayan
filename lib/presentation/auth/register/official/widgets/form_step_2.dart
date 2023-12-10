@@ -26,141 +26,142 @@ Widget buildBarangayAssociation({
   required BuildContext context,
   // variables
   required bool isBrgyFieldEnabled,
-}) =>
-    ListView(
-      children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: Global.paddingBody),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              EBTypography.label(text: 'Barangay Association'),
-              const SizedBox(height: Spacing.md),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  EBTextBox(
-                    icon: FeatherIcons.map,
-                    textField: EBTextField(
-                      controller: municipalityController,
-                      readOnly: true,
-                      label: 'Select Municipality',
-                      type: TextInputType.datetime,
-                      suffixIcon: Container(
-                        margin: const EdgeInsets.symmetric(vertical: Spacing.md),
-                        child: const FaIcon(FontAwesomeIcons.angleDown),
-                      ),
-                      onTap: municipalityOnTapHandler,
-                      validator: (value) {
-                        value = value?.trim();
-                        if (value == null || value.isEmpty) return Validation.missingField;
-                        return null;
-                      },
-                      maxLines: 1,
+}) {
+  return ListView(
+    children: [
+      Padding(
+        padding: const EdgeInsets.symmetric(horizontal: Global.paddingBody),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            EBTypography.label(text: 'Barangay Association'),
+            const SizedBox(height: Spacing.md),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                EBTextBox(
+                  icon: FeatherIcons.map,
+                  textField: EBTextField(
+                    controller: municipalityController,
+                    readOnly: true,
+                    label: 'Select Municipality',
+                    type: TextInputType.datetime,
+                    suffixIcon: Container(
+                      margin: const EdgeInsets.symmetric(vertical: Spacing.md),
+                      child: const FaIcon(FontAwesomeIcons.angleDown),
                     ),
+                    onTap: municipalityOnTapHandler,
+                    validator: (value) {
+                      value = value?.trim();
+                      if (value == null || value.isEmpty) return Validation.missingField;
+                      return null;
+                    },
+                    maxLines: 1,
                   ),
-                  const SizedBox(height: Spacing.md),
-                  EBTextBox(
-                    icon: EBIcons.home,
-                    textField: EBTextField(
-                      controller: barangayController,
-                      enabled: isBrgyFieldEnabled,
-                      readOnly: true,
-                      label: 'Barangay Associated',
-                      type: TextInputType.datetime,
-                      suffixIcon: Container(
-                        margin: const EdgeInsets.symmetric(vertical: Spacing.md),
-                        child: const FaIcon(FontAwesomeIcons.angleDown),
-                      ),
-                      onTap: barangayOnTapHandler,
-                      validator: (value) {
-                        value = value?.trim();
-                        if (value == null || value.isEmpty) return Validation.missingField;
-                        return null;
-                      },
-                      maxLines: 1,
+                ),
+                const SizedBox(height: Spacing.md),
+                EBTextBox(
+                  icon: EBIcons.home,
+                  textField: EBTextField(
+                    controller: barangayController,
+                    enabled: isBrgyFieldEnabled,
+                    readOnly: true,
+                    label: 'Barangay Associated',
+                    type: TextInputType.datetime,
+                    suffixIcon: Container(
+                      margin: const EdgeInsets.symmetric(vertical: Spacing.md),
+                      child: const FaIcon(FontAwesomeIcons.angleDown),
                     ),
+                    onTap: barangayOnTapHandler,
+                    validator: (value) {
+                      value = value?.trim();
+                      if (value == null || value.isEmpty) return Validation.missingField;
+                      return null;
+                    },
+                    maxLines: 1,
                   ),
-                  const SizedBox(height: Spacing.md),
-                  EBTextBox(
-                    icon: FeatherIcons.file,
-                    textField: EBTextField(
-                      controller: proofDocController,
-                      readOnly: true,
-                      label: 'Proof of Official',
-                      type: TextInputType.text,
-                      validator: (value) {
-                        value = value?.trim();
-                        if (value == null || value.isEmpty) return Validation.missingField;
-                        return null;
-                      },
-                      onTap: () async {
-                        FilePickerResult? result = await FilePicker.platform.pickFiles(
-                          type: FileType.custom,
-                          allowedExtensions: ['pdf'],
-                        );
+                ),
+                const SizedBox(height: Spacing.md),
+                EBTextBox(
+                  icon: FeatherIcons.file,
+                  textField: EBTextField(
+                    controller: proofDocController,
+                    readOnly: true,
+                    label: 'Proof of Official',
+                    type: TextInputType.text,
+                    validator: (value) {
+                      value = value?.trim();
+                      if (value == null || value.isEmpty) return Validation.missingField;
+                      return null;
+                    },
+                    onTap: () async {
+                      FilePickerResult? result = await FilePicker.platform.pickFiles(
+                        type: FileType.custom,
+                        allowedExtensions: ['pdf'],
+                      );
 
-                        // the user has selected a file
-                        if (result != null) {
-                          String fileName = result.files.first.name;
+                      // the user has selected a file
+                      if (result != null) {
+                        String fileName = result.files.first.name;
 
-                          proofDocController.text = fileName;
-                          setFilePath(result);
-                        }
-                      },
-                      maxLines: 1,
+                        proofDocController.text = fileName;
+                        setFilePath(result);
+                      }
+                    },
+                    maxLines: 1,
+                  ),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Column(
+                      children: [
+                        const SizedBox(height: Spacing.sm),
+                        EBTypography.small(text: 'PDF', muted: true),
+                      ],
                     ),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Column(
-                        children: [
-                          const SizedBox(height: Spacing.sm),
-                          EBTypography.small(text: 'PDF', muted: true),
-                        ],
+                  ],
+                ),
+                const SizedBox(height: Spacing.md),
+                EBTypography.text(
+                  text: 'Approval may take a few days as we review your submission. We\'ll notify you once it\'s approved through your contact number.',
+                  muted: true,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    TextButton(
+                      onPressed: onClearFieldsHandler,
+                      child: EBTypography.text(
+                        text: 'Clear Information',
+                        color: EBColor.green,
+                        fontWeight: EBFontWeight.bold,
+                        textAlign: TextAlign.end,
                       ),
-                    ],
-                  ),
-                  const SizedBox(height: Spacing.md),
-                  EBTypography.text(
-                    text: 'Approval may take a few days as we review your submission. We\'ll notify you once it\'s approved through your contact number.',
-                    muted: true,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      TextButton(
-                        onPressed: onClearFieldsHandler,
-                        child: EBTypography.text(
-                          text: 'Clear Information',
-                          color: EBColor.green,
-                          fontWeight: EBFontWeight.bold,
-                          textAlign: TextAlign.end,
-                        ),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      EBButton(
-                        text: 'Previous',
-                        theme: EBButtonTheme.primaryOutlined,
-                        onPressed: () => tabController.animateTo(tabController.index - 1),
-                      ),
-                      const SizedBox(width: Spacing.sm),
-                      EBButton(
-                        text: 'Next',
-                        theme: EBButtonTheme.primary,
-                        onPressed: nextTabHandler,
-                      ),
-                    ],
-                  )
-                ],
-              ),
-            ],
-          ),
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    EBButton(
+                      text: 'Previous',
+                      theme: EBButtonTheme.primaryOutlined,
+                      onPressed: () => tabController.animateTo(tabController.index - 1),
+                    ),
+                    const SizedBox(width: Spacing.sm),
+                    EBButton(
+                      text: 'Next',
+                      theme: EBButtonTheme.primary,
+                      onPressed: nextTabHandler,
+                    ),
+                  ],
+                )
+              ],
+            ),
+          ],
         ),
-      ],
-    );
+      ),
+    ],
+  );
+}

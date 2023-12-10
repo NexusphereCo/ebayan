@@ -26,7 +26,7 @@ class _JoinedDashboardViewState extends State<JoinedDashboardView> {
   final BarangayController brgyController = BarangayController();
   final UserController userController = UserController();
 
-  Future<BarangayViewModel> _fetchBarangayInfo() async {
+  Future<BarangayViewModel> fetchBarangayInfo() async {
     final user = await userController.getCurrentUserInfo();
     final barangay = await brgyController.fetchBarangayWithLatestAnnouncement(user.barangayAssociated as String);
 
@@ -42,7 +42,7 @@ class _JoinedDashboardViewState extends State<JoinedDashboardView> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<BarangayViewModel>(
-      future: _fetchBarangayInfo(),
+      future: fetchBarangayInfo(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const JoinedDashboardLoadingView();

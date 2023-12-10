@@ -45,7 +45,7 @@ class _RouteGuardState extends State<RouteGuard> {
 
           // Use Future.delayed to perform navigation after the current build cycle.
           Future.delayed(Duration.zero, () {
-            Navigator.of(context).pushReplacementNamed(user == null ? '/login' : '/dashboard');
+            Navigator.of(context).pushReplacementNamed(user == null ? Routes.login : Routes.dashboard);
           });
         }
 

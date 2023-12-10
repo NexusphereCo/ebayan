@@ -76,7 +76,7 @@ class _RegisterOfficialScreenState extends State<RegisterOfficialScreen> with Si
     connectionHandler(context);
     super.initState();
 
-    _fetchMunicipalities();
+    fetchMunicipalities();
 
     tabController = TabController(length: tabLength, vsync: this);
     tabController.addListener(() {
@@ -103,7 +103,7 @@ class _RegisterOfficialScreenState extends State<RegisterOfficialScreen> with Si
     super.dispose();
   }
 
-  void _nextTab(GlobalKey<FormState> formKey) {
+  void nextTab(GlobalKey<FormState> formKey) {
     bool isFormValid = formKey.currentState?.validate() == true;
 
     if (isFormValid) {
@@ -118,7 +118,7 @@ class _RegisterOfficialScreenState extends State<RegisterOfficialScreen> with Si
     }
   }
 
-  void _fetchMunicipalities() {
+  void fetchMunicipalities() {
     brgyController.fetchMunicipalities().then((data) {
       listOfMunicipalities = data;
     }).catchError((err) {
@@ -126,7 +126,7 @@ class _RegisterOfficialScreenState extends State<RegisterOfficialScreen> with Si
     });
   }
 
-  void _fetchBarangay(muniUid) {
+  void fetchBarangay(muniUid) {
     brgyController.fetchBarangaysFromMunicipality(muniUid).then((data) {
       listOfBarangay = data;
     }).catchError((err) {
@@ -134,7 +134,7 @@ class _RegisterOfficialScreenState extends State<RegisterOfficialScreen> with Si
     });
   }
 
-  void _register() async {
+  void register() async {
     loadingScreen.show(context);
 
     bool isForm1Valid = formKey1.currentState?.validate() == true;
@@ -215,7 +215,7 @@ class _RegisterOfficialScreenState extends State<RegisterOfficialScreen> with Si
                         addressController: addressController,
                         birthDateController: birthDateController,
                         birthDateOnTapHandler: (date) => _setBirthDate(date),
-                        nextTabHandler: () => _nextTab(formKey1),
+                        nextTabHandler: () => nextTab(formKey1),
                       ),
                     ),
                   ),
@@ -233,7 +233,7 @@ class _RegisterOfficialScreenState extends State<RegisterOfficialScreen> with Si
                         municipalityOnTapHandler: () => _showMunicipalityPicker(),
                         barangayOnTapHandler: () => _showBarangayPicker(),
                         onClearFieldsHandler: _clearFormStep2Fields,
-                        nextTabHandler: () => _nextTab(formKey2),
+                        nextTabHandler: () => nextTab(formKey2),
                       ),
                     ),
                   ),
@@ -248,7 +248,7 @@ class _RegisterOfficialScreenState extends State<RegisterOfficialScreen> with Si
                         confirmPasswordController: confirmPasswordController,
                         showPassword: showPassword,
                         togglePassIconHandler: () => _setTogglePassword(),
-                        onRegisterHandler: _register,
+                        onRegisterHandler: register,
                       ),
                     ),
                   ),
@@ -302,7 +302,7 @@ class _RegisterOfficialScreenState extends State<RegisterOfficialScreen> with Si
           isBrgyFieldEnabled = false;
         });
 
-        _fetchBarangay(docId);
+        fetchBarangay(docId);
 
         setState(() {
           isBrgyFieldEnabled = true;

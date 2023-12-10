@@ -16,17 +16,17 @@ class EBProgressIndicator extends StatelessWidget {
     return Wrap(
       alignment: WrapAlignment.center,
       spacing: 5,
-      children: [
-        for (int i = 1; i <= length; i++)
-          Container(
-            height: 10,
-            width: 75,
-            decoration: BoxDecoration(
-              color: (i == currentIndex) ? EBColor.primary[500] : EBColor.primary[200],
-              borderRadius: BorderRadius.circular(100.0),
-            ),
+      children: List.generate(
+        length,
+        (index) => Container(
+          height: 10,
+          width: 75,
+          decoration: BoxDecoration(
+            color: (index + 1 == currentIndex) ? EBColor.primary[500] : EBColor.primary[200],
+            borderRadius: BorderRadius.circular(100.0),
           ),
-      ],
+        ),
+      ),
     );
   }
 }
