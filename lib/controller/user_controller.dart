@@ -114,6 +114,17 @@ class UserController {
     }
   }
 
+  Future<bool> isAnnouncementBookmarked(String announcementId) async {
+    final user = FirebaseAuth.instance.currentUser;
+
+    // 1. Get the list of docs via snapshots
+    final savedAnnouncementSnapshot = await _dbFirestore.collection('users').doc(user?.uid).collection('savedAnnouncements').get();
+
+    // 2. Store the IDs on a list
+    List<String> ids = savedAnnouncementSnapshot.docs.map((doc) => doc.id).toList();
+    return ids.contains(announcementId);
+  }
+
   Future<void> deleteSavedAnnouncement(String annId) async {
     try {
       final user = FirebaseAuth.instance.currentUser;

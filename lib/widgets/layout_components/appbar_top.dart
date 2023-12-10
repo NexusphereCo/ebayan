@@ -6,6 +6,7 @@ import 'package:ebayan/presentation/dashboard/announcements/widgets/announcement
 import 'package:ebayan/controller/user_controller.dart';
 import 'package:ebayan/utils/routes.dart';
 import 'package:ebayan/widgets/components/loading.dart';
+import 'package:ebayan/widgets/components/snackbar.dart';
 import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -53,13 +54,11 @@ class _EBAppBarState extends State<EBAppBar> {
   }
 
   Future<void> checkIfSaved() async {
-    try {
-      final savedAnnouncements = await userController.getSavedAnnouncements();
+    if (widget.annId != null) {
+      bool isBookmarked = await userController.isAnnouncementBookmarked(widget.annId!);
       setState(() {
-        isSaved = savedAnnouncements.contains(widget.annId.toString());
+        isSaved = isBookmarked;
       });
-    } catch (error) {
-      print('Error checking if saved: $error');
     }
   }
 
@@ -215,6 +214,7 @@ class _EBAppBarState extends State<EBAppBar> {
                 onPressed: () async {
                   setState(() {
                     isSaved = !isSaved;
+                    if (isSaved) ScaffoldMessenger.of(context).showSnackBar(EBSnackBar.info(text: 'Saved announcement.'));
                   });
 
                   switch (isSaved) {

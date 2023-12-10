@@ -70,29 +70,14 @@ class _SavedAnnouncementScreenState extends State<SavedAnnouncementScreen> {
                 onRefresh: () async => setState(() {}),
                 backgroundColor: EBColor.light,
                 child: ListView.builder(
-                  itemCount: announcements.length,
+                  itemCount: announcements.isEmpty ? 1 : announcements.length,
                   itemBuilder: (context, index) {
-                    return Column(
-                      children: [
-                        if (index == 0)
-                          Column(
-                            children: [
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  EBTypography.h1(text: 'Announcement'),
-                                  const SizedBox(width: Spacing.sm),
-                                  FaIcon(FontAwesomeIcons.solidBookmark, size: 30, color: EBColor.dark),
-                                ],
-                              ),
-                              const SizedBox(height: Spacing.md),
-                            ],
-                          ),
-                        FadeIn(
-                          child: AnnouncementCard(announcement: announcements[index]),
-                        ),
-                      ],
-                    );
+                    return announcements.isEmpty //
+                        ? const EmptySavedAnnouncements()
+                        : RenderSavedAnnouncements(
+                            announcements: announcements,
+                            index: index,
+                          );
                   },
                 ),
               );
@@ -101,6 +86,66 @@ class _SavedAnnouncementScreenState extends State<SavedAnnouncementScreen> {
         ),
       ),
       bottomNavigationBar: const EBAppBarBottom(activeIndex: 3),
+    );
+  }
+}
+
+class RenderSavedAnnouncements extends StatelessWidget {
+  final int index;
+
+  const RenderSavedAnnouncements({
+    super.key,
+    required this.announcements,
+    required this.index,
+  });
+
+  final List<AnnouncementViewModel> announcements;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        if (index == 0)
+          Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  EBTypography.h1(text: 'Announcement'),
+                  const SizedBox(width: Spacing.sm),
+                  FaIcon(FontAwesomeIcons.solidBookmark, size: 30, color: EBColor.dark),
+                ],
+              ),
+              const SizedBox(height: Spacing.md),
+            ],
+          ),
+        FadeIn(
+          child: AnnouncementCard(announcement: announcements[index]),
+        ),
+      ],
+    );
+  }
+}
+
+class EmptySavedAnnouncements extends StatelessWidget {
+  const EmptySavedAnnouncements({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            EBTypography.h1(text: 'Announcement'),
+            const SizedBox(width: Spacing.sm),
+            FaIcon(FontAwesomeIcons.solidBookmark, size: 30, color: EBColor.dark),
+          ],
+        ),
+        const SizedBox(height: Spacing.md),
+      ],
     );
   }
 }
