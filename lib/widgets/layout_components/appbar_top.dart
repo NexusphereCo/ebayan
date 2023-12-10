@@ -105,7 +105,7 @@ class _EBAppBarState extends State<EBAppBar> {
   }
 
   Widget _buildLeading() {
-    const iconSize = 20.0;
+    const iconSize = 35.0;
     return Container(
       margin: const EdgeInsets.fromLTRB(8.0, 0, 0, 0),
       child: (widget.enablePop ?? false)
@@ -259,9 +259,15 @@ class _EBDrawerState extends State<EBDrawer> {
 
   @override
   Widget build(BuildContext context) {
-    const iconSize = 20.0;
+    const iconSize = 35.0;
 
     return Drawer(
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(0),
+          topRight: Radius.circular(0),
+        ),
+      ),
       child: ListView(
         children: [
           SizedBox(
