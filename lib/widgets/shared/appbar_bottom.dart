@@ -4,7 +4,6 @@ import 'package:ebayan/constants/size.dart';
 import 'package:ebayan/constants/typography.dart';
 import 'package:ebayan/utils/routes.dart';
 import 'package:flutter/material.dart';
-import 'package:feather_icons/feather_icons.dart';
 
 class EBAppBarBottom extends StatelessWidget {
   final int activeIndex;
@@ -31,7 +30,7 @@ class EBAppBarBottom extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Icon(
-                  EBIcons.home,
+                  (activeIndex == 1) ? EBIcons.homeSolid : EBIcons.home,
                   size: iconSize + 3,
                   color: (activeIndex == 1) ? EBColor.primary : EBColor.dark.withOpacity(0.5),
                 ),
@@ -56,8 +55,8 @@ class EBAppBarBottom extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Icon(
-                  FeatherIcons.users,
-                  size: iconSize,
+                  (activeIndex == 2) ? EBIcons.usersSolid : EBIcons.users,
+                  size: iconSize + 3,
                   color: (activeIndex == 2) ? EBColor.primary : EBColor.dark.withOpacity(0.5),
                 ),
                 const SizedBox(height: Spacing.sm),
@@ -81,8 +80,8 @@ class EBAppBarBottom extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Icon(
-                  FeatherIcons.bookmark,
-                  size: iconSize,
+                  (activeIndex == 3) ? EBIcons.bookmarkSolid : EBIcons.bookmark,
+                  size: iconSize + 3,
                   color: (activeIndex == 3) ? EBColor.primary : EBColor.dark.withOpacity(0.5),
                 ),
                 const SizedBox(height: Spacing.sm),
@@ -106,8 +105,8 @@ class EBAppBarBottom extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Icon(
-                  FeatherIcons.settings,
-                  size: iconSize,
+                  (activeIndex == 4) ? EBIcons.settingsSolid : EBIcons.settings,
+                  size: iconSize + 3,
                   color: (activeIndex == 4) ? EBColor.primary : EBColor.dark.withOpacity(0.5),
                 ),
                 const SizedBox(height: Spacing.sm),
