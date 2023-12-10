@@ -29,7 +29,7 @@ class RegisterResidentScreen extends StatefulWidget {
 
 class _RegisterResidentScreenState extends State<RegisterResidentScreen> with SingleTickerProviderStateMixin {
   final RegisterController registerController = RegisterController();
-  final EBLoadingScreen loadingScreen = const EBLoadingScreen();
+  final EBCustomLoadingScreen loadingScreen = const EBCustomLoadingScreen();
 
   final GlobalKey<FormState> formKey1 = GlobalKey<FormState>();
   final GlobalKey<FormState> formKey2 = GlobalKey<FormState>();

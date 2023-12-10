@@ -50,7 +50,7 @@ class _RouteGuardState extends State<RouteGuard> {
         }
 
         // Show the loading screen or another appropriate widget.
-        return const EBLoadingScreen(solid: true);
+        return const EBCustomLoadingScreen(solid: true);
       },
     );
   }

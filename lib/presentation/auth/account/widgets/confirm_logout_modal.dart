@@ -9,7 +9,7 @@ import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
 
 class LogoutModal extends StatelessWidget {
-  final EBLoadingScreen _loadingScreen = const EBLoadingScreen();
+  final EBCustomLoadingScreen _loadingScreen = const EBCustomLoadingScreen();
   final UserController _userController = UserController();
 
   LogoutModal({super.key});

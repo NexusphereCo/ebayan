@@ -30,7 +30,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
         builder: (context, snapshot) {
           switch (snapshot.connectionState) {
             case ConnectionState.waiting:
-              return const EBLoadingScreen(solid: true);
+              return const EBCustomLoadingScreen(solid: true);
             case ConnectionState.done:
               bool hasJoinedBrgy = snapshot.data!;
 
@@ -43,7 +43,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
               });
             default:
           }
-          return const EBLoadingScreen(solid: true);
+          return const EBCustomLoadingScreen(solid: true);
         },
       ),
     );

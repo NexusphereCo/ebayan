@@ -19,7 +19,7 @@ class ChangePasswordModalForm extends StatefulWidget {
 
 class _ChangePasswordModalFormState extends State<ChangePasswordModalForm> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-  final EBLoadingScreen loadingScreen = const EBLoadingScreen();
+  final EBCustomLoadingScreen loadingScreen = const EBCustomLoadingScreen();
   final UserController userController = UserController();
   // controllers
   final TextEditingController passwordController = TextEditingController();

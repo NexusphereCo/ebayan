@@ -244,7 +244,7 @@ class EBDrawer extends StatefulWidget {
 
 class _EBDrawerState extends State<EBDrawer> {
   final UserController _userController = UserController();
-  final EBLoadingScreen _loadingScreen = const EBLoadingScreen();
+  final EBCustomLoadingScreen _loadingScreen = const EBCustomLoadingScreen();
 
   Future<void> _logOut() async {
     _loadingScreen.show(context);

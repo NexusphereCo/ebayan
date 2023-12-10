@@ -21,7 +21,7 @@ class LoginForm extends StatefulWidget {
 
 class _LoginFormState extends State<LoginForm> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-  final EBLoadingScreen loadingScreen = const EBLoadingScreen();
+  final EBCustomLoadingScreen loadingScreen = const EBCustomLoadingScreen();
 
   final LoginController loginController = LoginController();
 

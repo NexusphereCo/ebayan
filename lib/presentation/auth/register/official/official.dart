@@ -37,7 +37,7 @@ class RegisterOfficialScreen extends StatefulWidget {
 class _RegisterOfficialScreenState extends State<RegisterOfficialScreen> with SingleTickerProviderStateMixin {
   final RegisterController registerController = RegisterController();
   final BarangayController brgyController = BarangayController();
-  final EBLoadingScreen loadingScreen = const EBLoadingScreen();
+  final EBCustomLoadingScreen loadingScreen = const EBCustomLoadingScreen();
 
   final GlobalKey<FormState> formKey1 = GlobalKey<FormState>();
   final GlobalKey<FormState> formKey2 = GlobalKey<FormState>();

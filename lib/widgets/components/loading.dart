@@ -4,19 +4,19 @@ import 'package:ebayan/constants/typography.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
-class EBLoadingScreen extends StatefulWidget {
+class EBCustomLoadingScreen extends StatefulWidget {
   /// this refers to the opacity of the loading background
   /// by default the background has 50% opacity
   /// by setting this 'true' the background will be 100%
   final bool? solid;
 
-  const EBLoadingScreen({
+  const EBCustomLoadingScreen({
     super.key,
     this.solid,
   });
 
   @override
-  State<EBLoadingScreen> createState() => _EBLoadingScreenState();
+  State<EBCustomLoadingScreen> createState() => _EBCustomLoadingScreenState();
 
   void show(BuildContext context) {
     showGeneralDialog(
@@ -45,7 +45,7 @@ class EBLoadingScreen extends StatefulWidget {
   }
 }
 
-class _EBLoadingScreenState extends State<EBLoadingScreen> {
+class _EBCustomLoadingScreenState extends State<EBCustomLoadingScreen> {
   double currentPage = 0;
 
   @override

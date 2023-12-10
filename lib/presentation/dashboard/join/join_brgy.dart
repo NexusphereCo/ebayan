@@ -29,7 +29,7 @@ class JoinBrgyScreen extends StatefulWidget {
 class _JoinBrgyScreenState extends State<JoinBrgyScreen> {
   final BarangayController brgyController = BarangayController();
 
-  final EBLoadingScreen loadingScreen = const EBLoadingScreen();
+  final EBCustomLoadingScreen loadingScreen = const EBCustomLoadingScreen();
   TextEditingController textEditingController = TextEditingController();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 

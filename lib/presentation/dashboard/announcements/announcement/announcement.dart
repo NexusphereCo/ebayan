@@ -51,7 +51,7 @@ class _AnnouncementScreenState extends State<AnnouncementScreen> {
       future: fetchAnnouncementDetails(annId),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return const EBLoadingScreen(solid: true);
+          return const EBCustomLoadingScreen(solid: true);
         } else {
           AnnouncementViewModel announcement = snapshot.data!;
           bodyController.document = Document.fromJson(jsonDecode(announcement.body));

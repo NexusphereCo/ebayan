@@ -36,7 +36,7 @@ class AccountInfoForm extends StatefulWidget {
 
 class _AccountInfoFormState extends State<AccountInfoForm> {
   final GlobalKey<FormState> formKey = GlobalKey();
-  final EBLoadingScreen loadingScreen = const EBLoadingScreen();
+  final EBCustomLoadingScreen loadingScreen = const EBCustomLoadingScreen();
   final UserController userController = UserController();
 
   // Controllers
