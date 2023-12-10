@@ -68,7 +68,8 @@ class _SavedAnnouncementScreenState extends State<SavedAnnouncementScreen> {
 
               return RefreshIndicator(
                 onRefresh: () async => setState(() {}),
-                backgroundColor: EBColor.light,
+                backgroundColor: EBColor.primary,
+                color: EBColor.light,
                 child: ListView.builder(
                   itemCount: announcements.isEmpty ? 1 : announcements.length,
                   itemBuilder: (context, index) {

@@ -1,5 +1,6 @@
 import 'package:ebayan/constants/assets.dart';
 import 'package:ebayan/constants/colors.dart';
+import 'package:ebayan/constants/icons.dart';
 import 'package:ebayan/constants/typography.dart';
 import 'package:ebayan/data/model/barangay_model.dart';
 import 'package:ebayan/presentation/dashboard/dashboard/widgets/loading_bar.dart';
@@ -105,14 +106,14 @@ class _SphereCardState extends State<SphereCard> {
                 (widget.isLoading ?? false)
                     ? EBLoadingBar(width: 100, colors: [EBColor.primary[400]!, EBColor.primary[300]!.withOpacity(0.5)])
                     : _buildFooterRow(
-                        icon: const FaIcon(FontAwesomeIcons.bullhorn, size: 16),
+                        icon: const FaIcon(FontAwesomeIcons.bullhorn, size: EBFontSize.normal),
                         text: widget.hasNewAnnouncements! ? 'New announcements' : 'No recent announcements',
                       ),
                 const SizedBox(height: Spacing.sm),
                 (widget.isLoading ?? false)
                     ? EBLoadingBar(width: 50, colors: [EBColor.primary[400]!, EBColor.primary[300]!.withOpacity(0.5)])
                     : _buildFooterRow(
-                        icon: const Icon(FeatherIcons.user, size: 16),
+                        icon: const Icon(EBIcons.usersSolid, size: EBFontSize.h2),
                         text: '${widget.numOfPeople} people',
                       ),
               ],
