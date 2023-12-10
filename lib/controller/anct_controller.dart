@@ -150,7 +150,7 @@ class AnnouncementController {
 
       final doc = announcementsSnapshot.docs.first;
 
-      final commentsSnapshot = await doc.reference.collection('comments').orderBy('timeCreated', descending: true).get();
+      final commentsSnapshot = await doc.reference.collection('reactions').orderBy('timeCreated', descending: true).get();
       List<CommentViewModel> comments = [];
 
       if (commentsSnapshot.docs.isNotEmpty) {
@@ -183,10 +183,10 @@ class AnnouncementController {
       final userController = UserController();
       final announcementController = AnnouncementController();
 
-      final savedAnnouncementIds = await userController.getSavedAnnouncements();
+      final savedAnnIds = await userController.getSavedAnnouncements();
 
       final List<AnnouncementModel> savedAnnouncements = [];
-      for (final annId in savedAnnouncementIds) {
+      for (final annId in savedAnnIds) {
         final announcement = await announcementController.fetchAnnouncementDetails(annId.id);
         savedAnnouncements.add(announcement as AnnouncementModel);
       }

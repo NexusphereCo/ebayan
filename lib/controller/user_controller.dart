@@ -114,7 +114,7 @@ class UserController {
     }
   }
 
-  Future<bool> isAnnouncementBookmarked(String announcementId) async {
+  Future<bool> isAnnouncementBookmarked(String annId) async {
     final user = FirebaseAuth.instance.currentUser;
 
     // 1. Get the list of docs via snapshots
@@ -122,7 +122,7 @@ class UserController {
 
     // 2. Store the IDs on a list
     List<String> ids = savedAnnouncementSnapshot.docs.map((doc) => doc.id).toList();
-    return ids.contains(announcementId);
+    return ids.contains(annId);
   }
 
   Future<void> deleteSavedAnnouncement(String annId) async {

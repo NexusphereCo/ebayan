@@ -3,14 +3,17 @@ import 'package:ebayan/data/viewmodel/comment_view_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:logger/logger.dart';
 
-class CommentController {
+class ReactionController {
   final Logger log = Logger();
   final FirebaseFirestore _db = FirebaseFirestore.instance;
   final User? user = FirebaseAuth.instance.currentUser;
 
   Future<void> createComment(String annId, String text) async {
     try {
-      final announcementSnapshot = await _db.collectionGroup('announcements').where('id', isEqualTo: annId).get();
+      final announcementSnapshot = await _db //
+          .collectionGroup('announcements')
+          .where('id', isEqualTo: annId)
+          .get();
 
       if (announcementSnapshot.docs.isEmpty) {
         throw 'Announcement not found.';
@@ -18,7 +21,10 @@ class CommentController {
 
       final announcementDoc = announcementSnapshot.docs.first;
 
-      final commentRef = await announcementDoc.reference.collection('comments').add({
+      final commentRef = await announcementDoc //
+          .reference
+          .collection('reactions')
+          .add({
         'text': text,
         'timeCreated': DateTime.now(),
         'userId': user!.uid,
@@ -35,7 +41,10 @@ class CommentController {
 
   Future<List<CommentViewModel>> fetchComments(String annId) async {
     try {
-      final announcementsSnapshot = await _db.collectionGroup('announcements').where('id', isEqualTo: annId).get();
+      final announcementsSnapshot = await _db //
+          .collectionGroup('announcements')
+          .where('id', isEqualTo: annId)
+          .get();
 
       if (announcementsSnapshot.docs.isEmpty) {
         throw 'Announcement not found.';
@@ -43,7 +52,12 @@ class CommentController {
 
       final doc = announcementsSnapshot.docs.first;
 
-      final commentsSnapshot = await doc.reference.collection('comments').orderBy('timeCreated', descending: true).get();
+      final commentsSnapshot = await doc //
+          .reference
+          .collection('reactions')
+          .orderBy('timeCreated', descending: true)
+          .get();
+
       List<CommentViewModel> comments = [];
 
       if (commentsSnapshot.docs.isNotEmpty) {
@@ -74,12 +88,22 @@ class CommentController {
 
   Future<String> fetchUsername(String userId) async {
     try {
-      final userDoc = await _db.collection('users').doc(userId).get();
+      final userDoc = await _db //
+          .collection('users')
+          .doc(userId)
+          .get();
       final String name = '${userDoc['firstName']} ${userDoc['lastName']}';
       return name;
     } catch (err) {
       log.e('An error occurred while fetching author name: $err');
       throw 'An error occurred while fetching author name. $userId';
     }
+  }
+
+  Future<void> setReaction(String annId, bool thumbsUp, bool thumbsDown) async {
+    final announcementSnapshot = await _db //
+        .collectionGroup('announcements')
+        .where('id', isEqualTo: annId)
+        .get();
   }
 }
