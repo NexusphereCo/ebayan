@@ -37,7 +37,7 @@ class _PeopleScreenState extends State<PeopleScreen> {
   Future<List<UserViewModel>> fetchPeople() async {
     UserViewModel user = await userController.getCurrentUserInfo();
     String brgyCode = user.barangayAssociated!;
-    return await brgyController.fetchUsersByBarangayId(brgyCode);
+    return await brgyController.fetchBarangayUsers(brgyCode);
   }
 
   Future<BarangayViewModel> fetchBarangayInfo() async {

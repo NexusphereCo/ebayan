@@ -92,9 +92,9 @@ class _SavedAnnouncementScreenState extends State<SavedAnnouncementScreen> {
                       ],
                     );
                   } else {
-                    return AnnouncementCard(
-                      announcement: data[dataIndex],
-                    );
+                    // return AnnouncementCard(
+                    //   announcement: data[dataIndex],
+                    // );
                   }
                 },
               ),
