@@ -54,6 +54,7 @@ class LoginController {
         'user-disabled': Validation.userDisabled,
         'user-not-found': Validation.userNotFound,
         'invalid-login-credentials': Validation.invalidLoginCred,
+        'invalid-credential': Validation.invalidLoginCred,
         'network-request-failed': Validation.networkFail,
         'too_many_requests': Validation.tooManyReq,
       };
