@@ -1,16 +1,19 @@
 import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/constants/typography.dart';
 import 'package:ebayan/controller/anct_controller.dart';
+import 'package:ebayan/controller/brgy_controller.dart';
 import 'package:ebayan/controller/user_controller.dart';
-import 'package:ebayan/data/model/announcement_model.dart';
+import 'package:ebayan/data/viewmodel/announcement_view_model.dart';
 import 'package:ebayan/presentation/dashboard/announcements/widgets/announcement_card.dart';
 import 'package:ebayan/utils/global.dart';
 import 'package:ebayan/constants/size.dart';
-import 'package:ebayan/widgets/components/loading.dart';
 import 'package:ebayan/widgets/layout_components/appbar_bottom.dart';
 import 'package:ebayan/widgets/layout_components/appbar_top.dart';
+import 'package:ebayan/widgets/utils/fade_in.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+import 'widgets/loading.dart';
 
 class SavedAnnouncementScreen extends StatefulWidget {
   const SavedAnnouncementScreen({super.key});
@@ -20,89 +23,84 @@ class SavedAnnouncementScreen extends StatefulWidget {
 }
 
 class _SavedAnnouncementScreenState extends State<SavedAnnouncementScreen> {
+  // Controllers
   final AnnouncementController announcementController = AnnouncementController();
+  final BarangayController brgyController = BarangayController();
   final UserController userController = UserController();
-  late Future<List<AnnouncementModel>> savedAnnouncements;
-
-  final EBLoadingScreen loadingScreen = const EBLoadingScreen();
 
   @override
   void initState() {
-    super.initState();
     connectionHandler(context);
-    savedAnnouncements = _fetchSavedAnnouncements();
+    super.initState();
   }
 
-  Future<List<AnnouncementModel>> _fetchSavedAnnouncements() async {
-    try {
-      final List<String> savedAnnouncementIds = await userController.getSavedAnnouncements();
-      final List<AnnouncementModel> allAnnouncements = await announcementController.fetchAnnouncements();
-
-      final List<AnnouncementModel> savedAnnouncements = allAnnouncements.where((announcement) => savedAnnouncementIds.contains(announcement.id)).toList();
-
-      return savedAnnouncements;
-    } catch (e) {
-      throw 'An error occurred while fetching saved announcements.';
-    }
-  }
-
-  Future<void> _refresh() async {
-    setState(() {
-      savedAnnouncements = _fetchSavedAnnouncements();
-    });
+  Future<List<AnnouncementViewModel>> fetchSavedAnnouncements() async {
+    return await userController.getSavedAnnouncements();
   }
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<List<AnnouncementModel>>(
-      future: savedAnnouncements,
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return const EBLoadingScreen(
-            solid: true,
-          );
-        } else {
-          final List<AnnouncementModel> data = snapshot.data!;
-          return Scaffold(
-            appBar: const EBAppBar(enablePop: true),
-            drawer: const EBDrawer(),
-            body: RefreshIndicator(
-              onRefresh: _refresh,
-              child: ListView.builder(
-                padding: const EdgeInsets.all(24.0),
-                itemCount: data.length + 1,
-                itemBuilder: (context, index) {
-                  final dataIndex = index - 1;
-                  if (index == 0) {
+    return Scaffold(
+      appBar: const EBAppBar(enablePop: true),
+      drawer: const EBDrawer(),
+      body: Padding(
+        padding: const EdgeInsets.all(Global.paddingBody),
+        child: FutureBuilder(
+          future: fetchSavedAnnouncements(),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      EBTypography.h1(text: 'Announcement'),
+                      const SizedBox(width: Spacing.sm),
+                      FaIcon(FontAwesomeIcons.solidBookmark, size: 30, color: EBColor.dark),
+                    ],
+                  ),
+                  const SizedBox(height: Spacing.md),
+                  buildLoadingIndicator(context),
+                ],
+              );
+            } else {
+              final List<AnnouncementViewModel> announcements = snapshot.data!;
+
+              return RefreshIndicator(
+                onRefresh: () async => setState(() {}),
+                backgroundColor: EBColor.light,
+                child: ListView.builder(
+                  itemCount: announcements.length,
+                  itemBuilder: (context, index) {
                     return Column(
                       children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            EBTypography.h1(text: 'Saved Announcement'),
-                            const SizedBox(width: Spacing.sm),
-                            FaIcon(
-                              FontAwesomeIcons.solidBookmark,
-                              size: 25,
-                              color: EBColor.primary,
-                            ),
-                          ],
+                        if (index == 0)
+                          Column(
+                            children: [
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  EBTypography.h1(text: 'Announcement'),
+                                  const SizedBox(width: Spacing.sm),
+                                  FaIcon(FontAwesomeIcons.solidBookmark, size: 30, color: EBColor.dark),
+                                ],
+                              ),
+                              const SizedBox(height: Spacing.md),
+                            ],
+                          ),
+                        FadeIn(
+                          child: AnnouncementCard(announcement: announcements[index]),
                         ),
-                        const SizedBox(height: Spacing.lg),
                       ],
                     );
-                  } else {
-                    // return AnnouncementCard(
-                    //   announcement: data[dataIndex],
-                    // );
-                  }
-                },
-              ),
-            ),
-            bottomNavigationBar: const EBAppBarBottom(activeIndex: 3),
-          );
-        }
-      },
+                  },
+                ),
+              );
+            }
+          },
+        ),
+      ),
+      bottomNavigationBar: const EBAppBarBottom(activeIndex: 3),
     );
   }
 }

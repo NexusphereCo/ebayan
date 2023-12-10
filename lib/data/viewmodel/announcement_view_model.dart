@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:intl/intl.dart';
 
 class AnnouncementViewModel {
@@ -23,8 +25,8 @@ class AnnouncementViewModel {
       id: annId,
       body: data['body'],
       heading: data['heading'],
-      timeCreated: (data['timeCreated']).toDate(),
-      author: data['author'],
+      timeCreated: (data['timeCreated'] as Timestamp).toDate(),
+      author: '--',
       authorId: data['authorId'],
     );
   }

@@ -8,7 +8,6 @@ import 'package:ebayan/presentation/dashboard/announcements/widgets/announcement
 import 'package:ebayan/utils/global.dart';
 import 'package:ebayan/constants/size.dart';
 import 'package:ebayan/utils/routes.dart';
-import 'package:ebayan/widgets/components/loading.dart';
 import 'package:ebayan/widgets/layout_components/appbar_top.dart';
 import 'package:ebayan/widgets/utils/fade_in.dart';
 import 'package:flutter/material.dart';
@@ -25,8 +24,6 @@ class AnnouncementListScreen extends StatefulWidget {
 }
 
 class _AnnouncementListScreenState extends State<AnnouncementListScreen> {
-  final EBLoadingScreen loadingScreen = const EBLoadingScreen();
-
   // Controllers
   final AnnouncementController announcementController = AnnouncementController();
   final BarangayController brgyController = BarangayController();
@@ -62,41 +59,37 @@ class _AnnouncementListScreenState extends State<AnnouncementListScreen> {
       drawer: const EBDrawer(),
       body: Padding(
         padding: const EdgeInsets.all(Global.paddingBody),
-        child: StatefulBuilder(
-          builder: (context, setState) {
-            return FutureBuilder(
-              future: fetchBarangayInfo(),
-              builder: (context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return Column(
-                    children: [
-                      buildLoadingHeading(),
-                      buildLoadingIndicator(context),
-                    ],
-                  );
-                } else {
-                  final BarangayViewModel barangay = snapshot.data!;
+        child: FutureBuilder(
+          future: fetchBarangayInfo(),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return Column(
+                children: [
+                  buildLoadingHeading(),
+                  buildLoadingIndicator(context),
+                ],
+              );
+            } else {
+              final BarangayViewModel barangay = snapshot.data!;
 
-                  return RefreshIndicator(
-                    onRefresh: () async => setState(() {}),
-                    backgroundColor: EBColor.light,
-                    child: ListView.builder(
-                      itemCount: barangay.announcements!.length,
-                      itemBuilder: (context, index) {
-                        return Column(
-                          children: [
-                            if (index == 0) buildHeading(barangay: barangay),
-                            FadeIn(
-                              child: AnnouncementCard(announcement: barangay.announcements![index]),
-                            ),
-                          ],
-                        );
-                      },
-                    ),
-                  );
-                }
-              },
-            );
+              return RefreshIndicator(
+                onRefresh: () async => setState(() {}),
+                backgroundColor: EBColor.light,
+                child: ListView.builder(
+                  itemCount: barangay.announcements!.length,
+                  itemBuilder: (context, index) {
+                    return Column(
+                      children: [
+                        if (index == 0) buildHeading(barangay: barangay),
+                        FadeIn(
+                          child: AnnouncementCard(announcement: barangay.announcements![index]),
+                        ),
+                      ],
+                    );
+                  },
+                ),
+              );
+            }
           },
         ),
       ),

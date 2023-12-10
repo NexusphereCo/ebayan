@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ebayan/constants/validation.dart';
 import 'package:ebayan/data/model/user_model.dart';
+import 'package:ebayan/data/viewmodel/announcement_view_model.dart';
 import 'package:ebayan/data/viewmodel/user_view_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:logger/logger.dart';
@@ -62,8 +63,7 @@ class UserController {
   Future<void> saveAnnouncement(String annId) async {
     try {
       final user = FirebaseAuth.instance.currentUser;
-      final userId = user?.uid;
-      final savedAnnouncementRef = _dbFirestore.collection('users').doc(userId).collection('savedAnnouncements').doc(annId);
+      final savedAnnouncementRef = _dbFirestore.collection('users').doc(user?.uid).collection('savedAnnouncements').doc(annId);
 
       // Check if the announcement is already saved to avoid duplicate entries
       final savedAnnouncementDoc = await savedAnnouncementRef.get();
@@ -79,14 +79,35 @@ class UserController {
     }
   }
 
-  Future<List<String>> getSavedAnnouncements() async {
+  Future<List<AnnouncementViewModel>> getSavedAnnouncements() async {
     try {
       final user = FirebaseAuth.instance.currentUser;
-      final userId = user?.uid;
-      final snapshot = await _dbFirestore.collection('users').doc(userId).collection('savedAnnouncements').get();
 
-      log.d('Successfully fetched saved announcements');
-      return snapshot.docs.map((doc) => doc.id).toList(); // Assuming 'annId' is the document ID
+      // 1. Get the list of docs via snapshots
+      final savedAnnouncementSnapshot = await _dbFirestore.collection('users').doc(user?.uid).collection('savedAnnouncements').get();
+
+      // 2. Store the IDs on a list
+      List<String> ids = savedAnnouncementSnapshot.docs.map((doc) => doc.id).toList();
+
+      // 3. Fetch announcement details concurrently for each ID
+      List<AnnouncementViewModel> model = await Future.wait(
+        ids.map((id) async {
+          final item = await _dbFirestore.collectionGroup('announcements').where('id', isEqualTo: id).get();
+
+          final doc = item.docs.first;
+
+          return AnnouncementViewModel(
+            id: id,
+            body: doc['body'],
+            heading: doc['heading'],
+            timeCreated: (doc['timeCreated'] as Timestamp).toDate(),
+            author: await getCurrentUserName() ?? 'NA',
+            authorId: doc['authorId'] ?? 'NA',
+          );
+        }),
+      );
+
+      return model;
     } catch (err) {
       log.e('An error occurred: $err');
       throw 'An error occurred while fetching saved announcements.';
@@ -96,8 +117,7 @@ class UserController {
   Future<void> deleteSavedAnnouncement(String annId) async {
     try {
       final user = FirebaseAuth.instance.currentUser;
-      final userId = user?.uid;
-      final savedAnnouncementRef = _dbFirestore.collection('users').doc(userId).collection('savedAnnouncements').doc(annId);
+      final savedAnnouncementRef = _dbFirestore.collection('users').doc(user?.uid).collection('savedAnnouncements').doc(annId);
 
       // Check if the announcement exists before deleting it
       final savedAnnouncementDoc = await savedAnnouncementRef.get();
