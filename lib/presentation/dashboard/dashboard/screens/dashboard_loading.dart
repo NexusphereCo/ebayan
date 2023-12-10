@@ -3,8 +3,8 @@ import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/constants/typography.dart';
 import 'package:ebayan/utils/routes.dart';
 import 'package:ebayan/constants/size.dart';
-import 'package:ebayan/widgets/shared/appbar_bottom.dart';
-import 'package:ebayan/widgets/shared/appbar_top.dart';
+import 'package:ebayan/widgets/layout_components/appbar_bottom.dart';
+import 'package:ebayan/widgets/layout_components/appbar_top.dart';
 import 'package:ebayan/widgets/utils/fade_in.dart';
 import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
@@ -112,7 +112,7 @@ class _JoinedDashboardLoadingViewState extends State<JoinedDashboardLoadingView>
                                                             ),
                                                             child: const SizedBox(width: 50, height: 12),
                                                           ),
-                                                          buildLoadingContainer(width: 50),
+                                                          const EBLoadingBar(width: 50),
                                                         ],
                                                       ),
                                                       const SizedBox(height: Spacing.md),
@@ -121,16 +121,16 @@ class _JoinedDashboardLoadingViewState extends State<JoinedDashboardLoadingView>
                                                         children: [
                                                           Icon(FeatherIcons.circle, color: EBColor.green),
                                                           const SizedBox(width: Spacing.sm),
-                                                          buildLoadingContainer(width: 50),
+                                                          const EBLoadingBar(width: 50),
                                                         ],
                                                       ),
-                                                      Column(
+                                                      const Column(
                                                         crossAxisAlignment: CrossAxisAlignment.start,
                                                         children: [
-                                                          const SizedBox(height: Spacing.sm),
-                                                          buildLoadingContainer(width: double.infinity),
-                                                          const SizedBox(height: Spacing.sm),
-                                                          buildLoadingContainer(width: 100),
+                                                          SizedBox(height: Spacing.sm),
+                                                          EBLoadingBar(width: double.infinity),
+                                                          SizedBox(height: Spacing.sm),
+                                                          EBLoadingBar(width: 100),
                                                         ],
                                                       ),
                                                     ],

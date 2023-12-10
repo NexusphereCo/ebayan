@@ -50,7 +50,7 @@ class SphereCard extends StatefulWidget {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 (isLoading ?? false)
-                    ? buildLoadingContainer(width: 150, colors: [EBColor.primary[800]!, EBColor.primary[700]!.withOpacity(0.5)])
+                    ? EBLoadingBar(width: 150, colors: [EBColor.primary[800]!, EBColor.primary[700]!.withOpacity(0.5)])
                     : EBTypography.h4(
                         text: brgyName!,
                         color: EBColor.light,
@@ -58,7 +58,7 @@ class SphereCard extends StatefulWidget {
                       ),
                 const SizedBox(height: Spacing.sm),
                 (isLoading ?? false)
-                    ? buildLoadingContainer(width: 75, colors: [EBColor.primary[800]!, EBColor.primary[700]!.withOpacity(0.5)])
+                    ? EBLoadingBar(width: 75, colors: [EBColor.primary[800]!, EBColor.primary[700]!.withOpacity(0.5)])
                     : EBTypography.small(
                         text: brgyCode!,
                         color: EBColor.light,
@@ -103,14 +103,14 @@ class _SphereCardState extends State<SphereCard> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 (widget.isLoading ?? false)
-                    ? buildLoadingContainer(width: 100, colors: [EBColor.primary[400]!, EBColor.primary[300]!.withOpacity(0.5)])
+                    ? EBLoadingBar(width: 100, colors: [EBColor.primary[400]!, EBColor.primary[300]!.withOpacity(0.5)])
                     : _buildFooterRow(
                         icon: const FaIcon(FontAwesomeIcons.bullhorn, size: 16),
                         text: widget.hasNewAnnouncements! ? 'New announcements' : 'No recent announcements',
                       ),
                 const SizedBox(height: Spacing.sm),
                 (widget.isLoading ?? false)
-                    ? buildLoadingContainer(width: 50, colors: [EBColor.primary[400]!, EBColor.primary[300]!.withOpacity(0.5)])
+                    ? EBLoadingBar(width: 50, colors: [EBColor.primary[400]!, EBColor.primary[300]!.withOpacity(0.5)])
                     : _buildFooterRow(
                         icon: const Icon(FeatherIcons.user, size: 16),
                         text: '${widget.numOfPeople} people',
