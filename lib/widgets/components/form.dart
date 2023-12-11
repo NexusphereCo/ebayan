@@ -27,6 +27,8 @@ class EBTextField extends StatelessWidget {
   final bool? isDense;
   final int? maxLines;
   final String? placeholder;
+  final bool? capitalizePerWord;
+  final TextCapitalization? textCapitalization;
 
   const EBTextField({
     super.key,
@@ -47,6 +49,8 @@ class EBTextField extends StatelessWidget {
     this.isDense,
     this.maxLines,
     this.placeholder,
+    this.capitalizePerWord,
+    this.textCapitalization,
   });
 
   @override
@@ -87,18 +91,25 @@ class EBTextField extends StatelessWidget {
       maxLength: maxLength,
       maxLines: maxLines,
       validator: validator,
-
-      /// This is to modify the text to make it so that they are
-      /// all uppercase...
-
-      /* onChanged: (value) {
-       *   controller?.value = TextEditingValue(
-       *     text: value.toLowerCase(),
-       *     selection: controller!.selection,
-       *   );
-       * },
-       */
+      onChanged: (value) {
+        (capitalizePerWord ?? false)
+            ? controller!.value = controller!.value.copyWith(
+                text: capitalize(value),
+                selection: TextSelection.fromPosition(
+                  TextPosition(offset: capitalize(value).length),
+                ),
+              )
+            : null;
+      },
+      textCapitalization: textCapitalization ?? TextCapitalization.none,
     );
+  }
+
+  String capitalize(String value) {
+    if (value.isEmpty) {
+      return value;
+    }
+    return value.split(' ').map((word) => word[0].toUpperCase() + word.substring(1)).join(' ');
   }
 }
 

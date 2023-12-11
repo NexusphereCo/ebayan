@@ -203,6 +203,7 @@ class _AccountInfoFormState extends State<AccountInfoForm> {
                                       if (value == null || value.isEmpty) return '';
                                       return null;
                                     },
+                                    textCapitalization: TextCapitalization.words,
                                   ),
                                 )
                               : EBTypography.text(text: widget.userData.firstName, muted: true),
@@ -225,6 +226,7 @@ class _AccountInfoFormState extends State<AccountInfoForm> {
                                       if (value == null || value.isEmpty) return '';
                                       return null;
                                     },
+                                    textCapitalization: TextCapitalization.words,
                                   ),
                                 )
                               : EBTypography.text(text: widget.userData.lastName, muted: true),
@@ -302,6 +304,7 @@ class _AccountInfoFormState extends State<AccountInfoForm> {
                                 if (value == null || value.isEmpty) return '';
                                 return null;
                               },
+                              textCapitalization: TextCapitalization.sentences,
                             )
                           : EBTypography.text(
                               text: widget.userData.address,

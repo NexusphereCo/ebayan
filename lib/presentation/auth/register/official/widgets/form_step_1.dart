@@ -54,6 +54,7 @@ Widget buildPersonalInfo({
                           return null;
                         },
                         maxLines: 1,
+                        capitalizePerWord: true,
                       ),
                     ),
                     const SizedBox(width: Spacing.sm),
@@ -68,6 +69,7 @@ Widget buildPersonalInfo({
                           return null;
                         },
                         maxLines: 1,
+                        capitalizePerWord: true,
                       ),
                     ),
                   ],
@@ -128,6 +130,7 @@ Widget buildPersonalInfo({
                       return null;
                     },
                     maxLines: null,
+                    textCapitalization: TextCapitalization.sentences,
                   ),
                 ),
                 const SizedBox(height: Spacing.md),

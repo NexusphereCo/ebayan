@@ -20,4 +20,5 @@ class Validation {
   static const String emailAlreadyInUse = 'This email address is already in use.';
   static const String requiresRecentLogin = 'For security reasons, please sign in again to continue.';
   static const String accountOnProcess = 'Your account is still being processed for approval.';
+  static const String connectionTimeout = 'Connection Timeout.';
 }
