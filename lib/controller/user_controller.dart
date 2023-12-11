@@ -144,4 +144,10 @@ class UserController {
       throw 'An error occurred while deleting saved announcement.';
     }
   }
+
+  Future<void> leaveBarangaySphere() async {
+    final userId = FirebaseAuth.instance.currentUser?.uid;
+    final user = _dbFirestore.collection('users').doc(userId);
+    user.update({'barangayAssociated': null});
+  }
 }

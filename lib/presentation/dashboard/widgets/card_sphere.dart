@@ -3,6 +3,7 @@ import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/constants/icons.dart';
 import 'package:ebayan/constants/size.dart';
 import 'package:ebayan/constants/typography.dart';
+import 'package:ebayan/controller/user_controller.dart';
 import 'package:ebayan/data/model/barangay_model.dart';
 import 'package:ebayan/presentation/dashboard/widgets/loading_bar.dart';
 import 'package:ebayan/utils/routes.dart';
@@ -94,6 +95,14 @@ class SphereCard extends StatefulWidget {
 
 class _SphereCardState extends State<SphereCard> {
   CardOptions? selectedMenu;
+  final UserController userController = UserController();
+
+  Future<void> leaveBarangaySphere() async {
+    await userController.leaveBarangaySphere();
+    if (context.mounted) {
+      Navigator.of(context).pushReplacement(createRoute(route: Routes.dashboard));
+    }
+  }
 
   Widget cardFooter() {
     return Container(
@@ -182,6 +191,62 @@ class _SphereCardState extends State<SphereCard> {
             Clipboard.setData(ClipboardData(text: widget.brgyCode!));
             ScaffoldMessenger.of(context).showSnackBar(
               EBSnackBar.info(text: 'Brgy. sphere code has been copied to your clipboard.'),
+            );
+          }
+          if (item == CardOptions.itemTwo) {
+            showModalBottomSheet<void>(
+              context: context,
+              builder: (BuildContext context) {
+                return Container(
+                  decoration: BoxDecoration(
+                    color: EBColor.light,
+                    borderRadius: BorderRadius.circular(EBBorderRadius.lg),
+                    boxShadow: [
+                      BoxShadow(
+                        offset: const Offset(0, 4),
+                        blurRadius: 30,
+                        color: EBColor.green[600]!.withOpacity(0.25),
+                      ),
+                    ],
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(Global.paddingBody),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        EBTypography.h3(text: 'Leave Barangay Sphere?'),
+                        const SizedBox(height: Spacing.xs),
+                        EBTypography.text(
+                          text: 'You will lose connection to this barangay sphere. Are you sure you want to proceed?',
+                          muted: true,
+                        ),
+                        const SizedBox(height: Spacing.md),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            TextButton(
+                              onPressed: () => Navigator.of(context).pop(),
+                              child: EBTypography.text(text: 'Cancel', color: EBColor.green),
+                            ),
+                            const SizedBox(width: Spacing.md),
+                            EBButton(
+                              onPressed: () => leaveBarangaySphere(),
+                              text: 'Proceed',
+                              theme: EBButtonTheme.primaryOutlined,
+                              icon: const Icon(
+                                FeatherIcons.arrowRight,
+                                size: EBFontSize.normal,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                );
+              },
             );
           }
           if (item == CardOptions.itemThree) {

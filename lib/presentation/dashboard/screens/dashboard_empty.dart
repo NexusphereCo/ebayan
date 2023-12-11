@@ -33,43 +33,46 @@ class _EmptyDashboardViewState extends State<EmptyDashboardView> {
     return Scaffold(
       appBar: const EBAppBar(),
       drawer: const EBDrawer(),
-      body: Padding(
-        padding: const EdgeInsets.all(Global.paddingBody),
-        child: Column(
-          children: [
-            buildHeading(),
-            Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Column(
-                    children: [
-                      SvgPicture.asset(Asset.houseEmpty),
-                      const SizedBox(height: Spacing.lg),
-                      EBTypography.text(
-                        text: "You currently aren't joined to any barangay spheres. Let's change that!",
-                        muted: true,
-                        textAlign: TextAlign.center,
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: Spacing.lg),
-                  SizedBox(
-                    width: double.infinity,
-                    child: EBButton(
-                      onPressed: () {
-                        Navigator.of(context).push(createRoute(route: Routes.joinBrgy));
-                      },
-                      text: 'Get Started!',
-                      theme: EBButtonTheme.primary,
+      body: PopScope(
+        canPop: false,
+        child: Padding(
+          padding: const EdgeInsets.all(Global.paddingBody),
+          child: Column(
+            children: [
+              buildHeading(),
+              Expanded(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Column(
+                      children: [
+                        SvgPicture.asset(Asset.houseEmpty),
+                        const SizedBox(height: Spacing.lg),
+                        EBTypography.text(
+                          text: "You currently aren't joined to any barangay spheres. Let's change that!",
+                          muted: true,
+                          textAlign: TextAlign.center,
+                        ),
+                      ],
                     ),
-                  ),
-                  const SizedBox(height: Spacing.lg),
-                  const SizedBox(height: Spacing.lg),
-                ],
+                    const SizedBox(height: Spacing.lg),
+                    SizedBox(
+                      width: double.infinity,
+                      child: EBButton(
+                        onPressed: () {
+                          Navigator.of(context).push(createRoute(route: Routes.joinBrgy));
+                        },
+                        text: 'Get Started!',
+                        theme: EBButtonTheme.primary,
+                      ),
+                    ),
+                    const SizedBox(height: Spacing.lg),
+                    const SizedBox(height: Spacing.lg),
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
       floatingActionButton: FloatingActionButton(
