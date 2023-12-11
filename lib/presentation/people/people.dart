@@ -98,7 +98,7 @@ class _PeopleScreenState extends State<PeopleScreen> {
                           future: fetchPeople(),
                           builder: (context, snapshot) {
                             if (snapshot.connectionState == ConnectionState.waiting) {
-                              return const EBCircularLoadingIndicator();
+                              return const EBCircularLoadingIndicator(showText: true);
                             } else {
                               final users = snapshot.data!;
 

@@ -136,9 +136,10 @@ Widget buildLoginCred({
                 const SizedBox(width: Spacing.sm),
                 EBButton(
                   text: 'Register',
-                  icon: const Icon(
+                  icon: Icon(
                     FeatherIcons.arrowRight,
                     size: EBFontSize.normal,
+                    color: EBColor.light,
                   ),
                   theme: EBButtonTheme.primary,
                   onPressed: onRegisterHandler,

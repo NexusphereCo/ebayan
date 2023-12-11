@@ -54,13 +54,13 @@ class _SavedAnnouncementScreenState extends State<SavedAnnouncementScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      EBTypography.h1(text: 'Announcement'),
+                      EBTypography.h1(text: 'Saved Announcements'),
                       const SizedBox(width: Spacing.sm),
                       FaIcon(FontAwesomeIcons.solidBookmark, size: 30, color: EBColor.dark),
                     ],
                   ),
                   const SizedBox(height: Spacing.md),
-                  const EBCircularLoadingIndicator(),
+                  const EBCircularLoadingIndicator(showText: true),
                 ],
               );
             } else {

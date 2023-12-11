@@ -77,7 +77,7 @@ class _AnnouncementListScreenState extends State<AnnouncementListScreen> {
               return Column(
                 children: [
                   buildLoadingHeading(),
-                  const EBCircularLoadingIndicator(),
+                  const EBCircularLoadingIndicator(showText: true),
                 ],
               );
             } else {

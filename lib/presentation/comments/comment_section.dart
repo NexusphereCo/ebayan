@@ -56,14 +56,10 @@ class _CommentSectionState extends State<CommentSection> {
                     ),
                     if (snapshot.connectionState == ConnectionState.waiting)
                       const SliverToBoxAdapter(
-                        child: EBCircularLoadingIndicator(
-                          height: 300,
-                        ),
+                        child: EBCircularLoadingIndicator(height: 300),
                       )
                     else if (comments.isEmpty)
-                      SliverToBoxAdapter(
-                        child: buildNoComments(),
-                      )
+                      SliverToBoxAdapter(child: buildNoComments())
                     else
                       CommentsList(comments: comments),
                   ],
