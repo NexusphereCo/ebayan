@@ -170,9 +170,7 @@ class _JoinedDashboardLoadingViewState extends State<JoinedDashboardLoadingView>
             ],
           ),
           floatingActionButton: FloatingActionButton(
-            onPressed: () {
-              Navigator.of(context).push(createRoute(route: Routes.joinBrgy));
-            },
+            onPressed: () {},
             child: const Icon(FeatherIcons.plus),
           ),
           floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
