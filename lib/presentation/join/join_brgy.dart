@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:ebayan/constants/assets.dart';
+import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/constants/typography.dart';
 import 'package:ebayan/controller/brgy_controller.dart';
 import 'package:ebayan/presentation/join/widgets/pin_code_field.dart';
@@ -50,7 +51,7 @@ class _JoinBrgyScreenState extends State<JoinBrgyScreen> {
     super.dispose();
   }
 
-  Future<void> _join() async {
+  Future<void> join() async {
     try {
       // validate the form
       bool isFormValid = formKey.currentState?.validate() == true;
@@ -129,13 +130,14 @@ class _JoinBrgyScreenState extends State<JoinBrgyScreen> {
                       children: [
                         EBButton(
                           text: 'Join',
-                          icon: const Icon(
+                          icon: Icon(
                             FeatherIcons.arrowRight,
                             size: EBFontSize.normal,
+                            color: EBColor.light,
                           ),
                           theme: EBButtonTheme.primary,
                           onPressed: () {
-                            showConfirmJoinModal(context: context, onJoinHandler: _join);
+                            showConfirmJoinModal(context: context, onJoinHandler: join);
                           },
                         ),
                       ],

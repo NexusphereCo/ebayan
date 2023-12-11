@@ -17,6 +17,7 @@ class Asset {
   static const String recentAnnWave = 'assets/svgs/illust/card-recent-ann-wave.svg';
   static const String accInfoBackdrop = 'assets/svgs/illust/acc-info-backg.svg';
   static const String officialProcessing = 'assets/svgs/illust/official-processing.svg';
+  static const String noAnnouncements = 'assets/svgs/illust/no-ann.svg';
   // --------------------------------------------------------------------------------------
   // Misc.
   // --------------------------------------------------------------------------------------

@@ -4,16 +4,16 @@ import 'package:ebayan/controller/anct_controller.dart';
 import 'package:ebayan/controller/brgy_controller.dart';
 import 'package:ebayan/controller/user_controller.dart';
 import 'package:ebayan/data/viewmodel/barangay_view_model.dart';
-import 'package:ebayan/presentation/announcements/widgets/announcement_card.dart';
 import 'package:ebayan/utils/global.dart';
 import 'package:ebayan/constants/size.dart';
 import 'package:ebayan/utils/routes.dart';
 import 'package:ebayan/widgets/components/loading.dart';
 import 'package:ebayan/widgets/layout_components/appbar_top.dart';
-import 'package:ebayan/widgets/utils/fade_in.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import 'states/content.dart';
+import 'states/empty.dart';
 import 'widgets/heading.dart';
 
 class AnnouncementListScreen extends StatefulWidget {
@@ -76,16 +76,11 @@ class _AnnouncementListScreenState extends State<AnnouncementListScreen> {
                 onRefresh: () async => setState(() {}),
                 backgroundColor: EBColor.light,
                 child: ListView.builder(
-                  itemCount: barangay.announcements!.length,
+                  itemCount: barangay.announcements!.isEmpty ? 1 : barangay.announcements!.length,
                   itemBuilder: (context, index) {
-                    return Column(
-                      children: [
-                        if (index == 0) buildHeading(barangay: barangay),
-                        FadeIn(
-                          child: AnnouncementCard(announcement: barangay.announcements![index]),
-                        ),
-                      ],
-                    );
+                    return barangay.announcements!.isEmpty //
+                        ? EmptyAnnouncements(barangay: barangay)
+                        : RenderAnnouncements(index: index, barangay: barangay);
                   },
                 ),
               );

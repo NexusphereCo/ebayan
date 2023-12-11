@@ -24,7 +24,7 @@ class LargeCustomButton extends StatelessWidget {
       color: Colors.transparent,
       child: InkWell(
         onTap: onTap,
-        splashColor: EBColor.green[300],
+        splashColor: EBColor.green[100],
         borderRadius: BorderRadius.circular(EBBorderRadius.md),
         child: Ink(
           width: double.infinity,

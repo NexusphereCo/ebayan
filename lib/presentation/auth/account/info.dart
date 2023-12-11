@@ -56,7 +56,7 @@ class AccountScreenState extends State<AccountScreen> {
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
                       return EBCircularLoadingIndicator(
-                        height: MediaQuery.of(context).size.height / 2,
+                        height: MediaQuery.of(context).size.height * 0.5,
                         strokeColor: EBColor.green,
                       );
                     } else {

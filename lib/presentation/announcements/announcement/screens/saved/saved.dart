@@ -4,15 +4,16 @@ import 'package:ebayan/controller/anct_controller.dart';
 import 'package:ebayan/controller/brgy_controller.dart';
 import 'package:ebayan/controller/user_controller.dart';
 import 'package:ebayan/data/viewmodel/announcement_view_model.dart';
-import 'package:ebayan/presentation/announcements/widgets/announcement_card.dart';
 import 'package:ebayan/utils/global.dart';
 import 'package:ebayan/constants/size.dart';
 import 'package:ebayan/widgets/components/loading.dart';
 import 'package:ebayan/widgets/layout_components/appbar_bottom.dart';
 import 'package:ebayan/widgets/layout_components/appbar_top.dart';
-import 'package:ebayan/widgets/utils/fade_in.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+import 'states/content.dart';
+import 'states/empty.dart';
 
 class SavedAnnouncementScreen extends StatefulWidget {
   const SavedAnnouncementScreen({super.key});
@@ -86,66 +87,6 @@ class _SavedAnnouncementScreenState extends State<SavedAnnouncementScreen> {
         ),
       ),
       bottomNavigationBar: const EBAppBarBottom(activeIndex: 3),
-    );
-  }
-}
-
-class RenderSavedAnnouncements extends StatelessWidget {
-  final int index;
-
-  const RenderSavedAnnouncements({
-    super.key,
-    required this.announcements,
-    required this.index,
-  });
-
-  final List<AnnouncementViewModel> announcements;
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        if (index == 0)
-          Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  EBTypography.h1(text: 'Announcement'),
-                  const SizedBox(width: Spacing.sm),
-                  FaIcon(FontAwesomeIcons.solidBookmark, size: 30, color: EBColor.dark),
-                ],
-              ),
-              const SizedBox(height: Spacing.md),
-            ],
-          ),
-        FadeIn(
-          child: AnnouncementCard(announcement: announcements[index]),
-        ),
-      ],
-    );
-  }
-}
-
-class EmptySavedAnnouncements extends StatelessWidget {
-  const EmptySavedAnnouncements({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            EBTypography.h1(text: 'Announcement'),
-            const SizedBox(width: Spacing.sm),
-            FaIcon(FontAwesomeIcons.solidBookmark, size: 30, color: EBColor.dark),
-          ],
-        ),
-        const SizedBox(height: Spacing.md),
-      ],
     );
   }
 }

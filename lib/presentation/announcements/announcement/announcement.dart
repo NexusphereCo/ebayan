@@ -27,7 +27,7 @@ class _AnnouncementScreenState extends State<AnnouncementScreen> {
   final UserController userController = UserController();
   final AnnouncementController announcementController = AnnouncementController();
   QuillController bodyController = QuillController.basic();
-  late String userType;
+  late String userType = '';
 
   @override
   void initState() {

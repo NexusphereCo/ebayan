@@ -25,7 +25,7 @@ class AnnouncementCard extends StatelessWidget {
                 createRoute(route: Routes.announcement, args: announcement.id.toString()),
               );
             },
-            splashColor: EBColor.green[300],
+            splashColor: EBColor.green[100],
             child: Ink(
               color: EBColor.primary[100],
               child: Stack(
