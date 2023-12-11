@@ -118,7 +118,10 @@ class _LoginFormState extends State<LoginForm> {
           ),
           const SizedBox(height: Spacing.sm),
           TextButton(
-            onPressed: () {},
+            onPressed: () {
+              print('called');
+              Navigator.of(context).push(createRoute(route: Routes.forgotPassw));
+            },
             child: EBTypography.text(
               text: 'Forgot Password?',
               color: EBColor.primary,

@@ -4,6 +4,9 @@ import 'package:ebayan/presentation/announcements/announcement/screens/create/cr
 import 'package:ebayan/presentation/announcements/announcement/screens/edit/edit.dart';
 import 'package:ebayan/presentation/announcements/announcement/screens/saved/saved.dart';
 import 'package:ebayan/presentation/auth/account/info.dart';
+import 'package:ebayan/presentation/auth/forgotPassword/forgot_password.dart';
+import 'package:ebayan/presentation/auth/forgotPassword/otp_verification.dart';
+import 'package:ebayan/presentation/auth/forgotPassword/reset_password.dart';
 import 'package:ebayan/presentation/auth/login/login.dart';
 import 'package:ebayan/presentation/auth/register/official/official.dart';
 import 'package:ebayan/presentation/auth/register/official/screens/wait.dart';
@@ -27,6 +30,9 @@ class Routes {
   // --------------------------------------------------------------------------------------
   static const String login = '/login';
   static const String register = '/register';
+  static const String forgotPassw = '/account/forgot_password';
+  static const String forgotPasswOtp = '/account/forgot_password/otp';
+  static const String forgotPasswResetPassw = '/account/forgot_password/reset';
   static const String accountInfo = '/account/info';
   static const String registerOfficial = '/register/as_official';
   static const String registerOfficialWaitlist = '/register/as_official/wait';
@@ -60,6 +66,9 @@ class Routes {
     // Authentication related
     login: () => const LoginScreen(),
     register: () => const RegisterScreen(),
+    forgotPassw: () => const ForgotPasswordScreen(),
+    forgotPasswOtp: () => const ForgotPasswordOtpVerificationScreen(),
+    forgotPasswResetPassw: () => const ForgotPasswordResetScreen(),
     accountInfo: () => const AccountScreen(),
     registerOfficial: () => const RegisterOfficialScreen(),
     registerOfficialWaitlist: () => const WaitScreen(),
@@ -83,6 +92,9 @@ class Routes {
     // Authentication related
     login: (BuildContext context) => const LoginScreen(),
     register: (BuildContext context) => const RegisterScreen(),
+    forgotPassw: (BuildContext context) => const ForgotPasswordScreen(),
+    forgotPasswOtp: (BuildContext context) => const ForgotPasswordOtpVerificationScreen(),
+    forgotPasswResetPassw: (BuildContext context) => const ForgotPasswordResetScreen(),
     accountInfo: (BuildContext context) => const AccountScreen(),
     registerOfficial: (BuildContext context) => const RegisterOfficialScreen(),
     registerOfficialWaitlist: (BuildContext context) => const WaitScreen(),
