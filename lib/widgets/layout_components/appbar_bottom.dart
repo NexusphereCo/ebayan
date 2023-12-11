@@ -2,11 +2,13 @@ import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/constants/icons.dart';
 import 'package:ebayan/constants/size.dart';
 import 'package:ebayan/constants/typography.dart';
+import 'package:ebayan/controller/brgy_controller.dart';
 import 'package:ebayan/utils/routes.dart';
+import 'package:ebayan/widgets/components/snackbar.dart';
 
 import 'package:flutter/material.dart';
 
-class EBAppBarBottom extends StatelessWidget {
+class EBAppBarBottom extends StatefulWidget {
   final int activeIndex;
 
   const EBAppBarBottom({
@@ -14,7 +16,26 @@ class EBAppBarBottom extends StatelessWidget {
     required this.activeIndex,
   });
 
-  Widget buildContents(BuildContext context) {
+  @override
+  State<EBAppBarBottom> createState() => _EBAppBarBottomState();
+}
+
+class _EBAppBarBottomState extends State<EBAppBarBottom> {
+  final BarangayController brgyController = BarangayController();
+
+  bool hasJoinedBrgy = false;
+
+  @override
+  void initState() {
+    super.initState();
+    checkIfJoined();
+  }
+
+  Future<void> checkIfJoined() async {
+    hasJoinedBrgy = await brgyController.hasJoinedBrgy();
+  }
+
+  Widget buildContents() {
     double iconSize = 20.0;
 
     return Row(
@@ -31,15 +52,15 @@ class EBAppBarBottom extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Icon(
-                  (activeIndex == 1) ? EBIcons.homeSolid : EBIcons.home,
+                  (widget.activeIndex == 1) ? EBIcons.homeSolid : EBIcons.home,
                   size: iconSize + 3,
-                  color: (activeIndex == 1) ? EBColor.primary : EBColor.dark.withOpacity(0.5),
+                  color: (widget.activeIndex == 1) ? EBColor.primary : EBColor.dark.withOpacity(0.5),
                 ),
                 const SizedBox(height: Spacing.sm),
                 EBTypography.small(
                   text: 'Sphere',
-                  color: (activeIndex == 1) ? EBColor.primary : EBColor.dark.withOpacity(0.5),
-                  muted: (activeIndex == 1) ? false : true,
+                  color: (widget.activeIndex == 1) ? EBColor.primary : EBColor.dark.withOpacity(0.5),
+                  muted: (widget.activeIndex == 1) ? false : true,
                 ),
               ],
             ),
@@ -47,8 +68,12 @@ class EBAppBarBottom extends StatelessWidget {
         ),
         InkResponse(
           onTap: () {
-            if (ModalRoute.of(context)?.settings.name != Routes.people) {
+            if (hasJoinedBrgy && ModalRoute.of(context)?.settings.name != Routes.people) {
               Navigator.of(context).push(createRoute(route: Routes.people));
+            } else {
+              ScaffoldMessenger.of(context).showSnackBar(
+                EBSnackBar.info(text: 'Join a barangay first before viewing this page.'),
+              );
             }
           },
           child: GestureDetector(
@@ -56,15 +81,15 @@ class EBAppBarBottom extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Icon(
-                  (activeIndex == 2) ? EBIcons.usersSolid : EBIcons.users,
+                  (widget.activeIndex == 2) ? EBIcons.usersSolid : EBIcons.users,
                   size: iconSize + 3,
-                  color: (activeIndex == 2) ? EBColor.primary : EBColor.dark.withOpacity(0.5),
+                  color: (widget.activeIndex == 2) ? EBColor.primary : EBColor.dark.withOpacity(0.5),
                 ),
                 const SizedBox(height: Spacing.sm),
                 EBTypography.small(
                   text: 'People',
-                  color: (activeIndex == 2) ? EBColor.primary : EBColor.dark.withOpacity(0.5),
-                  muted: (activeIndex == 2) ? false : true,
+                  color: (widget.activeIndex == 2) ? EBColor.primary : EBColor.dark.withOpacity(0.5),
+                  muted: (widget.activeIndex == 2) ? false : true,
                 ),
               ],
             ),
@@ -81,15 +106,15 @@ class EBAppBarBottom extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Icon(
-                  (activeIndex == 3) ? EBIcons.bookmarkSolid : EBIcons.bookmark,
+                  (widget.activeIndex == 3) ? EBIcons.bookmarkSolid : EBIcons.bookmark,
                   size: iconSize + 3,
-                  color: (activeIndex == 3) ? EBColor.primary : EBColor.dark.withOpacity(0.5),
+                  color: (widget.activeIndex == 3) ? EBColor.primary : EBColor.dark.withOpacity(0.5),
                 ),
                 const SizedBox(height: Spacing.sm),
                 EBTypography.small(
                   text: 'Saved',
-                  color: (activeIndex == 3) ? EBColor.primary : EBColor.dark.withOpacity(0.5),
-                  muted: (activeIndex == 3) ? false : true,
+                  color: (widget.activeIndex == 3) ? EBColor.primary : EBColor.dark.withOpacity(0.5),
+                  muted: (widget.activeIndex == 3) ? false : true,
                 ),
               ],
             ),
@@ -106,15 +131,15 @@ class EBAppBarBottom extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Icon(
-                  (activeIndex == 4) ? EBIcons.settingsSolid : EBIcons.settings,
+                  (widget.activeIndex == 4) ? EBIcons.settingsSolid : EBIcons.settings,
                   size: iconSize + 3,
-                  color: (activeIndex == 4) ? EBColor.primary : EBColor.dark.withOpacity(0.5),
+                  color: (widget.activeIndex == 4) ? EBColor.primary : EBColor.dark.withOpacity(0.5),
                 ),
                 const SizedBox(height: Spacing.sm),
                 EBTypography.small(
                   text: 'Account',
-                  color: (activeIndex == 4) ? EBColor.primary : EBColor.dark.withOpacity(0.5),
-                  muted: (activeIndex == 4) ? false : true,
+                  color: (widget.activeIndex == 4) ? EBColor.primary : EBColor.dark.withOpacity(0.5),
+                  muted: (widget.activeIndex == 4) ? false : true,
                 ),
               ],
             ),
@@ -130,7 +155,7 @@ class EBAppBarBottom extends StatelessWidget {
       shape: const CircularNotchedRectangle(),
       notchMargin: 8.0,
       color: Colors.white,
-      child: buildContents(context),
+      child: buildContents(),
     );
   }
 }
