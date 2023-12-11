@@ -37,6 +37,7 @@ Widget buildPersonalInfo({
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Icon(
                       FeatherIcons.user,
