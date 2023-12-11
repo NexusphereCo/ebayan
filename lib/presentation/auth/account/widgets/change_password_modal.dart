@@ -128,7 +128,7 @@ class _ChangePasswordModalFormState extends State<ChangePasswordModalForm> {
               children: [
                 TextButton(
                   onPressed: () => Navigator.of(context).pop(),
-                  child: EBTypography.text(text: 'Cancel', color: EBColor.red),
+                  child: EBTypography.text(text: 'Cancel', color: EBColor.green),
                 ),
                 const SizedBox(width: Spacing.md),
                 EBButton(
