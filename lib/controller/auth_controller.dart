@@ -6,6 +6,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:logger/logger.dart';
+import 'package:path/path.dart' as path;
 
 class LoginController {
   final FirebaseAuth _dbAuth = FirebaseAuth.instance;
@@ -84,7 +85,7 @@ class RegisterController {
       // putting doc proof to the firebaseStorage
       final storage = FirebaseStorage.instance.ref();
       final folder = storage.child('proofs');
-      final proof = folder.child('DOC_${docData.lastName.toUpperCase()}_${DateTime.timestamp()}.pdf');
+      final proof = folder.child('DOC_${docData.lastName.toUpperCase()}_${DateTime.timestamp()}${path.extension(docData.proofOfOfficial!.path)}');
 
       await proof.putFile(docData.proofOfOfficial!);
 

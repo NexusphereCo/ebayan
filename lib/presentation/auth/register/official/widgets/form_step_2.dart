@@ -98,7 +98,7 @@ Widget buildBarangayAssociation({
                     onTap: () async {
                       FilePickerResult? result = await FilePicker.platform.pickFiles(
                         type: FileType.custom,
-                        allowedExtensions: ['pdf'],
+                        allowedExtensions: ['pdf', 'jpg', 'doc', 'png'],
                       );
 
                       // the user has selected a file
@@ -118,7 +118,7 @@ Widget buildBarangayAssociation({
                     Column(
                       children: [
                         const SizedBox(height: Spacing.sm),
-                        EBTypography.small(text: 'PDF', muted: true),
+                        EBTypography.small(text: 'PDF/IMG', muted: true),
                       ],
                     ),
                   ],

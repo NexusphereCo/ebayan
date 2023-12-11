@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:path/path.dart' as path;
 
 enum UserType { official, resident }
 
@@ -21,7 +21,6 @@ class UserModel {
   // login credentials
   final String username;
   final String password;
-  final CollectionReference? savedAnnouncements;
 
   UserModel({
     required this.userType,
@@ -36,7 +35,6 @@ class UserModel {
     this.proofOfOfficial,
     required this.username,
     required this.password,
-    this.savedAnnouncements,
   });
 
   /// This will be used to be stored in the firestore
@@ -56,10 +54,9 @@ class UserModel {
           'birthDate': birthDate,
           'barangayAssociated': barangayAssociated,
           'username': email,
-          'savedAnnouncements': savedAnnouncements,
         };
       case UserType.official:
-        String docFileName = 'DOC_${lastName.toUpperCase()}_${DateTime.timestamp()}.pdf';
+        String docFileName = 'DOC_${lastName.toUpperCase()}_${DateTime.timestamp()}${path.extension(proofOfOfficial!.path)}';
         return {
           'userType': 'OFFICIAL',
           'firstName': firstName,
@@ -72,7 +69,6 @@ class UserModel {
           'isApproved': isApproved,
           'proofOfOfficial': docFileName,
           'username': email,
-          'savedAnnouncements': savedAnnouncements,
         };
 
       default:
