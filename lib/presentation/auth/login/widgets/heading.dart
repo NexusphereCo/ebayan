@@ -1,5 +1,6 @@
 import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/constants/typography.dart';
+
 import 'package:flutter/material.dart';
 
 Widget buildHeading() {

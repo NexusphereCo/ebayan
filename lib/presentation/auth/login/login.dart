@@ -1,9 +1,9 @@
 import 'package:ebayan/constants/size.dart';
+import 'package:ebayan/presentation/auth/login/widgets/form.dart';
+import 'package:ebayan/presentation/auth/login/widgets/heading.dart';
 import 'package:ebayan/widgets/layout_components/footer.dart';
-import 'package:flutter/material.dart';
 
-import 'widgets/form.dart';
-import 'widgets/heading.dart';
+import 'package:flutter/material.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});

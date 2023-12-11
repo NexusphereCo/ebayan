@@ -1,13 +1,14 @@
 import 'package:ebayan/constants/assets.dart';
 import 'package:ebayan/constants/colors.dart';
+import 'package:ebayan/constants/size.dart';
 import 'package:ebayan/constants/typography.dart';
 import 'package:ebayan/data/viewmodel/announcement_view_model.dart';
 import 'package:ebayan/utils/routes.dart';
-import 'package:ebayan/constants/size.dart';
 import 'package:ebayan/widgets/utils/fade_in.dart';
+
 import 'package:feather_icons/feather_icons.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 Widget buildLatestAnnouncements({

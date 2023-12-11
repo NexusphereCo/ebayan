@@ -1,4 +1,5 @@
 import 'package:ebayan/constants/colors.dart';
+
 import 'package:flutter/material.dart';
 
 class EBProgressIndicator extends StatelessWidget {

@@ -4,6 +4,7 @@ import 'package:ebayan/constants/typography.dart';
 import 'package:ebayan/data/viewmodel/announcement_view_model.dart';
 import 'package:ebayan/presentation/announcements/widgets/announcement_card.dart';
 import 'package:ebayan/widgets/utils/fade_in.dart';
+
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 

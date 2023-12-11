@@ -1,19 +1,20 @@
 import 'package:ebayan/constants/colors.dart';
+import 'package:ebayan/constants/size.dart';
 import 'package:ebayan/constants/typography.dart';
 import 'package:ebayan/controller/brgy_controller.dart';
 import 'package:ebayan/controller/user_controller.dart';
 import 'package:ebayan/data/viewmodel/barangay_view_model.dart';
+import 'package:ebayan/presentation/dashboard/screens/dashboard_loading.dart';
+import 'package:ebayan/presentation/dashboard/widgets/card_announcement.dart';
+import 'package:ebayan/presentation/dashboard/widgets/card_sphere.dart';
+import 'package:ebayan/presentation/dashboard/widgets/heading.dart';
 import 'package:ebayan/utils/global.dart';
 import 'package:ebayan/utils/routes.dart';
-import 'package:ebayan/constants/size.dart';
 import 'package:ebayan/widgets/layout_components/appbar_bottom.dart';
 import 'package:ebayan/widgets/layout_components/appbar_top.dart';
+
 import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
-import '../widgets/card_announcement.dart';
-import '../widgets/card_sphere.dart';
-import '../widgets/heading.dart';
-import 'dashboard_loading.dart';
 
 class JoinedDashboardView extends StatefulWidget {
   const JoinedDashboardView({super.key});

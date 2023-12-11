@@ -1,9 +1,9 @@
 import 'package:ebayan/data/viewmodel/barangay_view_model.dart';
 import 'package:ebayan/presentation/announcements/widgets/announcement_card.dart';
+import 'package:ebayan/presentation/announcements/widgets/heading.dart';
 import 'package:ebayan/widgets/utils/fade_in.dart';
-import 'package:flutter/material.dart';
 
-import '../widgets/heading.dart';
+import 'package:flutter/material.dart';
 
 class RenderAnnouncements extends StatelessWidget {
   final int index;

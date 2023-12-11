@@ -1,24 +1,24 @@
 import 'package:bottom_picker/bottom_picker.dart';
 import 'package:ebayan/constants/colors.dart';
+import 'package:ebayan/constants/size.dart';
 import 'package:ebayan/constants/typography.dart';
 import 'package:ebayan/constants/validation.dart';
 import 'package:ebayan/controller/user_controller.dart';
 import 'package:ebayan/data/model/user_model.dart';
 import 'package:ebayan/data/viewmodel/user_view_model.dart';
-import 'package:ebayan/constants/size.dart';
+import 'package:ebayan/presentation/auth/account/info.dart';
+import 'package:ebayan/presentation/auth/account/widgets/change_password_modal.dart';
+import 'package:ebayan/presentation/auth/account/widgets/confirm_logout_modal.dart';
+import 'package:ebayan/presentation/auth/account/widgets/large_button.dart';
 import 'package:ebayan/widgets/components/buttons.dart';
 import 'package:ebayan/widgets/components/loading.dart';
 import 'package:ebayan/widgets/components/snackbar.dart';
 import 'package:ebayan/widgets/utils/fade_in.dart';
+
 import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
-
-import '../info.dart';
-import 'change_password_modal.dart';
-import 'confirm_logout_modal.dart';
-import 'large_button.dart';
 
 class AccountInfoForm extends StatefulWidget {
   final AccountScreenState parent;

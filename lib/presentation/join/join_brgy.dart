@@ -2,23 +2,23 @@ import 'dart:async';
 
 import 'package:ebayan/constants/assets.dart';
 import 'package:ebayan/constants/colors.dart';
+import 'package:ebayan/constants/size.dart';
 import 'package:ebayan/constants/typography.dart';
 import 'package:ebayan/controller/brgy_controller.dart';
+import 'package:ebayan/presentation/join/widgets/confirm_join_modal.dart';
 import 'package:ebayan/presentation/join/widgets/pin_code_field.dart';
 import 'package:ebayan/utils/global.dart';
 import 'package:ebayan/utils/routes.dart';
-import 'package:ebayan/constants/size.dart';
 import 'package:ebayan/widgets/components/buttons.dart';
 import 'package:ebayan/widgets/components/loading.dart';
 import 'package:ebayan/widgets/components/snackbar.dart';
 import 'package:ebayan/widgets/layout_components/appbar_bottom.dart';
 import 'package:ebayan/widgets/layout_components/appbar_top.dart';
-import 'package:feather_icons/feather_icons.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:pin_code_fields/pin_code_fields.dart';
 
-import 'widgets/confirm_join_modal.dart';
+import 'package:feather_icons/feather_icons.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:flutter/material.dart';
+import 'package:pin_code_fields/pin_code_fields.dart';
 
 class JoinBrgyScreen extends StatefulWidget {
   const JoinBrgyScreen({super.key});

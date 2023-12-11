@@ -2,6 +2,7 @@ import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/constants/size.dart';
 import 'package:ebayan/constants/typography.dart';
 import 'package:ebayan/presentation/dashboard/widgets/loading_bar.dart';
+
 import 'package:flutter/material.dart';
 
 Widget buildHeading({required int numOfPeople}) {

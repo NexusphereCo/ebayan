@@ -1,19 +1,20 @@
-import 'package:ebayan/presentation/auth/account/info.dart';
-import 'package:ebayan/presentation/auth/login/login.dart';
-import 'package:ebayan/presentation/auth/register/official/screens/wait.dart';
-import 'package:ebayan/presentation/auth/register/register.dart';
-import 'package:ebayan/presentation/auth/register/official/official.dart';
-import 'package:ebayan/presentation/auth/register/resident/resident.dart';
+import 'package:ebayan/presentation/announcements/announcement_list.dart';
 import 'package:ebayan/presentation/announcements/announcement/announcement.dart';
 import 'package:ebayan/presentation/announcements/announcement/screens/create/create.dart';
 import 'package:ebayan/presentation/announcements/announcement/screens/edit/edit.dart';
 import 'package:ebayan/presentation/announcements/announcement/screens/saved/saved.dart';
-import 'package:ebayan/presentation/announcements/announcement_list.dart';
+import 'package:ebayan/presentation/auth/account/info.dart';
+import 'package:ebayan/presentation/auth/login/login.dart';
+import 'package:ebayan/presentation/auth/register/official/official.dart';
+import 'package:ebayan/presentation/auth/register/official/screens/wait.dart';
+import 'package:ebayan/presentation/auth/register/register.dart';
+import 'package:ebayan/presentation/auth/register/resident/resident.dart';
 import 'package:ebayan/presentation/dashboard/dashboard.dart';
 import 'package:ebayan/presentation/dashboard/screens/dashboard_empty.dart';
 import 'package:ebayan/presentation/dashboard/screens/dashboard_joined.dart';
 import 'package:ebayan/presentation/join/join_brgy.dart';
 import 'package:ebayan/presentation/people/people.dart';
+
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 

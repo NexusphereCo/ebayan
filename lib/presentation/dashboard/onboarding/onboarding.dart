@@ -1,15 +1,15 @@
 import 'package:ebayan/constants/colors.dart';
+import 'package:ebayan/presentation/dashboard/onboarding/widgets/guide_card.dart';
+import 'package:ebayan/presentation/dashboard/onboarding/widgets/temp_dashboard_empty.dart';
+import 'package:ebayan/presentation/dashboard/onboarding/widgets/temp_dashboard.dart';
 import 'package:ebayan/utils/routes.dart';
 import 'package:ebayan/widgets/layout_components/appbar_bottom.dart';
 import 'package:ebayan/widgets/layout_components/appbar_top.dart';
 import 'package:ebayan/widgets/utils/fade_in.dart';
+
 import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:tutorial_coach_mark/tutorial_coach_mark.dart';
-
-import 'widgets/guide_card.dart';
-import 'widgets/temp_dashboard.dart';
-import 'widgets/temp_dashboard_empty.dart';
 
 class OnBoardingView extends StatefulWidget {
   const OnBoardingView({super.key});

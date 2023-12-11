@@ -1,16 +1,16 @@
 import 'package:ebayan/constants/assets.dart';
 import 'package:ebayan/constants/colors.dart';
+import 'package:ebayan/constants/size.dart';
 import 'package:ebayan/constants/typography.dart';
 import 'package:ebayan/controller/user_controller.dart';
 import 'package:ebayan/data/viewmodel/user_view_model.dart';
-import 'package:ebayan/constants/size.dart';
+import 'package:ebayan/presentation/auth/account/widgets/form.dart';
 import 'package:ebayan/widgets/components/loading.dart';
 import 'package:ebayan/widgets/layout_components/appbar_bottom.dart';
 import 'package:ebayan/widgets/layout_components/appbar_top.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
-import 'widgets/form.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter/material.dart';
 
 class AccountScreen extends StatefulWidget {
   const AccountScreen({super.key});

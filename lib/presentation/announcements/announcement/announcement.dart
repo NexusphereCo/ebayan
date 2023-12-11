@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:ebayan/constants/colors.dart';
+import 'package:ebayan/constants/size.dart';
 import 'package:ebayan/constants/typography.dart';
 import 'package:ebayan/controller/anct_controller.dart';
 import 'package:ebayan/controller/user_controller.dart';
@@ -8,13 +9,13 @@ import 'package:ebayan/data/viewmodel/announcement_view_model.dart';
 import 'package:ebayan/data/viewmodel/user_view_model.dart';
 import 'package:ebayan/presentation/announcements/announcement/widgets/reaction.dart';
 import 'package:ebayan/presentation/comments/comment_section.dart';
-import 'package:ebayan/constants/size.dart';
 import 'package:ebayan/widgets/components/buttons.dart';
 import 'package:ebayan/widgets/components/loading.dart';
 import 'package:ebayan/widgets/layout_components/appbar_top.dart';
+
 import 'package:feather_icons/feather_icons.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_quill/flutter_quill.dart';
+import 'package:flutter/material.dart';
 
 class AnnouncementScreen extends StatefulWidget {
   const AnnouncementScreen({super.key});

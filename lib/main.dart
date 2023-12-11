@@ -1,5 +1,6 @@
 import 'package:ebayan/presentation/app.dart';
 import 'package:ebayan/utils/global.dart';
+
 import 'package:flutter/material.dart';
 
 Future<void> main() async {

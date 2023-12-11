@@ -1,12 +1,13 @@
 import 'package:ebayan/constants/colors.dart';
+import 'package:ebayan/constants/size.dart';
 import 'package:ebayan/controller/reaction_contoller.dart';
 import 'package:ebayan/data/viewmodel/comment_view_model.dart';
 import 'package:ebayan/presentation/comments/widgets/comment_handling.dart';
 import 'package:ebayan/presentation/comments/widgets/comment_heading.dart';
 import 'package:ebayan/presentation/comments/widgets/comments_list.dart';
-import 'package:ebayan/constants/size.dart';
 import 'package:ebayan/widgets/components/loading.dart';
 import 'package:ebayan/widgets/utils/rotate_widget.dart';
+
 import 'package:flutter/material.dart';
 
 class CommentSection extends StatefulWidget {

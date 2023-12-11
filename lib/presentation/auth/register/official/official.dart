@@ -9,6 +9,11 @@ import 'package:ebayan/controller/brgy_controller.dart';
 import 'package:ebayan/data/model/barangay_model.dart';
 import 'package:ebayan/data/model/municipality_model.dart';
 import 'package:ebayan/data/model/user_model.dart';
+import 'package:ebayan/presentation/auth/register/official/widgets/form_step_1.dart';
+import 'package:ebayan/presentation/auth/register/official/widgets/form_step_2.dart';
+import 'package:ebayan/presentation/auth/register/official/widgets/form_step_3.dart';
+import 'package:ebayan/presentation/auth/register/official/widgets/heading.dart';
+import 'package:ebayan/presentation/auth/register/official/widgets/tab_bar.dart';
 import 'package:ebayan/utils/global.dart';
 import 'package:ebayan/utils/routes.dart';
 import 'package:ebayan/constants/size.dart';
@@ -17,15 +22,10 @@ import 'package:ebayan/widgets/components/progress_indicator.dart';
 import 'package:ebayan/widgets/components/snackbar.dart';
 import 'package:ebayan/widgets/layout_components/appbar_top.dart';
 import 'package:ebayan/widgets/utils/keep_alive.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:intl/intl.dart';
-
-import 'widgets/form_step_1.dart';
-import 'widgets/form_step_2.dart';
-import 'widgets/form_step_3.dart';
-import 'widgets/heading.dart';
-import 'widgets/tab_bar.dart';
 
 class RegisterOfficialScreen extends StatefulWidget {
   const RegisterOfficialScreen({super.key});

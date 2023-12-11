@@ -1,20 +1,20 @@
 import 'package:ebayan/constants/colors.dart';
+import 'package:ebayan/constants/size.dart';
 import 'package:ebayan/constants/typography.dart';
 import 'package:ebayan/controller/brgy_controller.dart';
 import 'package:ebayan/controller/user_controller.dart';
 import 'package:ebayan/data/viewmodel/barangay_view_model.dart';
 import 'package:ebayan/data/viewmodel/user_view_model.dart';
 import 'package:ebayan/presentation/dashboard/widgets/card_sphere.dart';
-import 'package:ebayan/constants/size.dart';
+import 'package:ebayan/presentation/people/widgets/heading.dart';
 import 'package:ebayan/widgets/components/loading.dart';
 import 'package:ebayan/widgets/components/snackbar.dart';
 import 'package:ebayan/widgets/layout_components/appbar_bottom.dart';
 import 'package:ebayan/widgets/layout_components/appbar_top.dart';
+
 import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
-import 'widgets/heading.dart';
 
 enum CardOptions { itemOne }
 

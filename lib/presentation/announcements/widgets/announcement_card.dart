@@ -1,9 +1,10 @@
 import 'package:ebayan/constants/colors.dart';
+import 'package:ebayan/constants/size.dart';
 import 'package:ebayan/constants/typography.dart';
 import 'package:ebayan/data/viewmodel/announcement_view_model.dart';
 import 'package:ebayan/utils/routes.dart';
-import 'package:ebayan/constants/size.dart';
 import 'package:ebayan/widgets/components/buttons.dart';
+
 import 'package:flutter/material.dart';
 
 class AnnouncementCard extends StatelessWidget {
