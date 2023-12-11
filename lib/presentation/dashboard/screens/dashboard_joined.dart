@@ -93,6 +93,7 @@ class _JoinedDashboardViewState extends State<JoinedDashboardView> {
                       SphereCard(
                         brgyName: barangay.name,
                         municipalityName: barangay.municipality,
+                        userType: userType,
                         brgyCode: barangay.code.toString(),
                         hasNewAnnouncements: barangay.announcements?.isNotEmpty,
                         numOfPeople: barangay.numOfPeople,

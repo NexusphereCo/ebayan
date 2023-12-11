@@ -23,6 +23,7 @@ class SphereCard extends StatefulWidget {
   final String? brgyCode;
   final bool? hasNewAnnouncements;
   final int? numOfPeople;
+  final String? userType;
 
   final bool? isLoading;
   final bool? disableButtons;
@@ -36,6 +37,7 @@ class SphereCard extends StatefulWidget {
     this.numOfPeople,
     this.isLoading,
     this.disableButtons,
+    this.userType,
   });
 
   Widget cardHeader() {
@@ -194,11 +196,12 @@ class _SphereCardState extends State<SphereCard> {
             height: 40,
             child: Text('Copy Code'),
           ),
-          const PopupMenuItem<CardOptions>(
-            value: CardOptions.itemTwo,
-            height: 40,
-            child: Text('Leave Barangay Sphere'),
-          ),
+          if (widget.userType != 'OFFICIAL')
+            const PopupMenuItem<CardOptions>(
+              value: CardOptions.itemTwo,
+              height: 40,
+              child: Text('Leave Barangay Sphere'),
+            ),
           const PopupMenuItem<CardOptions>(
             value: CardOptions.itemThree,
             height: 40,
