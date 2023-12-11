@@ -26,6 +26,16 @@ class _JoinedDashboardViewState extends State<JoinedDashboardView> {
   final BarangayController brgyController = BarangayController();
   final UserController userController = UserController();
 
+  // Variables
+  String userType = '';
+
+  @override
+  void initState() {
+    connectionHandler(context);
+    setUserType();
+    super.initState();
+  }
+
   Future<BarangayViewModel> fetchBarangayInfo() async {
     final user = await userController.getCurrentUserInfo();
     final barangay = await brgyController.fetchBarangayWithLatestAnnouncement(user.barangayAssociated as String);
@@ -33,10 +43,9 @@ class _JoinedDashboardViewState extends State<JoinedDashboardView> {
     return barangay;
   }
 
-  @override
-  void initState() {
-    connectionHandler(context);
-    super.initState();
+  Future<void> setUserType() async {
+    final user = await userController.getCurrentUserInfo();
+    userType = user.userType;
   }
 
   @override
@@ -48,6 +57,15 @@ class _JoinedDashboardViewState extends State<JoinedDashboardView> {
           return const JoinedDashboardLoadingView();
         } else {
           final BarangayViewModel barangay = snapshot.data!;
+
+          final floatingActionButton = (userType == 'RESIDENT')
+              ? FloatingActionButton(
+                  onPressed: () {
+                    Navigator.of(context).push(createRoute(route: Routes.joinBrgy));
+                  },
+                  child: const Icon(FeatherIcons.plus),
+                )
+              : null;
 
           return Scaffold(
             appBar: const EBAppBar(),
@@ -79,12 +97,7 @@ class _JoinedDashboardViewState extends State<JoinedDashboardView> {
                 ],
               ),
             ),
-            floatingActionButton: FloatingActionButton(
-              onPressed: () {
-                Navigator.of(context).push(createRoute(route: Routes.joinBrgy));
-              },
-              child: const Icon(FeatherIcons.plus),
-            ),
+            floatingActionButton: floatingActionButton,
             floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
             bottomNavigationBar: const EBAppBarBottom(activeIndex: 1),
           );
