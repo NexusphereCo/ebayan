@@ -2,6 +2,7 @@ class Validation {
   Validation._();
 
   static const String missingField = 'This field is required.';
+  static const String missingBodyField = 'Contents of the field body is required.';
   static const String noAccount = 'There is no account associated with that email!';
   static const String invalidEmail = 'This email address is not valid.';
   static const String invalidPhoneNumber = 'This phone number not invalid.';
