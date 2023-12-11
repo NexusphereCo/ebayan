@@ -88,6 +88,7 @@ Widget _buildListOfAnnouncements(List<AnnouncementViewModel> announcements) {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: Spacing.md, vertical: Spacing.md),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Row(
@@ -113,11 +114,12 @@ Widget _buildListOfAnnouncements(List<AnnouncementViewModel> announcements) {
                       EBTypography.h4(text: announcements[index].author),
                     ],
                   ),
-                  const SizedBox(height: Spacing.sm),
+                  const SizedBox(height: Spacing.md - 5),
                   EBTypography.text(
                     text: announcements[index].heading,
                     cutOverflow: true,
                     maxLines: 2,
+                    textAlign: TextAlign.start,
                   ),
                 ],
               ),
