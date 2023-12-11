@@ -24,7 +24,7 @@ class ReactionController {
 
       final commentRef = await announcementDoc //
           .reference
-          .collection('reactions')
+          .collection('comments')
           .add({
         'text': text,
         'timeCreated': DateTime.now(),
@@ -55,7 +55,7 @@ class ReactionController {
 
       final commentsSnapshot = await doc //
           .reference
-          .collection('reactions')
+          .collection('comments')
           .orderBy('timeCreated', descending: true)
           .get();
 
@@ -66,13 +66,13 @@ class ReactionController {
           commentsSnapshot.docs.map(
             (doc) async {
               final userId = doc['userId'];
-              final username = await fetchUsername(userId);
+              final username = user!.displayName;
 
               return CommentViewModel(
                 text: doc['text'],
                 timeCreated: doc['timeCreated'].toDate(),
                 userId: userId,
-                username: username,
+                username: username!,
               );
             },
           ),
@@ -87,24 +87,77 @@ class ReactionController {
     }
   }
 
-  Future<String> fetchUsername(String userId) async {
-    try {
-      final userDoc = await _db //
-          .collection('users')
-          .doc(userId)
-          .get();
-      final String name = '${userDoc['firstName']} ${userDoc['lastName']}';
-      return name;
-    } catch (err) {
-      log.e('An error occurred while fetching author name: $err');
-      throw 'An error occurred while fetching author name. $userId';
-    }
-  }
-
   Future<void> setReaction(String annId, bool thumbsUp, bool thumbsDown) async {
+    // 1. Check first if the user has already reacted to the post
+    // 2. If the user has none, then create a new doc.
+    // If the user has, then just update the values
     final announcementSnapshot = await _db //
         .collectionGroup('announcements')
         .where('id', isEqualTo: annId)
         .get();
+
+    if (announcementSnapshot.docs.isEmpty) {
+      throw 'Announcement not found.';
+    }
+
+    final reactionsCollection = announcementSnapshot //
+        .docs
+        .first
+        .reference
+        .collection('reactions');
+
+    final existingReactionSnapshot = await reactionsCollection.where('userId', isEqualTo: user!.uid).get();
+
+    if (existingReactionSnapshot.docs.isNotEmpty) {
+      // User has already reacted, update the values
+      final existingReactionDoc = existingReactionSnapshot.docs.first;
+
+      if (!thumbsUp && !thumbsDown) {
+        existingReactionDoc.reference.delete();
+      } else {
+        await existingReactionDoc.reference.update({
+          'isLiked': thumbsUp,
+          'isDisliked': thumbsDown,
+        });
+      }
+    } else {
+      // User has not reacted yet, create a new doc
+      await reactionsCollection.add({
+        'isLiked': thumbsUp,
+        'isDisliked': thumbsDown,
+        'userId': user!.uid,
+      });
+    }
+  }
+
+  Future<bool?> fetchReaction(String annId) async {
+    // 1. Check first if the user has already reacted to the post
+    // 2. If the user has none, then create a new doc.
+    // If the user has, then just update the values
+    final announcementSnapshot = await _db //
+        .collectionGroup('announcements')
+        .where('id', isEqualTo: annId)
+        .get();
+
+    if (announcementSnapshot.docs.isEmpty) {
+      throw 'Announcement not found.';
+    }
+
+    final reactionsCollection = announcementSnapshot //
+        .docs
+        .first
+        .reference
+        .collection('reactions');
+
+    final existingReactionSnapshot = await reactionsCollection.where('userId', isEqualTo: user!.uid).get();
+
+    if (existingReactionSnapshot.docs.isNotEmpty) {
+      // User has already reacted, determine if they liked or not
+      final existingReactionDoc = existingReactionSnapshot.docs.first;
+      bool isLiked = await existingReactionDoc.data()['isLiked'];
+      return isLiked;
+    }
+    // User has not reacted yet, create a new doc
+    return null;
   }
 }

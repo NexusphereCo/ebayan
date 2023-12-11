@@ -23,18 +23,26 @@ class _RenderReactionState extends State<RenderReaction> {
   bool isThumbsUp = false;
   bool isThumbsDown = false;
 
+  @override
+  void initState() {
+    super.initState();
+    setReactionStateToButtons();
+  }
+
   void setReaction() async {
-    // Implement your Firebase update logic here
-    // You can use Firebase Firestore or Realtime Database to update the reaction
-    // For example, you might update a document in the 'posts' collection with the reaction
-    // Make sure to replace 'your_post_id' with the actual post ID
-    // and adjust the logic based on your Firebase structure
-    /// ```dart
-    /// FirebaseFirestore.instance.collection('posts').doc('your_post_id').update({
-    ///   'thumbsUp': thumbsUp,
-    ///   'thumbsDown': !thumbsUp,
-    /// });
     await announcementController.setReaction(widget.annId, isThumbsUp, isThumbsDown);
+  }
+
+  Future<void> setReactionStateToButtons() async {
+    var isLiked = await announcementController.fetchReaction(widget.annId);
+    if (isLiked != null) {
+      setState(() {
+        isThumbsUp = isLiked;
+        isThumbsDown = !isLiked;
+      });
+    }
+
+    print(isLiked);
   }
 
   @override

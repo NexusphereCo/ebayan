@@ -151,7 +151,7 @@ class AnnouncementController {
 
       final doc = announcementsSnapshot.docs.first;
 
-      final commentsSnapshot = await doc.reference.collection('reactions').orderBy('timeCreated', descending: true).get();
+      final commentsSnapshot = await doc.reference.collection('comments').orderBy('timeCreated', descending: true).get();
       List<CommentViewModel> comments = [];
 
       if (commentsSnapshot.docs.isNotEmpty) {
