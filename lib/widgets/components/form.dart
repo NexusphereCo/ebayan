@@ -1,9 +1,12 @@
+import 'dart:async';
+
 import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/constants/typography.dart';
 import 'package:ebayan/constants/size.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:pin_code_fields/pin_code_fields.dart';
 
 class EBTextField extends StatelessWidget {
   final String label;
@@ -129,6 +132,74 @@ class EBTextBox extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+}
+
+class EBPinCodeTextField extends StatelessWidget {
+  final TextEditingController textEditingController;
+  final StreamController<ErrorAnimationType>? errorController;
+  final void Function(String)? onChangeHandler;
+  final int length;
+  final String? Function(String?)? validator;
+
+  const EBPinCodeTextField({
+    super.key,
+    required this.textEditingController,
+    required this.errorController,
+    required this.onChangeHandler,
+    this.length = 5,
+    this.validator,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final fieldWidth = MediaQuery.of(context).size.width / 8;
+    const fieldWidthMax = 50.0;
+    final pinTheme = PinTheme(
+      shape: PinCodeFieldShape.box,
+      borderRadius: BorderRadius.circular(8.0),
+      inactiveColor: EBColor.primary,
+      activeColor: EBColor.primary,
+      selectedColor: EBColor.primary,
+      errorBorderColor: EBColor.red,
+      inactiveBorderWidth: 1,
+      activeBorderWidth: 1,
+      selectedBorderWidth: 2,
+      fieldHeight: 50.0,
+      fieldWidth: (fieldWidth >= fieldWidthMax) ? fieldWidthMax : fieldWidth,
+    );
+
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+      child: PinCodeTextField(
+        appContext: context,
+        pinTheme: pinTheme,
+        textStyle: TextStyle(
+          color: EBColor.primary,
+          fontWeight: EBFontWeight.regular,
+          fontSize: EBFontSize.normal,
+        ),
+        hintStyle: TextStyle(
+          color: EBColor.primary.withOpacity(0.5),
+          fontWeight: EBFontWeight.regular,
+          fontSize: EBFontSize.normal,
+        ),
+        hintCharacter: '-',
+        cursorColor: EBColor.primary,
+        length: length,
+        animationType: AnimationType.scale,
+        validator: validator,
+        animationDuration: const Duration(milliseconds: 300),
+        errorAnimationController: errorController,
+        controller: textEditingController,
+        keyboardType: TextInputType.number,
+        onChanged: onChangeHandler,
+        beforeTextPaste: (text) {
+          debugPrint("Allowing to paste $text");
+          return true;
+        },
+      ),
     );
   }
 }

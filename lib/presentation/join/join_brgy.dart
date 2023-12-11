@@ -6,10 +6,10 @@ import 'package:ebayan/constants/size.dart';
 import 'package:ebayan/constants/typography.dart';
 import 'package:ebayan/controller/brgy_controller.dart';
 import 'package:ebayan/presentation/join/widgets/confirm_join_modal.dart';
-import 'package:ebayan/presentation/join/widgets/pin_code_field.dart';
 import 'package:ebayan/utils/global.dart';
 import 'package:ebayan/utils/routes.dart';
 import 'package:ebayan/widgets/components/buttons.dart';
+import 'package:ebayan/widgets/components/form.dart';
 import 'package:ebayan/widgets/components/loading.dart';
 import 'package:ebayan/widgets/components/snackbar.dart';
 import 'package:ebayan/widgets/layout_components/appbar_bottom.dart';
@@ -116,8 +116,7 @@ class _JoinBrgyScreenState extends State<JoinBrgyScreen> {
                       muted: true,
                     ),
                     const SizedBox(height: Spacing.lg),
-                    buildPinCodeTextField(
-                      context: context,
+                    EBPinCodeTextField(
                       textEditingController: textEditingController,
                       errorController: errorController,
                       onChangeHandler: (value) {
