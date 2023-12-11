@@ -2,6 +2,7 @@ import 'package:ebayan/constants/assets.dart';
 import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/constants/typography.dart';
 import 'package:ebayan/constants/size.dart';
+import 'package:ebayan/controller/user_controller.dart';
 import 'package:ebayan/presentation/dashboard/widgets/card_sphere.dart';
 import 'package:ebayan/presentation/dashboard/widgets/heading.dart';
 import 'package:ebayan/presentation/dashboard/widgets/loading_bar.dart';
@@ -21,8 +22,32 @@ class JoinedDashboardLoadingView extends StatefulWidget {
 }
 
 class _JoinedDashboardLoadingViewState extends State<JoinedDashboardLoadingView> {
+  final UserController userController = UserController();
+
+  String userType = '';
+
+  @override
+  void initState() {
+    super.initState();
+    setUserType();
+  }
+
+  Future<void> setUserType() async {
+    final user = await userController.getCurrentUserInfo();
+    userType = user.userType;
+  }
+
   @override
   Widget build(BuildContext context) {
+    final floatingActionButton = (userType == 'RESIDENT')
+        ? FadeIn(
+            child: FloatingActionButton(
+              onPressed: () {},
+              child: const Icon(FeatherIcons.plus),
+            ),
+          )
+        : null;
+
     return Stack(
       children: [
         Scaffold(
@@ -74,7 +99,6 @@ class _JoinedDashboardLoadingViewState extends State<JoinedDashboardLoadingView>
                                           margin: const EdgeInsets.all(10.0),
                                           decoration: BoxDecoration(
                                             borderRadius: BorderRadius.circular(EBBorderRadius.lg),
-                                            border: Border.all(color: EBColor.dullGreen),
                                             color: EBColor.light,
                                             boxShadow: [
                                               BoxShadow(
@@ -168,10 +192,7 @@ class _JoinedDashboardLoadingViewState extends State<JoinedDashboardLoadingView>
               )
             ],
           ),
-          floatingActionButton: FloatingActionButton(
-            onPressed: () {},
-            child: const Icon(FeatherIcons.plus),
-          ),
+          floatingActionButton: floatingActionButton,
           floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
           bottomNavigationBar: const EBAppBarBottom(activeIndex: 1),
         ),

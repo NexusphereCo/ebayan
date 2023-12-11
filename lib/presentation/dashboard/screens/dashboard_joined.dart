@@ -12,6 +12,7 @@ import 'package:ebayan/utils/global.dart';
 import 'package:ebayan/utils/routes.dart';
 import 'package:ebayan/widgets/layout_components/appbar_bottom.dart';
 import 'package:ebayan/widgets/layout_components/appbar_top.dart';
+import 'package:ebayan/widgets/utils/fade_in.dart';
 
 import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
@@ -60,11 +61,13 @@ class _JoinedDashboardViewState extends State<JoinedDashboardView> {
           final BarangayViewModel barangay = snapshot.data!;
 
           final floatingActionButton = (userType == 'RESIDENT')
-              ? FloatingActionButton(
-                  onPressed: () {
-                    Navigator.of(context).push(createRoute(route: Routes.joinBrgy));
-                  },
-                  child: const Icon(FeatherIcons.plus),
+              ? FadeIn(
+                  child: FloatingActionButton(
+                    onPressed: () {
+                      Navigator.of(context).push(createRoute(route: Routes.joinBrgy));
+                    },
+                    child: const Icon(FeatherIcons.plus),
+                  ),
                 )
               : null;
 

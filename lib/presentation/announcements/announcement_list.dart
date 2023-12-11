@@ -41,7 +41,9 @@ class _AnnouncementListScreenState extends State<AnnouncementListScreen> {
 
   Future<void> setUserType() async {
     final user = await userController.getCurrentUserInfo();
-    userType = user.userType;
+    setState(() {
+      userType = user.userType;
+    });
   }
 
   Future<BarangayViewModel> fetchBarangayInfo() async {
