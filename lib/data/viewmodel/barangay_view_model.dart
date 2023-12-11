@@ -4,6 +4,7 @@ class BarangayViewModel {
   final String? adminId;
   final int code;
   final String name;
+  final String? municipality;
   final List<AnnouncementViewModel>? announcements;
   final int? numOfPeople;
 
@@ -11,6 +12,7 @@ class BarangayViewModel {
     this.adminId,
     required this.code,
     required this.name,
+    this.municipality,
     this.announcements,
     this.numOfPeople,
   });

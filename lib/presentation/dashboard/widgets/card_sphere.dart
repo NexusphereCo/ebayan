@@ -19,6 +19,7 @@ enum CardOptions { itemOne, itemTwo, itemThree }
 
 class SphereCard extends StatefulWidget {
   final String? brgyName;
+  final String? municipalityName;
   final String? brgyCode;
   final bool? hasNewAnnouncements;
   final int? numOfPeople;
@@ -29,6 +30,7 @@ class SphereCard extends StatefulWidget {
   const SphereCard({
     super.key,
     this.brgyName,
+    this.municipalityName,
     this.brgyCode,
     this.hasNewAnnouncements,
     this.numOfPeople,
@@ -54,9 +56,10 @@ class SphereCard extends StatefulWidget {
                 (isLoading ?? false)
                     ? EBLoadingBar(width: 150, colors: [EBColor.primary[800]!, EBColor.primary[700]!.withOpacity(0.5)])
                     : EBTypography.h4(
-                        text: brgyName!,
+                        text: '${brgyName!}, ${municipalityName!}',
                         color: EBColor.light,
                         maxLines: 2,
+                        cutOverflow: true,
                       ),
                 const SizedBox(height: Spacing.sm),
                 (isLoading ?? false)

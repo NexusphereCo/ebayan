@@ -160,7 +160,8 @@ Widget buildDashboard({
           ),
           SphereCard(
             key: cardSphereKey,
-            brgyName: 'SAN FELIPE, CAMARINES SUR',
+            brgyName: 'SAN FELIPE',
+            municipalityName: 'CAMARINES SUR',
             brgyCode: '77241',
             hasNewAnnouncements: true,
             numOfPeople: 32,

@@ -72,6 +72,11 @@ class BarangayController {
         .where('code', isEqualTo: int.parse(brgyId))
         .get();
 
+    // Fetch municipality name
+    final municipalityId = barangaySnapshot.docs.first.reference.parent.parent?.id;
+    final municipalitySnapshot = await _db.collection('municipalities').doc(municipalityId).get();
+    final municipalityName = municipalitySnapshot['municipality'];
+
     // Check if there is no document
     if (barangaySnapshot.docs.isEmpty) {
       _log.e('Barangay: $brgyId not found');
@@ -121,6 +126,7 @@ class BarangayController {
     return BarangayViewModel(
       code: doc['code'],
       name: doc['name'],
+      municipality: municipalityName,
       adminId: doc['adminId'],
       numOfPeople: numOfPeople,
       announcements: announcements,
@@ -133,6 +139,11 @@ class BarangayController {
     final barangaySnapshot = await barangaysRef //
         .where('code', isEqualTo: int.parse(brgyId))
         .get();
+
+    // Fetch municipality name
+    final municipalityId = barangaySnapshot.docs.first.reference.parent.parent?.id;
+    final municipalitySnapshot = await _db.collection('municipalities').doc(municipalityId).get();
+    final municipalityName = municipalitySnapshot['municipality'];
 
     // Check if there is no document
     if (barangaySnapshot.docs.isEmpty) {
@@ -154,6 +165,7 @@ class BarangayController {
     return BarangayViewModel(
       code: doc['code'],
       name: doc['name'],
+      municipality: municipalityName,
       adminId: doc['adminId'],
       numOfPeople: numOfPeople,
     );
@@ -188,6 +200,11 @@ class BarangayController {
     var barangaySnapshot = await barangaysRef //
         .where('code', isEqualTo: int.parse(brgyId))
         .get();
+
+    // Fetch municipality name
+    final municipalityId = barangaySnapshot.docs.first.reference.parent.parent?.id;
+    final municipalitySnapshot = await _db.collection('municipalities').doc(municipalityId).get();
+    final municipalityName = municipalitySnapshot['municipality'];
 
     // Check if there is no document
     if (barangaySnapshot.docs.isEmpty) {
@@ -233,12 +250,14 @@ class BarangayController {
         .collection('users')
         .where('barangayAssociated', isEqualTo: brgyId)
         .get();
+
     int numOfPeople = usersJoinedBrgySnapshot.size;
 
     // Return the BarangayViewModel with the mapped announcements
     return BarangayViewModel(
       code: doc['code'],
       name: doc['name'],
+      municipality: municipalityName,
       adminId: doc['adminId'],
       announcements: announcements,
       numOfPeople: numOfPeople,

@@ -33,6 +33,7 @@ Widget buildHeading({required BarangayViewModel barangay}) {
         borderRadius: const BorderRadius.only(topLeft: Radius.circular(20.0), topRight: Radius.circular(20.0)),
         child: SphereCard(
           brgyName: barangay.name,
+          municipalityName: barangay.municipality,
           brgyCode: barangay.code.toString(),
         ).cardHeader(),
       ),

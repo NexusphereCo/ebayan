@@ -89,6 +89,7 @@ class _PeopleScreenState extends State<PeopleScreen> {
                           ),
                           child: SphereCard(
                             brgyName: data.name,
+                            municipalityName: data.municipality,
                             brgyCode: data.code.toString(),
                           ).cardHeader(),
                         ),
