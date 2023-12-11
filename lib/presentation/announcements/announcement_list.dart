@@ -29,10 +29,19 @@ class _AnnouncementListScreenState extends State<AnnouncementListScreen> {
   final BarangayController brgyController = BarangayController();
   final UserController userController = UserController();
 
+  // Variables
+  String userType = '';
+
   @override
   void initState() {
     connectionHandler(context);
+    setUserType();
     super.initState();
+  }
+
+  Future<void> setUserType() async {
+    final user = await userController.getCurrentUserInfo();
+    userType = user.userType;
   }
 
   Future<BarangayViewModel> fetchBarangayInfo() async {
@@ -42,17 +51,19 @@ class _AnnouncementListScreenState extends State<AnnouncementListScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final floatingActionButton = SizedBox(
-      width: 70.0,
-      height: 70.0,
-      child: FittedBox(
-        child: FloatingActionButton(
-          backgroundColor: EBColor.primary,
-          onPressed: () => Navigator.of(context).push(createRoute(route: Routes.createAnnouncement)),
-          child: Icon(FontAwesomeIcons.pencil, color: EBColor.light, size: EBFontSize.h3),
-        ),
-      ),
-    );
+    final floatingActionButton = (userType == 'OFFICIAL')
+        ? SizedBox(
+            width: 70.0,
+            height: 70.0,
+            child: FittedBox(
+              child: FloatingActionButton(
+                backgroundColor: EBColor.primary,
+                onPressed: () => Navigator.of(context).push(createRoute(route: Routes.createAnnouncement)),
+                child: Icon(FontAwesomeIcons.pencil, color: EBColor.light, size: EBFontSize.h3),
+              ),
+            ),
+          )
+        : null;
 
     return Scaffold(
       appBar: const EBAppBar(enablePop: true),
