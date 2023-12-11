@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:ebayan/constants/assets.dart';
 import 'package:ebayan/constants/typography.dart';
 import 'package:ebayan/controller/brgy_controller.dart';
-import 'package:ebayan/presentation/dashboard/join/widgets/pin_code_field.dart';
+import 'package:ebayan/presentation/join/widgets/pin_code_field.dart';
 import 'package:ebayan/utils/global.dart';
 import 'package:ebayan/utils/routes.dart';
 import 'package:ebayan/constants/size.dart';

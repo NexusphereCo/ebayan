@@ -4,7 +4,7 @@ import 'package:ebayan/controller/anct_controller.dart';
 import 'package:ebayan/controller/brgy_controller.dart';
 import 'package:ebayan/controller/user_controller.dart';
 import 'package:ebayan/data/viewmodel/barangay_view_model.dart';
-import 'package:ebayan/presentation/dashboard/announcements/widgets/announcement_card.dart';
+import 'package:ebayan/presentation/announcements/widgets/announcement_card.dart';
 import 'package:ebayan/utils/global.dart';
 import 'package:ebayan/constants/size.dart';
 import 'package:ebayan/utils/routes.dart';

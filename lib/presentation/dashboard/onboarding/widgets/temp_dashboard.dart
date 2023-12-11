@@ -1,7 +1,7 @@
 import 'package:ebayan/constants/assets.dart';
 import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/constants/typography.dart';
-import 'package:ebayan/presentation/dashboard/dashboard/widgets/card_sphere.dart';
+import 'package:ebayan/presentation/dashboard/widgets/card_sphere.dart';
 import 'package:ebayan/constants/size.dart';
 import 'package:ebayan/widgets/utils/fade_in.dart';
 import 'package:feather_icons/feather_icons.dart';

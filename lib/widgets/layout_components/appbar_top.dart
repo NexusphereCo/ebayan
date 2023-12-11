@@ -2,7 +2,7 @@ import 'package:ebayan/constants/assets.dart';
 import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/constants/icons.dart';
 import 'package:ebayan/constants/typography.dart';
-import 'package:ebayan/presentation/dashboard/announcements/widgets/announcement_delete_modal.dart';
+import 'package:ebayan/presentation/announcements/widgets/announcement_delete_modal.dart';
 import 'package:ebayan/controller/user_controller.dart';
 import 'package:ebayan/utils/routes.dart';
 import 'package:ebayan/widgets/components/loading.dart';
