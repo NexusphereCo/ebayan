@@ -45,13 +45,7 @@ class _CommentSectionState extends State<CommentSection> {
                     SliverToBoxAdapter(
                       child: Padding(
                         padding: const EdgeInsets.all(Global.paddingBody),
-                        child: CommentHeading(
-                          annId: widget.annId,
-                          onCommentAdded: () {
-                            // Refresh the comments when a new comment is added
-                            setState(() {});
-                          },
-                        ),
+                        child: CommentHeading(annId: widget.annId),
                       ),
                     ),
                     if (snapshot.connectionState == ConnectionState.waiting)

@@ -11,12 +11,10 @@ import 'package:flutter/material.dart';
 
 class CommentHeading extends StatefulWidget {
   final String annId;
-  final Function() onCommentAdded;
 
   const CommentHeading({
     super.key,
     required this.annId,
-    required this.onCommentAdded,
   });
 
   @override
@@ -35,6 +33,19 @@ class _CommentHeadingState extends State<CommentHeading> {
     });
   }
 
+  Future<void> postComment() async {
+    bool isFormValid = formKey.currentState?.validate() == true;
+    if (isFormValid) {
+      try {
+        await reactionController.createComment(widget.annId, textController.text);
+        textController.clear();
+        toggleEditing();
+      } catch (e) {
+        throw 'An error occurred while creating the comment.';
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -46,22 +57,26 @@ class _CommentHeadingState extends State<CommentHeading> {
             Row(
               children: [
                 const SizedBox(width: 3),
-                TextButton(
-                  onPressed: () => toggleEditing(),
-                  child: Row(
-                    children: [
-                      EBTypography.text(
-                        text: (isEditing) ? 'Discard' : 'Post a comment',
-                        color: (isEditing) ? EBColor.red : EBColor.green,
+                StatefulBuilder(
+                  builder: (context, setState) {
+                    return TextButton(
+                      onPressed: () => toggleEditing(),
+                      child: Row(
+                        children: [
+                          EBTypography.text(
+                            text: (isEditing) ? 'Discard' : 'Post a comment',
+                            color: (isEditing) ? EBColor.red : EBColor.green,
+                          ),
+                          const SizedBox(width: Spacing.sm),
+                          Icon(
+                            FeatherIcons.feather,
+                            color: (isEditing) ? EBColor.red : EBColor.green,
+                            size: EBFontSize.normal,
+                          ),
+                        ],
                       ),
-                      const SizedBox(width: Spacing.sm),
-                      Icon(
-                        FeatherIcons.feather,
-                        color: (isEditing) ? EBColor.red : EBColor.green,
-                        size: EBFontSize.normal,
-                      ),
-                    ],
-                  ),
+                    );
+                  },
                 ),
               ],
             ),
@@ -99,18 +114,7 @@ class _CommentHeadingState extends State<CommentHeading> {
             RotateWidget(
               degree: 45,
               child: IconButton(
-                onPressed: () async {
-                  if (formKey.currentState?.validate() == true) {
-                    try {
-                      await reactionController.createComment(widget.annId, textController.text);
-                      textController.clear();
-                      toggleEditing();
-                      widget.onCommentAdded();
-                    } catch (e) {
-                      throw 'An error occurred while creating the comment.';
-                    }
-                  }
-                },
+                onPressed: () => postComment(),
                 icon: Icon(FeatherIcons.send, color: EBColor.primary),
               ),
             ),
