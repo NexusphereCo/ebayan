@@ -1,12 +1,13 @@
 import 'dart:convert';
 
 import 'package:ebayan/constants/colors.dart';
-import 'package:ebayan/constants/icons.dart';
 import 'package:ebayan/constants/size.dart';
 import 'package:ebayan/constants/typography.dart';
 import 'package:ebayan/constants/validation.dart';
 import 'package:ebayan/controller/anct_controller.dart';
 import 'package:ebayan/data/viewmodel/announcement_view_model.dart';
+import 'package:ebayan/presentation/announcements/announcement/screens/widgets/attach_button.dart';
+import 'package:ebayan/presentation/announcements/announcement/screens/widgets/quill.dart';
 import 'package:ebayan/utils/routes.dart';
 import 'package:ebayan/widgets/components/buttons.dart';
 import 'package:ebayan/widgets/components/form.dart';
@@ -47,15 +48,15 @@ class _EditAnnouncementScreenState extends State<EditAnnouncementScreen> {
         if (isBodyEmpty) throw Validation.missingBodyField;
 
         // If everything is valid, then update
-        final json = jsonEncode(bodyController.document.toDelta().toJson());
+        final jsonBody = jsonEncode(bodyController.document.toDelta().toJson());
 
-        String data = await announcementController.updateAnnouncement(annId, headingController.text, json.toString());
+        String announcementId = await announcementController.updateAnnouncement(annId, headingController.text, jsonBody.toString());
 
         // Go back to announcement
         if (context.mounted) {
           loadingScreen.hide(context);
           Navigator.of(context).pushReplacement(
-            createRoute(route: Routes.announcement, args: data),
+            createRoute(route: Routes.announcement, args: announcementId),
           );
         }
       } catch (e) {
@@ -175,154 +176,6 @@ class _EditAnnouncementScreenState extends State<EditAnnouncementScreen> {
             );
           }
         },
-      ),
-    );
-  }
-}
-
-class RenderAttachButton extends StatefulWidget {
-  const RenderAttachButton({super.key});
-
-  @override
-  State<RenderAttachButton> createState() => _RenderAttachButtonState();
-}
-
-class _RenderAttachButtonState extends State<RenderAttachButton> {
-  CardOptions? selectedMenu;
-
-  @override
-  Widget build(BuildContext context) {
-    return PopupMenuButton<CardOptions>(
-      offset: const Offset(0, -75),
-      icon: Icon(
-        FeatherIcons.plusCircle,
-        color: EBColor.primary,
-      ),
-      initialValue: selectedMenu,
-      onSelected: (CardOptions item) {},
-      itemBuilder: (BuildContext context) => <PopupMenuEntry<CardOptions>>[
-        const PopupMenuItem<CardOptions>(
-          value: CardOptions.itemOne,
-          height: 30,
-          child: Row(
-            children: [
-              Icon(EBIcons.clip, size: EBFontSize.h1),
-              SizedBox(width: 5),
-              Text('Add Attachment(s)', style: TextStyle(fontSize: EBFontSize.label)),
-            ],
-          ),
-        ),
-        const PopupMenuItem<CardOptions>(
-          value: CardOptions.itemTwo,
-          height: 30,
-          child: Row(
-            children: [
-              Icon(EBIcons.image, size: EBFontSize.h1),
-              SizedBox(width: 5),
-              Text('Add Photo', style: TextStyle(fontSize: EBFontSize.label)),
-            ],
-          ),
-        ),
-      ],
-    );
-  }
-}
-
-class RenderRichTextArea extends StatelessWidget {
-  const RenderRichTextArea({
-    super.key,
-    required this.bodyController,
-  });
-
-  final QuillController bodyController;
-
-  // Editor configuration...
-  QuillEditorConfigurations editorConfigurations() {
-    return QuillEditorConfigurations(
-      customStyles: DefaultStyles(
-        placeHolder: DefaultTextBlockStyle(
-          TextStyle(
-            fontFamily: EBTypography.fontFamily,
-            fontWeight: EBFontWeight.regular,
-            fontSize: EBFontSize.label,
-            color: EBColor.dark.withOpacity(0.5),
-          ),
-          const VerticalSpacing(0.0, 0.0),
-          const VerticalSpacing(1.0, 1.0),
-          BoxDecoration(
-            border: Border.all(width: 3.0),
-          ),
-        ),
-      ),
-      minHeight: 250,
-      readOnly: false,
-      maxHeight: 500,
-      padding: const EdgeInsets.all(Global.paddingBody),
-      placeholder: 'Announce something to your barangay sphere',
-      textCapitalization: TextCapitalization.sentences,
-    );
-  }
-
-  // Allowed formatting buttons to show are modified here...
-  QuillToolbarConfigurations toolbarConfiguration() {
-    return const QuillToolbarConfigurations(
-      showBoldButton: true,
-      showItalicButton: true,
-      showUnderLineButton: true,
-      showListBullets: true,
-      showUndo: true,
-      showRedo: true,
-      toolbarIconCrossAlignment: WrapCrossAlignment.start,
-      // ----------
-      showDividers: false,
-      showFontFamily: false,
-      showFontSize: false,
-      showSmallButton: false,
-      showStrikeThrough: false,
-      showInlineCode: false,
-      showColorButton: false,
-      showBackgroundColorButton: false,
-      showClearFormat: false,
-      showAlignmentButtons: false,
-      showLeftAlignment: false,
-      showCenterAlignment: false,
-      showRightAlignment: false,
-      showJustifyAlignment: false,
-      showHeaderStyle: false,
-      showListNumbers: false,
-      showListCheck: false,
-      showCodeBlock: false,
-      showQuote: false,
-      showIndent: false,
-      showLink: false,
-      showDirection: false,
-      showSearchButton: false,
-      showSubscript: false,
-      showSuperscript: false,
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return QuillProvider(
-      configurations: QuillConfigurations(
-        controller: bodyController,
-        sharedConfigurations: const QuillSharedConfigurations(
-          locale: Locale('de'),
-        ),
-      ),
-      child: Container(
-        decoration: BoxDecoration(
-          border: Border.all(color: EBColor.dark, width: 1.0),
-          borderRadius: BorderRadius.circular(10),
-        ),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            QuillEditor.basic(configurations: editorConfigurations()),
-            QuillToolbar(configurations: toolbarConfiguration()),
-          ],
-        ),
       ),
     );
   }

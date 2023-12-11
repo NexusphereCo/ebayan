@@ -1,18 +1,22 @@
 import 'dart:convert';
 
-import 'package:ebayan/constants/icons.dart';
+import 'package:ebayan/constants/colors.dart';
+import 'package:ebayan/constants/size.dart';
 import 'package:ebayan/constants/typography.dart';
 import 'package:ebayan/constants/validation.dart';
-import 'package:ebayan/utils/routes.dart';
-import 'package:ebayan/widgets/components/form.dart';
-import 'package:flutter/material.dart';
-import 'package:feather_icons/feather_icons.dart';
-import 'package:ebayan/widgets/layout_components/appbar_top.dart';
-import 'package:ebayan/constants/colors.dart';
-import 'package:ebayan/widgets/components/buttons.dart';
-import 'package:ebayan/constants/size.dart';
 import 'package:ebayan/controller/anct_controller.dart';
+import 'package:ebayan/presentation/announcements/announcement/screens/widgets/attach_button.dart';
+import 'package:ebayan/presentation/announcements/announcement/screens/widgets/quill.dart';
+import 'package:ebayan/utils/routes.dart';
+import 'package:ebayan/widgets/components/buttons.dart';
+import 'package:ebayan/widgets/components/form.dart';
+import 'package:ebayan/widgets/components/loading.dart';
+import 'package:ebayan/widgets/components/snackbar.dart';
+import 'package:ebayan/widgets/layout_components/appbar_top.dart';
+
+import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter_quill/flutter_quill.dart';
+import 'package:flutter/material.dart';
 
 class CreateAnnouncementScreen extends StatefulWidget {
   const CreateAnnouncementScreen({super.key});
@@ -24,30 +28,41 @@ class CreateAnnouncementScreen extends StatefulWidget {
 class _CreateAnnouncementScreenState extends State<CreateAnnouncementScreen> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   final AnnouncementController announcementController = AnnouncementController();
+  final EBCustomLoadingScreen loadingScreen = const EBCustomLoadingScreen();
+
   // Controllers
   final TextEditingController headingController = TextEditingController();
   QuillController bodyController = QuillController.basic();
-  // Variables
-  CardOptions? selectedMenu;
 
   Future<void> createAnnouncement() async {
     bool isFormValid = formKey.currentState?.validate() == true;
 
     if (isFormValid) {
       try {
-        final jsonBody = jsonEncode(bodyController.document.toDelta().toJson());
-        String announcement = await announcementController.createAnnouncement(
-          headingController.text,
-          jsonBody.toString(),
-        );
+        loadingScreen.show(context);
+        // Check if the body is empty
+        bool isBodyEmpty = bodyController.document.toPlainText().trim().isEmpty;
+        if (isBodyEmpty) throw Validation.missingBodyField;
 
+        // If everything is valid, then update
+        final jsonBody = jsonEncode(bodyController.document.toDelta().toJson());
+
+        String announcementId = await announcementController.createAnnouncement(headingController.text, jsonBody.toString());
+
+        // Go back to announcement
         if (context.mounted) {
+          loadingScreen.hide(context);
           Navigator.of(context).pushReplacement(
-            createRoute(route: Routes.announcement, args: announcement),
+            createRoute(route: Routes.announcement, args: announcementId),
           );
         }
       } catch (e) {
-        throw 'An error occurred while creating the announcement.';
+        if (context.mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            EBSnackBar.info(text: e.toString().isEmpty ? 'An error occurred while creating the announcement.' : e.toString()),
+          );
+          loadingScreen.hide(context);
+        }
       }
     }
   }
@@ -105,168 +120,42 @@ class _CreateAnnouncementScreenState extends State<CreateAnnouncementScreen> {
                       },
                     ),
                     const SizedBox(height: Spacing.md),
-                    QuillProvider(
-                      configurations: QuillConfigurations(controller: bodyController),
-                      child: Center(
-                        child: Container(
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                              color: EBColor.dark,
-                              width: 1.0,
-                            ),
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              QuillEditor.basic(
-                                configurations: QuillEditorConfigurations(
-                                  customStyles: DefaultStyles(
-                                    placeHolder: DefaultTextBlockStyle(
-                                      TextStyle(
-                                        fontWeight: EBFontWeight.regular,
-                                        fontFamily: EBTypography.fontFamily,
-                                        color: EBColor.dark.withOpacity(0.5),
-                                      ),
-                                      const VerticalSpacing(0.0, 0.0),
-                                      const VerticalSpacing(1.0, 1.0),
-                                      BoxDecoration(
-                                        border: Border.all(width: 3.0),
-                                      ),
-                                    ),
-                                  ),
-                                  minHeight: 250,
-                                  readOnly: false,
-                                  maxHeight: 500,
-                                  padding: const EdgeInsets.all(Global.paddingBody),
-                                  placeholder: 'Announce something to your barangay sphere',
-                                  textCapitalization: TextCapitalization.sentences,
-                                ),
-                              ),
-                              QuillToolbar(configurations: setQuilToolbarConfig()),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
+                    EBTypography.label(text: 'Body', muted: true),
+                    const SizedBox(height: Spacing.sm),
+                    RenderRichTextArea(bodyController: bodyController),
                   ],
                 ),
                 const SizedBox(height: Spacing.md),
-                Column(
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
+                    const RenderAttachButton(),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        PopupMenuButton<CardOptions>(
-                          offset: const Offset(0, -90),
-                          icon: Icon(
-                            FeatherIcons.plusCircle,
-                            color: EBColor.primary,
-                          ),
-                          initialValue: selectedMenu,
-                          onSelected: (CardOptions item) {
-                            setState(() {
-                              selectedMenu = item;
-                            });
-                          },
-                          itemBuilder: (BuildContext context) {
-                            return [
-                              const PopupMenuItem<CardOptions>(
-                                value: CardOptions.itemOne,
-                                height: 30,
-                                child: Row(
-                                  children: [
-                                    Icon(EBIcons.clip, size: EBFontSize.h4),
-                                    SizedBox(width: Spacing.sm),
-                                    Text(
-                                      'Add Attachment(s)',
-                                      style: TextStyle(fontSize: EBFontSize.label),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              const PopupMenuItem<CardOptions>(
-                                value: CardOptions.itemTwo,
-                                height: 30,
-                                child: Row(
-                                  children: [
-                                    Icon(EBIcons.image, size: EBFontSize.h4),
-                                    SizedBox(width: Spacing.sm),
-                                    Text(
-                                      'Add Photo',
-                                      style: TextStyle(fontSize: EBFontSize.label),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ];
+                        EBButton(
+                          text: 'Cancel',
+                          theme: EBButtonTheme.primaryOutlined,
+                          onPressed: () {
+                            Navigator.of(context).pop();
                           },
                         ),
-                        Row(
-                          children: [
-                            EBButton(
-                              text: 'Cancel',
-                              theme: EBButtonTheme.primaryOutlined,
-                              onPressed: () {
-                                Navigator.of(context).pop();
-                              },
-                            ),
-                            const SizedBox(width: Spacing.sm),
-                            EBButton(
-                              text: 'Post',
-                              theme: EBButtonTheme.primary,
-                              icon: Icon(FeatherIcons.send, color: EBColor.light, size: EBFontSize.h4),
-                              onPressed: () => createAnnouncement(),
-                            ),
-                          ],
+                        const SizedBox(width: Spacing.sm),
+                        EBButton(
+                          text: 'Post',
+                          theme: EBButtonTheme.primary,
+                          icon: Icon(FeatherIcons.send, color: EBColor.light, size: EBFontSize.h4),
+                          onPressed: () => createAnnouncement(),
                         ),
                       ],
                     ),
                   ],
                 ),
+                const SizedBox(height: Spacing.md),
               ],
             ),
           ),
         ),
       ),
-    );
-  }
-
-  QuillToolbarConfigurations setQuilToolbarConfig() {
-    return const QuillToolbarConfigurations(
-      showBoldButton: true,
-      showItalicButton: true,
-      showUnderLineButton: true,
-      showListBullets: true,
-      showUndo: true,
-      showRedo: true,
-      toolbarIconCrossAlignment: WrapCrossAlignment.start,
-      // default
-      showDividers: false,
-      showFontFamily: false,
-      showFontSize: false,
-      showSmallButton: false,
-      showStrikeThrough: false,
-      showInlineCode: false,
-      showColorButton: false,
-      showBackgroundColorButton: false,
-      showClearFormat: false,
-      showAlignmentButtons: false,
-      showLeftAlignment: false,
-      showCenterAlignment: false,
-      showRightAlignment: false,
-      showJustifyAlignment: false,
-      showHeaderStyle: false,
-      showListNumbers: false,
-      showListCheck: false,
-      showCodeBlock: false,
-      showQuote: false,
-      showIndent: false,
-      showLink: false,
-      showDirection: false,
-      showSearchButton: false,
-      showSubscript: false,
-      showSuperscript: false,
     );
   }
 }
