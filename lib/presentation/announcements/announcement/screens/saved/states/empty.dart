@@ -16,44 +16,47 @@ class EmptySavedAnnouncements extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            EBTypography.h1(text: 'Announcement'),
-            const SizedBox(width: Spacing.sm),
-            FaIcon(FontAwesomeIcons.solidBookmark, size: 30, color: EBColor.dark),
-          ],
-        ),
-        const SizedBox(height: Spacing.xxl),
-        SizedBox(
-          height: MediaQuery.of(context).size.height * 0.5,
-          child: Center(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                SvgPicture.asset(Asset.noAnnouncements),
-                EBTypography.h2(text: 'No Saved Announcements'),
-                const SizedBox(height: Spacing.sm),
-                EBTypography.label(
-                  text: 'Start by saving your favorite posts.',
-                  muted: true,
-                  fontWeight: EBFontWeight.regular,
-                ),
-                const SizedBox(height: Spacing.lg),
-                EBButton(
-                  onPressed: () {
-                    Navigator.of(context).push(createRoute(route: Routes.announcements));
-                  },
-                  text: 'Browse for Announcements',
-                  theme: EBButtonTheme.primaryOutlined,
-                ),
-              ],
+    return Padding(
+      padding: const EdgeInsets.all(Global.paddingBody),
+      child: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              EBTypography.h1(text: 'Saved Announcements'),
+              const SizedBox(width: Spacing.sm),
+              FaIcon(FontAwesomeIcons.solidBookmark, size: 30, color: EBColor.dark),
+            ],
+          ),
+          const SizedBox(height: Spacing.xxl),
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 0.5,
+            child: Center(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  SvgPicture.asset(Asset.noAnnouncements),
+                  EBTypography.h2(text: 'No Saved Announcements'),
+                  const SizedBox(height: Spacing.sm),
+                  EBTypography.label(
+                    text: 'Start by saving your favorite posts.',
+                    muted: true,
+                    fontWeight: EBFontWeight.regular,
+                  ),
+                  const SizedBox(height: Spacing.lg),
+                  EBButton(
+                    onPressed: () {
+                      Navigator.of(context).push(createRoute(route: Routes.announcements));
+                    },
+                    text: 'Browse for Announcements',
+                    theme: EBButtonTheme.primaryOutlined,
+                  ),
+                ],
+              ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

@@ -162,6 +162,7 @@ class RenderAnnouncement extends StatelessWidget {
                     size: EBFontSize.h2,
                   ),
                 ),
+                const SizedBox(height: Spacing.lg),
               ],
             ),
           ),

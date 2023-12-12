@@ -43,13 +43,13 @@ class _SavedAnnouncementScreenState extends State<SavedAnnouncementScreen> {
     return Scaffold(
       appBar: const EBAppBar(enablePop: true),
       drawer: const EBDrawer(),
-      body: Padding(
-        padding: const EdgeInsets.all(Global.paddingBody),
-        child: FutureBuilder(
-          future: fetchSavedAnnouncements(),
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return Column(
+      body: FutureBuilder(
+        future: fetchSavedAnnouncements(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return Padding(
+              padding: const EdgeInsets.all(Global.paddingBody),
+              child: Column(
                 children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
@@ -62,29 +62,29 @@ class _SavedAnnouncementScreenState extends State<SavedAnnouncementScreen> {
                   const SizedBox(height: Spacing.md),
                   const EBCircularLoadingIndicator(showText: true),
                 ],
-              );
-            } else {
-              final List<AnnouncementViewModel> announcements = snapshot.data!;
+              ),
+            );
+          } else {
+            final List<AnnouncementViewModel> announcements = snapshot.data!;
 
-              return RefreshIndicator(
-                onRefresh: () async => setState(() {}),
-                backgroundColor: EBColor.primary,
-                color: EBColor.light,
-                child: ListView.builder(
-                  itemCount: announcements.isEmpty ? 1 : announcements.length,
-                  itemBuilder: (context, index) {
-                    return announcements.isEmpty //
-                        ? const EmptySavedAnnouncements()
-                        : RenderSavedAnnouncements(
-                            announcements: announcements,
-                            index: index,
-                          );
-                  },
-                ),
-              );
-            }
-          },
-        ),
+            return RefreshIndicator(
+              onRefresh: () async => setState(() {}),
+              backgroundColor: EBColor.primary,
+              color: EBColor.light,
+              child: ListView.builder(
+                itemCount: announcements.isEmpty ? 1 : announcements.length,
+                itemBuilder: (context, index) {
+                  return announcements.isEmpty //
+                      ? const EmptySavedAnnouncements()
+                      : RenderSavedAnnouncements(
+                          announcements: announcements,
+                          index: index,
+                        );
+                },
+              ),
+            );
+          }
+        },
       ),
       bottomNavigationBar: const EBAppBarBottom(activeIndex: 3),
     );

@@ -36,42 +36,50 @@ Widget buildPersonalInfo({
             Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Icon(
-                      FeatherIcons.user,
-                      color: EBColor.primary,
-                    ),
-                    const SizedBox(width: Spacing.md),
-                    Flexible(
-                      child: EBTextField(
-                        controller: firstNameController,
-                        label: 'First Name',
-                        type: TextInputType.name,
-                        validator: (value) {
-                          value = value?.trim();
-                          if (value == null || value.isEmpty) return Validation.missingField;
-                          return null;
-                        },
-                        maxLines: 1,
-                        capitalizePerWord: true,
-                      ),
-                    ),
-                    const SizedBox(width: Spacing.sm),
-                    Flexible(
-                      child: EBTextField(
-                        controller: lastNameController,
-                        label: 'Last Name',
-                        type: TextInputType.name,
-                        validator: (value) {
-                          value = value?.trim();
-                          if (value == null || value.isEmpty) return Validation.missingField;
-                          return null;
-                        },
-                        maxLines: 1,
-                        capitalizePerWord: true,
-                      ),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                          height: 61,
+                          child: Icon(
+                            FeatherIcons.user,
+                            color: EBColor.primary,
+                          ),
+                        ),
+                        const SizedBox(width: Spacing.md),
+                        Flexible(
+                          child: EBTextField(
+                            controller: firstNameController,
+                            label: 'First Name',
+                            type: TextInputType.name,
+                            validator: (value) {
+                              value = value?.trim();
+                              if (value == null || value.isEmpty) return Validation.missingField;
+                              return null;
+                            },
+                            maxLines: 1,
+                            capitalizePerWord: true,
+                          ),
+                        ),
+                        const SizedBox(width: Spacing.sm),
+                        Flexible(
+                          child: EBTextField(
+                            controller: lastNameController,
+                            label: 'Last Name',
+                            type: TextInputType.name,
+                            validator: (value) {
+                              value = value?.trim();
+                              if (value == null || value.isEmpty) return Validation.missingField;
+                              return null;
+                            },
+                            maxLines: 1,
+                            capitalizePerWord: true,
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),
