@@ -71,7 +71,7 @@ class _AnnouncementListScreenState extends State<AnnouncementListScreen> {
       appBar: const EBAppBar(enablePop: true),
       drawer: const EBDrawer(),
       body: Padding(
-        padding: const EdgeInsets.all(Global.paddingBody),
+        padding: const EdgeInsets.symmetric(horizontal: Global.paddingBody),
         child: FutureBuilder(
           future: fetchBarangayInfo(),
           builder: (context, snapshot) {
