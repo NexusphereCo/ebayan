@@ -30,6 +30,7 @@ class _AnnouncementListScreenState extends State<AnnouncementListScreen> {
   final UserController userController = UserController();
 
   // Variables
+  String brgyId = '';
   String userType = '';
 
   @override
@@ -42,6 +43,7 @@ class _AnnouncementListScreenState extends State<AnnouncementListScreen> {
   Future<void> setUserType() async {
     final user = await userController.getCurrentUserInfo();
     setState(() {
+      brgyId = user.barangayAssociated!;
       userType = user.userType;
     });
   }
@@ -60,7 +62,7 @@ class _AnnouncementListScreenState extends State<AnnouncementListScreen> {
             child: FittedBox(
               child: FloatingActionButton(
                 backgroundColor: EBColor.primary,
-                onPressed: () => Navigator.of(context).push(createRoute(route: Routes.createAnnouncement)),
+                onPressed: () => Navigator.of(context).push(createRoute(route: Routes.createAnnouncement, args: brgyId)),
                 child: Icon(FontAwesomeIcons.pencil, color: EBColor.light, size: EBFontSize.h3),
               ),
             ),

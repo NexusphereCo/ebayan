@@ -335,4 +335,13 @@ class BarangayController {
 
     _log.i('Successfully joined a barangay!');
   }
+
+  Future<String?> fetchBrgyIdFromAnnId(String annId) async {
+    final querySnapshot = await _db //
+        .collectionGroup('announcements')
+        .where('id', isEqualTo: annId)
+        .get();
+
+    return querySnapshot.docs.first.reference.parent.parent?.id;
+  }
 }

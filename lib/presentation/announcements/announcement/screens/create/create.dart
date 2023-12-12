@@ -5,6 +5,8 @@ import 'package:ebayan/constants/size.dart';
 import 'package:ebayan/constants/typography.dart';
 import 'package:ebayan/constants/validation.dart';
 import 'package:ebayan/controller/anct_controller.dart';
+import 'package:ebayan/controller/brgy_controller.dart';
+import 'package:ebayan/controller/user_controller.dart';
 import 'package:ebayan/presentation/announcements/announcement/screens/widgets/attach_button.dart';
 import 'package:ebayan/presentation/announcements/announcement/screens/widgets/quill.dart';
 import 'package:ebayan/utils/routes.dart';
@@ -17,6 +19,7 @@ import 'package:ebayan/widgets/layout_components/appbar_top.dart';
 import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter_quill/flutter_quill.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class CreateAnnouncementScreen extends StatefulWidget {
   const CreateAnnouncementScreen({super.key});
@@ -27,12 +30,50 @@ class CreateAnnouncementScreen extends StatefulWidget {
 
 class _CreateAnnouncementScreenState extends State<CreateAnnouncementScreen> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
+  final UserController userController = UserController();
+  final BarangayController brgyController = BarangayController();
   final AnnouncementController announcementController = AnnouncementController();
   final EBCustomLoadingScreen loadingScreen = const EBCustomLoadingScreen();
 
   // Controllers
   final TextEditingController headingController = TextEditingController();
   QuillController bodyController = QuillController.basic();
+
+  // Variables
+  bool switchEnabled = false;
+
+  Future<Uri> createUri(String brgyId) async {
+    List<String> phoneNumber = await userController.fetchPhoneNumbersFromBrgy(brgyId);
+
+    String formattedBodyMsg = 'HEADING: ${headingController.text}\n-------------------\n${bodyController.document.toPlainText().trim()}';
+    return Uri(
+      scheme: 'sms',
+      path: phoneNumber.join(','),
+      queryParameters: {
+        'body': formattedBodyMsg,
+      },
+    );
+  }
+
+  Future<void> sendSms(String brgyId) async {
+    if (switchEnabled) {
+      bool isBodyEmpty = bodyController.document.toPlainText().trim().isEmpty;
+      try {
+        if (!isBodyEmpty) {
+          if (!await launchUrl(await createUri(brgyId))) throw 'Could not launch';
+        } else {
+          throw Validation.missingBodyField;
+        }
+      } catch (e) {
+        if (context.mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            EBSnackBar.info(text: 'Please make sure that the body has a content before sending a text message.'),
+          );
+        }
+      }
+    }
+  }
 
   Future<void> createAnnouncement() async {
     bool isFormValid = formKey.currentState?.validate() == true;
@@ -69,6 +110,8 @@ class _CreateAnnouncementScreenState extends State<CreateAnnouncementScreen> {
 
   @override
   Widget build(BuildContext context) {
+    String brgyId = ModalRoute.of(context)?.settings.arguments as String;
+
     return Scaffold(
       appBar: const EBAppBar(enablePop: true, noTitle: true),
       body: SingleChildScrollView(
@@ -84,7 +127,7 @@ class _CreateAnnouncementScreenState extends State<CreateAnnouncementScreen> {
                   children: [
                     EBTypography.h1(
                       text: 'Create Announcement',
-                      color: EBColor.primary,
+                      color: EBColor.green,
                     ),
                   ],
                 ),
@@ -96,7 +139,18 @@ class _CreateAnnouncementScreenState extends State<CreateAnnouncementScreen> {
                       text: "Send SMS",
                       muted: true,
                     ),
-                    const SwitchButton(),
+                    StatefulBuilder(
+                      builder: (context, setState) {
+                        return SwitchButton(
+                            value: switchEnabled,
+                            onChange: (bool value) async {
+                              setState(() {
+                                switchEnabled = value;
+                              });
+                              await sendSms(brgyId);
+                            });
+                      },
+                    ),
                     EBTypography.small(
                       maxLines: 2,
                       text: 'This will send a group text a message to all people within the barangay.',

@@ -41,8 +41,6 @@ class _RenderReactionState extends State<RenderReaction> {
         isThumbsDown = !isLiked;
       });
     }
-
-    print(isLiked);
   }
 
   @override

@@ -212,15 +212,20 @@ class EBButton extends StatelessWidget {
 }
 
 class SwitchButton extends StatefulWidget {
-  const SwitchButton({super.key});
+  final bool value;
+  final void Function(bool)? onChange;
+
+  const SwitchButton({
+    super.key,
+    required this.value,
+    this.onChange,
+  });
 
   @override
   State<SwitchButton> createState() => _SwitchButtonState();
 }
 
 class _SwitchButtonState extends State<SwitchButton> {
-  bool light = true;
-
   final MaterialStateProperty<Icon?> thumbIcon = MaterialStateProperty.resolveWith<Icon?>(
     (Set<MaterialState> states) {
       if (states.contains(MaterialState.selected)) {
@@ -236,14 +241,14 @@ class _SwitchButtonState extends State<SwitchButton> {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Switch(
-          value: light,
-          onChanged: (bool value) {
-            setState(() {
-              light = value;
-            });
-          },
-          activeTrackColor: EBColor.primary[100],
-          activeColor: EBColor.primary,
+          value: widget.value,
+          onChanged: widget.onChange,
+          activeTrackColor: EBColor.green[100],
+          activeColor: EBColor.green,
+          inactiveTrackColor: EBColor.green[50],
+          inactiveThumbColor: EBColor.green,
+          trackOutlineWidth: const MaterialStatePropertyAll(1),
+          trackOutlineColor: MaterialStatePropertyAll(EBColor.green),
         ),
       ],
     );

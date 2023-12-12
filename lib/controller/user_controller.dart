@@ -57,13 +57,13 @@ class UserController {
   }
 
   Future<void> logOut() async {
-    await FirebaseAuth.instance.signOut();
+    await _dbAuth.signOut();
     log.i('User has been logged out.');
   }
 
   Future<void> saveAnnouncement(String annId) async {
     try {
-      final user = FirebaseAuth.instance.currentUser;
+      final user = _dbAuth.currentUser;
       final savedAnnouncementRef = _dbFirestore.collection('users').doc(user?.uid).collection('savedAnnouncements').doc(annId);
 
       // Check if the announcement is already saved to avoid duplicate entries
@@ -116,7 +116,7 @@ class UserController {
   }
 
   Future<bool> isAnnouncementBookmarked(String annId) async {
-    final user = FirebaseAuth.instance.currentUser;
+    final user = _dbAuth.currentUser;
 
     // 1. Get the list of docs via snapshots
     final savedAnnouncementSnapshot = await _dbFirestore.collection('users').doc(user?.uid).collection('savedAnnouncements').get();
@@ -128,7 +128,7 @@ class UserController {
 
   Future<void> deleteSavedAnnouncement(String annId) async {
     try {
-      final user = FirebaseAuth.instance.currentUser;
+      final user = _dbAuth.currentUser;
       final savedAnnouncementRef = _dbFirestore.collection('users').doc(user?.uid).collection('savedAnnouncements').doc(annId);
 
       // Check if the announcement exists before deleting it
@@ -146,8 +146,22 @@ class UserController {
   }
 
   Future<void> leaveBarangaySphere() async {
-    final userId = FirebaseAuth.instance.currentUser?.uid;
+    final userId = _dbAuth.currentUser?.uid;
     final user = _dbFirestore.collection('users').doc(userId);
     user.update({'barangayAssociated': null});
+  }
+
+  Future<List<String>> fetchPhoneNumbersFromBrgy(String brgyId) async {
+    final usersSnapshot = await _dbFirestore //
+        .collection('users')
+        .where('barangayAssociated', isEqualTo: brgyId)
+        .get();
+
+    List<String> phoneNumbers = usersSnapshot //
+        .docs
+        .map((e) => e['contactNumber'] as String)
+        .toList();
+
+    return phoneNumbers;
   }
 }
