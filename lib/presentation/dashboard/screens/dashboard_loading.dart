@@ -165,6 +165,7 @@ class _JoinedDashboardLoadingViewState extends State<JoinedDashboardLoadingView>
                                                   child: IconButton(
                                                     onPressed: () {},
                                                     icon: const Icon(FeatherIcons.arrowRight),
+                                                    color: EBColor.light,
                                                   ),
                                                 )
                                               ],
