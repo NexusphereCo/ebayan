@@ -66,13 +66,13 @@ class ReactionController {
           commentsSnapshot.docs.map(
             (doc) async {
               final userId = doc['userId'];
-              final username = user!.displayName;
+              final username = await fetchUserName(userId);
 
               return CommentViewModel(
                 text: doc['text'],
                 timeCreated: doc['timeCreated'].toDate(),
                 userId: userId,
-                username: username!,
+                username: username,
               );
             },
           ),
@@ -84,6 +84,18 @@ class ReactionController {
     } catch (err) {
       log.e('An error occurred: $err');
       throw 'An error occurred while fetching comments.';
+    }
+  }
+
+  Future<String> fetchUserName(String authorId) async {
+    try {
+      final userDoc = await _db.collection('users').doc(authorId).get();
+      final String name = '${userDoc['firstName']} ${userDoc['lastName']}';
+      return name;
+    } catch (err) {
+      log.e('An error occurred while fetching author name: $err');
+      log.e('An error occurred while fetching author name: $authorId');
+      throw 'An error occurred while fetching author name.';
     }
   }
 
