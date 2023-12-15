@@ -181,8 +181,8 @@ class _EBAppBarState extends State<EBAppBar> {
                   value: CardOptions.itemOne,
                   height: 30,
                   child: Text(
-                    isSaved ? 'Unsave Announcement' : 'Save Announcement',
-                    style: const TextStyle(fontSize: 13),
+                    isSaved ? 'Remove from Saved Announcement' : 'Save Announcement',
+                    style: const TextStyle(fontSize: EBFontSize.normal),
                   ),
                 ),
                 const PopupMenuItem<CardOptions>(
