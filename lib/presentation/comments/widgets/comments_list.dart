@@ -1,6 +1,8 @@
+import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/constants/size.dart';
 import 'package:ebayan/constants/typography.dart';
 import 'package:ebayan/data/viewmodel/comment_view_model.dart';
+import 'package:feather_icons/feather_icons.dart';
 
 import 'package:flutter/material.dart';
 
@@ -17,15 +19,21 @@ class CommentsList extends StatelessWidget {
           final comment = comments[index];
           return Padding(
             padding: const EdgeInsets.symmetric(horizontal: Global.paddingBody),
-            child: Column(
+            child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                EBTypography.h4(text: comment.username, fontWeight: EBFontWeight.semiBold),
-                Padding(
-                  padding: const EdgeInsets.only(left: 8.0),
-                  child: EBTypography.label(text: comment.text, maxLines: 3, fontWeight: EBFontWeight.regular),
+                Icon(FeatherIcons.user, color: EBColor.dark),
+                const SizedBox(width: Spacing.md),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      EBTypography.h4(text: comment.username, fontWeight: EBFontWeight.semiBold),
+                      EBTypography.label(text: comment.text, maxLines: 3, fontWeight: EBFontWeight.regular),
+                      const SizedBox(height: Spacing.md),
+                    ],
+                  ),
                 ),
-                const SizedBox(height: Spacing.md),
               ],
             ),
           );
