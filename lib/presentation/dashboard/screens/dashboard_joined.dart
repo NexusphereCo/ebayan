@@ -71,41 +71,44 @@ class _JoinedDashboardViewState extends State<JoinedDashboardView> {
                 )
               : null;
 
-          return Scaffold(
-            appBar: const EBAppBar(),
-            drawer: const EBDrawer(),
-            body: RefreshIndicator(
-              color: EBColor.light,
-              backgroundColor: EBColor.dullGreen,
-              onRefresh: () async => setState(() {}),
-              child: ListView(
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      buildHeading(),
-                      buildLatestAnnouncements(announcements: barangay.announcements!),
-                      const SizedBox(height: Spacing.lg),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: Global.paddingBody),
-                        child: EBTypography.h3(text: 'Barangay Sphere'),
-                      ),
-                      SphereCard(
-                        brgyName: barangay.name,
-                        municipalityName: barangay.municipality,
-                        userType: userType,
-                        brgyCode: barangay.code.toString(),
-                        hasNewAnnouncements: barangay.announcements?.isNotEmpty,
-                        numOfPeople: barangay.numOfPeople,
-                      ),
-                    ],
-                  )
-                ],
+          return PopScope(
+            canPop: false,
+            child: Scaffold(
+              appBar: const EBAppBar(),
+              drawer: const EBDrawer(),
+              body: RefreshIndicator(
+                color: EBColor.light,
+                backgroundColor: EBColor.dullGreen,
+                onRefresh: () async => setState(() {}),
+                child: ListView(
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        buildHeading(),
+                        buildLatestAnnouncements(announcements: barangay.announcements!),
+                        const SizedBox(height: Spacing.lg),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: Global.paddingBody),
+                          child: EBTypography.h3(text: 'Barangay Sphere'),
+                        ),
+                        SphereCard(
+                          brgyName: barangay.name,
+                          municipalityName: barangay.municipality,
+                          userType: userType,
+                          brgyCode: barangay.code.toString(),
+                          hasNewAnnouncements: barangay.announcements?.isNotEmpty,
+                          numOfPeople: barangay.numOfPeople,
+                        ),
+                      ],
+                    )
+                  ],
+                ),
               ),
+              floatingActionButton: floatingActionButton,
+              floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+              bottomNavigationBar: const EBAppBarBottom(activeIndex: 1),
             ),
-            floatingActionButton: floatingActionButton,
-            floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-            bottomNavigationBar: const EBAppBarBottom(activeIndex: 1),
           );
         }
       },
