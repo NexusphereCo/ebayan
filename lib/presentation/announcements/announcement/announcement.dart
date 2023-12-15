@@ -134,6 +134,7 @@ class RenderAnnouncement extends StatelessWidget {
                             configurations: const QuillEditorConfigurations(
                               minHeight: 50,
                               readOnly: true,
+                              showCursor: false,
                             ),
                           ),
                         ],
