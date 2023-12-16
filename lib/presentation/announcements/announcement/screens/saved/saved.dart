@@ -67,20 +67,23 @@ class _SavedAnnouncementScreenState extends State<SavedAnnouncementScreen> {
           } else {
             final List<AnnouncementViewModel> announcements = snapshot.data!;
 
-            return RefreshIndicator(
-              onRefresh: () async => setState(() {}),
-              backgroundColor: EBColor.primary,
-              color: EBColor.light,
-              child: ListView.builder(
-                itemCount: announcements.isEmpty ? 1 : announcements.length,
-                itemBuilder: (context, index) {
-                  return announcements.isEmpty //
-                      ? const EmptySavedAnnouncements()
-                      : RenderSavedAnnouncements(
-                          announcements: announcements,
-                          index: index,
-                        );
-                },
+            return Padding(
+              padding: const EdgeInsets.all(Global.paddingBody),
+              child: RefreshIndicator(
+                onRefresh: () async => setState(() {}),
+                backgroundColor: EBColor.primary,
+                color: EBColor.light,
+                child: ListView.builder(
+                  itemCount: announcements.isEmpty ? 1 : announcements.length,
+                  itemBuilder: (context, index) {
+                    return announcements.isEmpty //
+                        ? const EmptySavedAnnouncements()
+                        : RenderSavedAnnouncements(
+                            announcements: announcements,
+                            index: index,
+                          );
+                  },
+                ),
               ),
             );
           }

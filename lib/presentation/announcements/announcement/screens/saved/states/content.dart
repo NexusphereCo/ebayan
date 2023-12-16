@@ -21,33 +21,36 @@ class RenderSavedAnnouncements extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(Global.paddingBody),
-      child: Column(
-        children: [
-          if (index == 0)
-            Column(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    EBTypography.h1(text: 'Saved Announcements'),
-                    const SizedBox(width: Spacing.sm),
-                    FaIcon(
-                      FontAwesomeIcons.solidBookmark,
-                      size: 30,
-                      color: EBColor.dark,
-                    ),
-                  ],
-                ),
-                const SizedBox(height: Spacing.md),
-              ],
+    return Column(
+      children: [
+        if (index == 0)
+          Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  EBTypography.h1(text: 'Saved Announcements'),
+                  const SizedBox(width: Spacing.sm),
+                  FaIcon(
+                    FontAwesomeIcons.solidBookmark,
+                    size: 30,
+                    color: EBColor.dark,
+                  ),
+                ],
+              ),
+              const SizedBox(height: Spacing.md),
+            ],
+          ),
+        FadeIn(
+          child: Dismissible(
+            key: Key(index.toString()),
+            background: Container(
+              color: EBColor.red,
             ),
-          FadeIn(
             child: AnnouncementCard(announcement: announcements[index]),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
