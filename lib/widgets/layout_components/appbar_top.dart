@@ -3,6 +3,7 @@ import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/constants/icons.dart';
 import 'package:ebayan/constants/typography.dart';
 import 'package:ebayan/controller/user_controller.dart';
+import 'package:ebayan/presentation/announcements/widgets/announcement_delete_modal.dart';
 import 'package:ebayan/utils/routes.dart';
 import 'package:ebayan/widgets/components/loading.dart';
 import 'package:ebayan/widgets/components/snackbar.dart';
@@ -179,7 +180,24 @@ class _EBAppBarState extends State<EBAppBar> {
                 color: EBColor.primary,
               ),
               initialValue: selectedMenu,
-              onSelected: (CardOptions item) => saveAnnouncement(),
+              onSelected: (CardOptions item) {
+                switch (item) {
+                  case CardOptions.itemOne:
+                    saveAnnouncement();
+                    break;
+                  case CardOptions.itemTwo:
+                    Navigator.of(context).pushReplacement(createRoute(route: Routes.editAnnouncement, args: widget.annId));
+                    break;
+                  case CardOptions.itemThree:
+                    showModalBottomSheet(
+                      context: context,
+                      builder: (context) {
+                        return DeleteAnnouncement(annId: widget.annId!);
+                      },
+                    );
+                    break;
+                }
+              },
               itemBuilder: (BuildContext context) => <PopupMenuEntry<CardOptions>>[
                 PopupMenuItem<CardOptions>(
                   value: CardOptions.itemOne,
