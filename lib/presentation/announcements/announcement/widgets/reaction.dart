@@ -17,8 +17,10 @@ class RenderReaction extends StatefulWidget {
   State<RenderReaction> createState() => _RenderReactionState();
 }
 
-class _RenderReactionState extends State<RenderReaction> {
-  final ReactionController announcementController = ReactionController();
+class _RenderReactionState extends State<RenderReaction> with TickerProviderStateMixin {
+  late ReactionController announcementController;
+  late AnimationController thumbsUpController;
+  late AnimationController thumbsDownController;
 
   bool isThumbsUp = false;
   bool isThumbsDown = false;
@@ -26,7 +28,25 @@ class _RenderReactionState extends State<RenderReaction> {
   @override
   void initState() {
     super.initState();
+    announcementController = ReactionController();
+    thumbsUpController = createAnimationController();
+    thumbsDownController = createAnimationController();
+
     setReactionStateToButtons();
+  }
+
+  AnimationController createAnimationController() {
+    return AnimationController(
+      duration: const Duration(milliseconds: 100),
+      vsync: this,
+    );
+  }
+
+  @override
+  void dispose() {
+    thumbsUpController.dispose();
+    thumbsDownController.dispose();
+    super.dispose();
   }
 
   void setReaction() async {
@@ -54,57 +74,73 @@ class _RenderReactionState extends State<RenderReaction> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Material(
-              color: Colors.transparent,
-              child: InkWell(
-                onTap: () {
-                  setState(() {
-                    isThumbsUp = !isThumbsUp;
-                    isThumbsDown = false;
-                    setReaction();
-                  });
-                },
-                splashColor: Colors.transparent,
-                child: Ink(
-                  padding: const EdgeInsets.symmetric(horizontal: Spacing.sm, vertical: Spacing.md),
-                  child: Row(
-                    children: [
-                      FaIcon(
-                        (isThumbsUp) ? FontAwesomeIcons.solidThumbsUp : FontAwesomeIcons.thumbsUp,
-                        size: EBFontSize.h3,
-                        color: EBColor.primary,
-                      ),
-                      const SizedBox(width: Spacing.sm),
-                      EBTypography.text(text: 'Like', color: EBColor.primary),
-                    ],
+            ScaleTransition(
+              scale: Tween<double>(begin: 1.0, end: 0.7).animate(thumbsUpController),
+              child: Material(
+                color: Colors.transparent,
+                child: InkWell(
+                  onTap: () {
+                    thumbsUpController.forward();
+                    Future.delayed(const Duration(milliseconds: 100), () {
+                      thumbsUpController.reverse();
+                    });
+
+                    setState(() {
+                      isThumbsUp = !isThumbsUp;
+                      isThumbsDown = false;
+                      setReaction();
+                    });
+                  },
+                  splashColor: Colors.transparent,
+                  child: Ink(
+                    padding: const EdgeInsets.symmetric(horizontal: Spacing.sm, vertical: Spacing.md),
+                    child: Row(
+                      children: [
+                        FaIcon(
+                          (isThumbsUp) ? FontAwesomeIcons.solidThumbsUp : FontAwesomeIcons.thumbsUp,
+                          size: EBFontSize.h3,
+                          color: EBColor.primary,
+                        ),
+                        const SizedBox(width: Spacing.sm),
+                        EBTypography.text(text: 'Like', color: EBColor.primary),
+                      ],
+                    ),
                   ),
                 ),
               ),
             ),
             const SizedBox(width: Spacing.lg),
-            Material(
-              color: Colors.transparent,
-              child: InkWell(
-                onTap: () {
-                  setState(() {
-                    isThumbsDown = !isThumbsDown;
-                    isThumbsUp = false;
-                    setReaction();
-                  });
-                },
-                splashColor: Colors.transparent,
-                child: Ink(
-                  padding: const EdgeInsets.symmetric(horizontal: Spacing.sm, vertical: Spacing.md),
-                  child: Row(
-                    children: [
-                      FaIcon(
-                        (isThumbsDown) ? FontAwesomeIcons.solidThumbsDown : FontAwesomeIcons.thumbsDown,
-                        size: EBFontSize.h3,
-                        color: EBColor.primary,
-                      ),
-                      const SizedBox(width: Spacing.sm),
-                      EBTypography.text(text: 'Dislike', color: EBColor.primary),
-                    ],
+            ScaleTransition(
+              scale: Tween<double>(begin: 1.0, end: 0.7).animate(thumbsDownController),
+              child: Material(
+                color: Colors.transparent,
+                child: InkWell(
+                  onTap: () {
+                    thumbsDownController.forward();
+                    Future.delayed(const Duration(milliseconds: 100), () {
+                      thumbsDownController.reverse();
+                    });
+
+                    setState(() {
+                      isThumbsDown = !isThumbsDown;
+                      isThumbsUp = false;
+                      setReaction();
+                    });
+                  },
+                  splashColor: Colors.transparent,
+                  child: Ink(
+                    padding: const EdgeInsets.symmetric(horizontal: Spacing.sm, vertical: Spacing.md),
+                    child: Row(
+                      children: [
+                        FaIcon(
+                          (isThumbsDown) ? FontAwesomeIcons.solidThumbsDown : FontAwesomeIcons.thumbsDown,
+                          size: EBFontSize.h3,
+                          color: EBColor.primary,
+                        ),
+                        const SizedBox(width: Spacing.sm),
+                        EBTypography.text(text: 'Dislike', color: EBColor.primary),
+                      ],
+                    ),
                   ),
                 ),
               ),
