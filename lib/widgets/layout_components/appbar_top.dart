@@ -2,7 +2,6 @@ import 'package:ebayan/constants/assets.dart';
 import 'package:ebayan/constants/colors.dart';
 import 'package:ebayan/constants/icons.dart';
 import 'package:ebayan/constants/typography.dart';
-import 'package:ebayan/presentation/announcements/widgets/announcement_delete_modal.dart';
 import 'package:ebayan/controller/user_controller.dart';
 import 'package:ebayan/utils/routes.dart';
 import 'package:ebayan/widgets/components/loading.dart';
@@ -61,6 +60,43 @@ class _EBAppBarState extends State<EBAppBar> {
         isSaved = isBookmarked;
       });
     }
+  }
+
+  void saveAnnouncement() async {
+    setState(() {
+      isSaved = !isSaved;
+      if (isSaved) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          EBSnackBar.info(
+            text: 'Saved announcement.',
+            action: SnackBarAction(
+              label: 'View',
+              textColor: EBColor.light,
+              onPressed: () {
+                Navigator.of(context).pushReplacement(createRoute(route: Routes.savedAnnouncement));
+              },
+            ),
+          ),
+        );
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          EBSnackBar.info(
+            text: 'Removed from saved announcements.',
+            action: SnackBarAction(
+              label: 'View',
+              textColor: EBColor.light,
+              onPressed: () {
+                Navigator.of(context).pushReplacement(createRoute(route: Routes.savedAnnouncement));
+              },
+            ),
+          ),
+        );
+      }
+    });
+
+    (isSaved)
+        ? await userController.saveAnnouncement(widget.annId!) //
+        : await userController.deleteSavedAnnouncement(widget.annId!);
   }
 
   @override
@@ -143,39 +179,7 @@ class _EBAppBarState extends State<EBAppBar> {
                 color: EBColor.primary,
               ),
               initialValue: selectedMenu,
-              onSelected: (CardOptions item) async {
-                setState(() {
-                  selectedMenu = item;
-                });
-
-                if (item == CardOptions.itemOne) {
-                  setState(() {
-                    isSaved = !isSaved;
-                  });
-
-                  switch (isSaved) {
-                    case true:
-                      await userController.saveAnnouncement(widget.annId.toString());
-                      break;
-                    case false:
-                      await userController.deleteSavedAnnouncement(widget.annId.toString());
-                      break;
-                  }
-                } else if (item == CardOptions.itemTwo) {
-                  Navigator.of(context).pushReplacement(
-                    createRoute(route: Routes.editAnnouncement, args: widget.annId),
-                  );
-                } else if (item == CardOptions.itemThree) {
-                  showModalBottomSheet<void>(
-                    context: context,
-                    builder: (BuildContext context) {
-                      return DeleteAnnouncement(
-                        annId: widget.annId.toString(),
-                      );
-                    },
-                  );
-                }
-              },
+              onSelected: (CardOptions item) => saveAnnouncement(),
               itemBuilder: (BuildContext context) => <PopupMenuEntry<CardOptions>>[
                 PopupMenuItem<CardOptions>(
                   value: CardOptions.itemOne,
@@ -212,29 +216,7 @@ class _EBAppBarState extends State<EBAppBar> {
         margin: const EdgeInsets.fromLTRB(0, 0, 8.0, 0),
         child: (widget.save ?? false)
             ? IconButton(
-                onPressed: () async {
-                  setState(() {
-                    isSaved = !isSaved;
-                    if (isSaved) {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        EBSnackBar.info(
-                          text: 'Saved announcement.',
-                          action: SnackBarAction(
-                            label: 'View',
-                            textColor: EBColor.light,
-                            onPressed: () {
-                              Navigator.of(context).pushReplacement(createRoute(route: Routes.savedAnnouncement));
-                            },
-                          ),
-                        ),
-                      );
-                    }
-                  });
-
-                  (isSaved)
-                      ? await userController.saveAnnouncement(widget.annId!) //
-                      : await userController.deleteSavedAnnouncement(widget.annId!);
-                },
+                onPressed: () => saveAnnouncement(),
                 icon: Icon(
                   isSaved ? FontAwesomeIcons.solidBookmark : FontAwesomeIcons.bookmark,
                   color: EBColor.primary,
