@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 class EBSnackBar {
   EBSnackBar._();
 
-  static SnackBar info({required String text}) {
+  static SnackBar info({required String text, SnackBarAction? action}) {
     return SnackBar(
       duration: const Duration(seconds: 5),
       content: Row(
@@ -20,6 +20,7 @@ class EBSnackBar {
           ),
         ],
       ),
+      action: action,
     );
   }
 

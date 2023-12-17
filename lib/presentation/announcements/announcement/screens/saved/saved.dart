@@ -19,14 +19,12 @@ class SavedAnnouncementScreen extends StatefulWidget {
   const SavedAnnouncementScreen({super.key});
 
   @override
-  State<SavedAnnouncementScreen> createState() => _SavedAnnouncementScreenState();
+  State<SavedAnnouncementScreen> createState() => SavedAnnouncementScreenState();
 }
 
-class _SavedAnnouncementScreenState extends State<SavedAnnouncementScreen> {
+class SavedAnnouncementScreenState extends State<SavedAnnouncementScreen> {
   // Controllers
-  final AnnouncementController announcementController = AnnouncementController();
-  final BarangayController brgyController = BarangayController();
-  final UserController userController = UserController();
+  final UserController _userController = UserController();
 
   @override
   void initState() {
@@ -35,7 +33,11 @@ class _SavedAnnouncementScreenState extends State<SavedAnnouncementScreen> {
   }
 
   Future<List<AnnouncementViewModel>> fetchSavedAnnouncements() async {
-    return await userController.getSavedAnnouncements();
+    return await _userController.getSavedAnnouncements();
+  }
+
+  void refresh() {
+    setState(() {});
   }
 
   @override
@@ -81,6 +83,7 @@ class _SavedAnnouncementScreenState extends State<SavedAnnouncementScreen> {
                         : RenderSavedAnnouncements(
                             announcements: announcements,
                             index: index,
+                            parent: this,
                           );
                   },
                 ),

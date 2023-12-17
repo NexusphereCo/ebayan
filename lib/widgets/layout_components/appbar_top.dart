@@ -215,17 +215,25 @@ class _EBAppBarState extends State<EBAppBar> {
                 onPressed: () async {
                   setState(() {
                     isSaved = !isSaved;
-                    if (isSaved) ScaffoldMessenger.of(context).showSnackBar(EBSnackBar.info(text: 'Saved announcement.'));
+                    if (isSaved) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        EBSnackBar.info(
+                          text: 'Saved announcement.',
+                          action: SnackBarAction(
+                            label: 'View',
+                            textColor: EBColor.light,
+                            onPressed: () {
+                              Navigator.of(context).pushReplacement(createRoute(route: Routes.savedAnnouncement));
+                            },
+                          ),
+                        ),
+                      );
+                    }
                   });
 
-                  switch (isSaved) {
-                    case true:
-                      await userController.saveAnnouncement(widget.annId.toString());
-                      break;
-                    case false:
-                      await userController.deleteSavedAnnouncement(widget.annId.toString());
-                      break;
-                  }
+                  (isSaved)
+                      ? await userController.saveAnnouncement(widget.annId!) //
+                      : await userController.deleteSavedAnnouncement(widget.annId!);
                 },
                 icon: Icon(
                   isSaved ? FontAwesomeIcons.solidBookmark : FontAwesomeIcons.bookmark,
